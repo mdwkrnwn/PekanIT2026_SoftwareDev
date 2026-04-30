@@ -2,7 +2,8 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { Sun, Moon, } from 'lucide-react';
+import { FiSun } from "react-icons/fi";
+import { IoMoonSharp } from "react-icons/io5";
 
 export default function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
@@ -23,8 +24,8 @@ export default function ThemeSwitcher() {
     )
   }
 
-  const currentIcon = resolvedTheme === 'dark' ? (<Sun color="#1974FF" size={24} />) :
-    (<Moon fill="#1974FF" size={24} strokeWidth={0} />);
+  const currentIcon = resolvedTheme === 'dark' ? (<FiSun className="text-primary-foreground" size={24} />) :
+    (<IoMoonSharp className="fill-primary-foreground" size={24} strokeWidth={0} />);
 
   return (
     <button

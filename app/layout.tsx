@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Poppins } from 'next/font/google';
-import Navbar from "./Navbar";
-import ThemeProviders from "./ThemeProviders";
+import Navbar from "../components/Navbar";
+import ThemeProviders from "../components/ThemeProviders";
 import { cn } from "@/lib/utils";
 
 const poppins = Poppins({
@@ -27,7 +27,7 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", poppins.variable)}
       suppressHydrationWarning
     >
-      <body className="flex flex-col items-center min-h-full">
+      <body className=" flex flex-col items-center min-h-full">
         <ThemeProviders>
           <Navbar />
           {children}

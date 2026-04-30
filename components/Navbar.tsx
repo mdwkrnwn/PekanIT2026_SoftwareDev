@@ -1,19 +1,22 @@
 import Image from "next/image"
-import ThemeSwitcher from "../components/ThemetogglerBtn"
-import { Heart, MousePointer2 } from "lucide-react"
+import ThemeSwitcher from "./ThemetogglerBtn"
+import { FaHeart } from "react-icons/fa"
+import { LuMousePointer2 } from "react-icons/lu"
 
 function Navbar() {
   return (
-    <header className='flex justify-center w-full shadow-[#A9A1A140] shadow-md'>
+    <header className='flex justify-center w-full shadow-[#A9A1A140] shadow-md mb-10'>
       <nav className='grid grid-cols-[1fr_1fr_3fr] justify-center items-center w-[86vw]'>
-        <section className="flex items-center text-lg">
-          <Image loading='eager' height={120} width={120} src={'/UFLogo.png'} alt="logo" />
-          <span className="font-bold">
+        <section className="flex items-center">
+          <>
+            <Image loading='eager' height={1000} width={1000} className="max-w-24 max-h-24" src={'/UFLogo.png'} alt="logo" />
+          </>
+          <span className="text-lg font-bold">
             UFinder.
           </span>
         </section>
         <section>
-          <ul className="flex gap-6 **:font-medium">
+          <ul className="flex gap-6 text-lg font-medium">
             <li>Beranda</li>
             <li>Explore</li>
             <li>Favorit</li>
@@ -22,11 +25,11 @@ function Navbar() {
         </section>
         <section className="place-self-end flex items-center self-center gap-3">
           <button className="outline-1 outline-primary flex items-center justify-center p-2 transition-colors bg-transparent rounded-full cursor-pointer">
-            <Heart strokeWidth={0} size={24} fill="#1974FF" />
+            <FaHeart strokeWidth={0} size={24} className="fill-primary-foreground" />
           </button>
           <button className="outline-1 outline-primary flex items-center justify-center p-2 transition-colors bg-transparent rounded-full cursor-pointer">
-            <span className="bg-primary p-1 rounded-full">
-              <MousePointer2 className="scale-x-[-1] fill-background" strokeWidth={0} size={16} />
+            <span className="bg-primary-foreground p-1 rounded-full">
+              <LuMousePointer2 className="scale-x-[-1] fill-background" strokeWidth={0} size={16} />
             </span>
           </button>
           <ThemeSwitcher />
