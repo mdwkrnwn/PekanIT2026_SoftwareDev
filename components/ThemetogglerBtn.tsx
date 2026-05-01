@@ -24,8 +24,8 @@ export default function ThemeSwitcher() {
     )
   }
 
-  const currentIcon = resolvedTheme === 'dark' ? (<FiSun className="text-primary-foreground" size={24} />) :
-    (<IoMoonSharp className="fill-primary-foreground" size={24} strokeWidth={0} />);
+  const currentIcon = resolvedTheme === 'dark' ? (<FiSun className="text-primary" size={24} />) :
+    (<IoMoonSharp className="fill-primary" size={24} strokeWidth={0} />);
 
   return (
     <button
