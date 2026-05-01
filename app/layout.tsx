@@ -4,6 +4,7 @@ import { Poppins } from 'next/font/google';
 import Navbar from "../components/Navbar";
 import ThemeProviders from "../components/ThemeProviders";
 import { cn } from "@/lib/utils";
+import Footer from "@/components/Footer";
 
 const poppins = Poppins({
   weight: ['400', '700'],
@@ -27,10 +28,13 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", poppins.variable)}
       suppressHydrationWarning
     >
-      <body className=" flex flex-col items-center min-h-full">
+      <body className="flex flex-col items-center min-h-screen">
         <ThemeProviders>
           <Navbar />
-          {children}
+          <main className="flex flex-col flex-1">
+            {children}
+          </main>
+          <Footer />
         </ThemeProviders>
       </body>
     </html>
