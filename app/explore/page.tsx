@@ -27,7 +27,7 @@ import { categories, categoryBadgeColor, umkmData } from "@/lib/mockData";
 export default function ExplorePage() {
   return (
     <>
-      <nav className="mb-7 flex items-center gap-3">
+      <div className="mb-7 flex items-center gap-3">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -42,7 +42,7 @@ export default function ExplorePage() {
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-      </nav>
+      </div>
 
       <section>
         <div className="relative mb-6">

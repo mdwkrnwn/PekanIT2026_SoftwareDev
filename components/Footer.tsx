@@ -33,7 +33,7 @@ function Footer() {
       </section>
       <section className='grid grid-cols-1 grid-rows-[1fr_2fr]'>
         <p className='self-center font-semibold'>Menu</p>
-        <ul className='*:text-accent-foreground *:mb-2'>
+        <ul className='*:text-lg *:text-accent-foreground *:mb-2'>
           <li>Beranda</li>
           <li>Explore</li>
           <li>Favorit</li>
@@ -42,7 +42,7 @@ function Footer() {
       </section>
       <section className='grid grid-cols-1 grid-rows-[1fr_2fr]'>
         <p className='self-center font-semibold'>Bantuan</p>
-        <ul className='*:text-accent-foreground *:mb-2'>
+        <ul className='*:text-lg *:text-accent-foreground *:mb-2'>
           <li>FAQ</li>
           <li>Pusat Bantuan</li>
           <li>Syarat & Ketentuan</li>
@@ -52,7 +52,7 @@ function Footer() {
 
       <section className='grid grid-cols-1 grid-rows-[1fr_2fr]'>
         <p className='self-center font-semibold'>Untuk UMKM</p>
-        <ul className='*:text-accent-foreground *:mb-2'>
+        <ul className='*:text-lg *:text-accent-foreground *:mb-2'>
           <li>Daftarkan Usahamu</li>
           <li>Panduan UMKM</li>
           <li>Tips & Edukasi</li>
@@ -61,7 +61,7 @@ function Footer() {
 
       <section className='grid grid-cols-1 grid-rows-[1fr_2fr]'>
         <p className='self-center font-semibold'>Hubungi Kami</p>
-        <ul className='*:text-accent-foreground *:mb-2'>
+        <ul className='*:text-lg *:text-accent-foreground *:mb-2'>
           <li>ufinder@gmail.com</li>
           <li>000-0000-000</li>
           <li>Indonesia</li>

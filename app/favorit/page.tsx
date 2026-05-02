@@ -126,13 +126,13 @@ export default function FavoritePage() {
 
       <section className="relative mt-20 bg-primary overflow-hidden rounded-[2rem] bg-linear-to-r from-[#8EAFE5] to-[#E5EEFD] text-white h-fit">
         <div className="grid items-center grid-cols-2 px-16 h-full justify-between">
-          <div className="z-10 w-[82vw] grid grid-rows-3 gap-4 items-center-safe align-middle">
+          <div className="z-10 grid grid-rows-3 gap-4 items-center-safe align-middle">
             <h2 className="text-5xl font-semibold text-primary">
               Belum menemukan favorit lain?
             </h2>
 
-            <p className="text-3xl text-foreground">
-              Jelajahi lebih banyak UMKM lokal dan temukan produk <br />
+            <p className="text-3xl text-foreground wrap-break-word">
+              Jelajahi lebih banyak UMKM lokal dan temukan produk
               serta layan terbaik di sekitarmu,
             </p>
 
@@ -142,7 +142,7 @@ export default function FavoritePage() {
           </div>
 
           <div className="relative flex justify-center">
-            <Image src={"/Explore.png"} alt="Explore" width={1106} height={738} className="h-115 w-auto" />
+            <Image src={"/Favourite2.png"} alt="Explore" width={1106} height={738} className="h-115 w-auto" />
           </div>
         </div>
       </section>
