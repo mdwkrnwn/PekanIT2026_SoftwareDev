@@ -70,7 +70,7 @@ export default function MerchantPage() {
         {merchants.map((merchant) => (
           <article
             key={merchant.title}
-            className="border-border overflow-hidden rounded-[2rem] border bg-white transition-all hover:-translate-y-1 hover:shadow-xl hover:cursor-pointer"
+            className="border-border overflow-hidden rounded-[2rem] border bg-white transition-all hover:-translate-y-1 hover:shadow-xl cursor-pointer"
           >
             {/* Image */}
             <div className="relative h-80 overflow-hidden">
@@ -81,7 +81,7 @@ export default function MerchantPage() {
                 className="object-cover transition-transform duration-300 hover:scale-105"
               />
 
-              <button className="absolute top-5 right-5 flex size-10 items-center justify-center rounded-full bg-white text-foreground hover:bg-primary hover:*:text-background hover:cursor-pointer">
+              <button className="absolute top-5 right-5 flex size-10 items-center justify-center rounded-full bg-white text-foreground hover:bg-primary hover:*:text-background cursor-pointer">
                 <FaRegHeart
                   size={22}
                 />

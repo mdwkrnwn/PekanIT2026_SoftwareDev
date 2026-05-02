@@ -47,7 +47,7 @@ export default function FavoritePage() {
         <div className="flex flex-row gap-4">
           <FaHeart size={90} className="fill-primary" />
           <div>
-            <h1 className="font-semibold text-4xl pb-2">UMKM Favoritmu</h1>
+            <h1 className="pb-2 text-4xl font-semibold">UMKM Favoritmu</h1>
             <p className="text-xl">
               Temukan dan kelola UMKM yang kamu simpan <br />
               sebagai favorit.
@@ -59,7 +59,7 @@ export default function FavoritePage() {
         </div>
       </section>
 
-      <section className="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-4">
+      <section className="sm:grid-cols-2 xl:grid-cols-4 grid grid-cols-1 gap-8">
         {umkmData.map((item, i) => (
           <Link key={i} href={`/${item.title.replaceAll(" ", "-")}`}>
             <article
@@ -71,11 +71,11 @@ export default function FavoritePage() {
                   src={item.image}
                   alt={item.title}
                   fill
-                  className="object-cover transition-transform duration-300 hover:scale-105"
+                  className="hover:scale-105 object-cover transition-transform duration-300"
                 />
 
-                <button className="absolute top-4 right-4 flex size-9 items-center justify-center rounded-full hover:bg-foreground hover:cursor-pointer hover:*:stroke-background bg-background">
-                  <FaHeart size={22} className="stroke-2 stroke-primary fill-primary" />
+                <button className="absolute top-4 right-4 flex size-9 items-center justify-center rounded-full hover:bg-foreground cursor-pointer hover:*:stroke-background bg-background">
+                  <FaHeart size={22} className="stroke-primary fill-primary stroke-2" />
                 </button>
 
                 <span
@@ -93,11 +93,11 @@ export default function FavoritePage() {
                   {item.title}
                 </h2>
 
-                <p className="text-muted-foreground mb-5 line-clamp-2 text-sm leading-relaxed">
+                <p className="text-muted-foreground line-clamp-2 mb-5 text-sm leading-relaxed">
                   {item.description}
                 </p>
 
-                <div className="text-muted-foreground mb-4 flex items-center gap-2 text-sm">
+                <div className="text-muted-foreground flex items-center gap-2 mb-4 text-sm">
                   <FaLocationDot size={14} />
                   <span>{item.location}</span>
                 </div>
@@ -105,7 +105,7 @@ export default function FavoritePage() {
                 <div className="flex items-center justify-between text-sm">
                   <div className="flex items-center gap-1 text-yellow-500">
                     <FaStar size={15} />
-                    <span className="font-semibold text-slate-700">
+                    <span className="text-slate-700 font-semibold">
                       {item.rating}
                     </span>
                     <span className="text-muted-foreground">
@@ -125,13 +125,13 @@ export default function FavoritePage() {
       </section>
 
       <section className="relative mt-20 bg-primary overflow-hidden rounded-[2rem] bg-linear-to-r from-[#8EAFE5] to-[#E5EEFD] text-white h-fit">
-        <div className="grid items-center grid-cols-2 px-16 h-full justify-between">
-          <div className="z-10 grid grid-rows-3 gap-4 items-center-safe align-middle">
-            <h2 className="text-5xl font-semibold text-primary">
+        <div className="grid items-center justify-between h-full grid-cols-2 px-16">
+          <div className="items-center-safe z-10 grid grid-rows-3 gap-4 align-middle">
+            <h2 className="text-primary text-5xl font-semibold">
               Belum menemukan favorit lain?
             </h2>
 
-            <p className="text-3xl text-foreground wrap-break-word">
+            <p className="text-foreground wrap-break-word text-3xl">
               Jelajahi lebih banyak UMKM lokal dan temukan produk
               serta layan terbaik di sekitarmu,
             </p>

@@ -48,12 +48,12 @@ export default function ExplorePage() {
         <div className="relative mb-6">
           <FaSearch
             size={22}
-            className="text-muted-foreground absolute top-1/2 right-6 -translate-y-1/2"
+            className="text-muted-foreground top-1/2 right-6 absolute -translate-y-1/2"
           />
           <input
             type="text"
             placeholder="Cari UMKM, produk, kategori......"
-            className="border-2 focus:ring-primary h-16 w-full rounded-full border-border bg-transparent px-6 pr-16 text-lg focus:ring-2"
+            className="focus:ring-primary border-border focus:ring-2 w-full h-16 px-6 pr-16 text-lg bg-transparent border-2 rounded-full"
           />
         </div>
 
@@ -77,7 +77,7 @@ export default function ExplorePage() {
         </div>
       </section>
 
-      <section className="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-4">
+      <section className="sm:grid-cols-2 xl:grid-cols-4 grid grid-cols-1 gap-8">
         {umkmData.map((item, i) => (
           <Link key={i} href={`/${item.title.replaceAll(" ", "-")}`}>
             <div
@@ -89,11 +89,11 @@ export default function ExplorePage() {
                   src={item.image}
                   alt={item.title}
                   fill
-                  className="object-cover transition-transform duration-300 hover:scale-105"
+                  className="hover:scale-105 object-cover transition-transform duration-300"
                 />
 
-                <button className="absolute top-4 right-4 flex size-9 items-center justify-center rounded-full hover:bg-foreground hover:cursor-pointer hover:*:stroke-background bg-background">
-                  <FaRegHeart size={22} className="stroke-2 stroke-foreground" />
+                <button className="absolute top-4 right-4 flex size-9 items-center justify-center rounded-full hover:bg-foreground cursor-pointer hover:*:stroke-background bg-background">
+                  <FaRegHeart size={22} className="stroke-foreground stroke-2" />
                 </button>
 
                 <span
@@ -111,11 +111,11 @@ export default function ExplorePage() {
                   {item.title}
                 </h2>
 
-                <p className="text-muted-foreground mb-5 line-clamp-2 text-sm leading-relaxed">
+                <p className="text-muted-foreground line-clamp-2 mb-5 text-sm leading-relaxed">
                   {item.description}
                 </p>
 
-                <div className="text-muted-foreground mb-4 flex items-center gap-2 text-sm">
+                <div className="text-muted-foreground flex items-center gap-2 mb-4 text-sm">
                   <FaLocationDot size={14} />
                   <span>{item.location}</span>
                 </div>
@@ -123,7 +123,7 @@ export default function ExplorePage() {
                 <div className="flex items-center justify-between text-sm">
                   <div className="flex items-center gap-1 text-yellow-500">
                     <FaStar size={15} />
-                    <span className="font-semibold text-slate-700">
+                    <span className="text-slate-700 font-semibold">
                       {item.rating}
                     </span>
                     <span className="text-muted-foreground">
@@ -143,7 +143,7 @@ export default function ExplorePage() {
       </section>
 
       <section className="relative mt-20 bg-primary overflow-hidden rounded-[2rem] bg-linear-to-r from-primary to-primary-foreground text-white h-fit">
-        <div className="grid items-center grid-cols-2 px-16 h-full justify-between">
+        <div className="grid items-center justify-between h-full grid-cols-2 px-16">
           <div className="z-10 w-[82vw] grid grid-rows-3 gap-4 items-center-safe align-middle">
             <h2 className="text-5xl font-semibold">
               Temukan lebih banyak <br /> UMKM lokal favoritmu

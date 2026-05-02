@@ -178,7 +178,7 @@ export default function MerchantDetail() {
               </div>
               <p className="text-foreground">1.2 km dari lokasimu</p>
             </div>
-            <button className="border-primary text-primary hover:bg-primary hover:text-background hover:cursor-pointer bg-background w-fit flex items-center justify-center gap-2 px-6 py-2 text-lg font-bold transition-colors border rounded-lg">
+            <button className="border-primary text-primary hover:bg-primary hover:text-background bg-background w-fit flex items-center justify-center gap-2 px-6 py-2 text-lg font-bold transition-colors border rounded-lg cursor-pointer">
               Buka di Google Maps <FaExternalLinkAlt size={12} />
             </button>
           </div>
