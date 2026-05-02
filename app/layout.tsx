@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import ThemeProviders from "../components/ThemeProviders";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/Footer";
+import ChatPopUp from "@/components/Chat";
 
 const poppins = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
