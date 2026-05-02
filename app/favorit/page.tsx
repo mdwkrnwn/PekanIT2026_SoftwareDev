@@ -13,7 +13,7 @@ import {
   FaStar,
   FaStore,
 } from "react-icons/fa6";
-import { FaCoffee, FaGamepad, FaRegHeart, FaSearch } from "react-icons/fa";
+import { FaCoffee, FaGamepad, FaHeart, FaRegHeart, FaSearch } from "react-icons/fa";
 
 import {
   MdFastfood,
@@ -24,10 +24,10 @@ import { cn } from "@/lib/utils";
 import { CiHeart } from "react-icons/ci";
 import { categories, categoryBadgeColor, umkmData } from "@/lib/mockData";
 
-export default function ExplorePage() {
+export default function FavoritePage() {
   return (
     <>
-      <nav className="mb-7 flex items-center gap-3">
+      <div className="flex items-center gap-3">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -38,49 +38,31 @@ export default function ExplorePage() {
             </BreadcrumbItem>
             <BreadcrumbSeparator size={25} />
             <BreadcrumbItem>
-              <BreadcrumbPage className="text-[1.375rem] font-semibold" >Explore</BreadcrumbPage>
+              <BreadcrumbPage className="text-[1.375rem] font-semibold" >Favorit</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-      </nav>
-
-      <section>
-        <div className="relative mb-6">
-          <FaSearch
-            size={22}
-            className="text-muted-foreground absolute top-1/2 right-6 -translate-y-1/2"
-          />
-          <input
-            type="text"
-            placeholder="Cari UMKM, produk, kategori......"
-            className="border-2 focus:ring-primary h-16 w-full rounded-full border-border bg-transparent px-6 pr-16 text-lg focus:ring-2"
-          />
+      </div>
+      <section className="flex flex-row items-center justify-between">
+        <div className="flex flex-row gap-4">
+          <FaHeart size={90} className="fill-primary" />
+          <div>
+            <h1 className="font-semibold text-4xl pb-2">UMKM Favoritmu</h1>
+            <p className="text-xl">
+              Temukan dan kelola UMKM yang kamu simpan <br />
+              sebagai favorit.
+            </p>
+          </div>
         </div>
-
-        <div className="mb-10 flex flex-wrap items-center gap-6.5">
-          {categories.map((category) => {
-            const Icon = category.icon;
-
-            return (
-              <button
-                key={category.name}
-                className={cn(
-                  "border-primary text-primary hover:bg-primary hover:text-white flex items-center text-lg gap-2 rounded-full border px-5 py-2.5 font-semibold transition-all",
-                  category.active && "bg-primary text-white"
-                )}
-              >
-                <Icon size={25} />
-                {category.name}
-              </button>
-            );
-          })}
+        <div>
+          <Image src={"/Favorite.png"} width={450} height={300} alt="Favorite Image" />
         </div>
       </section>
 
       <section className="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-4">
         {umkmData.map((item, i) => (
           <Link key={i} href={`/${item.title.replaceAll(" ", "-")}`}>
-            <div
+            <article
               key={item.title}
               className="border-border overflow-hidden rounded-[1.75rem] border bg-background transition-all hover:-translate-y-1 hover:shadow-xl"
             >
@@ -93,7 +75,7 @@ export default function ExplorePage() {
                 />
 
                 <button className="absolute top-4 right-4 flex size-9 items-center justify-center rounded-full hover:bg-foreground hover:cursor-pointer hover:*:stroke-background bg-background">
-                  <FaRegHeart size={22} className="stroke-2 stroke-foreground" />
+                  <FaHeart size={22} className="stroke-2 stroke-primary fill-primary" />
                 </button>
 
                 <span
@@ -137,24 +119,24 @@ export default function ExplorePage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </article>
           </Link>
         ))}
       </section>
 
-      <section className="relative mt-20 bg-primary overflow-hidden rounded-[2rem] bg-linear-to-r from-primary to-primary-foreground text-white h-fit">
+      <section className="relative mt-20 bg-primary overflow-hidden rounded-[2rem] bg-linear-to-r from-[#8EAFE5] to-[#E5EEFD] text-white h-fit">
         <div className="grid items-center grid-cols-2 px-16 h-full justify-between">
           <div className="z-10 w-[82vw] grid grid-rows-3 gap-4 items-center-safe align-middle">
-            <h2 className="text-5xl font-semibold">
-              Temukan lebih banyak <br /> UMKM lokal favoritmu
+            <h2 className="text-5xl font-semibold text-primary">
+              Belum menemukan favorit lain?
             </h2>
 
-            <p className="text-3xl text-white">
-              Dukung usaha lokal dan jadilah bagian dari <br /> pertumbuhan
-              ekonomi daerah.
+            <p className="text-3xl text-foreground">
+              Jelajahi lebih banyak UMKM lokal dan temukan produk <br />
+              serta layan terbaik di sekitarmu,
             </p>
 
-            <button className="text-primary-foreground h-fit w-fit rounded-2xl bg-muted p-7 py-3.5 text-2xl font-bold transition-colors hover:bg-slate-100">
+            <button className="text-white h-fit w-fit rounded-2xl bg-primary p-7 py-3.5 text-2xl font-bold transition-colors hover:bg-slate-100">
               Jelajahi Sekarang
             </button>
           </div>

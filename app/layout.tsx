@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import Footer from "@/components/Footer";
 
 const poppins = Poppins({
-  weight: ['400', '700'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
   variable: '--font-poppins',
   subsets: ['latin'],
 });
@@ -31,7 +31,7 @@ export default function RootLayout({
       <body className="flex flex-col items-center min-h-screen overflow-x-hidden" >
         <ThemeProviders>
           <Navbar />
-          <main className="flex flex-col flex-1">
+          <main className="flex flex-col flex-1 mb-23 w-[86vw]">
             {children}
           </main>
           <Footer />
