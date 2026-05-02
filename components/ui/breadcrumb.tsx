@@ -73,10 +73,16 @@ function BreadcrumbPage({ className, ...props }: React.ComponentProps<"span">) {
   )
 }
 function BreadcrumbSeparator({
+  children,
   ...props
-}: IconBaseProps) {
+}: { children?: React.ReactNode } & IconBaseProps) {
   return (
-    <FaChevronLeft {...props} />
+    <>
+      {children ?
+        children :
+        <FaChevronLeft {...props} />
+      }
+    </>
   )
 }
 
