@@ -16,7 +16,7 @@ function Navbar() {
         </section>
         <section>
           <ul className="flex gap-6 text-lg font-medium">
-            <li><Link href="/beranda">Beranda</Link></li>
+            <li><Link href="/">Beranda</Link></li>
             <li><Link href="/explore">Explore</Link></li>
             <li><Link href="/favorit">Favorit</Link></li>
             <li><Link href="/about">About</Link></li>

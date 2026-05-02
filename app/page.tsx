@@ -31,10 +31,10 @@ export default function Home() {
           <MdFastfood />
           Makanan
         </div>
-        <div>
+        <a href="/merchant">
           <FaStore />
           Toko Kelontong
-        </div>
+        </a>
         <div>
           <LuHandPlatter />
           Jasa

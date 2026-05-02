@@ -1,8 +1,9 @@
 import {
+  FaBottleWater,
   FaLocationDot,
   FaStore,
 } from "react-icons/fa6";
-import { FaCoffee, FaGamepad, FaHeart, FaStar } from "react-icons/fa";
+import { FaBorderAll, FaCoffee, FaGamepad, FaHeart, FaMugHot, FaStar, FaUtensils } from "react-icons/fa";
 
 import {
   MdFastfood,
@@ -10,6 +11,7 @@ import {
 } from "react-icons/md";
 import { RiShirtFill, RiShoppingBag4Fill } from "react-icons/ri";
 import { IoPaperPlane } from "react-icons/io5";
+import { GiOpenedFoodCan } from "react-icons/gi";
 
 export const categories = [
   {
@@ -189,5 +191,72 @@ export const articlePoints = [
     description:
       "Dukungan terbaik adalah yang berkelanjutan. Jadikan belanja lokal sebagai kebiasaan baik setiap hari.",
     icon: FaHeart,
+  },
+];
+
+export const categoriesMerchant = [
+  {
+    name: "Semua",
+    icon: FaBorderAll,
+    active: true,
+  },
+  {
+    name: "Restoran",
+    icon: FaUtensils,
+  },
+  {
+    name: "Cemilan",
+    icon: GiOpenedFoodCan,
+  },
+  {
+    name: "Kafe",
+    icon: FaMugHot,
+  },
+  {
+    name: "Minuman",
+    icon: FaBottleWater,
+  },
+];
+
+export const merchants = [
+  {
+    title: "Dapur Nona",
+    category: "Makanan",
+    description: "Aneka makanan rumahan lezat & berkualitas.",
+    location: "Jakarta Selatan",
+    distance: "1.0 km",
+    rating: 4.5,
+    reviews: 20,
+    image: "https://picsum.photos/600/400?random=501",
+  },
+  {
+    title: "Kopi Titik",
+    category: "Kafe",
+    description: "Aneka makanan rumahan lezat & berkualitas.",
+    location: "Jakarta Selatan",
+    distance: "1.0 km",
+    rating: 4.5,
+    reviews: 20,
+    image: "https://picsum.photos/600/400?random=502",
+  },
+  {
+    title: "Cemilan Nendang",
+    category: "Cemilan",
+    description: "Aneka makanan rumahan lezat & berkualitas.",
+    location: "Jakarta Selatan",
+    distance: "1.0 km",
+    rating: 4.5,
+    reviews: 20,
+    image: "https://picsum.photos/600/400?random=503",
+  },
+  {
+    title: "Seger Banget",
+    category: "Minuman",
+    description: "Aneka makanan rumahan lezat & berkualitas.",
+    location: "Jakarta Selatan",
+    distance: "1.0 km",
+    rating: 4.5,
+    reviews: 20,
+    image: "https://picsum.photos/600/400?random=504",
   },
 ];
