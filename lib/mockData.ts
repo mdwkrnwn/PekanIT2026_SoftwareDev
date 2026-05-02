@@ -1,13 +1,15 @@
 import {
+  FaLocationDot,
   FaStore,
 } from "react-icons/fa6";
-import { FaCoffee, FaGamepad } from "react-icons/fa";
+import { FaCoffee, FaGamepad, FaHeart, FaStar } from "react-icons/fa";
 
 import {
   MdFastfood,
   MdOutlineMiscellaneousServices,
 } from "react-icons/md";
-import { RiShirtFill } from "react-icons/ri";
+import { RiShirtFill, RiShoppingBag4Fill } from "react-icons/ri";
+import { IoPaperPlane } from "react-icons/io5";
 
 export const categories = [
   {
@@ -137,3 +139,55 @@ export const categoryBadgeColor: Record<string, string> = {
   Kafe: "bg-primary",
   Kecantikan: "bg-primary",
 };
+
+export const popularArticles = [
+  {
+    title: "Rekomendasi jajanan lokal favorit anak muda",
+    image: "https://picsum.photos/200/200?random=301",
+  },
+  {
+    title: "Tips menemukan hidden GEM di kotamu",
+    image: "https://picsum.photos/200/200?random=302",
+  },
+  {
+    title: "Cara mudah belanja lokal tanpa ribet",
+    image: "https://picsum.photos/200/200?random=303",
+  },
+  {
+    title: "Kenapa dukung UMKM itu penting?",
+    image: "https://picsum.photos/200/200?random=304",
+  },
+];
+
+export const articlePoints = [
+  {
+    title: "Belanja Produk Lokal",
+    description:
+      "Pilih produk lokal untuk kebutuhan sehari-hari. Mulai dari makanan, minuman, fashion, hingga kerajinan tangan",
+    icon: RiShoppingBag4Fill,
+  },
+  {
+    title: "Cari di Sekitar Kamu",
+    description:
+      "Gunakan platform seperti UFinder untuk menemukan UMKM terdekat. Belanja jadi lebih praktis dan hemat ongkir!",
+    icon: FaLocationDot,
+  },
+  {
+    title: "Beri Review & Rating",
+    description:
+      "Ulasan positif darimu sangat berarti bagi pelaku UMKM. Ini membantu mereka menarik lebih banyak pelanggan.",
+    icon: FaStar,
+  },
+  {
+    title: "Bagikan ke Teman & Keluarga",
+    description:
+      "Rekomendasikan UMKM favoritmu ke orang terdekat. Dukungan kecilmu bisa jadi besar bagi mereka.",
+    icon: IoPaperPlane,
+  },
+  {
+    title: "Dukung Secara Konsisten",
+    description:
+      "Dukungan terbaik adalah yang berkelanjutan. Jadikan belanja lokal sebagai kebiasaan baik setiap hari.",
+    icon: FaHeart,
+  },
+];

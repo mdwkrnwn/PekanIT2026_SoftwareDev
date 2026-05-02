@@ -20,6 +20,7 @@ function Navbar() {
             <li><Link href="/explore">Explore</Link></li>
             <li><Link href="/favorit">Favorit</Link></li>
             <li><Link href="/about">About</Link></li>
+            <li><Link href="/article">Article</Link></li>
           </ul>
         </section>
         <section className="place-self-end flex items-center self-center gap-3">
