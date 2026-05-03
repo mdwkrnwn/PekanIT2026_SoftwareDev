@@ -1,39 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaChevronLeft, FaMapMarkerAlt, FaPlus, FaMinus } from "react-icons/fa";
+import { FaMapMarkerAlt, FaPlus, FaMinus } from "react-icons/fa";
 import { BsMap, BsGrid } from "react-icons/bs";
 import { MdMyLocation } from "react-icons/md";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 
 export default function Maps() {
   return (
     <div className="flex flex-col w-[86vw] pt-4">
-      <Breadcrumb className="mb-9">
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbSeparator size={25}>
-              <FaChevronLeft size={20} className="text-slate-400 mr-2" />
-            </BreadcrumbSeparator>
-            <BreadcrumbLink asChild>
-              <Link className="text-[1.375rem] font-semibold text-slate-400 hover:text-slate-800" href="/">Kembali</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator>
-            <FaChevronLeft size={20} className="text-slate-400 mx-2" />
-          </BreadcrumbSeparator>
-          <BreadcrumbItem>
-            <BreadcrumbPage className="text-[1.375rem] font-bold text-slate-900">Maps</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
-
       <div className="flex gap-4 mb-8">
         <button className="flex text-lg items-center gap-2 px-6 py-2.5 border border-primary text-background bg-primary rounded-xl font-semibold transition-colors">
           <BsMap size={25} /> Map View

@@ -1,14 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import {
   FaLocationDot,
   FaStar,
 } from "react-icons/fa6";
@@ -19,23 +11,7 @@ import { categoryBadgeColor, umkmData } from "@/lib/mockData";
 
 export default function FavoritePage() {
   return (
-    <div className="w-[86vw]">
-      <div className="flex items-center gap-3">
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbSeparator size={25} />
-              <BreadcrumbLink asChild>
-                <Link className="text-[1.375rem] font-semibold" href="/">Kembali</Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator size={25} />
-            <BreadcrumbItem>
-              <BreadcrumbPage className="text-[1.375rem] font-semibold" >Favorit</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-      </div>
+    <div className="w-[86vw] -mt-10">
       <section className="flex flex-row items-center justify-between">
         <div className="flex flex-row gap-4">
           <FaHeart size={90} className="fill-primary" />

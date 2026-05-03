@@ -3,7 +3,7 @@ import {
   FaLocationDot,
   FaStore,
 } from "react-icons/fa6";
-import { FaBorderAll, FaCoffee, FaGamepad, FaHeart, FaMugHot, FaStar, FaUtensils } from "react-icons/fa";
+import { FaBorderAll, FaCoffee, FaGamepad, FaHeart, FaMugHot, FaSearch, FaStar, FaUsers, FaUtensils } from "react-icons/fa";
 
 import {
   MdFastfood,
@@ -12,6 +12,7 @@ import {
 import { RiShirtFill, RiShoppingBag4Fill } from "react-icons/ri";
 import { IoPaperPlane } from "react-icons/io5";
 import { GiOpenedFoodCan } from "react-icons/gi";
+import { LuGrid2X2 } from "react-icons/lu";
 
 export const categories = [
   {
@@ -258,5 +259,53 @@ export const merchants = [
     rating: 4.5,
     reviews: 20,
     image: "https://picsum.photos/600/400?random=504",
+  },
+];
+
+export const reasons = [
+  {
+    title: "Mudah Dicari",
+    description:
+      "Temukan UMKM favorit dengan cepat dan praktis dalam satu platform.",
+    icon: FaSearch,
+  },
+  {
+    title: "Dekat Dengan Kamu",
+    description:
+      "Cari hidden gem UMKM di sekitar lokasi kamu dengan mudah.",
+    icon: FaLocationDot,
+  },
+  {
+    title: "Dukung Lokal",
+    description:
+      "Setiap klik dan transaksi membantu UMKM lokal semakin berkembang.",
+    icon: FaHeart,
+  },
+];
+
+export const statistics = [
+  {
+    title: "500+",
+    subtitle: "UMKM bergabung",
+    description: "Bergabung dan tumbuh bersama UFinder",
+    icon: FaUsers,
+  },
+  {
+    title: "15+",
+    subtitle: "Kota Terjangkau",
+    description: "Terjabar di berbagai kota di Indonesia",
+    icon: FaLocationDot,
+  },
+  {
+    title: "1.200+",
+    subtitle: "Pengguna Aktif",
+    description: "Pengguna aktif setiap bulan yang terus bertambah",
+    icon: FaUsers,
+  },
+  {
+    title: "10+",
+    subtitle: "Kategori Usaha",
+    description: "Beragam kategori usaha kebutuhan kamu",
+    icon: LuGrid2X2,
   },
 ];

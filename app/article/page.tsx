@@ -3,22 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 
 import {
   FaBookmark,
   FaFacebookF,
   FaHeart,
-  FaLocationDot,
   FaShareNodes,
-  FaStar,
   FaTwitter,
   FaUser,
 } from "react-icons/fa6";
@@ -28,26 +18,9 @@ import { BsLink45Deg, BsWhatsapp } from "react-icons/bs";
 import { articlePoints, popularArticles } from "@/lib/mockData";
 
 export default function ArticlePage() {
+
   return (
     <div className="w-[86vw]">
-      {/* Breadcrumb */}
-      <div className="mb-7 flex items-center gap-3">
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbSeparator size={25} />
-              <BreadcrumbLink asChild>
-                <Link className="text-[1.375rem] font-semibold" href="/">Kembali</Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator size={25} />
-            <BreadcrumbItem>
-              <BreadcrumbPage className="text-[1.375rem] font-semibold" >Artikel</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-      </div>
-
       <section className="grid gap-10 xl:grid-cols-[2fr_1fr]">
         {/* Main Content */}
         <article>

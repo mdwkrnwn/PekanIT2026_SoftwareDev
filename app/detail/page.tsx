@@ -1,38 +1,12 @@
 import Image from "next/image";
-import { FaChevronLeft, FaChevronRight, FaStar, FaRegClock, FaHeart, FaMapMarkerAlt, FaExternalLinkAlt } from "react-icons/fa";
+import { FaStar, FaRegClock, FaHeart, FaMapMarkerAlt, FaExternalLinkAlt } from "react-icons/fa";
 import { LuMapPin } from "react-icons/lu";
 import { MdOutlineFoodBank, MdAttachMoney, MdVerified } from "react-icons/md";
 import { cn } from "@/lib/utils";
-import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbSeparator, BreadcrumbLink, BreadcrumbPage } from "@/components/ui/breadcrumb";
-import Link from "next/link";
 
 export default function MerchantDetail() {
   return (
-    <>
-      {/* Breadcrumbs */}
-      <Breadcrumb className="mb-9">
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbSeparator size={25} />
-            <BreadcrumbLink asChild>
-              <Link className="text-[1.375rem] font-semibold" href="/">Kembali</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator >
-            <FaChevronRight size={25} />
-          </BreadcrumbSeparator>
-          <BreadcrumbLink asChild>
-            <Link className="text-[1.375rem] font-semibold" href="/">Explore</Link>
-          </BreadcrumbLink>
-          <BreadcrumbSeparator >
-            <FaChevronRight size={25} />
-          </BreadcrumbSeparator>
-          <BreadcrumbItem>
-            <BreadcrumbPage className="text-[1.375rem] font-semibold" >Dapur Nona</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
-
+    <div className="w-[86vw]">
       {/* Hero Section */}
       <div className="grid grid-cols-[2fr_1fr] gap-10 border-solid border-b border-border mb-4.5 pb-6">
         {/* Images Grid */}
@@ -249,6 +223,6 @@ export default function MerchantDetail() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

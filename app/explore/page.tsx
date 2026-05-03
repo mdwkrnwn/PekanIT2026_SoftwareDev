@@ -1,14 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import {
   FaLocationDot,
   FaStar,
 } from "react-icons/fa6";
@@ -19,23 +11,6 @@ import { categories, categoryBadgeColor, umkmData } from "@/lib/mockData";
 export default function ExplorePage() {
   return (
     <div className="w-[86vw]">
-      <div className="mb-7 flex items-center gap-3">
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbSeparator size={25} />
-              <BreadcrumbLink asChild>
-                <Link className="text-[1.375rem] font-semibold" href="/">Kembali</Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator size={25} />
-            <BreadcrumbItem>
-              <BreadcrumbPage className="text-[1.375rem] font-semibold" >Explore</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-      </div>
-
       <section>
         <div className="relative mb-6">
           <FaSearch

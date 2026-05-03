@@ -10,80 +10,13 @@ import {
 } from "@/components/ui/breadcrumb";
 import {
   FaArrowRight,
-  FaHeart,
-  FaLocationDot,
-  FaUsers,
 } from "react-icons/fa6";
-import { LuGrid2X2 } from "react-icons/lu";
-import { FaSearch } from "react-icons/fa";
-
-const reasons = [
-  {
-    title: "Mudah Dicari",
-    description:
-      "Temukan UMKM favorit dengan cepat dan praktis dalam satu platform.",
-    icon: FaSearch,
-  },
-  {
-    title: "Dekat Dengan Kamu",
-    description:
-      "Cari hidden gem UMKM di sekitar lokasi kamu dengan mudah.",
-    icon: FaLocationDot,
-  },
-  {
-    title: "Dukung Lokal",
-    description:
-      "Setiap klik dan transaksi membantu UMKM lokal semakin berkembang.",
-    icon: FaHeart,
-  },
-];
-
-const statistics = [
-  {
-    title: "500+",
-    subtitle: "UMKM bergabung",
-    description: "Bergabung dan tumbuh bersama UFinder",
-    icon: FaUsers,
-  },
-  {
-    title: "15+",
-    subtitle: "Kota Terjangkau",
-    description: "Terjabar di berbagai kota di Indonesia",
-    icon: FaLocationDot,
-  },
-  {
-    title: "1.200+",
-    subtitle: "Pengguna Aktif",
-    description: "Pengguna aktif setiap bulan yang terus bertambah",
-    icon: FaUsers,
-  },
-  {
-    title: "10+",
-    subtitle: "Kategori Usaha",
-    description: "Beragam kategori usaha kebutuhan kamu",
-    icon: LuGrid2X2,
-  },
-];
+import { reasons, statistics } from "@/lib/mockData";
 
 export default function AboutPage() {
+
   return (
     <div className="w-[86vw]">
-      <div className="mb-10">
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbSeparator size={25} />
-              <BreadcrumbLink asChild>
-                <Link className="text-[1.375rem] font-semibold" href="/">Kembali</Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator size={25} />
-            <BreadcrumbItem>
-              <BreadcrumbPage className="text-[1.375rem] font-semibold" >About</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-      </div>
 
       <section className="grid gap-8 lg:grid-cols-[1fr_1.12fr]">
         <div className="border-border flex flex-col justify-center rounded-[2rem] border p-10 lg:p-14">
