@@ -14,7 +14,7 @@ import {
 
 export default function Maps() {
   return (
-    <div className="flex flex-col w-full pt-4">
+    <div className="flex flex-col w-[86vw] pt-4">
       <Breadcrumb className="mb-9">
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -77,7 +77,7 @@ export default function Maps() {
               { name: "Bakso Sayur UB Malang", cat: "Makanan & Minuman", dist: "3.5 km", rating: "4.3" },
               { name: "Warung Kopi Ambyar", cat: "Makanan & Minuman", dist: "4.5 km", rating: "4.1" }
             ].map((item, i) => (
-              <div key={i} className="group hover:bg-slate-200 rounded-xl hover: flex items-center gap-4 p-2 transition-colors cursor-pointer">
+              <Link href={'/detail'} key={i} className="group hover:bg-slate-200 rounded-xl hover: flex items-center gap-4 p-2 transition-colors cursor-pointer">
                 <div className="rounded-xl shrink-0 relative w-16 h-16 overflow-hidden">
                   <Image src={`https://picsum.photos/800/800?random=${i + 50}`} fill className="object-cover" alt={item.name} />
                 </div>
@@ -91,13 +91,13 @@ export default function Maps() {
                 <div className="text-primary h-fit shrink-0 px-2 py-1 text-xs font-bold bg-blue-100 rounded-md">
                   {item.rating}
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
 
         {/* Map Area */}
-        <div className="relative border border-slate-100 rounded-[2rem] overflow-hidden bg-slate-100 h-200 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)]">
+        <div className="relative border border-slate-100 rounded-[2rem] overflow-hidden bg-slate-100 h-200 shadow-[0_4px_20px_-4px_black]">
           <Image src="https://picsum.photos/1200/800?grayscale&blur=2" fill className="opacity-80 object-cover" alt="Map Area" />
 
           {/* Overlay Info Badge */}

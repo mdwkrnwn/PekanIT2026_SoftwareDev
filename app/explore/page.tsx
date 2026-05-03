@@ -11,22 +11,14 @@ import {
 import {
   FaLocationDot,
   FaStar,
-  FaStore,
 } from "react-icons/fa6";
-import { FaCoffee, FaGamepad, FaRegHeart, FaSearch } from "react-icons/fa";
-
-import {
-  MdFastfood,
-  MdOutlineMiscellaneousServices,
-} from "react-icons/md";
-import { RiShirtFill } from "react-icons/ri";
+import { FaRegHeart, FaSearch } from "react-icons/fa";
 import { cn } from "@/lib/utils";
-import { CiHeart } from "react-icons/ci";
 import { categories, categoryBadgeColor, umkmData } from "@/lib/mockData";
 
 export default function ExplorePage() {
   return (
-    <>
+    <div className="w-[86vw]">
       <div className="mb-7 flex items-center gap-3">
         <Breadcrumb>
           <BreadcrumbList>
@@ -65,7 +57,7 @@ export default function ExplorePage() {
               <button
                 key={category.name}
                 className={cn(
-                  "border-primary text-primary hover:bg-primary hover:text-white flex items-center text-lg gap-2 rounded-full border px-5 py-2.5 font-semibold transition-all",
+                  "border-primary text-primary hover:bg-primary hover:text-white flex items-center text-lg gap-2 rounded-full border px-5 py-2.5 font-semibold transition-all cursor-pointer",
                   category.active && "bg-primary text-white"
                 )}
               >
@@ -79,7 +71,7 @@ export default function ExplorePage() {
 
       <section className="sm:grid-cols-2 xl:grid-cols-4 grid grid-cols-1 gap-8">
         {umkmData.map((item, i) => (
-          <Link key={i} href={`/${item.title.replaceAll(" ", "-")}`}>
+          <Link key={i} href={`/detail`}>
             <div
               key={item.title}
               className="border-border overflow-hidden rounded-[1.75rem] border bg-background transition-all hover:-translate-y-1 hover:shadow-xl"
@@ -145,18 +137,18 @@ export default function ExplorePage() {
       <section className="relative mt-20 bg-primary overflow-hidden rounded-[2rem] bg-linear-to-r from-primary to-primary-foreground text-white h-fit">
         <div className="grid items-center justify-between h-full grid-cols-2 px-16">
           <div className="z-10 w-[82vw] grid grid-rows-3 gap-4 items-center-safe align-middle">
-            <h2 className="text-5xl font-semibold">
+            <h2 className="text-4xl font-semibold leading-tight">
               Temukan lebih banyak <br /> UMKM lokal favoritmu
             </h2>
 
-            <p className="text-3xl text-white">
+            <p className="text-2xl text-white">
               Dukung usaha lokal dan jadilah bagian dari <br /> pertumbuhan
               ekonomi daerah.
             </p>
 
-            <button className="text-primary-foreground h-fit w-fit rounded-2xl bg-muted p-7 py-3.5 text-2xl font-bold transition-colors hover:bg-slate-100">
+            <Link href={'/explore'} className="text-primary-foreground h-fit w-fit rounded-2xl bg-background cursor-pointer p-7 py-3.5 text-xl font-bold transition-colors hover:bg-slate-100">
               Jelajahi Sekarang
-            </button>
+            </Link>
           </div>
 
           <div className="relative flex justify-center">
@@ -164,6 +156,6 @@ export default function ExplorePage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

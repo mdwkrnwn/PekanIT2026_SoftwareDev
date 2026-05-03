@@ -67,7 +67,7 @@ const statistics = [
 
 export default function AboutPage() {
   return (
-    <>
+    <div className="w-[86vw]">
       <div className="mb-10">
         <Breadcrumb>
           <BreadcrumbList>
@@ -91,21 +91,21 @@ export default function AboutPage() {
             Mendukung UMKM Lokal Lewat Solusi Digital
           </h1>
 
-          <p className="text-muted-foreground mb-10 max-w-xl text-xl leading-relaxed">
+          <p className="text-muted-foreground max-w-xl mb-10 text-xl leading-relaxed">
             UFinder hadir untuk membantu masyarakat menemukan UMKM lokal
             terbaik dengan cara yang lebih mudah, cepat, dan modern.
             Kami percaya setiap usaha kecil punya potensi besar jika
             mendapatkan akses pelanggan yang tepat.
           </p>
 
-          <button className="bg-primary hover:bg-primary/90 flex w-fit items-center gap-3 rounded-2xl px-7 py-4 text-lg font-semibold text-white transition-colors">
+          <Link href={'/explore'} className="bg-primary hover:bg-primary/90 w-fit rounded-2xl px-7 flex items-center gap-3 py-4 text-lg font-semibold text-white transition-colors">
             Jelajahi Sekarang
             <FaArrowRight size={18} />
-          </button>
+          </Link>
         </div>
 
         <div className="border-border relative overflow-hidden rounded-[2rem] border p-8">
-          <div className="relative h-full w-full">
+          <div className="relative w-full h-full">
             <Image
               src="/About.png"
               alt="About Illustration"
@@ -122,7 +122,7 @@ export default function AboutPage() {
             Kenapa Pilih UFinder?
           </h2>
 
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="md:grid-cols-3 grid gap-5">
             {reasons.map((reason) => {
               const Icon = reason.icon;
               return (
@@ -130,7 +130,7 @@ export default function AboutPage() {
                   key={reason.title}
                   className="bg-[#F7F8FA] grid grid-rows-3 items-center rounded-2xl p-6 text-center *:place-self-center "
                 >
-                  <div className="bg-primary/10 flex size-16 items-center justify-center rounded-full">
+                  <div className="bg-primary/10 size-16 flex items-center justify-center rounded-full">
                     <Icon className="text-primary" size={24} />
                   </div>
 
@@ -148,7 +148,7 @@ export default function AboutPage() {
         </div>
 
         <div className="border-border overflow-hidden rounded-[2rem] border">
-          <div className="grid h-full md:grid-cols-2 md:grid-rows-2">
+          <div className="md:grid-cols-2 md:grid-rows-2 grid h-full">
             {statistics.map((stat, index) => {
               const Icon = stat.icon;
 
@@ -158,7 +158,7 @@ export default function AboutPage() {
                   className={`border-border flex gap-5 p-8 ${index !== 1 ? "md:border-r" : ""
                     } ${index < 2 ? "md:border-b" : ""}`}
                 >
-                  <div className="bg-primary/10 flex size-18 shrink-0 items-center justify-center rounded-full">
+                  <div className="bg-primary/10 size-18 shrink-0 flex items-center justify-center rounded-full">
                     <Icon className="text-primary" size={28} />
                   </div>
 
@@ -171,7 +171,7 @@ export default function AboutPage() {
                       {stat.subtitle}
                     </p>
 
-                    <p className="text-foreground text-lg wrap-break-word">
+                    <p className="text-foreground wrap-break-word text-lg">
                       {stat.description}
                     </p>
                   </div>
@@ -181,6 +181,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

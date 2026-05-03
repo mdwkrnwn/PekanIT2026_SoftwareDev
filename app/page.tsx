@@ -8,11 +8,12 @@ import { AiFillStar } from "react-icons/ai";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { FaCircleArrowRight } from "react-icons/fa6";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <>
-      <h1 className="text-primary-foreground mt-8 mb-4 text-4xl font-bold text-center">
+      <h1 className="text-foreground mt-8 mb-4 text-4xl font-bold text-center">
         Cari UMKM keren, dukung lokal bareng!
       </h1>
       <p className="text-[1.344rem] text-center mb-8">
@@ -21,28 +22,28 @@ export default function Home() {
 
       {/* Categories Filter */}
       <div className={cn(
-        "text-primary-foreground flex justify-center items-center gap-6",
-        "*:font-bold *:flex *:items-center *:gap-2 *:outline-primary-foreground *:outline-1 *:rounded-full *:w-fit *:justify-center *:px-5 *:py-2 *:cursor-pointer *:hover:opacity-80 *:transition-all")}>
-        <div className="bg-primary text-white">
+        "text-foreground flex justify-center items-center gap-6",
+        "*:font-bold *:flex *:items-center *:gap-2 *:outline-primary-foreground *:outline-1 *:rounded-full *:w-fit *:justify-center *:px-5 *:py-2 *:cursor-pointer *:hover:bg-primary *:hover:text-background *:transition-all")}>
+        <Link href={'/'} className="bg-primary text-white">
           <FaHome />
           Semua
-        </div>
-        <div>
+        </Link>
+        <Link href={'/explore'}>
           <MdFastfood />
           Makanan
-        </div>
-        <a href="/merchant">
+        </Link>
+        <Link href="/merchant">
           <FaStore />
           Toko Kelontong
-        </a>
-        <div>
+        </Link>
+        <Link href={'explore'}>
           <LuHandPlatter />
           Jasa
-        </div>
-        <div>
+        </Link>
+        <Link href={'/explore'}>
           <RiShirtFill />
           Fashion
-        </div>
+        </Link>
       </div>
 
       {/* Hero Banner */}
@@ -52,11 +53,11 @@ export default function Home() {
         </div>
         <div className="z-10 w-1/2">
           <h2 className="mb-4 text-[2.5rem] font-semibold leading-snug">Belanja Lokal, Untungnya Double Buat Kamu dan UMKM!</h2>
-          <button className="hover:bg-slate-100 text-primary-foreground flex items-center justify-center gap-2 px-6 py-3 font-bold text-[1.25rem] transition-colors bg-white rounded-full ">
-            <span>
+          <button className="hover:bg-slate-100 text-primary-foreground flex items-center justify-center gap-4 px-6 py-3 font-bold text-[1.25rem] transition-colors bg-white rounded-full ">
+            <Link href={'/explore'}>
               Eksplor Sekarang
-            </span>
-            <FaCircleArrowRight size={20} />
+            </Link>
+            <FaCircleArrowRight size={25} />
           </button>
         </div>
       </div>
@@ -71,11 +72,11 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-4 gap-6">
           {['Kafe', 'Jajanan', 'Hobi', 'Toko Kelontong'].map((cat, i) => (
-            <div key={i} className="rounded-2xl group relative h-48 overflow-hidden cursor-pointer">
+            <Link href={'/explore'} key={i} className="rounded-2xl group relative h-48 overflow-hidden cursor-pointer">
               <Image src={`https://picsum.photos/400/300?random=${i}`} fill className="group-hover:scale-115 object-cover transition-transform duration-300" alt={cat} />
               <div className="bg-linear-to-t from-primary/80 via-primary/10 to-transparent group-hover:from-primary group-hover:via-primary/40 absolute inset-0"></div>
               <span className="bottom-4 left-4 absolute text-xl font-bold text-white">{cat}</span>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -87,19 +88,19 @@ export default function Home() {
             <h3 className="text-primary-foreground text-[1.375rem] font-bold">Hidden Gem Sekitarmu</h3>
             <p className="text-[1.063rem] mt-1">Temuin hidden gem deket rumah kamu</p>
           </div>
-          <button className="hover:bg-blue-50 text-primary-foreground border-primary flex items-center gap-2 px-5 py-2 font-bold transition-colors border-2 rounded-full">
-            <span className="bg-primary-foreground p-1 rounded-full">
+          <Link href={'/maps'} className="hover:bg-blue-50 text-primary border-primary flex items-center gap-2 px-5 py-2 font-bold transition-colors border-2 rounded-full">
+            <span className="bg-primary p-1 rounded-full">
               <LuMousePointer2 className="scale-x-[-1] fill-background" strokeWidth={0} size={16} />
             </span> Lokasi Saya
-          </button>
+          </Link>
         </div>
         <div className="w-[86vw] mx-auto bg-primary text-white rounded-[2rem] px-12 flex mt-8 h-92 overflow-hidden relative shadow-lg" >
           <div className="z-10 flex flex-col justify-center w-1/2 pr-10">
-            <h3 className="mb-3 text-3xl font-bold">Yang Lagi Naik Daun Nih 👀</h3>
-            <p className="opacity-90 mb-8 text-lg">Cari produk lokal yang lagi viral dibahas banyak orang.</p>
-            <button className="w-fit hover:bg-slate-100 text-primary-foreground flex items-center gap-2 px-6 py-3 font-bold transition-colors bg-white rounded-full">
+            <h3 className="mb-3 text-[3.125rem] wrap-break-word font-bold">Yang Lagi Naik Daun Nih 👀</h3>
+            <p className="opacity-90 mb-8 text-xl">Cari produk lokal yang lagi viral dibahas banyak orang.</p>
+            <Link href={'/explore'} className="w-fit hover:bg-slate-100 text-primary-foreground flex items-center gap-2 px-6 py-3 font-bold transition-colors bg-white rounded-full">
               Eksplor Sekarang <BsArrowRightCircleFill size={20} />
-            </button>
+            </Link>
           </div>
           <div className={cn("relative z-0 flex w-1/2 gap-6 overflow-hidden", "*:w-1/2")} >
             {/* Column 1: Scrolling Up */}
@@ -185,12 +186,12 @@ export default function Home() {
 
       {/* Articles & Tips */}
       <div className="w-[86vw] mx-auto mt-16" >
-        <h3 className="mb-8 text-2xl font-bold text-blue-600">Cerita & Tips Pilihan</h3>
+        <h3 className="text-primary mb-8 text-3xl font-bold">Cerita & Tips Pilihan</h3>
         <div className="grid grid-cols-3 gap-8">
           {[...Array(6)].map((_, i) => (
-            <div key={i} className="border-slate-200 rounded-2xl hover:shadow-lg flex flex-col overflow-hidden transition-shadow bg-white border">
-              <div className="relative h-56">
-                <Image src={`https://picsum.photos/400/300?random=${i + 30}`} fill className="object-cover" alt="Article Cover" />
+            <Link href={'/article'} key={i} className="border-slate-200 rounded-2xl hover:shadow-lg group flex flex-col overflow-hidden transition-shadow bg-white border">
+              <div className="relative h-56 overflow-hidden">
+                <Image src={`https://picsum.photos/400/300?random=${i + 30}`} fill className="group-hover:scale-110 object-cover transition-all" alt="Article Cover" />
                 <span className="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide">
                   {i % 2 === 0 ? 'Tips' : 'Cerita'}
                 </span>
@@ -205,7 +206,7 @@ export default function Home() {
                   <span className="flex items-center gap-1.5"><FaRegClock size={14} /> 5 min read</span>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div >
@@ -216,8 +217,8 @@ export default function Home() {
         <Image src="https://picsum.photos/201" width={100} height={100} alt="Decoration" className="bottom-8 right-20 rotate-15 opacity-60 absolute rounded-full" />
 
         <h2 className="z-10 mb-4 text-4xl font-bold text-center">Saatnya Jelajahi Lokal Bareng UFinder</h2>
-        <p className="opacity-90 z-10 max-w-lg mb-8 text-lg text-center">Ayo bagikan pengalamanmu, temukan UMKM lokal terbaik, dan dukung pertumbuhan ekonomi sekitar!</p>
-        <button className="hover:bg-slate-100 z-10 flex items-center gap-2 px-8 py-4 text-lg font-bold text-blue-600 transition-colors bg-white rounded-full shadow-md">
+        <p className="opacity-90 z-10 max-w-lg mb-8 text-xl text-center">Ayo bagikan pengalamanmu, temukan UMKM lokal terbaik, dan dukung pertumbuhan ekonomi sekitar!</p>
+        <button className="hover:bg-slate-100 text-primary bg-background z-10 flex items-end gap-2 p-2 px-4 text-lg font-bold transition-colors rounded-full shadow-md">
           Daftar Sekarang <BsArrowRightCircleFill size={24} />
         </button>
       </div >

@@ -11,22 +11,15 @@ import {
 import {
   FaLocationDot,
   FaStar,
-  FaStore,
 } from "react-icons/fa6";
-import { FaCoffee, FaGamepad, FaHeart, FaRegHeart, FaSearch } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
-import {
-  MdFastfood,
-  MdOutlineMiscellaneousServices,
-} from "react-icons/md";
-import { RiShirtFill } from "react-icons/ri";
 import { cn } from "@/lib/utils";
-import { CiHeart } from "react-icons/ci";
-import { categories, categoryBadgeColor, umkmData } from "@/lib/mockData";
+import { categoryBadgeColor, umkmData } from "@/lib/mockData";
 
 export default function FavoritePage() {
   return (
-    <>
+    <div className="w-[86vw]">
       <div className="flex items-center gap-3">
         <Breadcrumb>
           <BreadcrumbList>
@@ -136,9 +129,9 @@ export default function FavoritePage() {
               serta layan terbaik di sekitarmu,
             </p>
 
-            <button className="text-white h-fit w-fit rounded-2xl bg-primary p-7 py-3.5 text-2xl font-bold transition-colors hover:bg-slate-100">
+            <Link href={'/explore'} className="text-white hover:text-primary-foreground cursor-pointer h-fit w-fit rounded-2xl bg-primary p-7 py-3.5 text-2xl font-bold transition-colors hover:bg-slate-100">
               Jelajahi Sekarang
-            </button>
+            </Link>
           </div>
 
           <div className="relative flex justify-center">
@@ -146,6 +139,6 @@ export default function FavoritePage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

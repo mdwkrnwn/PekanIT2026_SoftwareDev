@@ -1,29 +1,23 @@
 import Image from "next/image";
 import {
-  FaHeart,
   FaLocationDot,
   FaStore,
-  FaUtensils,
-  FaMugHot,
-  FaBottleWater,
   FaChevronDown,
-  FaBorderAll,
   FaStar,
   FaRegHeart,
 } from "react-icons/fa6";
-import { GiOpenedFoodCan } from "react-icons/gi";
 import { cn } from "@/lib/utils";
 import { categoriesMerchant, merchants } from "@/lib/mockData";
-import { CiHeart } from "react-icons/ci";
+import Link from "next/link";
 
 
 
 export default function MerchantPage() {
   return (
-    <>
+    <div className="w-[86vw]">
       {/* Header */}
       <section className="flex items-center gap-8 pt-6">
-        <div className="bg-primary/10 flex size-26 items-center justify-center rounded-full">
+        <div className="bg-primary/10 size-26 flex items-center justify-center rounded-full">
           <FaStore className="text-primary" size={50} />
         </div>
 
@@ -39,7 +33,7 @@ export default function MerchantPage() {
       </section>
 
       {/* Filter */}
-      <section className="mt-16 flex items-center justify-between gap-8">
+      <section className="flex items-center justify-between gap-8 mt-16">
         <div className="flex flex-wrap items-center gap-5">
           {categoriesMerchant.map((category) => {
             const Icon = category.icon;
@@ -48,7 +42,7 @@ export default function MerchantPage() {
               <button
                 key={category.name}
                 className={cn(
-                  "border-primary text-primary hover:bg-primary hover:text-white flex items-center gap-3 rounded-full border px-4 py-2 text-xl font-semibold transition-colors",
+                  "border-primary text-primary-foreground hover:bg-primary hover:text-white flex items-center gap-3 rounded-full border px-4 py-2 text-lg font-semibold transition-colors cursor-pointer",
                   category.active && "bg-primary text-white"
                 )}
               >
@@ -59,26 +53,26 @@ export default function MerchantPage() {
           })}
         </div>
 
-        <button className="border-primary-foreground/40 hover:bg-secondary flex items-center gap-4 rounded-full border px-4 py-2 text-xl font-medium transition-colors">
+        <button className="border-primary-foreground/40 hover:bg-secondary hover:text-background flex items-center gap-4 px-4 py-2 text-lg font-medium transition-colors border rounded-full cursor-pointer">
           Urutkan
           <FaChevronDown size={16} />
         </button>
       </section>
 
       {/* Cards */}
-      <section className="mt-14 grid gap-8 lg:grid-cols-2 2xl:grid-cols-4">
+      <section className="mt-14 lg:grid-cols-2 2xl:grid-cols-4 grid gap-8">
         {merchants.map((merchant) => (
-          <article
+          <Link href={'/detail'}
             key={merchant.title}
-            className="border-border overflow-hidden rounded-[2rem] border bg-white transition-all hover:-translate-y-1 hover:shadow-xl cursor-pointer"
+            className="border-border overflow-hidden rounded-[2rem] border bg-white transition-all hover:-translate-y-1 hover:shadow-xl cursor-pointer "
           >
             {/* Image */}
-            <div className="relative h-80 overflow-hidden">
+            <div className="h-80 relative overflow-hidden">
               <Image
                 src={merchant.image}
                 alt={merchant.title}
                 fill
-                className="object-cover transition-transform duration-300 hover:scale-105"
+                className="hover:scale-105 object-cover transition-transform duration-300"
               />
 
               <button className="absolute top-5 right-5 flex size-10 items-center justify-center rounded-full bg-white text-foreground hover:bg-primary hover:*:text-background cursor-pointer">
@@ -94,43 +88,37 @@ export default function MerchantPage() {
 
             {/* Content */}
             <div className="p-7">
-              <h2 className="text-primary-foreground text-4xl font-bold">
+              <h2 className="text-foreground text-3xl font-bold">
                 {merchant.title}
               </h2>
-
               <p className="text-muted-foreground mt-4 text-xl leading-relaxed">
                 {merchant.description}
               </p>
-
               {/* Location */}
-              <div className="text-muted-foreground mt-8 flex items-center justify-between text-lg">
+              <div className="text-muted-foreground flex items-center justify-between mt-8 text-lg">
                 <div className="flex items-center gap-3">
                   <FaLocationDot size={16} />
                   <span>{merchant.location}</span>
                 </div>
-
                 <div className="flex items-center gap-2">
                   <FaLocationDot className="text-primary" size={16} />
                   <span>{merchant.distance}</span>
                 </div>
               </div>
-
               {/* Rating */}
-              <div className="mt-6 flex items-center gap-2">
+              <div className="flex items-center gap-2 mt-6">
                 <FaStar className="text-yellow-500" size={20} />
-
                 <span className="text-lg font-semibold text-yellow-600">
                   {merchant.rating}
                 </span>
-
                 <span className="text-muted-foreground text-lg">
                   ({merchant.reviews})
                 </span>
               </div>
             </div>
-          </article>
+          </Link>
         ))}
       </section>
-    </>
+    </div>
   );
 }

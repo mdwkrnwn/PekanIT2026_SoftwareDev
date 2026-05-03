@@ -5,7 +5,6 @@ import Navbar from "../components/Navbar";
 import ThemeProviders from "../components/ThemeProviders";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/Footer";
-import ChatPopUp from "@/components/Chat";
 
 const poppins = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -32,7 +31,7 @@ export default function RootLayout({
       <body className="flex flex-col items-center min-h-screen overflow-x-hidden" >
         <ThemeProviders>
           <Navbar />
-          <main className="flex flex-col flex-1 mb-23 w-[86vw]">
+          <main className="mb-23 flex flex-col flex-1">
             {children}
           </main>
           <Footer />
