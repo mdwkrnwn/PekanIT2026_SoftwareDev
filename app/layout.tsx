@@ -28,10 +28,10 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", poppins.variable)}
       suppressHydrationWarning
     >
-      <body className="flex flex-col items-center min-h-screen overflow-x-hidden" >
+      <body className="relative flex flex-col items-center min-h-screen overflow-x-hidden" >
         <ThemeProviders>
           <Navbar />
-          <main className="mb-23 flex flex-col flex-1">
+          <main className="mb-23 flex flex-col items-center flex-1">
             {children}
           </main>
           <Footer />

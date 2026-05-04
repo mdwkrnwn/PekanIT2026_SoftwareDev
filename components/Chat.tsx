@@ -12,7 +12,7 @@ export default function ChatPopup({ isOpen, setIsOpen }: {
   return (
     <div
       className={cn(
-        "fixed bottom-[-75%] right-6 z-50 flex w-105 origin-bottom-right flex-col rounded-[2rem] shadow-2xl transition-all duration-300 ease-[cubic-bezier(0,0.22,0.12,1)]",
+        "fixed bottom-[-150%] right-6 z-50 flex w-105 origin-bottom-right flex-col rounded-[2rem] shadow-2xl transition-all duration-300 ease-[cubic-bezier(0,0.22,0.12,1)]",
         isOpen
           ? "bottom-10"
           : "pointer-events-none scale-50"
