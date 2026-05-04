@@ -2,7 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { FiSun } from "react-icons/fi";
+import { FaSun } from "react-icons/fa6";
 import { IoMoonSharp } from "react-icons/io5";
 
 export default function ThemeSwitcher() {
@@ -24,8 +24,8 @@ export default function ThemeSwitcher() {
     )
   }
 
-  const currentIcon = resolvedTheme === 'dark' ? (<FiSun className="text-primary" size={24} />) :
-    (<IoMoonSharp className="fill-primary" size={24} strokeWidth={0} />);
+  const currentIcon = resolvedTheme === 'dark' ? (<FaSun className="text-primary fill-primary" size={24} />) :
+    (<IoMoonSharp className="fill-primary" size={24} strokeWidth={2} />);
 
   return (
     <button

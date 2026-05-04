@@ -44,24 +44,24 @@ export default function ExplorePage() {
       <Cards umkmData={umkmData} />
 
       <section className="relative mt-20 bg-primary overflow-hidden rounded-[2rem] bg-linear-to-r from-primary to-primary-foreground text-white h-fit">
-        <div className="grid items-center justify-between h-full grid-cols-2 px-16">
-          <div className="z-10 w-[82vw] grid grid-rows-3 gap-4 items-center-safe align-middle">
-            <h2 className="text-4xl font-semibold leading-tight">
-              Temukan lebih banyak <br /> UMKM lokal favoritmu
+        <div className="grid items-center justify-between h-fit lg:h-115 md:grid-cols-2 md:px-16 p-6">
+          <div className="w-fit  gap-4 md:items-center z-10 flex flex-col md:grid md:grid-rows-3 items-start align-middle *:wrap-break-word">
+            <h2 className=" text-2xl md:text-4xl font-semibold leading-tight">
+              Temukan lebih banyak UMKM lokal favoritmu
             </h2>
 
-            <p className="text-2xl text-white">
-              Dukung usaha lokal dan jadilah bagian dari <br /> pertumbuhan
+            <p className="text-xl md:text-2xl text-white">
+              Dukung usaha lokal dan jadilah bagian dari pertumbuhan
               ekonomi daerah.
             </p>
 
-            <Link href={'/explore'} className="text-primary-foreground h-fit w-fit rounded-2xl bg-background cursor-pointer p-7 py-3.5 text-xl font-bold transition-colors hover:bg-slate-100">
+            <Link href={'/explore'} className="text-primary-foreground h-fit w-fit rounded-2xl bg-background cursor-pointer p-7 py-3.5 md:text-xl font-bold transition-colors hover:bg-slate-100">
               Jelajahi Sekarang
             </Link>
           </div>
 
-          <div className="relative flex justify-center">
-            <Image src={"/Explore.png"} alt="Explore" width={1106} height={738} className="h-115 w-auto" />
+          <div className="hidden md:flex relative justify-center h-full w-auto ">
+            <Image src={"/Explore.png"} alt="Explore" fill className="object-cover" />
           </div>
         </div>
       </section>
