@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import ThemeProviders from "../components/ThemeProviders";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/Footer";
+import ChatPopup from "@/components/Chat";
 
 const poppins = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -35,6 +36,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <ChatPopup />
         </ThemeProviders>
       </body>
     </html>

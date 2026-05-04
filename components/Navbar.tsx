@@ -4,7 +4,6 @@ import ThemeSwitcher from "./ThemetogglerBtn"
 import { FaChevronLeft, FaHeart } from "react-icons/fa"
 import { LuMousePointer2 } from "react-icons/lu"
 import Link from "next/link"
-import ChatPopup from "./Chat"
 import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbSeparator, BreadcrumbLink, BreadcrumbPage } from "./ui/breadcrumb"
@@ -12,7 +11,6 @@ import { RxHamburgerMenu } from "react-icons/rx"
 import { cn } from "@/lib/utils"
 
 function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const path = usePathname();
   useEffect(() => {
@@ -32,9 +30,6 @@ function Navbar() {
           <nav className='grid grid-cols-[1fr_1fr_3fr] justify-center items-center w-[86vw]'>
             <section className="flex items-center">
               <Image loading='eager' height={1000} width={1000} className="max-w-24 max-h-24" src={'/UFLogo.png'} alt="logo" />
-              <span className="text-lg font-bold">
-                UFinder.
-              </span>
             </section>
             <section>
               <ul className="flex gap-6 text-lg font-medium">
@@ -49,11 +44,11 @@ function Navbar() {
               <button className="outline-1 outline-primary flex items-center justify-center p-2 transition-colors bg-transparent rounded-full cursor-pointer">
                 <FaHeart strokeWidth={0} size={24} className="fill-primary" />
               </button>
-              <button onClick={() => setIsOpen((prev) => !prev)} className="outline-1 outline-primary flex items-center justify-center p-2 transition-colors bg-transparent rounded-full cursor-pointer">
+              <Link href={'/maps'} className="outline-1 outline-primary flex items-center justify-center p-2 transition-colors bg-transparent rounded-full cursor-pointer">
                 <span className="bg-primary p-1 rounded-full">
                   <LuMousePointer2 className="scale-x-[-1] fill-background" strokeWidth={0} size={16} />
                 </span>
-              </button>
+              </Link>
               <ThemeSwitcher />
             </section>
           </nav>
@@ -83,15 +78,15 @@ function Navbar() {
             <button className="outline-1 outline-primary flex items-center justify-center p-2 transition-colors bg-transparent rounded-full cursor-pointer">
               <FaHeart strokeWidth={0} size={24} className="fill-primary" />
             </button>
-            <button onClick={() => setIsOpen((prev) => !prev)} className="outline-1 outline-primary flex items-center justify-center p-2 transition-colors bg-transparent rounded-full cursor-pointer">
+            <Link href={'/maps'} className="outline-1 outline-primary flex items-center justify-center p-2 transition-colors bg-transparent rounded-full cursor-pointer">
               <span className="bg-primary p-1 rounded-full">
                 <LuMousePointer2 className="scale-x-[-1] fill-background" strokeWidth={0} size={16} />
               </span>
-            </button>
+            </Link>
             <ThemeSwitcher />
           </section>
         </aside>
-        <ChatPopup isOpen={isOpen} setIsOpen={setIsOpen} />
+        {/* <ChatPopup isOpen={isOpen} setIsOpen={setIsOpen} /> */}
         {/* Breadcrumbs */}
 
       </header >
