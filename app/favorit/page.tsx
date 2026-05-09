@@ -29,16 +29,16 @@ export default function FavoritePage() {
       <section className="relative mt-20 bg-primary overflow-hidden rounded-[2rem] bg-linear-to-r from-[#8EAFE5] to-[#E5EEFD] text-white h-fit">
         <div className="grid items-center justify-between h-full grid-cols-2 px-16">
           <div className="items-center-safe z-10 grid grid-rows-3 gap-4 align-middle">
-            <h2 className="text-primary text-5xl font-semibold">
+            <h2 className="text-primary text-4xl font-semibold">
               Belum menemukan favorit lain?
             </h2>
 
-            <p className="text-foreground wrap-break-word text-3xl">
-              Jelajahi lebih banyak UMKM lokal dan temukan produk
+            <p className="text-foreground font-normal wrap-break-word text-2xl">
+              Jelajahi lebih banyak UMKM lokal dan temukan produk <br />
               serta layan terbaik di sekitarmu,
             </p>
 
-            <Link href={'/explore'} className="text-white hover:text-primary-foreground cursor-pointer h-fit w-fit rounded-2xl bg-primary p-7 py-3.5 text-2xl font-bold transition-colors hover:bg-slate-100">
+            <Link href={'/explore'} className="text-white hover:text-primary cursor-pointer h-fit w-fit rounded-2xl bg-[#1974FF] p-7 py-3.5 text-2xl font-semibold transition-colors hover:bg-slate-100">
               Jelajahi Sekarang
             </Link>
           </div>

@@ -9,8 +9,8 @@ export function HeroBanner() {
         <Image src="/home.png" fill className="object-cover" alt="Hero Background" />
       </div>
       <div className="md:w-full z-10 w-full h-full">
-        <h2 className="mb-4 md:text-[2.5rem] text-3xl font-semibold leading-tight">Belanja Lokal, Untungnya Double Buat Kamu dan UMKM!</h2>
-        <button className="hover:bg-slate-100 text-primary-foreground flex items-center justify-center gap-4 px-6 py-3 font-bold text-lg md:text-[1.25rem] transition-colors bg-white rounded-full ">
+        <h2 className="mb-6  md:text-[2.5rem] -mt-20 text-3xl font-semibold leading-tight">Belanja Lokal, Untungnya <br /> Double Buat Kamu <br /> dan UMKM!</h2>
+        <button className="hover:bg-slate-100 text-primary flex items-center justify-center gap-4 px-6 py-3 font-bold text-lg md:text-[1.25rem] transition-colors bg-white rounded-full ">
           <Link href={'/explore'}>
             Eksplor Sekarang
           </Link>

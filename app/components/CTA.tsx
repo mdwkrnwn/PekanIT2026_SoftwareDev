@@ -2,7 +2,7 @@ import { BsArrowRightCircleFill } from "react-icons/bs";
 import Image from "next/image";
 
 export function CTA() {
-  return <div className="w-[86vw] mx-auto bg-primary text-white rounded-[2rem] flex flex-col items-center justify-center py-16 mt-20 mb-16 relative overflow-hidden shadow-lg">
+  return <div className="w-[66vw] mx-auto bg-primary text-white rounded-[2rem] flex flex-col items-center justify-center py-16 mt-20 mb-16 relative overflow-hidden shadow-lg">
     <Image src="https://picsum.photos/200" width={120} height={120} alt="Decoration" className="top-8 left-16 rounded-2xl -rotate-12 opacity-60 absolute" />
     <Image src="https://picsum.photos/201" width={100} height={100} alt="Decoration" className="bottom-8 right-20 rotate-15 opacity-60 absolute rounded-full" />
 

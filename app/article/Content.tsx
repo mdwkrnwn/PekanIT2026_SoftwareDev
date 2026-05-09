@@ -15,7 +15,7 @@ export function Content({ articlePoints }: {
       Tips & Edukasi
     </span>
 
-    <h1 className="text-foreground max-w-4xl mt-8 text-6xl font-bold leading-tight">
+    <h1 className="text-foreground max-w-4xl mt-8 text-6xl font-semibold leading-tight">
       5 Tips Mudah Dukung UMKM Lokal di Sekitarmu
     </h1>
 

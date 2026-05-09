@@ -15,7 +15,7 @@ export function Sidebar({ popularArticles }: {
       /* Share */
     }
     <div className="border-border rounded-[2rem] border p-8">
-      <h2 className="text-foreground text-3xl font-bold">
+      <h2 className="text-foreground text-3xl font-semibold">
         Bagikan Artikel
       </h2>
 
@@ -45,7 +45,7 @@ export function Sidebar({ popularArticles }: {
       /* Popular Articles */
     }
     <div className="border-border rounded-[2rem] border p-6">
-      <h2 className="text-foreground text-3xl font-bold">
+      <h2 className="text-foreground text-3xl font-semibold">
         Artikel Populer
       </h2>
 

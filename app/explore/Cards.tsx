@@ -26,21 +26,21 @@ export function Cards({ umkmData }: {
             <FaRegHeart size={22} className="stroke-foreground stroke-2" />
           </button>
 
-          <span className={cn("absolute bottom-4 left-4 rounded-full px-3 py-1 text-xs font-bold text-white", categoryBadgeColor[item.category])}>
+          <span className={cn("absolute bottom-4 left-4 rounded-full px-3 py-1 text-xs font-semibold text-white", categoryBadgeColor[item.category])}>
             {item.category}
           </span>
         </div>
 
         <div className="p-5">
-          <h2 className="text-primary-foreground mb-2 text-[1.45rem] font-bold">
+          <h2 className="text-foreground mb-2 text-[1.45rem] font-bold">
             {item.title}
           </h2>
 
-          <p className="text-muted-foreground line-clamp-2 mb-5 text-sm leading-relaxed">
+          <p className="text-foreground line-clamp-2 mb-5 text-sm leading-relaxed">
             {item.description}
           </p>
 
-          <div className="text-muted-foreground flex items-center gap-2 mb-4 text-sm">
+          <div className="text-black flex items-center gap-2 mb-4 text-sm">
             <FaLocationDot size={14} />
             <span>{item.location}</span>
           </div>

@@ -8,7 +8,7 @@ function Footer() {
       <section className='grid grid-cols-4 grid-rows-[repeat(3,1fr)]'>
         <div className='flex items-center col-span-4 -ml-4'>
           <Image loading='eager' height={1000} width={1000} className="max-w-24 max-h-24" src={'/UFLogo.png'} alt="logo" />
-          <span className="text-primary-foreground text-[1.375rem] font-bold">
+          <span className="text-primary text-[1.375rem] font-bold">
             UFinder.
           </span>
         </div>
@@ -16,7 +16,7 @@ function Footer() {
           <p className='text-lg'>Platform digital untuk menemukan <br />
             dan mendukung UMKM lokal terbaik.</p>
         </div>
-        <div className='*:rounded-full h-fit w-fit *:outline-1 *:p-4 *:outline-primary-foreground flex-wrap gap-y-2 items-center justify-center flex col-span-3 *:*:fill-primary-foreground gap-4.5 md:gap-8'>
+        <div className='*:rounded-full h-fit w-fit *:outline-1 *:p-4 *:outline-primary flex-wrap gap-y-2 items-center justify-center flex col-span-3 *:*:fill-primary gap-4.5 md:gap-8'>
           <span>
             <FaSquareInstagram size={25} />
           </span>

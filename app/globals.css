@@ -71,6 +71,9 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --hero-start: #2D7FFF;
+  --hero-middle: #0F5EDB;
+  --hero-end: #0B2D6B;
 }
 
 @theme inline {

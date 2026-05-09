@@ -6,7 +6,7 @@ export function ForYou() {
     <div className="w-[86vw] mx-auto mt-16">
       <div className="flex items-end justify-between mb-6">
         <div>
-          <h3 className="text-primary-foreground text-[1.375rem] font-bold">Buat Kamu nih 👀</h3>
+          <h3 className="text-primary text-[1.375rem] font-bold">Buat Kamu nih 👀</h3>
           <p className="text-[1.063rem] mt-1">UMKM pilihan yang mungkin kamu suka.</p>
         </div>
       </div>
