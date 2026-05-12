@@ -27,7 +27,7 @@ function Navbar() {
     <>
       <header className="sticky top-0 z-50 w-full">
         <div className='sm:flex hidden bg-background justify-center shadow-[#A9A1A140] shadow-md '>
-          <nav className='grid grid-cols-[1fr_1fr_3fr] justify-center items-center w-[86vw]'>
+          <nav className='grid grid-cols-[1fr_1fr_3fr] justify-center items-center w-[80vw]'>
             <section className="flex items-center">
               <Image loading='eager' height={1000} width={1000} className="max-w-24 max-h-24" src={'/UFLogo.png'} alt="logo" />
             </section>

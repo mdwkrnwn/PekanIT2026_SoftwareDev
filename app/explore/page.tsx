@@ -4,10 +4,10 @@ import Link from "next/link";
 import { FaSearch } from "react-icons/fa";
 import { cn } from "@/lib/utils";
 import { categories, umkmData } from "@/lib/mockData";
-
+import { UMKM } from "@/data/UMKM";
 export default function ExplorePage() {
   return (
-    <div className="w-[86vw]">
+    <div className="w-[80vw]">
       <section>
         <div className="relative mb-6">
           <FaSearch
@@ -41,7 +41,7 @@ export default function ExplorePage() {
         </div>
       </section>
 
-      <Cards umkmData={umkmData} />
+    <Cards umkmData={UMKM} />
 
       <section className="relative mt-20 bg-primary overflow-hidden rounded-[2rem] bg-linear-to-r from-primary to-primary-foreground text-white h-fit">
         <div className="grid items-center justify-between h-full grid-cols-2 px-16">

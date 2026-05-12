@@ -4,23 +4,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaRegHeart, FaStar } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
-export function Cards({ umkmData }: {
-  umkmData: {
-    title: string;
-    category: string;
-    description: string;
-    location: string;
-    rating: number;
-    reviews: number;
-    distance: string;
-    image: string;
-  }[]
+import { UMKM } from "@/data/UMKM";
+
+
+export function Cards({
+  umkmData,
+}: {
+  umkmData: typeof UMKM;
 }) {
   return <section className="sm:grid-cols-2 xl:grid-cols-4 grid grid-cols-1 gap-8">
     {umkmData.map((item, i) => <Link key={i} href={`/detail`}>
-      <div key={item.title} className="border-border overflow-hidden rounded-[1.75rem] border bg-background transition-all hover:-translate-y-1 hover:shadow-xl">
+      <div key={item.name} className="border-border overflow-hidden rounded-[1.75rem] border bg-background transition-all hover:-translate-y-1 hover:shadow-xl">
         <div className="relative h-64 overflow-hidden">
-          <Image src={item.image} alt={item.title} fill className="hover:scale-105 object-cover transition-transform duration-300" />
+          <Image src={item.gallery[0]} alt={item.name} fill className="hover:scale-105 object-cover transition-transform duration-300" />
 
           <button className="absolute top-4 right-4 flex size-9 items-center justify-center rounded-full hover:bg-foreground cursor-pointer hover:*:stroke-background bg-background">
             <FaRegHeart size={22} className="stroke-foreground stroke-2" />
@@ -33,7 +29,7 @@ export function Cards({ umkmData }: {
 
         <div className="p-5">
           <h2 className="text-foreground mb-2 text-[1.45rem] font-bold">
-            {item.title}
+            {item.name}
           </h2>
 
           <p className="text-foreground line-clamp-2 mb-5 text-sm leading-relaxed">
