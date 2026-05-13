@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { UMKM } from "../../data/UMKM.dummy";
+import { UMKM } from "../../data/UMKM";
 import Image from "next/image";
 import LeafletMap from "./LeafletMap";
 import { FaLocationCrosshairs, FaLocationDot } from "react-icons/fa6";
@@ -147,7 +147,7 @@ export function Control() {
                     {/* Thumbnail */}
                     <div className="w-16 h-16 flex-shrink-0 overflow-hidden rounded-xl bg-gray-100">
                       <Image
-                        src={item.image}
+                        src={item.gallery[0]}
                         alt={item.name}
                         width={64}
                         height={64}

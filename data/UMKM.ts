@@ -10,25 +10,41 @@ export const UMKM = [
     distance: "1.2 km",
     status: "Buka Sekarang",
     openHours: "09:00 - 21:00",
-
+    lat: -7.981894,
+    lng: 112.626503,
     tags: ["Makanan Rumahan", "Harga Terjangkau", "Halal"],
 
     about:
       "Dapur Nona menyajikan aneka masakan rumahan dengan cita rasa lezat dan harga terjangkau. Semua menu dibuat dengan bahan segar pilihan dan resep turun-temurun keluarga.",
 
-    gallery: [
-      "/assets/umkm/makanan/dapurnona/thumbnail.jpeg",
-      "/assets/umkm/dapurnona/gallery-1.jpg",
-      "/assets/umkm/dapurnona/gallery-2.jpg",
-      "/assets/umkm/dapurnona/gallery-3.jpg",
-    ],
+    gallery: ["/assets/umkm/makanan/dapurnona/thumbnail.jpeg"],
 
     featuredMenus: [
-      { name: "Nasi Ayam Geprek", price: 18000 },
-      { name: "Nasi Telur Dadar", price: 18000 },
-      { name: "Sambal Cumi", price: 18000 },
-      { name: "Es Teh", price: 10000 },
-      { name: "Puding Cokelat", price: 18000 },
+      {
+        name: "Nasi Ayam Geprek",
+        price: 18000,
+        image: "/assets/umkm/makanan/dapurnona/menu/ayamgeprek.jpeg",
+      },
+      {
+        name: "Nasi Telur Dadar",
+        price: 18000,
+        image: "/assets/umkm/makanan/dapurnona/menu/nasitelurdadar.jpeg",
+      },
+      {
+        name: "Sambal Cumi",
+        price: 18000,
+        image: "/assets/umkm/makanan/dapurnona/menu/sambalcumi.jpeg",
+      },
+      {
+        name: "Es Teh",
+        price: 10000,
+        image: "/assets/umkm/makanan/dapurnona/menu/esteh.jpeg",
+      },
+      {
+        name: "Puding Cokelat",
+        price: 18000,
+        image: "/assets/umkm/makanan/dapurnona/menu/pudingcokelat.jpeg",
+      },
     ],
   },
 
@@ -41,6 +57,8 @@ export const UMKM = [
     rating: 4.6,
     reviews: 10,
     distance: "2.0 km",
+    lat: -7.978421,
+    lng: 112.629182,
     status: "Buka Sekarang",
     openHours: "07:00 - 22:00",
 
@@ -49,19 +67,34 @@ export const UMKM = [
     about:
       "Toko Berkah menyediakan kebutuhan rumah tangga, makanan ringan, minuman, dan berbagai kebutuhan harian dengan harga terjangkau.",
 
-    gallery: [
-      "/assets/umkm/toko/tokoberkah/thumbnail.jpg",
-      "/assets/umkm/tokoberkah/gallery-1.jpg",
-      "/assets/umkm/tokoberkah/gallery-2.jpg",
-      "/assets/umkm/tokoberkah/gallery-3.jpg",
-    ],
+    gallery: ["/assets/umkm/toko/tokoberkah/thumbnail.jpg"],
 
     featuredMenus: [
-      { name: "Beras Premium", price: 65000 },
-      { name: "Minyak Goreng", price: 18000 },
-      { name: "Gula Pasir", price: 15000 },
-      { name: "Kopi Sachet", price: 12000 },
-      { name: "Mi Instan", price: 3000 },
+      {
+        name: "Beras Premium",
+        price: 65000,
+        image: "/assets/umkm/toko/tokoberkah/menu/beras.jpg",
+      },
+      {
+        name: "Minyak Goreng",
+        price: 18000,
+        image: "/assets/umkm/toko/tokoberkah/menu/minyak.jpg",
+      },
+      {
+        name: "Gula Pasir",
+        price: 15000,
+        image: "/assets/umkm/toko/tokoberkah/menu/gula.jpg",
+      },
+      {
+        name: "Kopi Sachet",
+        price: 12000,
+        image: "/assets/umkm/toko/tokoberkah/menu/kopi.jpg",
+      },
+      {
+        name: "Mi Instan",
+        price: 3000,
+        image: "/assets/umkm/toko/tokoberkah/menu/mie.jpg",
+      },
     ],
   },
 
@@ -73,6 +106,8 @@ export const UMKM = [
     location: "Bogor",
     rating: 4.9,
     reviews: 60,
+    lat: -7.975634,
+    lng: 112.622745,
     distance: "3.1 km",
     status: "Buka Sekarang",
     openHours: "08:00 - 18:00",
@@ -82,19 +117,34 @@ export const UMKM = [
     about:
       "Greeny Plant menghadirkan berbagai tanaman hias, pot dekoratif, pupuk, dan perlengkapan berkebun berkualitas.",
 
-    gallery: [
-      "/assets/umkm/hobi/greenyplant/thumbnail.jpeg",
-      "/assets/umkm/greenyplant/gallery-1.jpg",
-      "/assets/umkm/greenyplant/gallery-2.jpg",
-      "/assets/umkm/greenyplant/gallery-3.jpg",
-    ],
+    gallery: ["/assets/umkm/hobi/greenyplant/thumbnail.jpeg"],
 
     featuredMenus: [
-      { name: "Monstera", price: 85000 },
-      { name: "Pot Keramik", price: 45000 },
-      { name: "Pupuk Organik", price: 25000 },
-      { name: "Sekop Mini", price: 15000 },
-      { name: "Kaktus Mini", price: 35000 },
+      {
+        name: "Monstera",
+        price: 85000,
+        image: "/assets/umkm/hobi/greenyplant/menu/montserra.jpg",
+      },
+      {
+        name: "Pot Keramik",
+        price: 45000,
+        image: "/assets/umkm/hobi/greenyplant/menu/keramik.jpg",
+      },
+      {
+        name: "Pupuk Organik",
+        price: 25000,
+        image: "/assets/umkm/hobi/greenyplant/menu/pupuk.jpg",
+      },
+      {
+        name: "Sekop Mini",
+        price: 15000,
+        image: "/assets/umkm/hobi/greenyplant/menu/shovel.jpg",
+      },
+      {
+        name: "Kaktus Mini",
+        price: 35000,
+        image: "/assets/umkm/hobi/greenyplant/menu/kaktus.jpg",
+      },
     ],
   },
 
@@ -106,6 +156,8 @@ export const UMKM = [
     location: "Jakarta Timur",
     rating: 4.7,
     reviews: 20,
+    lat: -7.984216,
+    lng: 112.635128,
     distance: "1.8 km",
     status: "Buka Sekarang",
     openHours: "10:00 - 21:00",
@@ -117,9 +169,6 @@ export const UMKM = [
 
     gallery: [
       "/assets/umkm/fashion/lokaloutfit/thumbnail.jpeg",
-      "/assets/umkm/localoutfit/gallery-1.jpg",
-      "/assets/umkm/localoutfit/gallery-2.jpg",
-      "/assets/umkm/localoutfit/gallery-3.jpg",
     ],
 
     featuredMenus: [
@@ -139,6 +188,8 @@ export const UMKM = [
     location: "Jakarta Selatan",
     rating: 4.5,
     reviews: 70,
+    lat: -7.988542,
+    lng: 112.618934,
     distance: "1.0 km",
     status: "Buka Sekarang",
     openHours: "08:00 - 23:00",
@@ -150,9 +201,6 @@ export const UMKM = [
 
     gallery: [
       "/assets/umkm/kafe/kopititik/thumbnail.jpeg",
-      "/assets/umkm/kopititik/gallery-1.jpg",
-      "/assets/umkm/kopititik/gallery-2.jpg",
-      "/assets/umkm/kopititik/gallery-3.jpg",
     ],
 
     featuredMenus: [
@@ -172,6 +220,8 @@ export const UMKM = [
     location: "Tangerang",
     rating: 4.8,
     reviews: 45,
+    lat: -7.972184,
+    lng: 112.631827,
     distance: "1.0 km",
     status: "Tersedia Hari Ini",
     openHours: "08:00 - 20:00",
@@ -183,9 +233,6 @@ export const UMKM = [
 
     gallery: [
       "/assets/umkm/jasa/fixithome/thumbnail.jpeg",
-      "/assets/umkm/fixithome/gallery-1.jpg",
-      "/assets/umkm/fixithome/gallery-2.jpg",
-      "/assets/umkm/fixithome/gallery-3.jpg",
     ],
 
     featuredMenus: [
@@ -206,6 +253,8 @@ export const UMKM = [
     rating: 4.9,
     reviews: 20,
     distance: "2.4 km",
+    lat: -7.969835,
+    lng: 112.624551,
     status: "Buka Sekarang",
     openHours: "09:00 - 20:00",
 
@@ -216,9 +265,6 @@ export const UMKM = [
 
     gallery: [
       "/assets/umkm/kecantikan/glow&go/thumbnail.jpeg",
-      "/assets/umkm/glowgo/gallery-1.jpg",
-      "/assets/umkm/glowgo/gallery-2.jpg",
-      "/assets/umkm/glowgo/gallery-3.jpg",
     ],
 
     featuredMenus: [
@@ -240,6 +286,8 @@ export const UMKM = [
     reviews: 42,
     distance: "3.6 km",
     status: "Buka Sekarang",
+    lat: -7.986327,
+    lng: 112.640293,
     openHours: "10:00 - 22:00",
 
     tags: ["Snack", "Homemade", "Fresh"],
@@ -249,9 +297,6 @@ export const UMKM = [
 
     gallery: [
       "/assets/umkm/makanan/cemilannendang/thumbnail.jpeg",
-      "/assets/umkm/cemilanmendang/gallery-1.jpg",
-      "/assets/umkm/cemilanmendang/gallery-2.jpg",
-      "/assets/umkm/cemilanmendang/gallery-3.jpg",
     ],
 
     featuredMenus: [
@@ -272,6 +317,8 @@ export const UMKM = [
     reviews: 35,
     distance: "2.1 km",
     status: "Buka Sekarang",
+    lat: -7.991742,
+    lng: 112.619284,
     openHours: "09:00 - 21:00",
 
     tags: ["Batik", "Fashion Lokal", "Elegant"],
@@ -297,6 +344,8 @@ export const UMKM = [
     description: "Streetwear modern untuk anak muda aktif.",
     location: "Bandung",
     rating: 4.7,
+    lat: -7.977193,
+    lng: 112.643817,
     reviews: 28,
     distance: "1.7 km",
     status: "Buka Sekarang",
@@ -329,7 +378,8 @@ export const UMKM = [
     distance: "2.5 km",
     status: "Buka Sekarang",
     openHours: "08:00 - 20:00",
-
+    lat: -7.968514,
+    lng: 112.636492,
     tags: ["Hobi", "Creative", "Lengkap"],
 
     about:
@@ -354,6 +404,8 @@ export const UMKM = [
     location: "Malang",
     rating: 4.9,
     reviews: 38,
+    lat: -7.973625,
+    lng: 112.615783,
     distance: "2.0 km",
     status: "Buka Sekarang",
     openHours: "09:00 - 19:00",
@@ -383,6 +435,8 @@ export const UMKM = [
     rating: 4.7,
     reviews: 32,
     distance: "1.5 km",
+    lat: -7.989413,
+    lng: 112.633951,
     status: "Tersedia Hari Ini",
     openHours: "08:00 - 20:00",
 
@@ -410,6 +464,8 @@ export const UMKM = [
     location: "Bekasi",
     rating: 4.8,
     reviews: 29,
+    lat: -7.982756,
+    lng: 112.646273,
     distance: "1.9 km",
     status: "Tersedia Hari Ini",
     openHours: "08:00 - 20:00",
@@ -437,6 +493,8 @@ export const UMKM = [
     location: "Surabaya",
     rating: 4.8,
     reviews: 45,
+    lat: -7.965384,
+    lng: 112.627581,
     distance: "1.8 km",
     status: "Buka Sekarang",
     openHours: "08:00 - 23:00",
@@ -465,6 +523,8 @@ export const UMKM = [
     location: "Malang",
     rating: 4.7,
     reviews: 39,
+    lat: -7.971628,
+    lng: 112.648195,
     distance: "2.2 km",
     status: "Buka Sekarang",
     openHours: "09:00 - 22:00",
@@ -494,6 +554,8 @@ export const UMKM = [
     rating: 4.9,
     reviews: 52,
     distance: "1.4 km",
+    lat: -7.994162,
+    lng: 112.623748,
     status: "Buka Sekarang",
     openHours: "09:00 - 20:00",
 
@@ -520,6 +582,8 @@ export const UMKM = [
     description: "Produk skincare natural untuk semua jenis kulit.",
     location: "Bandung",
     rating: 4.8,
+    lat: -7.976841,
+    lng: 112.612394,
     reviews: 44,
     distance: "2.0 km",
     status: "Buka Sekarang",
@@ -539,85 +603,5 @@ export const UMKM = [
       { name: "Cleanser", price: 60000 },
       { name: "Face Mask", price: 45000 },
     ],
-  },
-
-  {
-    id: 19,
-    name: "Ayam Bakar Juara",
-    category: "Makanan",
-    description: "Ayam bakar dengan bumbu khas nusantara.",
-    location: "Solo",
-
-    gallery: ["/assets/umkm/makanan/ayambakarjuara/thumbnail.jpg"],
-  },
-
-  {
-    id: 20,
-    name: "Bakso Mantul",
-    category: "Makanan",
-    description: "Bakso premium dengan kuah gurih dan daging berkualitas.",
-    location: "Surabaya",
-
-    gallery: ["/assets/umkm/makanan/baksomantul/thumbnail.jpg"],
-  },
-
-  {
-    id: 21,
-    name: "Rice Bowl Corner",
-    category: "Makanan",
-    description: "Rice bowl modern dengan topping melimpah.",
-    location: "Bandung",
-
-    gallery: ["/assets/umkm/makanan/ricebowlcorner/thumbnail.jpg"],
-  },
-
-  {
-    id: 22,
-    name: "Sate Pak Bahari",
-    category: "Makanan",
-    description: "Sate ayam dengan bumbu kacang autentik.",
-    location: "Yogyakarta",
-
-    gallery: ["/assets/umkm/makanan/satepakbahari/thumbnail.jpg"],
-  },
-
-  {
-    id: 23,
-    name: "Warung Nusantara",
-    category: "Makanan",
-    description: "Kuliner khas Indonesia dengan rasa autentik.",
-    location: "Malang",
-
-    gallery: ["/assets/umkm/makanan/warungnusantara/thumbnail.jpg"],
-  },
-
-  {
-    id: 24,
-    name: "Seafood Bahari",
-    category: "Makanan",
-    description: "Aneka seafood segar dengan cita rasa khas.",
-    location: "Semarang",
-
-    gallery: ["/assets/umkm/makanan/seafood/thumbnail.jpg"],
-  },
-
-  {
-    id: 25,
-    name: "Daily Mart",
-    category: "Toko Kelontong",
-    description: "Kebutuhan harian lengkap dan harga terjangkau.",
-    location: "Depok",
-
-    gallery: ["/assets/umkm/toko/dailymart/thumbnail.jpg"],
-  },
-
-  {
-    id: 26,
-    name: "Fresh Corner",
-    category: "Toko Kelontong",
-    description: "Belanja kebutuhan rumah tangga lebih praktis.",
-    location: "Bekasi",
-
-    gallery: ["/assets/umkm/toko/freshcorner/thumbnail.jpg"],
   },
 ];
