@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export function CTA() {
   return (
-    <div className="w-[86vw] mx-auto bg-primary text-white rounded-[2rem] flex flex-col items-center justify-center px-8 py-16 mt-20 relative overflow-hidden shadow-lg">
+    <div className="w-[86vw] mx-auto bg-primary text-white rounded-[2rem] flex flex-col items-center justify-center px-8 py-8 md:py-16 mt-20 relative overflow-hidden shadow-lg">
       <Image
         src="/banner.png"
         width={140}

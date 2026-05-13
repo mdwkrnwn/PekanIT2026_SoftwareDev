@@ -90,7 +90,7 @@ export default function ChatPopup() {
 
       <div
         className={cn(
-          "fixed -bottom-full right-[5%] z-50 flex w-105 origin-bottom-right flex-col rounded-[2rem] shadow-2xl transition-all duration-300 ease-[cubic-bezier(0,0.22,0.12,1)]",
+          "fixed -bottom-full md:right-[5%] z-50 flex w-full md:w-105 origin-bottom-right flex-col rounded-[2rem] shadow-2xl transition-all duration-300 ease-[cubic-bezier(0,0.22,0.12,1)]",
           isOpen ? "bottom-10" : "pointer-events-none scale-50",
         )}
       >
@@ -149,7 +149,7 @@ export default function ChatPopup() {
               <div
                 className={`max-w-[80%] rounded-2xl p-5 text-[0.95rem] ${msg.role === "user"
                   ? "bg-primary text-white rounded-tr-sm"
-                  : "bg-white border border-slate-200 rounded-tl-sm text-slate-800"
+                  : "bg-white border border-slate-200 rounded-tl-sm text-black"
                   }`}
               >
                 <ReactMarkdown>{msg.text}</ReactMarkdown>
@@ -181,43 +181,43 @@ export default function ChatPopup() {
               Pertanyaan cepat:
             </h3>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="md:grid md:grid-cols-2 flex flex-wrap gap-3">
               <button
                 onClick={() => sendMessage("Cari cafe estetik")}
-                className="rounded-xl hover:bg-blue-50 flex items-center gap-3 p-3 text-left text-blue-600 transition-colors bg-white border border-blue-600"
+                className="rounded-xl hover:bg-primary/20 flex items-center gap-3 p-3 text-left text-primary transition-colors bg-white border border-primary"
               >
                 <LuCoffee size={20} className="shrink-0" />
-                <span className="text-slate-800 text-sm font-semibold">
+                <span className="text-black text-sm font-semibold">
                   Cari cafe estetik
                 </span>
               </button>
 
               <button
                 onClick={() => sendMessage("Rekomendasi kuliner")}
-                className="rounded-xl hover:bg-blue-50 flex items-center gap-3 p-3 text-left text-blue-600 transition-colors bg-white border border-blue-600"
+                className="rounded-xl hover:bg-primary/20 flex items-center gap-3 p-3 text-left text-primary transition-colors bg-white border border-primary"
               >
                 <MdOutlineRamenDining size={22} className="shrink-0" />
-                <span className="text-slate-800 text-sm font-semibold">
+                <span className="text-black text-sm font-semibold">
                   Rekomendasi Kuliner
                 </span>
               </button>
 
               <button
                 onClick={() => sendMessage("Hidden gem dekat sini")}
-                className="rounded-xl hover:bg-blue-50 flex items-center gap-3 p-3 text-left text-blue-600 transition-colors bg-white border border-blue-600"
+                className="rounded-xl hover:bg-primary/20 flex items-center gap-3 p-3 text-left text-primary transition-colors bg-white border border-primary"
               >
                 <LuMapPin size={20} className="shrink-0" />
-                <span className="text-slate-800 text-sm font-semibold">
+                <span className="text-black text-sm font-semibold">
                   Hidden GEM
                 </span>
               </button>
 
               <button
                 onClick={() => sendMessage("Cari produk lokal")}
-                className="rounded-xl hover:bg-blue-50 flex items-center gap-3 p-3 text-left text-blue-600 transition-colors bg-white border border-blue-600"
+                className="rounded-xl hover:bg-primary/20 flex items-center gap-3 p-3 text-left text-primary transition-colors bg-white border border-primary"
               >
                 <LuShoppingBag size={20} className="shrink-0" />
-                <span className="text-slate-800 text-sm font-semibold">
+                <span className="text-black text-sm font-semibold">
                   Cari Produk Lokal
                 </span>
               </button>
@@ -238,13 +238,13 @@ export default function ChatPopup() {
               }}
               type="text"
               placeholder="Tanyakan tentang UMKM..."
-              className="w-full rounded-full border border-slate-300 bg-white py-4 pl-6 pr-16 text-[0.95rem] text-slate-800 shadow-sm outline-none placeholder:text-slate-400 focus:border-blue-600"
+              className="w-full rounded-full border border-slate-300 bg-white py-4 pl-6 pr-16 text-[0.95rem] text-black shadow-sm outline-none placeholder:text-slate-400 focus:border-primary"
             />
 
             <button
               onClick={() => sendMessage()}
               disabled={loading}
-              className="absolute right-2 flex aspect-square h-[80%] items-center justify-center rounded-full bg-blue-600 text-white transition-colors hover:bg-blue-700"
+              className="absolute right-2 flex aspect-square h-[80%] items-center justify-center rounded-full bg-primary text-white transition-colors hover:bg-blue-700"
             >
               <LuSend size={20} className="mr-0.5 mt-0.5" />
             </button>
