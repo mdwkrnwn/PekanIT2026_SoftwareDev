@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import ThemeSwitcher from "./ThemetogglerBtn";
+import ThemeSwitcher from "./ThemeSwitcher";
 import { FaChevronLeft, FaHeart } from "react-icons/fa";
 import { LuMousePointer2 } from "react-icons/lu";
 import Link from "next/link";

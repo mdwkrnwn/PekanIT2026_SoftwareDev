@@ -5,6 +5,13 @@ import { LuMousePointer2 } from "react-icons/lu";
 import Image from "next/image";
 import animation from "./page.module.css";
 
+const trendingImages = [
+  "/assets/laginaik/yglgnaik1.jpg",
+  "/assets/laginaik/yglgnaik2.jpg",
+  "/assets/laginaik/yglgnaik3.jpg",
+  "/assets/laginaik/yglgnaik4.jpg",
+];
+
 export function Trending() {
   return (
     <div className="w-[86vw] mx-auto mt-16">
@@ -73,13 +80,12 @@ export function Trending() {
                   "flex flex-col gap-6 pb-6",
                 )}
               >
-                {[...Array(8)].map((_, i) => (
+                {[...Array(4)].map((_, i) => (
                   <div
                     key={`up-${i}`}
-                    className="rounded-2xl shrink-0 relative h-48 overflow-hidden shadow-md"
-                  >
+                   className="relative aspect-[4/5] shrink-0 overflow-hidden rounded-2xl shadow-md">
                     <Image
-                      src={`https://picsum.photos/300/200?random=${i + 10}`}
+                      src={trendingImages[i % trendingImages.length]}
                       fill
                       className="object-cover"
                       alt="Trending Item"
@@ -93,13 +99,12 @@ export function Trending() {
                   "flex flex-col gap-6 pb-6",
                 )}
               >
-                {[...Array(8)].map((_, i) => (
+                {[...Array(4)].map((_, i) => (
                   <div
                     key={`up-${i}`}
-                    className="rounded-2xl shrink-0 relative h-48 overflow-hidden shadow-md"
-                  >
+                   className="relative aspect-[4/5] shrink-0 overflow-hidden rounded-2xl shadow-md">
                     <Image
-                      src={`https://picsum.photos/300/200?random=${i + 10}`}
+                      src={trendingImages[i % trendingImages.length]}
                       fill
                       className="object-cover"
                       alt="Trending Item"
@@ -118,11 +123,10 @@ export function Trending() {
               >
                 {[...Array(4)].map((_, i) => (
                   <div
-                    key={`down-${i}`}
-                    className="rounded-2xl shrink-0 relative h-48 overflow-hidden shadow-md"
-                  >
+                    key={`up-${i}`}
+                   className="relative aspect-[4/5] shrink-0 overflow-hidden rounded-2xl shadow-md">
                     <Image
-                      src={`https://picsum.photos/300/200?random=${i + 20}`}
+                      src={trendingImages[i % trendingImages.length]}
                       fill
                       className="object-cover"
                       alt="Trending Item"
@@ -138,11 +142,10 @@ export function Trending() {
               >
                 {[...Array(4)].map((_, i) => (
                   <div
-                    key={`down-${i}`}
-                    className="rounded-2xl shrink-0 relative h-48 overflow-hidden shadow-md"
-                  >
+                    key={`up-${i}`}
+                   className="relative aspect-[4/5] shrink-0 overflow-hidden rounded-2xl shadow-md">
                     <Image
-                      src={`https://picsum.photos/300/200?random=${i + 20}`}
+                      src={trendingImages[i % trendingImages.length]}
                       fill
                       className="object-cover"
                       alt="Trending Item"
