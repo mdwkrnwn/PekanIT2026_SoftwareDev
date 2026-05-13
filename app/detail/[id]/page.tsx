@@ -1,21 +1,14 @@
-import { Reviews } from "./Reviews";
-import { Location } from "./Location";
-import { Menu } from "./Menu";
-import Image from "next/image";
-import { FaStar, FaRegClock, FaHeart, FaMapMarkerAlt } from "react-icons/fa";
-import { LuMapPin } from "react-icons/lu";
-import { MdOutlineFoodBank, MdAttachMoney, MdVerified } from "react-icons/md";
 import { Metadata } from "next";
 import { UMKM } from "@/data/UMKM.dummy";
 import ProductPage from "./Product";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { id: string };
-}): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: { params: Promise<{ id: string }> }
+): Promise<Metadata> {
+  const { id } = await params;
+
   const umkm = UMKM.find(
-    (item: { id: number }) => item?.id == parseInt(params.id),
+    (item: { id: number }) => item.id === Number(id)
   );
 
   return {
