@@ -178,7 +178,7 @@ const LeafletMap = forwardRef(({
         ${p.category}
       </p>
       <a 
-        href="/umkm/${p.id}" 
+        href="/detail/${p.id}" 
         style="
           display: inline-block;
           width: 100%;
