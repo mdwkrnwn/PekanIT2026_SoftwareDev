@@ -1,10 +1,10 @@
-import { ForYou } from './components/ForYou';
-import { Welcome } from './components/Welcome';
-import { Trending } from "./components/Trending";
-import { Testimonials } from "./components/Testimonials";
-import { Articles } from "./components/Articles";
-import { CTA } from "./components/CTA";
-import { HeroBanner } from "./components/HeroBanner";
+import { ForYou } from '../components/ForYou';
+import { Welcome } from '../components/Welcome';
+import { Trending } from "../components/Trending";
+import { Testimonials } from "../components/Testimonials";
+import { Articles } from "../components/Articles";
+import { CTA } from "../components/CTA";
+import { HeroBanner } from "../components/HeroBanner";
 
 export default function Home() {
   return (

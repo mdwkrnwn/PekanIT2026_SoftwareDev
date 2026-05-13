@@ -134,29 +134,33 @@ export const umkmData = [
 ];
 
 export const categoryBadgeColor: Record<string, string> = {
-  Makanan: "bg-primary",
-  "Toko Kelontong": "bg-primary",
-  Jasa: "bg-primary",
-  Fashion: "bg-primary",
-  Hobi: "bg-primary",
-  Kafe: "bg-primary",
-  Kecantikan: "bg-primary",
+  Makanan: "bg-orange-100 text-orange-700",
+  "Toko Kelontong": "bg-emerald-100 text-emerald-700",
+  Jasa: "bg-sky-100 text-sky-700",
+  Fashion: "bg-pink-100 text-pink-700",
+  Hobi: "bg-violet-100 text-violet-700",
+  Kafe: "bg-amber-100 text-amber-800",
+  Kecantikan: "bg-rose-100 text-rose-700",
 };
 
 export const popularArticles = [
   {
+    id: 1,
     title: "Rekomendasi jajanan lokal favorit anak muda",
     image: "https://picsum.photos/200/200?random=301",
   },
   {
+    id: 2,
     title: "Tips menemukan hidden GEM di kotamu",
     image: "https://picsum.photos/200/200?random=302",
   },
   {
+    id: 3,
     title: "Cara mudah belanja lokal tanpa ribet",
     image: "https://picsum.photos/200/200?random=303",
   },
   {
+    id: 4,
     title: "Kenapa dukung UMKM itu penting?",
     image: "https://picsum.photos/200/200?random=304",
   },

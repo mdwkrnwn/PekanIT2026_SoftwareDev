@@ -1,75 +1,214 @@
-import Link from "next/link";
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { UMKM } from "../../data/UMKM.dummy";
 import Image from "next/image";
-import { MdMyLocation } from "react-icons/md";
-import { FaMapMarkerAlt } from "react-icons/fa";
+import LeafletMap from "./LeafletMap";
+import { FaLocationCrosshairs, FaLocationDot } from "react-icons/fa6";
+
+const getDistance = (
+  lat1: number,
+  lon1: number,
+  lat2: number,
+  lon2: number,
+) => {
+  const R = 6371; // km
+  const dLat = ((lat2 - lat1) * Math.PI) / 180;
+  const dLon = ((lon2 - lon1) * Math.PI) / 180;
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos((lat1 * Math.PI) / 180) *
+      Math.cos((lat2 * Math.PI) / 180) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
+};
+
 export function Control() {
-  return <div className="border border-slate-100 rounded-[2rem] p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] bg-white flex flex-col max-h-200">
+  const [search, setSearch] = useState("");
+  const [radius, setRadius] = useState(5);
+  const [geo, setGeo] = useState<{ lat: number; lng: number } | null>(null);
+  const [filtered, setFiltered] = useState(UMKM);
+  const [visible, setVisible] = useState<any>(UMKM);
+  const [activeItem, setActiveItem] = useState<number | null>(null);
+  const mapRef = useRef<any>(null);
 
-    {
-      /* Search */
-    }
-    <div className="flex gap-3 mb-6">
-      <input type="text" placeholder="Cari UMKM atau jasa..." className="border-slate-200 rounded-xl focus:outline-primary focus:border-primary placeholder:text-slate-400 flex-1 px-4 py-3 text-sm border" />
-      <button className="bg-primary rounded-xl hover:bg-primary/90 aspect-square flex items-center justify-center p-3 text-white transition-colors">
-        <MdMyLocation size={20} />
-      </button>
-    </div>
+  useEffect(() => {
+    const query = search.toLowerCase();
+    setFiltered(
+      UMKM.filter(
+        (p) =>
+          p.name.toLowerCase().includes(query) ||
+          p.category.toLowerCase().includes(query) ||
+          p.description.toLowerCase().includes(query),
+      ),
+    );
+  }, [search]);
 
-    {
-      /* Radius Slider */
+  const locateUser = () => {
+    if (!navigator.geolocation) {
+      setGeo({ lat: -7.981894, lng: 112.626503 }); // fallback Malang
+      return;
     }
-    <div className="mb-6">
-      <div className="flex items-center justify-between mb-3 font-bold">
-        <span className="text-slate-900">Radius:</span>
-        <span className="text-primary">5 km</span>
-      </div>
-      <input className="bg-primary w-full" type="range" min={0} max={5000} name="" id="" />
-    </div>
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        setGeo({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+      },
+      () => {
+        setGeo({ lat: -7.981894, lng: 112.626503 });
+      },
+    );
+  };
 
-    {
-      /* List */
+  // Fungsi untuk handle klik item di list
+  const handleItemClick = (item: any) => {
+    setActiveItem(item.id);
+    if (mapRef.current && item.lat && item.lng) {
+      mapRef.current.focusMarker(item.id);
     }
-    <div className="custom-scrollbar flex flex-col flex-1 gap-5 pr-2 overflow-y-auto">
-      {[{
-        name: "Bang Keriting Malang",
-        cat: "Makanan & Minuman",
-        dist: "4.1 km",
-        rating: "4.5"
-      }, {
-        name: "Goodlaptop Service",
-        cat: "Jasa",
-        dist: "3.7 km",
-        rating: "4.2"
-      }, {
-        name: "Sego Sambel Cak UUT Suhat",
-        cat: "Makanan & Minuman",
-        dist: "3.8 km",
-        rating: "4.8"
-      }, {
-        name: "Bakso Sayur UB Malang",
-        cat: "Makanan & Minuman",
-        dist: "3.5 km",
-        rating: "4.3"
-      }, {
-        name: "Warung Kopi Ambyar",
-        cat: "Makanan & Minuman",
-        dist: "4.5 km",
-        rating: "4.1"
-      }].map((item, i) => <Link href={'/detail'} key={i} className="group hover:bg-slate-200 rounded-xl hover: flex items-center gap-4 p-2 transition-colors cursor-pointer">
-        <div className="rounded-xl shrink-0 relative w-16 h-16 overflow-hidden">
-          <Image src={`https://picsum.photos/800/800?random=${i + 50}`} fill className="object-cover" alt={item.name} />
+  };
+
+  useEffect(() => {
+    locateUser();
+  }, []);
+
+  return (
+    <main className="max-w-7xl mx-auto px-4 md:px-8 py-10 pb-28 mt-3 space-y-10">
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* === LEFT LIST === */}
+        <div className="bg-white rounded-3xl shadow-md p-4 flex flex-col md:col-span-1 h-[75vh] min-h-[75vh]">
+          {/* Search */}
+          <div className="flex items-center mb-4 gap-3">
+            <div className="w-full">
+              <div className="flex items-center gap-2">
+                <input
+                  type="text"
+                  placeholder="Cari UMKM atau jasa..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  className="px-4 py-3 border border-gray-200 rounded-2xl text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all w-[300px]"
+                />
+              </div>
+            </div>
+
+            <div className="h-full">
+              <button
+                onClick={locateUser}
+                className="px-4 py-3 h-full bg-primary hover:bg-primary/90 text-white rounded-2xl flex items-center justify-center transition-all"
+              >
+                <FaLocationCrosshairs className="text-lg" />
+              </button>
+            </div>
+          </div>
+
+          {/* Radius */}
+          <div className="flex items-center justify-between mb-3">
+            <label className="text-sm font-medium text-gray-700">Radius</label>
+
+            <span className="text-primary text-sm font-semibold">
+              {radius} km
+            </span>
+          </div>
+
+          <input
+            type="range"
+            min="1"
+            max="20"
+            value={radius}
+            onChange={(e) => setRadius(parseInt(e.target.value))}
+            className="accent-primary w-full mb-5"
+          />
+
+          {/* === LIST UMKM DALAM RADIUS === */}
+          <div className="flex-1 min-h-0 overflow-y-auto space-y-3 pr-1">
+            {visible.length === 0 ? (
+              <div className="h-full flex items-center justify-center">
+                <p className="text-muted-foreground text-sm text-center">
+                  Tidak ada UMKM dalam radius ini
+                </p>
+              </div>
+            ) : (
+              visible.map((item: any) => {
+                const distance =
+                  geo && item.lat && item.lng
+                    ? getDistance(geo.lat, geo.lng, item.lat, item.lng)
+                    : null;
+
+                return (
+                  <div
+                    key={item.id}
+                    onClick={() => handleItemClick(item)}
+                    className={`flex items-center gap-3 p-3 min-h-[92px] rounded-2xl border-2 transition-all cursor-pointer ${
+                      activeItem === item.id
+                        ? "border-primary bg-primary/5"
+                        : "border-transparent hover:bg-primary/5"
+                    }`}
+                  >
+                    {/* Thumbnail */}
+                    <div className="w-16 h-16 flex-shrink-0 overflow-hidden rounded-xl bg-gray-100">
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        width={64}
+                        height={64}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex flex-col justify-between flex-1 min-w-0 h-full">
+                      {/* Top */}
+                      <div className="flex items-start justify-between gap-2">
+                        <h4 className="text-sm font-semibold text-gray-800 line-clamp-1">
+                          {item.name}
+                        </h4>
+
+                        <div className="bg-primary/10 text-primary rounded-lg px-2 py-1 text-xs font-semibold flex-shrink-0">
+                          {item.rating}
+                        </div>
+                      </div>
+
+                      {/* Category */}
+                      <p className="text-xs font-medium text-muted-foreground line-clamp-1">
+                        {item.category}
+                      </p>
+
+                      {/* Distance */}
+                      <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                        <FaLocationDot className="text-primary flex-shrink-0" />
+
+                        <span className="whitespace-nowrap">
+                          {distance !== null
+                            ? `${distance.toFixed(1)} km`
+                            : "N/A"}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+            )}
+          </div>
         </div>
-        <div className="flex flex-col flex-1 min-w-0">
-          <h4 className="font-bold text-slate-900 text-[0.95rem] truncate mb-0.5">{item.name}</h4>
-          <p className="text-slate-500 text-[0.8rem] mb-1">{item.cat}</p>
-          <p className="text-primary text-[0.8rem] font-semibold flex items-center gap-1">
-            <FaMapMarkerAlt size={12} /> {item.dist}
-          </p>
+
+        {/* === MAP AREA === */}
+        <div className="rounded-3xl overflow-hidden shadow-md border border-gray-100 md:col-span-2 h-[75vh] min-h-[75vh]">
+          {geo ? (
+            <LeafletMap
+              ref={mapRef}
+              products={filtered}
+              userLocation={geo}
+              radius={radius}
+              onVisibleChange={setVisible}
+            />
+          ) : (
+            <div className="h-full flex items-center justify-center">
+              <p className="text-gray-500">Memuat peta...</p>
+            </div>
+          )}
         </div>
-        <div className="text-primary h-fit shrink-0 px-2 py-1 text-xs font-bold bg-blue-100 rounded-md">
-          {item.rating}
-        </div>
-      </Link>)}
-    </div>
-  </div>;
+      </section>
+    </main>
+  );
 }
