@@ -4,7 +4,7 @@ import { FaTiktok } from 'react-icons/fa'
 import { FaSquareInstagram } from 'react-icons/fa6'
 function Footer() {
   return (
-    <footer className='w-fit grid md:px-0 px-4 md:grid-cols-[2fr_repeat(4,1fr)] md:w-[86vw] overflow-x-hidden'>
+    <footer className='w-fit grid md:px-0 px-4 md:grid-cols-[2fr_repeat(4,1fr)] md:w-[86vw]'>
       <section className='grid grid-cols-4 grid-rows-[repeat(3,1fr)]'>
         <div className='flex items-center col-span-4 -ml-4'>
           <Image loading='eager' height={1000} width={1000} className="max-w-24 max-h-24" src={'/UFLogo.png'} alt="logo" />

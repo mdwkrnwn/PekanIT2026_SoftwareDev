@@ -134,13 +134,13 @@ export const umkmData = [
 ];
 
 export const categoryBadgeColor: Record<string, string> = {
-  Makanan: "bg-primary",
-  "Toko Kelontong": "bg-primary",
-  Jasa: "bg-primary",
-  Fashion: "bg-primary",
-  Hobi: "bg-primary",
-  Kafe: "bg-primary",
-  Kecantikan: "bg-primary",
+  Makanan: "bg-orange-100 text-orange-700",
+  "Toko Kelontong": "bg-emerald-100 text-emerald-700",
+  Jasa: "bg-sky-100 text-sky-700",
+  Fashion: "bg-pink-100 text-pink-700",
+  Hobi: "bg-violet-100 text-violet-700",
+  Kafe: "bg-amber-100 text-amber-800",
+  Kecantikan: "bg-rose-100 text-rose-700",
 };
 
 export const popularArticles = [

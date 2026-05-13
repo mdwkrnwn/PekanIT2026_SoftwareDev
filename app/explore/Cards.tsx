@@ -13,7 +13,7 @@ export function Cards({
   umkmData: typeof UMKM;
 }) {
   return <section className="sm:grid-cols-2 xl:grid-cols-4 grid grid-cols-1 gap-8">
-    {umkmData.map((item, i) => <Link key={i} href={`/detail`}>
+    {umkmData.map((item, i) => <Link key={i} href={`/detail/1`}>
       <div key={item.name} className="border-border overflow-hidden rounded-[1.75rem] border bg-background transition-all hover:-translate-y-1 hover:shadow-xl">
         <div className="relative h-64 overflow-hidden">
           <Image src={item.gallery[0]} alt={item.name} fill className="hover:scale-105 object-cover transition-transform duration-300" />
