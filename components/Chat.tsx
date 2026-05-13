@@ -82,7 +82,7 @@ export default function ChatPopup() {
     <>
       <button
         onClick={() => setIsOpen((prev) => !prev)}
-        className="fixed bottom-6 right-36 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-primary/30 cursor-pointer transition-transform hover:scale-105 active:scale-95"
+        className="fixed bottom-6 right-6 md:right-36 z-9999 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-primary/30 cursor-pointer transition-transform hover:scale-105 active:scale-95"
         aria-label="Toggle Chat"
       >
         {isOpen ? <IoClose size={28} /> : <BsChatRightDotsFill size={24} />}
@@ -90,7 +90,7 @@ export default function ChatPopup() {
 
       <div
         className={cn(
-          "fixed bottom-[-150%] right-36 z-50 flex w-105 origin-bottom-right flex-col rounded-[2rem] shadow-2xl transition-all duration-300 ease-[cubic-bezier(0,0.22,0.12,1)]",
+          "fixed bottom-[-150%] right-6 md:right-36 z-9999 flex w-105 origin-bottom-right flex-col rounded-[2rem] shadow-2xl transition-all duration-300 ease-[cubic-bezier(0,0.22,0.12,1)]",
           isOpen ? "bottom-10" : "pointer-events-none scale-50",
         )}
       >

@@ -7,7 +7,7 @@ import "leaflet/dist/leaflet.css";
 interface Product {
   id: number;
   name: string;
-  image: string;
+  gallery: string[];
   category: string;
   store?: string;
   lat?: number;
@@ -159,7 +159,7 @@ const LeafletMap = forwardRef(({
   ">
     <div style="width: 100%; height: 130px; overflow: hidden;">
       <img 
-        src="${p.image.replace("./", "/")}" 
+        src="${p.gallery[0]}" 
         alt="${p.name}"
         style="width: 100%; height: 100%; object-fit: cover; display: block;"
       />

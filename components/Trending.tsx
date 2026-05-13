@@ -14,7 +14,7 @@ const trendingImages = [
 
 export function Trending() {
   return (
-    <div className="w-[86vw] mx-auto mt-16">
+    <div className="w-[80vw] mx-auto mt-16">
       <div className="flex items-end justify-between gap-2">
         <div>
           <h3 className="text-primary text-[1.375rem] font-bold">
@@ -46,7 +46,7 @@ export function Trending() {
         <p className="opacity-90 mb-2 md:hidden text-[clamp(1rem,1.25rem,2vw)] ">
           Cari produk lokal yang lagi viral dibahas banyak orang.
         </p>
-        <div className="w-[86vw] mx-auto text-white rounded-[2rem] px-12 flex md:mt-8 mt-4 lg:h-100 h-[clamp(50px,50dvh,25rem)] overflow-hidden relative shadow-lg bg-[linear-gradient(90deg,#2D7FFF_0%,#0F5EDB_45%,#0B2D6B_100%)]">
+        <div className="w-[80vw] mx-auto text-white rounded-[2rem] px-12 flex md:mt-8 mt-4 lg:h-100 h-[clamp(50px,50dvh,25rem)] overflow-hidden relative shadow-lg bg-[linear-gradient(90deg,#2D7FFF_0%,#0F5EDB_45%,#0B2D6B_100%)]">
           <div className="md:flex md:gap-5 z-10 flex-col justify-center hidden w-1/2 pr-10">
             <h3 className=" text-[clamp(2rem,3.125rem,3vw)] wrap-break-word font-bold">
               Yang Lagi Naik <br /> Daun Nih 👀

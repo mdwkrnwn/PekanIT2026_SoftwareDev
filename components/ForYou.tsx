@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export function ForYou() {
   return (
-    <div className="w-[86vw] mx-auto mt-16">
+    <div className="w-[80vw] mx-auto mt-16">
       <div className="flex items-end justify-between mb-6">
         <div>
           <h3 className="text-primary text-[1.375rem] font-bold">Buat Kamu nih 👀</h3>
