@@ -82,7 +82,7 @@ export default function ChatPopup() {
     <>
       <button
         onClick={() => setIsOpen((prev) => !prev)}
-        className="fixed bottom-6 right-36 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-primary/30 cursor-pointer transition-transform hover:scale-105 active:scale-95"
+        className="fixed bottom-6 right-[5%] z-50 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-primary/30 transition-transform hover:scale-105 active:scale-95"
         aria-label="Toggle Chat"
       >
         {isOpen ? <IoClose size={28} /> : <BsChatRightDotsFill size={24} />}
@@ -90,7 +90,7 @@ export default function ChatPopup() {
 
       <div
         className={cn(
-          "fixed bottom-[-150%] right-36 z-50 flex w-105 origin-bottom-right flex-col rounded-[2rem] shadow-2xl transition-all duration-300 ease-[cubic-bezier(0,0.22,0.12,1)]",
+          "fixed -bottom-full right-[5%] z-50 flex w-105 origin-bottom-right flex-col rounded-[2rem] shadow-2xl transition-all duration-300 ease-[cubic-bezier(0,0.22,0.12,1)]",
           isOpen ? "bottom-10" : "pointer-events-none scale-50",
         )}
       >
@@ -131,9 +131,8 @@ export default function ChatPopup() {
           {messages.map((msg, index) => (
             <div
               key={index}
-              className={`flex gap-3 mb-4 ${
-                msg.role === "user" ? "justify-end" : ""
-              }`}
+              className={`flex gap-3 mb-4 ${msg.role === "user" ? "justify-end" : ""
+                }`}
             >
               {msg.role === "assistant" && (
                 <div className="shrink-0 border-slate-200 flex items-center justify-center w-10 h-10 bg-white border rounded-full">
@@ -148,11 +147,10 @@ export default function ChatPopup() {
               )}
 
               <div
-                className={`max-w-[80%] rounded-2xl p-5 text-[0.95rem] ${
-                  msg.role === "user"
-                    ? "bg-primary text-white rounded-tr-sm"
-                    : "bg-white border border-slate-200 rounded-tl-sm text-slate-800"
-                }`}
+                className={`max-w-[80%] rounded-2xl p-5 text-[0.95rem] ${msg.role === "user"
+                  ? "bg-primary text-white rounded-tr-sm"
+                  : "bg-white border border-slate-200 rounded-tl-sm text-slate-800"
+                  }`}
               >
                 <ReactMarkdown>{msg.text}</ReactMarkdown>
               </div>

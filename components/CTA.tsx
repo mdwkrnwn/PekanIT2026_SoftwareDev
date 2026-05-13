@@ -3,26 +3,26 @@ import Image from "next/image";
 
 export function CTA() {
   return (
-    <div className="w-[66vw] mx-auto bg-primary text-white rounded-[2rem] flex flex-col items-center justify-center py-16 mt-20 mb-16 relative overflow-hidden shadow-lg">
+    <div className="w-[86vw] mx-auto bg-primary text-white rounded-[2rem] flex flex-col items-center justify-center px-8 py-16 mt-20 relative overflow-hidden shadow-lg">
       <Image
         src="/banner.png"
         width={140}
         height={140}
         alt="Decoration"
-        className="top-8 left-16 rounded-2xl -rotate-12 absolute"
+        className="top-8 md:block left-16 rounded-2xl hidden -rotate-12 absolute"
       />
       <Image
         src="/banner2.png"
         width={140}
         height={140}
         alt="Decoration"
-        className="bottom-8 right-20 rotate-15 absolute rounded-full"
+        className="bottom-8 right-20 md:block hidden rotate-15 absolute rounded-full"
       />
 
-      <h2 className="z-10 mb-4 text-4xl font-bold text-center">
+      <h2 className="z-10 mb-4 text-2xl md:text-4xl font-bold text-center">
         Saatnya Jelajahi Lokal Bareng UFinder
       </h2>
-      <p className="opacity-90 z-10 max-w-lg mb-8 text-xl text-center">
+      <p className=" z-10 mb-8 md:text-xl text-center">
         Ayo bagikan pengalamanmu, temukan UMKM lokal terbaik, dan dukung
         pertumbuhan ekonomi sekitar!
       </p>

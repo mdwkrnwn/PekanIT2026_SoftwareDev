@@ -131,8 +131,8 @@ export function HeroBanner() {
           {/* Features */}
           <div className="mt-12 flex flex-col gap-8 md:flex-row md:items-start">
             {features.map((item) => (
-              <div key={item.title} className={cn("flex items-start gap-4 border-r-2 border-border border-solid last:border-none"
-              )}>
+              <div key={item.title} className={cn("flex items-start gap-4 last:border-none"
+                , "md:border-r-2 md:border-border md:border-solid")}>
                 <div className="flex *:size-10 size-18 shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary shadow-md">
                   {item.icon}
                 </div>
@@ -151,12 +151,12 @@ export function HeroBanner() {
           </div>
 
           {/* CTA Banner */}
-          <div className="w-full bg-linear-to-t to-secondary from-secondary-foreground text-white rounded-[2rem] px-12 flex sm:flex-col lg:flex-row items-center justify-between mt-12 overflow-hidden shadow-lg gap-4 relative *:sm:w-full">
+          <div className="w-full bg-linear-to-t to-secondary from-secondary-foreground py-4 text-white rounded-[2rem] px-12 flex sm:flex-col md:flex-row lg:flex-row items-center justify-between mt-12 overflow-hidden shadow-lg gap-4 relative *:sm:w-full">
             <div className="md:block size-auto relative z-10 hidden">
               <Image src="/home.png" height={500} width={500} className="w-80 h-fit object-cover" alt="Hero Background" />
             </div>
-            <div className="md:w-full z-10 w-full h-full">
-              <h2 className="mb-6  text-2xl font-semibold leading-tight">Belanja Lokal, Untungnya <br /> Double Buat Kamu <br /> dan UMKM!</h2>
+            <div className="z-10 w-full h-full">
+              <h2 className="mb-6 text-2xl font-semibold leading-tight">Belanja Lokal, Untungnya Double Buat Kamu dan UMKM!</h2>
               <button className="hover:bg-slate-100 text-primary flex items-center justify-center gap-4 px-6 py-3 font-bold text-lg md:text-[1.25rem] transition-colors bg-white rounded-full ">
                 <Link href={'/explore'}>
                   Eksplor Sekarang
