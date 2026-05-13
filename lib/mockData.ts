@@ -145,18 +145,22 @@ export const categoryBadgeColor: Record<string, string> = {
 
 export const popularArticles = [
   {
+    id: 1,
     title: "Rekomendasi jajanan lokal favorit anak muda",
     image: "https://picsum.photos/200/200?random=301",
   },
   {
+    id: 2,
     title: "Tips menemukan hidden GEM di kotamu",
     image: "https://picsum.photos/200/200?random=302",
   },
   {
+    id: 3,
     title: "Cara mudah belanja lokal tanpa ribet",
     image: "https://picsum.photos/200/200?random=303",
   },
   {
+    id: 4,
     title: "Kenapa dukung UMKM itu penting?",
     image: "https://picsum.photos/200/200?random=304",
   },

@@ -4,10 +4,10 @@ export const ARTICLES = [
     title: "5 Tips Mudah Dukung UMKM Lokal di Sekitarmu",
     category: "Tips & Edukasi",
     author: "UFinder Team",
-    authorAvatar: "/images/team-avatar.jpg",
+    authorAvatar: "/team-avatar.jpeg",
     readTime: "5 menit",
 
-    thumbnail: "/images/articles/article-1.jpg",
+    thumbnail: "/assets/artikel/7umkm.jpeg",
 
     description:
       "Yuk, kenalan sama cara-cara simple yang bisa kamu lakuin buat support UMKM lokal setiap hari.",
@@ -55,10 +55,10 @@ export const ARTICLES = [
     title: "Rekomendasi Jajanan Lokal Favorit Anak Muda",
     category: "Tips & Edukasi",
     author: "UFinder Team",
-    authorAvatar: "/images/team-avatar.jpg",
+    authorAvatar: "/team-avatar.jpeg",
     readTime: "5 menit",
 
-    thumbnail: "/images/articles/article-2.jpg",
+    thumbnail: "/assets/artikel/artikel5tipsmudah.jpeg",
 
     description:
       "Lagi cari cemilan enak yang lagi hits? Ini dia beberapa jajanan lokal favorit.",
@@ -98,10 +98,10 @@ export const ARTICLES = [
     title: "Tips Menemukan Hidden GEM di Kotamu",
     category: "Tips & Edukasi",
     author: "UFinder Team",
-    authorAvatar: "/images/team-avatar.jpg",
+    authorAvatar: "/team-avatar.jpeg",
     readTime: "5 menit",
 
-    thumbnail: "/images/articles/article-3.jpg",
+    thumbnail: "/assets/artikel/rekomendasijajananlokal.jpeg",
 
     description:
       "Banyak tempat keren yang belum banyak orang tahu. Yuk eksplorasi kotamu.",
@@ -140,10 +140,10 @@ export const ARTICLES = [
     title: "7 UMKM Kuliner yang Wajib Kamu Coba",
     category: "Tips & Edukasi",
     author: "UFinder Team",
-    authorAvatar: "/images/team-avatar.jpg",
+    authorAvatar: "/team-avatar.jpeg",
     readTime: "5 menit",
 
-    thumbnail: "/images/articles/article-4.jpg",
+    thumbnail: "/assets/artikel/7umkm.jpeg",
 
     description:
       "Dari makanan rumahan sampai street food viral, ini daftar UMKM kuliner pilihan.",
@@ -180,10 +180,10 @@ export const ARTICLES = [
     title: "Kenapa Dukung UMKM itu Penting?",
     category: "Tips & Edukasi",
     author: "UFinder Team",
-    authorAvatar: "/images/team-avatar.jpg",
+    authorAvatar: "/team-avatar.jpeg",
     readTime: "5 menit",
 
-    thumbnail: "/images/articles/article-5.jpg",
+    thumbnail: "/assets/artikel/kenapadukungumkmitupenting.jpeg",
 
     description: "Setiap pembelian kamu punya dampak besar bagi ekonomi lokal.",
 
@@ -221,10 +221,10 @@ export const ARTICLES = [
     title: "Cara Mudah Belanja Lokal Tanpa Ribet",
     category: "Tips & Edukasi",
     author: "UFinder Team",
-    authorAvatar: "/images/team-avatar.jpg",
+    authorAvatar: "/team-avatar.jpeg",
     readTime: "5 menit",
 
-    thumbnail: "/images/articles/article-6.jpg",
+    thumbnail: "/assets/artikel/caramudah.jpeg",
 
     description: "Sekarang belanja UMKM makin gampang. Simak cara praktisnya.",
 
@@ -258,10 +258,10 @@ export const ARTICLES = [
     title: "Produk Lokal yang Cocok Jadi Hadiah",
     category: "Tips & Edukasi",
     author: "UFinder Team",
-    authorAvatar: "/images/team-avatar.jpg",
+    authorAvatar: "/team-avatar.jpeg",
     readTime: "5 menit",
 
-    thumbnail: "/images/articles/article-7.jpg",
+    thumbnail: "/assets/artikel/hidengem.jpeg",
 
     description:
       "Bingung cari hadiah yang unik? Produk UMKM lokal bisa jadi pilihan spesial.",
@@ -302,10 +302,10 @@ export const ARTICLES = [
     title: "Cara Menjadi Pelanggan Setia UMKM Favoritmu",
     category: "Tips & Edukasi",
     author: "UFinder Team",
-    authorAvatar: "/images/team-avatar.jpg",
+    authorAvatar: "/team-avatar.jpeg",
     readTime: "5 menit",
 
-    thumbnail: "/images/articles/article-8.jpg",
+    thumbnail: "/assets/artikel/rekomendasijajananlokal.jpeg",
 
     description:
       "Dukungan kecil dari pelanggan setia bisa memberi dampak besar bagi UMKM.",
