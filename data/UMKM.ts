@@ -541,83 +541,83 @@ export const UMKM = [
     ],
   },
 
-  // {
-  //   id: 19,
-  //   name: "Ayam Bakar Juara",
-  //   category: "Makanan",
-  //   description: "Ayam bakar dengan bumbu khas nusantara.",
-  //   location: "Solo",
+  {
+    id: 19,
+    name: "Ayam Bakar Juara",
+    category: "Makanan",
+    description: "Ayam bakar dengan bumbu khas nusantara.",
+    location: "Solo",
 
-  //   gallery: ["/assets/umkm/makanan/ayambakarjuara/thumbnail.jpg"],
-  // },
+    gallery: ["/assets/umkm/makanan/ayambakarjuara/thumbnail.jpg"],
+  },
 
-  // {
-  //   id: 20,
-  //   name: "Bakso Mantul",
-  //   category: "Makanan",
-  //   description: "Bakso premium dengan kuah gurih dan daging berkualitas.",
-  //   location: "Surabaya",
+  {
+    id: 20,
+    name: "Bakso Mantul",
+    category: "Makanan",
+    description: "Bakso premium dengan kuah gurih dan daging berkualitas.",
+    location: "Surabaya",
 
-  //   gallery: ["/assets/umkm/makanan/baksomantul/thumbnail.jpg"],
-  // },
+    gallery: ["/assets/umkm/makanan/baksomantul/thumbnail.jpg"],
+  },
 
-  // {
-  //   id: 21,
-  //   name: "Rice Bowl Corner",
-  //   category: "Makanan",
-  //   description: "Rice bowl modern dengan topping melimpah.",
-  //   location: "Bandung",
+  {
+    id: 21,
+    name: "Rice Bowl Corner",
+    category: "Makanan",
+    description: "Rice bowl modern dengan topping melimpah.",
+    location: "Bandung",
 
-  //   gallery: ["/assets/umkm/makanan/ricebowlcorner/thumbnail.jpg"],
-  // },
+    gallery: ["/assets/umkm/makanan/ricebowlcorner/thumbnail.jpg"],
+  },
 
-  // {
-  //   id: 22,
-  //   name: "Sate Pak Bahari",
-  //   category: "Makanan",
-  //   description: "Sate ayam dengan bumbu kacang autentik.",
-  //   location: "Yogyakarta",
+  {
+    id: 22,
+    name: "Sate Pak Bahari",
+    category: "Makanan",
+    description: "Sate ayam dengan bumbu kacang autentik.",
+    location: "Yogyakarta",
 
-  //   gallery: ["/assets/umkm/makanan/satepakbahari/thumbnail.jpg"],
-  // },
+    gallery: ["/assets/umkm/makanan/satepakbahari/thumbnail.jpg"],
+  },
 
-  // {
-  //   id: 23,
-  //   name: "Warung Nusantara",
-  //   category: "Makanan",
-  //   description: "Kuliner khas Indonesia dengan rasa autentik.",
-  //   location: "Malang",
+  {
+    id: 23,
+    name: "Warung Nusantara",
+    category: "Makanan",
+    description: "Kuliner khas Indonesia dengan rasa autentik.",
+    location: "Malang",
 
-  //   gallery: ["/assets/umkm/makanan/warungnusantara/thumbnail.jpg"],
-  // },
+    gallery: ["/assets/umkm/makanan/warungnusantara/thumbnail.jpg"],
+  },
 
-  // {
-  //   id: 24,
-  //   name: "Seafood Bahari",
-  //   category: "Makanan",
-  //   description: "Aneka seafood segar dengan cita rasa khas.",
-  //   location: "Semarang",
+  {
+    id: 24,
+    name: "Seafood Bahari",
+    category: "Makanan",
+    description: "Aneka seafood segar dengan cita rasa khas.",
+    location: "Semarang",
 
-  //   gallery: ["/assets/umkm/makanan/seafood/thumbnail.jpg"],
-  // },
+    gallery: ["/assets/umkm/makanan/seafood/thumbnail.jpg"],
+  },
 
-  // {
-  //   id: 25,
-  //   name: "Daily Mart",
-  //   category: "Toko Kelontong",
-  //   description: "Kebutuhan harian lengkap dan harga terjangkau.",
-  //   location: "Depok",
+  {
+    id: 25,
+    name: "Daily Mart",
+    category: "Toko Kelontong",
+    description: "Kebutuhan harian lengkap dan harga terjangkau.",
+    location: "Depok",
 
-  //   gallery: ["/assets/umkm/toko/dailymart/thumbnail.jpg"],
-  // },
+    gallery: ["/assets/umkm/toko/dailymart/thumbnail.jpg"],
+  },
 
-  // {
-  //   id: 26,
-  //   name: "Fresh Corner",
-  //   category: "Toko Kelontong",
-  //   description: "Belanja kebutuhan rumah tangga lebih praktis.",
-  //   location: "Bekasi",
+  {
+    id: 26,
+    name: "Fresh Corner",
+    category: "Toko Kelontong",
+    description: "Belanja kebutuhan rumah tangga lebih praktis.",
+    location: "Bekasi",
 
-  //   gallery: ["/assets/umkm/toko/freshcorner/thumbnail.jpg"],
-  // },
+    gallery: ["/assets/umkm/toko/freshcorner/thumbnail.jpg"],
+  },
 ];

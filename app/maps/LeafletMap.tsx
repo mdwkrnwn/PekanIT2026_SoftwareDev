@@ -217,7 +217,7 @@ const LeafletMap = forwardRef(({
     <div className="relative">
       <div
         id="map"
-        className="h-[75vh] rounded-2xl shadow-lg border border-gray-200"
+        className="h-[75dvh] rounded-2xl shadow-lg border border-gray-200"
       />
       <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-md text-sm font-medium text-gray-700 flex items-center gap-2 z-100 pointer-events-auto">
         <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full"></span>

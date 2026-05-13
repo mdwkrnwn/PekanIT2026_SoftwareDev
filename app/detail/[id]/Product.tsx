@@ -109,7 +109,7 @@ export default function ProductPage() {
         <p className="text-lg mb-2">UMKM tidak ditemukan.</p>
         <button
           onClick={() => router.push("/")}
-          className="text-blue-600 hover:underline"
+          className="text-primary hover:underline"
         >
           Kembali ke UMKM
         </button>
@@ -184,16 +184,16 @@ export default function ProductPage() {
       prev.map((d) =>
         d.id === commentId
           ? {
-              ...d,
-              replies: [
-                ...d.replies,
-                {
-                  id: d.replies.length + 1,
-                  name: replyName,
-                  comment: replyText,
-                },
-              ],
-            }
+            ...d,
+            replies: [
+              ...d.replies,
+              {
+                id: d.replies.length + 1,
+                name: replyName,
+                comment: replyText,
+              },
+            ],
+          }
           : d,
       ),
     );
@@ -205,13 +205,13 @@ export default function ProductPage() {
 
   return (
     <>
-      <main className="max-w-7xl mx-auto px-4 py-12">
+      <main className="w[86vw] mx-auto px-4 py-12">
         {/* Grid Utama */}
         <div className="grid grid-cols-1 lg:grid-cols-[1.8fr_1fr] gap-8 pb-8">
           {/* Gallery Section */}
           <section className="space-y-4">
             {/* Main Image */}
-            <div className="relative bg-gray-50 rounded-3xl border border-gray-100 shadow-lg overflow-hidden h-[420px] flex items-center justify-center group">
+            <div className="relative bg-gray-50 rounded-3xl border border-gray-100 shadow-lg overflow-hidden h-105 flex items-center justify-center group">
               <Image
                 src={mainImage?.replace("./", "/") || "#"}
                 alt={product.name}
@@ -239,11 +239,10 @@ export default function ProductPage() {
                 <button
                   key={idx}
                   onClick={() => setMainImage(src)}
-                  className={`relative h-28 overflow-hidden rounded-2xl border-2 transition-all group ${
-                    mainImage === src
-                      ? "border-primary ring-4 ring-primary/20 scale-[1.02]"
-                      : "border-transparent hover:border-primary/40"
-                  }`}
+                  className={`relative h-28 overflow-hidden rounded-2xl border-2 transition-all group ${mainImage === src
+                    ? "border-primary ring-4 ring-primary/20 scale-[1.02]"
+                    : "border-transparent hover:border-primary/40"
+                    }`}
                 >
                   <Image
                     src={src.replace("./", "/")}
@@ -342,16 +341,14 @@ export default function ProductPage() {
             <div className="flex gap-3 mt-8">
               <button
                 onClick={() => toggleWishlist(product.id, product.name)}
-                className={`flex-1 py-3 rounded-2xl font-medium transition-all duration-200 flex items-center justify-center gap-2 border ${
-                  isWish
-                    ? "bg-primary/10 text-primary border-primary/20"
-                    : "bg-primary text-white border-primary hover:bg-primary/90"
-                }`}
+                className={`flex-1 py-3 rounded-2xl font-medium transition-all duration-200 flex items-center justify-center gap-2 border ${isWish
+                  ? "bg-primary/10 text-primary border-primary/20"
+                  : "bg-primary text-white border-primary hover:bg-primary/90"
+                  }`}
               >
                 <FaHeart
-                  className={`text-sm ${
-                    isWish ? "fill-primary" : "fill-white"
-                  }`}
+                  className={`text-sm ${isWish ? "fill-primary" : "fill-white"
+                    }`}
                 />
 
                 <span>{isWish ? "Tersimpan" : "Tambah Favorit"}</span>
@@ -395,11 +392,10 @@ export default function ProductPage() {
               <button
                 key={t}
                 onClick={() => setTab(t)}
-                className={`px-5 py-2 rounded-full text-sm font-semibold capitalize transition-all whitespace-nowrap ${
-                  tab === t
-                    ? "bg-primary text-white shadow-md"
-                    : "text-muted-foreground hover:bg-primary/5 hover:text-primary"
-                }`}
+                className={`px-5 py-2 rounded-full text-sm font-semibold capitalize transition-all whitespace-nowrap ${tab === t
+                  ? "bg-primary text-white shadow-md"
+                  : "text-muted-foreground hover:bg-primary/5 hover:text-primary"
+                  }`}
               >
                 {t}
               </button>
@@ -462,11 +458,10 @@ export default function ProductPage() {
                             {/* Actions */}
                             <div className="flex items-center gap-5 mt-4 text-sm">
                               <button
-                                className={`flex items-center gap-2 transition-colors ${
-                                  locked[r.id]
-                                    ? "text-blue-400 cursor-not-allowed"
-                                    : "text-muted-foreground hover:text-primary"
-                                }`}
+                                className={`flex items-center gap-2 transition-colors ${locked[r.id]
+                                  ? "text-blue-400 cursor-not-allowed"
+                                  : "text-muted-foreground hover:text-primary"
+                                  }`}
                                 disabled={locked[r.id]}
                                 onClick={() => {
                                   if (locked[r.id]) return;
@@ -487,11 +482,10 @@ export default function ProductPage() {
                               </button>
 
                               <button
-                                className={`flex items-center gap-2 transition-colors ${
-                                  locked[r.id]
-                                    ? "text-red-400 cursor-not-allowed"
-                                    : "text-muted-foreground hover:text-red-500"
-                                }`}
+                                className={`flex items-center gap-2 transition-colors ${locked[r.id]
+                                  ? "text-red-400 cursor-not-allowed"
+                                  : "text-muted-foreground hover:text-red-500"
+                                  }`}
                                 disabled={locked[r.id]}
                                 onClick={() => {
                                   if (locked[r.id]) return;
@@ -544,7 +538,7 @@ export default function ProductPage() {
                             comment: e.target.value,
                           })
                         }
-                        className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 outline-none focus:border-primary min-h-[120px]"
+                        className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 outline-none focus:border-primary min-h-30"
                       />
 
                       {/* Rating */}
@@ -557,11 +551,10 @@ export default function ProductPage() {
                           {[1, 2, 3, 4, 5].map((star) => (
                             <FaStar
                               key={star}
-                              className={`cursor-pointer text-2xl transition-colors ${
-                                newReview.rating >= star
-                                  ? "text-yellow-400"
-                                  : "text-gray-300"
-                              }`}
+                              className={`cursor-pointer text-2xl transition-colors ${newReview.rating >= star
+                                ? "text-yellow-400"
+                                : "text-gray-300"
+                                }`}
                               onClick={() =>
                                 setNewReview({
                                   ...newReview,
@@ -597,15 +590,14 @@ export default function ProductPage() {
                       {Array.from({ length: 5 }, (_, i) => (
                         <FaStar
                           key={i}
-                          className={`${
-                            i <
+                          className={`${i <
                             Math.round(
                               reviews.reduce((a, b) => a + b.rating, 0) /
-                                reviews.length,
+                              reviews.length,
                             )
-                              ? "text-yellow-400"
-                              : "text-gray-300"
-                          }`}
+                            ? "text-yellow-400"
+                            : "text-gray-300"
+                            }`}
                         />
                       ))}
                     </div>
@@ -706,7 +698,7 @@ export default function ProductPage() {
                                   placeholder="Balasan"
                                   value={replyText}
                                   onChange={(e) => setReplyText(e.target.value)}
-                                  className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 outline-none focus:border-primary min-h-[100px]"
+                                  className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 outline-none focus:border-primary min-h-25"
                                 />
 
                                 <button
@@ -814,11 +806,10 @@ export default function ProductPage() {
                 .map((item) => (
                   <div key={item.id} className="relative">
                     <button
-                      className={`absolute top-3 right-3 p-2 rounded-full transition z-10 ${
-                        wishlist.includes(item.id)
-                          ? "bg-red-100 text-red-600"
-                          : "bg-white text-gray-600 hover:bg-gray-100"
-                      }`}
+                      className={`absolute top-3 right-3 p-2 rounded-full transition z-10 ${wishlist.includes(item.id)
+                        ? "bg-red-100 text-red-600"
+                        : "bg-white text-gray-600 hover:bg-gray-100"
+                        }`}
                       onClick={() => toggleWishlist(item.id, item.name)}
                     >
                       <FaHeart />

@@ -18,9 +18,9 @@ const getDistance = (
   const a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
     Math.cos((lat1 * Math.PI) / 180) *
-      Math.cos((lat2 * Math.PI) / 180) *
-      Math.sin(dLon / 2) *
-      Math.sin(dLon / 2);
+    Math.cos((lat2 * Math.PI) / 180) *
+    Math.sin(dLon / 2) *
+    Math.sin(dLon / 2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   return R * c;
 };
@@ -77,7 +77,7 @@ export function Control() {
     <main className="max-w-7xl mx-auto px-4 md:px-8 py-10 pb-28 mt-3 space-y-10">
       <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* === LEFT LIST === */}
-        <div className="bg-white rounded-3xl shadow-md p-4 flex flex-col md:col-span-1 h-[75vh] min-h-[75vh]">
+        <div className="bg-white rounded-3xl shadow-md p-4 flex flex-col md:col-span-1 h-[75dvh] min-h-[75dvh]">
           {/* Search */}
           <div className="flex items-center mb-4 gap-3">
             <div className="w-full">
@@ -87,7 +87,7 @@ export function Control() {
                   placeholder="Cari UMKM atau jasa..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className="px-4 py-3 border border-gray-200 rounded-2xl text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all w-[300px]"
+                  className="px-4 py-3 border border-gray-200 rounded-2xl text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all w-75"
                 />
               </div>
             </div>
@@ -139,11 +139,10 @@ export function Control() {
                   <div
                     key={item.id}
                     onClick={() => handleItemClick(item)}
-                    className={`flex items-center gap-3 p-3 min-h-[92px] rounded-2xl border-2 transition-all cursor-pointer ${
-                      activeItem === item.id
-                        ? "border-primary bg-primary/5"
-                        : "border-transparent hover:bg-primary/5"
-                    }`}
+                    className={`flex items-center gap-3 p-3 min-h-[92px] rounded-2xl border-2 transition-all cursor-pointer ${activeItem === item.id
+                      ? "border-primary bg-primary/5"
+                      : "border-transparent hover:bg-primary/5"
+                      }`}
                   >
                     {/* Thumbnail */}
                     <div className="w-16 h-16 flex-shrink-0 overflow-hidden rounded-xl bg-gray-100">
@@ -193,7 +192,7 @@ export function Control() {
         </div>
 
         {/* === MAP AREA === */}
-        <div className="rounded-3xl overflow-hidden shadow-md border border-gray-100 md:col-span-2 h-[75vh] min-h-[75vh]">
+        <div className="rounded-3xl overflow-hidden shadow-md border border-gray-100 md:col-span-2 h-[75dvh] min-h-[75dvh]">
           {geo ? (
             <LeafletMap
               ref={mapRef}

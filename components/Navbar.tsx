@@ -30,6 +30,10 @@ function Navbar() {
       document.body.style.overflow = "";
     };
   }, [isSidebarOpen]);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsSidebarOpen(false);
+  }, [path]);
   return (
     <>
       <header className="sticky top-0 z-999 w-full">
@@ -115,16 +119,20 @@ function Navbar() {
           <section className={cn("z-50")}>
             <ul className="flex flex-col gap-6 text-lg font-medium">
               <li>
-                <Link href="/">Beranda</Link>
+                <Link
+                  href="/">Beranda</Link>
               </li>
               <li>
-                <Link href="/explore">Explore</Link>
+                <Link
+                  href="/explore">Explore</Link>
               </li>
               <li>
-                <Link href="/about">About</Link>
+                <Link
+                  href="/about">About</Link>
               </li>
               <li>
-                <Link href="/article">Article</Link>
+                <Link
+                  href="/article">Article</Link>
               </li>
             </ul>
           </section>
@@ -176,9 +184,10 @@ function Navbar() {
               .split("/")
               .filter(Boolean)
               .map((item, i, arr) => (
-                <>
-                  <BreadcrumbSeparator />
-
+                <div key={i} className="flex items-center gap-2">
+                  <BreadcrumbSeparator>
+                    <FaChevronLeft size={25} />
+                  </BreadcrumbSeparator>
                   {i === arr.length - 1 ? (
                     <BreadcrumbPage className="text-[1.375rem] font-semibold text-foreground">
                       {item.charAt(0).toUpperCase() + item.slice(1)}
@@ -193,7 +202,7 @@ function Navbar() {
                       </Link>
                     </BreadcrumbLink>
                   )}
-                </>
+                </div>
               ))}
           </BreadcrumbList>
         </Breadcrumb>
