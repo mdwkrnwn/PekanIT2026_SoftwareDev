@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import ThemeSwitcher from "./ThemetogglerBtn";
-import { FaChevronLeft, FaHeart } from "react-icons/fa";
+import ThemeSwitcher from "./ThemeSwitcher";
+import { FaHeart } from "react-icons/fa";
 import { LuMousePointer2 } from "react-icons/lu";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -34,7 +34,7 @@ function Navbar() {
     <>
       <header className="sticky top-0 z-999 w-full">
         <div className="sm:flex hidden bg-background justify-center shadow-[#A9A1A140] shadow-md ">
-          <nav className="grid grid-cols-[1fr_1fr_3fr] justify-center items-center w-[80vw]">
+          <nav className="grid grid-cols-[1fr_1fr_3fr] justify-center items-center w-[86vw]">
             <section className="flex items-center">
               <Image
                 loading="eager"

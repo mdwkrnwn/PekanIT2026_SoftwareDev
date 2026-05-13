@@ -71,7 +71,7 @@ export default function ExplorePage() {
   }, [debounce, activeCategory]);
 
   return (
-    <div className="w-[80vw]">
+    <div className="w-[86vw]">
       {/* Search & Category */}
       <section>
         {/* Search */}
@@ -119,8 +119,8 @@ export default function ExplorePage() {
             <div key={item.id} className="relative">
               <button
                 className={`absolute top-3 right-3 p-2 rounded-full transition z-10 ${wishlist.includes(item.id)
-                    ? "bg-red-100 text-red-600"
-                    : "bg-white text-gray-600 hover:bg-gray-100"
+                  ? "bg-red-100 text-red-600"
+                  : "bg-white text-gray-600 hover:bg-gray-100"
                   }`}
                 onClick={() => toggleWishlist(item.id, item.name)}
               >
@@ -196,7 +196,7 @@ export default function ExplorePage() {
       )}
 
       {/* CTA Section */}
-      <section className="bg-primary relative mt-20 overflow-hidden rounded-[2rem] bg-gradient-to-r from-primary to-primary-foreground text-white">
+      <section className="bg-primary relative mt-20 overflow-hidden rounded-[2rem] bg-linear-to-r from-primary to-primary-foreground text-white">
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center px-8 lg:px-16 py-12">
           {/* Text */}
           <div className="z-10 space-y-5">
@@ -226,7 +226,7 @@ export default function ExplorePage() {
               alt="Explore"
               width={1106}
               height={738}
-              className="h-[420px] w-auto object-contain"
+              className="h-105 w-auto object-contain"
             />
           </div>
         </div>
