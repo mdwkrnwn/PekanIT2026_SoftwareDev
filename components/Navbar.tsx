@@ -176,7 +176,7 @@ function Navbar() {
               .split("/")
               .filter(Boolean)
               .map((item, i, arr) => (
-                <div key={i} className="flex items-center gap-2">
+                <>
                   <BreadcrumbSeparator />
 
                   {i === arr.length - 1 ? (
@@ -193,7 +193,7 @@ function Navbar() {
                       </Link>
                     </BreadcrumbLink>
                   )}
-                </div>
+                </>
               ))}
           </BreadcrumbList>
         </Breadcrumb>

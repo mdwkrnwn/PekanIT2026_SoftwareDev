@@ -168,13 +168,13 @@ export function HeroBanner() {
         </div>
 
         {/* RIGHT */}
-        <div className="relative flex w-full flex-1 items-center justify-center">
-          <Image src={'/home2.png'} width={1000} height={1000} alt="phone" />
+        <div className="relative flex w-full flex-1 top-15 items-center justify-center mask-[linear-gradient(to_top,rgba(0,0,0,0)_0%,rgba(0,0,0,0)_15%,rgba(0,0,0,1)_30%,rgba(0,0,0,1)_100%)] scale-125">
+          <Image src={'/home2.png'} width={1000} height={1000} className="" alt="phone" />
         </div>
       </div>
 
       {/* Stats */}
-      <div className="mx-auto mt-16 grid grid-cols-1 gap-6 rounded-[2rem] bg-white p-8 shadow-xl md:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto mt-16 grid grid-cols-1 gap-6 rounded-[2rem] bg-white p-8 outline-1 outline-border md:grid-cols-2 lg:grid-cols-4">
         {stats.map((item, index) => (
           <div
             key={index}
