@@ -10,11 +10,11 @@ export default function AboutPage() {
   return (
     <section className="w-[86vw] grid gap-8 lg:grid-cols-2">
       <div className="border-border flex flex-col justify-center rounded-[2rem] border p-10 lg:p-14">
-        <h1 className="text-foreground mb-8 text-6xl font-bold leading-tight">
+        <h1 className="text-foreground md:text-6xl mb-8 text-3xl font-bold leading-tight">
           Mendukung UMKM Lokal Lewat Solusi Digital
         </h1>
 
-        <p className="text-muted-foreground max-w-xl mb-10 text-xl leading-relaxed">
+        <p className="text-muted-foreground md:text-xl mb-10 leading-relaxed">
           UFinder hadir untuk membantu masyarakat menemukan UMKM lokal
           terbaik dengan cara yang lebih mudah, cepat, dan modern.
           Kami percaya setiap usaha kecil punya potensi besar jika
@@ -27,7 +27,7 @@ export default function AboutPage() {
         </Link>
       </div>
 
-      <div className="border-border relative overflow-hidden rounded-[2rem] border p-8">
+      <div className="border-border relative overflow-hidden rounded-[2rem] border p-8 lg:block hidden">
         <div className="relative w-full h-full">
           <Image
             src="/About.png"
@@ -72,7 +72,6 @@ export default function AboutPage() {
         <div className="md:grid-cols-2 md:grid-rows-2 grid h-full">
           {statistics.map((stat, index) => {
             const Icon = stat.icon;
-
             return (
               <div
                 key={stat.title}
@@ -84,15 +83,15 @@ export default function AboutPage() {
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <h3 className="text-foreground text-5xl font-bold">
+                  <h3 className="text-foreground md:text-5xl text-3xl font-bold">
                     {stat.title}
                   </h3>
 
-                  <p className="text-foreground text-2xl font-semibold">
+                  <p className="text-foreground md:text-2xl text-xl font-semibold">
                     {stat.subtitle}
                   </p>
 
-                  <p className="text-foreground wrap-break-word text-lg">
+                  <p className="text-foreground wrap-break-word md:text-lg">
                     {stat.description}
                   </p>
                 </div>
