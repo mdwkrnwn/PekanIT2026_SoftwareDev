@@ -1,7 +1,10 @@
 import {
+  FaBagShopping,
   FaBottleWater,
   FaLocationDot,
+  FaShirt,
   FaStore,
+  FaWandMagicSparkles,
 } from "react-icons/fa6";
 import { FaBorderAll, FaCoffee, FaGamepad, FaHeart, FaMugHot, FaSearch, FaStar, FaUsers, FaUtensils } from "react-icons/fa";
 
@@ -224,6 +227,18 @@ export const categoriesMerchant = [
   {
     name: "Minuman",
     icon: FaBottleWater,
+  },
+  {
+    name: "Toko Kelontong",
+    icon: FaBagShopping,
+  },
+  {
+    name: "Jasa",
+    icon: FaWandMagicSparkles,
+  },
+  {
+    name: "Fashion",
+    icon: FaShirt,
   },
 ];
 

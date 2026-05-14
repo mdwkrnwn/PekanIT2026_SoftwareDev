@@ -83,37 +83,37 @@ export function HeroBanner() {
 
   return (
     <section className="relative w-[86vw] mt-10">
-      <div className="flex w-full flex-col items-center justify-between gap-14 lg:flex-row">
+      <div className="gap-14 lg:flex-row flex flex-col items-center justify-between w-full">
         {/* LEFT */}
         <div className="z-10 flex-1">
           {/* Badge */}
-          <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-blue-100 bg-white px-5 py-3 shadow-sm">
-            <div className="flex size-8 items-center justify-center rounded-full bg-blue-100 text-primary">
+          <div className="inline-flex items-center gap-3 px-5 py-3 mb-8 bg-white border border-blue-100 rounded-full shadow-sm">
+            <div className="size-8 text-primary flex items-center justify-center bg-blue-100 rounded-full">
               <FaHeart />
             </div>
 
-            <span className="text-sm font-medium text-slate-700 md:text-base">
+            <span className="text-slate-700 md:text-base text-sm font-medium">
               Dukung Lokal, Bangun Negeri
             </span>
           </div>
 
           {/* Heading */}
-          <h1 className="text-3xl font-bold tracking-tight text-black md:text-7xl">
+          <h1 className="md:text-7xl text-3xl font-bold tracking-tight text-black">
             Cari UMKM keren,
             <span className="text-primary"> dukung lokal</span> bareng!
           </h1>
 
           {/* Description */}
-          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-slate-500 md:text-xl">
+          <p className="text-slate-500 md:text-xl max-w-2xl mt-8 text-lg leading-relaxed">
             Dari usaha rumahan sampai produk lokal favorit banyak orang,
             semua ada di UFinder dan temukan dengan lebih mudah di sini.
           </p>
 
           {/* Categories */}
-          <div className="mt-10 flex flex-wrap items-center gap-6">
+          <div className="flex flex-wrap items-center gap-6 mt-10">
             {categories.map((item) => (
-              <a
-                href="merchant"
+              <Link
+                href={"merchant?category=" + item.label.replace(" ", "+")}
                 key={item.label}
                 className={`flex items-center gap-3 rounded-full border px-6 py-3 text-sm font-semibold transition-all md:text-base ${item.active
                   ? "border-primary bg-primary text-white"
@@ -124,21 +124,21 @@ export function HeroBanner() {
                   {item.icon}
                 </span>
                 {item.label}
-              </a>
+              </Link>
             ))}
           </div>
 
           {/* Features */}
-          <div className="mt-12 flex flex-col gap-8 md:flex-row md:items-start">
+          <div className="md:flex-row md:items-start flex flex-col gap-8 mt-12">
             {features.map((item) => (
-              <div key={item.title} className={cn("flex items-start gap-4 last:border-none"
-                , "md:border-r-2 md:border-border md:border-solid")}>
+              <div key={item.title} className={cn("flex items-start gap-4"
+              )}>
                 <div className="flex *:size-10 size-18 shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary shadow-md">
                   {item.icon}
                 </div>
 
                 <div>
-                  <h4 className="font-semibold text-slate-800">
+                  <h4 className="text-slate-800 font-semibold">
                     {item.title}
                   </h4>
 
@@ -168,7 +168,7 @@ export function HeroBanner() {
         </div>
 
         {/* RIGHT */}
-        <div className="relative flex w-full flex-1 top-15 items-center justify-center mask-[linear-gradient(to_top,rgba(0,0,0,0)_0%,rgba(0,0,0,0)_15%,rgba(0,0,0,1)_30%,rgba(0,0,0,1)_100%)] scale-125">
+        <div className="relative xl:flex w-full flex-1 top-15 items-center justify-center mask-[linear-gradient(to_top,rgba(0,0,0,0)_0%,rgba(0,0,0,0)_15%,rgba(0,0,0,1)_30%,rgba(0,0,0,1)_100%)] scale-125 hidden">
           <Image src={'/home2.png'} width={1000} height={1000} className="" alt="phone" />
         </div>
       </div>
@@ -178,18 +178,18 @@ export function HeroBanner() {
         {stats.map((item, index) => (
           <div
             key={index}
-            className="flex items-center gap-5 border-border last:border-none lg:border-r"
+            className="border-border last:border-none lg:border-r flex items-center gap-5"
           >
-            <div className="flex size-16 items-center justify-center rounded-full bg-blue-50 text-2xl text-primary">
+            <div className="size-16 bg-blue-50 text-primary flex items-center justify-center text-2xl rounded-full">
               {item.icon}
             </div>
 
             <div>
-              <h4 className="text-2xl font-bold text-primary">
+              <h4 className="text-primary text-2xl font-bold">
                 {item.value}
               </h4>
 
-              <p className="mt-1 text-slate-500">{item.label}</p>
+              <p className="text-slate-500 mt-1">{item.label}</p>
             </div>
           </div>
         ))}
