@@ -12,7 +12,7 @@ import {
 function Footer() {
   return (
     <footer className='w-full md:mb-0 mb-20 grid md:px-0 px-4 md:grid-cols-[2fr_4fr] md:w-[86vw]'>
-      <section className='grid grid-cols-4 grid-rows-[repeat(3,1fr)]'>
+      <section className='grid grid-cols-4 place-content-center lg:place-content-start grid-rows-[repeat(3,1fr)]'>
         <div className='flex items-center col-span-4 -ml-4'>
           <Image loading='eager' height={1000} width={1000} className="max-w-24 max-h-24" src={'/UFLogo.png'} alt="logo" />
           <span className="text-primary text-[1.375rem] font-bold">
@@ -23,7 +23,7 @@ function Footer() {
           <p className='text-lg'>Platform digital untuk menemukan <br />
             dan mendukung UMKM lokal terbaik.</p>
         </div>
-        <div className='col-span-4 *:rounded-full h-fit w-fit *:outline-1 *:p-4 *:outline-primary flex-wrap gap-y-2 items-center justify-center flex *:*:fill-primary gap-4.5 md:gap-8'>
+        <div className={cn('col-span-4 size-fit flex-wrap gap-y-2 items-center justify-center flex gap-3 xl:gap-8', '*:rounded-full *:outline-1 *:p-4 *:outline-primary', '*:*:fill-primary')}>
           <span>
             <FaSquareInstagram size={25} />
           </span>
@@ -86,10 +86,10 @@ function Footer() {
 
           <AccordionContent>
             <ul className="space-y-2">
-              <li className="text-lg text-accent-foreground">Beranda</li>
-              <li className="text-lg text-accent-foreground">Explore</li>
-              <li className="text-lg text-accent-foreground">Favorit</li>
-              <li className="text-lg text-accent-foreground">About</li>
+              <li className="text-accent-foreground text-lg">Beranda</li>
+              <li className="text-accent-foreground text-lg">Explore</li>
+              <li className="text-accent-foreground text-lg">Favorit</li>
+              <li className="text-accent-foreground text-lg">About</li>
             </ul>
           </AccordionContent>
         </AccordionItem>
@@ -101,14 +101,14 @@ function Footer() {
 
           <AccordionContent>
             <ul className="space-y-2">
-              <li className="text-lg text-accent-foreground">FAQ</li>
-              <li className="text-lg text-accent-foreground">
+              <li className="text-accent-foreground text-lg">FAQ</li>
+              <li className="text-accent-foreground text-lg">
                 Pusat Bantuan
               </li>
-              <li className="text-lg text-accent-foreground">
+              <li className="text-accent-foreground text-lg">
                 Syarat & Ketentuan
               </li>
-              <li className="text-lg text-accent-foreground">
+              <li className="text-accent-foreground text-lg">
                 Kebijakan Privasi
               </li>
             </ul>
@@ -122,13 +122,13 @@ function Footer() {
 
           <AccordionContent>
             <ul className="space-y-2">
-              <li className="text-lg text-accent-foreground">
+              <li className="text-accent-foreground text-lg">
                 Daftarkan Usahamu
               </li>
-              <li className="text-lg text-accent-foreground">
+              <li className="text-accent-foreground text-lg">
                 Panduan UMKM
               </li>
-              <li className="text-lg text-accent-foreground">
+              <li className="text-accent-foreground text-lg">
                 Tips & Edukasi
               </li>
             </ul>
@@ -142,13 +142,13 @@ function Footer() {
 
           <AccordionContent>
             <ul className="space-y-2">
-              <li className="text-lg text-accent-foreground">
+              <li className="text-accent-foreground text-lg">
                 ufinder@gmail.com
               </li>
-              <li className="text-lg text-accent-foreground">
+              <li className="text-accent-foreground text-lg">
                 000-0000-000
               </li>
-              <li className="text-lg text-accent-foreground">
+              <li className="text-accent-foreground text-lg">
                 Indonesia
               </li>
             </ul>
