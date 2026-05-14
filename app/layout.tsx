@@ -32,7 +32,7 @@ export default function RootLayout({
       <body className="relative flex flex-col items-center min-h-screen overflow-x-hidden" >
         <ThemeProviders>
           <Navbar />
-          <main className="mb-23 flex flex-col items-center flex-1">
+          <main className="flex flex-col items-center flex-1 mb-12">
             {children}
           </main>
           <Footer />

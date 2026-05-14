@@ -1,3 +1,4 @@
+import { ARTICLES } from "@/data/ARTIKEL";
 import Image from "next/image";
 import {
   FaUser,
@@ -6,7 +7,7 @@ import {
 } from "react-icons/fa";
 import { FaShareNodes } from "react-icons/fa6";
 
-export function Content({ article }: any) {
+export function Content({ article }: { article: typeof ARTICLES[number] }) {
   return (
     <article>
       {/* Category */}
@@ -25,7 +26,7 @@ export function Content({ article }: any) {
       </p>
 
       {/* Author */}
-      <div className="flex items-center flex-wrap justify-between mt-10">
+      <div className="flex items-center md:flex-row flex-col justify-between mt-10 gap-y-4">
         <div className="flex items-center gap-4">
           <div className="bg-primary/10 size-16 flex items-center justify-center rounded-full">
             <FaUser className="text-primary" size={22} />
@@ -43,7 +44,7 @@ export function Content({ article }: any) {
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-4 *:cursor-pointer">
+        <div className="flex items-center md:gap-4 w-full md:w-fit justify-between">
           <button className="border-primary hover:bg-primary hover:text-white size-16 text-primary flex items-center justify-center transition-colors border rounded-full">
             <FaHeart size={25} />
           </button>
@@ -71,7 +72,7 @@ export function Content({ article }: any) {
       {/* Content List */}
       <div className="mt-10">
         <div className="flex flex-col gap-10 mt-12">
-          {article.content.map((item: any, index: number) => (
+          {article.content.map((item, index) => (
             <div key={index} className="flex gap-6">
               <div className="bg-primary/10 size-18 shrink-0 flex items-center justify-center rounded-full">
                 <span className="text-primary text-2xl font-bold">

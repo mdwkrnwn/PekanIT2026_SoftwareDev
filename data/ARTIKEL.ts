@@ -48,6 +48,7 @@ export const ARTICLES = [
     ],
 
     relatedArticles: [2, 3, 6, 5],
+    createdAt: "14 May 2026"
   },
 
   {
@@ -91,6 +92,7 @@ export const ARTICLES = [
     ],
 
     relatedArticles: [1, 3, 4, 6],
+    createdAt: "14 May 2026"
   },
 
   {
@@ -133,6 +135,7 @@ export const ARTICLES = [
     ],
 
     relatedArticles: [1, 2, 5, 6],
+    createdAt: "14 May 2026"
   },
 
   {
@@ -173,6 +176,7 @@ export const ARTICLES = [
     ],
 
     relatedArticles: [2, 5, 1, 6],
+    createdAt: "14 May 2026"
   },
 
   {
@@ -214,6 +218,7 @@ export const ARTICLES = [
     ],
 
     relatedArticles: [1, 4, 3, 6],
+    createdAt: "14 May 2026"
   },
 
   {
@@ -252,6 +257,7 @@ export const ARTICLES = [
     ],
 
     relatedArticles: [1, 2, 3, 5],
+    createdAt: "14 May 2026"
   },
   {
     id: 7,
@@ -295,6 +301,7 @@ export const ARTICLES = [
     ],
 
     relatedArticles: [1, 2, 5, 8],
+    createdAt: "14 May 2026"
   },
 
   {
@@ -339,5 +346,6 @@ export const ARTICLES = [
     ],
 
     relatedArticles: [1, 3, 6, 7],
+    createdAt: "14 May 2026"
   },
 ];

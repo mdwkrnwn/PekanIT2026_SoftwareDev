@@ -4,13 +4,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { BsWhatsapp, BsLink45Deg } from "react-icons/bs";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
+import { popularArticles as popularArticle } from "@/lib/mockData";
+import { ARTICLES } from "@/data/ARTIKEL";
 
 export function Sidebar({
   popularArticles,
   relatedArticles,
 }: {
-  popularArticles: any[];
-  relatedArticles: any[];
+  popularArticles: typeof popularArticle;
+  relatedArticles: typeof ARTICLES;
 }) {
   return (
     <aside className="space-y-8">
@@ -18,7 +20,7 @@ export function Sidebar({
       <div className="border-border rounded-[2rem] border p-8">
         <h2 className="md:text-3xl text-xl font-semibold">Bagikan Artikel</h2>
 
-        <div className="md:flex grid grid-cols-2 items-center gap-4 mt-8">
+        <div className="md:flex grid items-center grid-cols-2 gap-4 mt-8">
           <button className="border-primary text-primary hover:bg-primary hover:text-white size-16 flex items-center justify-center border rounded-full">
             <FaFacebookF size={22} />
           </button>
@@ -44,31 +46,31 @@ export function Sidebar({
 
       {/* Related Articles */}
       <div className="border-border rounded-[2rem] border p-6">
-        <h2 className="text-3xl font-semibold mb-6">
+        <h2 className="mb-6 text-3xl font-semibold">
           Artikel Terkait
         </h2>
 
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col">
           {relatedArticles.map((article) => (
             <Link
               href={`/article/${article.id}`}
               key={article?.id}
-              className="flex gap-4 hover:shadow-md rounded-2xl p-2"
+              className="md:flex hover:shadow-md rounded-2xl grid grid-cols-2 gap-4 py-2"
             >
-              <div className="relative w-20 h-20 rounded-xl overflow-hidden">
+              <div className="rounded-xl relative w-full h-auto overflow-hidden">
                 <Image
                   src={article.thumbnail}
                   alt={article.title}
                   fill
-                  className="object-cover"
+                  className=" object-cover"
                 />
               </div>
 
               <div>
-                <h3 className="font-semibold line-clamp-2">
+                <h3 className="line-clamp-2 font-semibold">
                   {article.title}
                 </h3>
-                <p className="text-sm text-muted-foreground mt-2">
+                <p className="text-muted-foreground mt-2 text-sm">
                   {article.readTime}
                 </p>
               </div>
@@ -79,18 +81,18 @@ export function Sidebar({
 
       {/* Popular Articles */}
       <div className="border-border rounded-[2rem] border p-6">
-        <h2 className="text-3xl font-semibold mb-6">
+        <h2 className="mb-6 text-3xl font-semibold">
           Artikel Populer
         </h2>
 
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col">
           {popularArticles.map((article) => (
             <Link
               href={`/article/${article.id}`}
               key={article.id}
-              className="flex gap-4 hover:shadow-md rounded-2xl p-2"
+              className="md:flex hover:shadow-md rounded-2xl grid grid-cols-2 gap-4 py-2"
             >
-              <div className="relative w-20 h-20 rounded-xl overflow-hidden">
+              <div className="rounded-xl relative w-full h-auto overflow-hidden">
                 <Image
                   src={article.image}
                   alt={article.title}
@@ -100,11 +102,11 @@ export function Sidebar({
               </div>
 
               <div>
-                <h3 className="font-semibold line-clamp-2">
+                <h3 className="line-clamp-2 font-semibold">
                   {article.title}
                 </h3>
-                <p className="text-sm text-muted-foreground mt-2">
-                  {article.readTime}
+                <p className="text-muted-foreground mt-2 text-sm">
+                  {article.readTime} Menit
                 </p>
               </div>
             </Link>

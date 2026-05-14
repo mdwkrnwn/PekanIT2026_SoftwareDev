@@ -5,7 +5,7 @@ import { FaRegClock } from "react-icons/fa6";
 
 export default function Articles() {
   return (
-    <div className="w-[86vw] mx-auto">
+    <div className="w-[86vw]">
       <h3 className="text-primary mb-8 text-3xl font-bold">
         Cerita & Tips Pilihan
       </h3>
