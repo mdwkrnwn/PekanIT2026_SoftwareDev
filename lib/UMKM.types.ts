@@ -1,68 +1,24 @@
-export type UMKMCategory =
-  | "Makanan"
-  | "Fashion"
-  | "Jasa"
-  | "Kerajinan"
-  | "Lainnya";
-
-export interface UMKM {
-  id: number;
-  slug: string;
-
-  name: string;
-  category: UMKMCategory;
-
-  description: string;
-  about?: string;
-
-  thumbnail: string;
-  gallery: string[];
-
-  address: string;
-  city: string;
-  province: string;
-
-  latitude: number;
-  longitude: number;
-
-  mapsUrl?: string;
-  embedMapUrl?: string;
-
-  rating: number;
-  totalReviews: number;
-
-  likes: number;
-  dislikes: number;
-
-  tags: string[];
-
-  status?: "Buka" | "Tutup";
-  openHours?: string;
-
-  distanceKm?: number;
-
-  createdAt: string;
-  updatedAt: string;
+export interface typeUMKM {
+  id: number
+  name: string
+  category: string
+  description: string
+  location: string
+  rating: number
+  reviews: number
+  distance: string
+  status: string
+  openHours: string
+  lat: number
+  lng: number
+  tags: string[]
+  about: string
+  gallery: string[]
+  featuredMenus: typeFeaturedMenu[]
 }
 
-export interface Review {
-  id: number;
-  umkmId: number;
-
-  author: string;
-  comment: string;
-
-  rating: number;
-
-  createdAt: string;
-}
-
-export interface Discussion {
-  id: number;
-  umkmId: number;
-
-  author: string;
-  comment: string;
-
-  createdAt: string;
+export interface typeFeaturedMenu {
+  name: string
+  price: number
+  image: string
 }

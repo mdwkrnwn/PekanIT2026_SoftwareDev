@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { useState, useMemo, useEffect } from "react";
-import { UMKM } from "@/data/UMKM.dummy";
+import { UMKM } from "@/data/UMKM";
 import {
   FaHeart,
   FaMapMarkerAlt,
@@ -19,6 +19,7 @@ import { LuMapPin } from "react-icons/lu";
 import { MdOutlineFoodBank, MdAttachMoney, MdVerified } from "react-icons/md";
 import { cn } from "@/lib/utils";
 import { categoryBadgeColor } from "@/lib/mockData";
+import { discussionAndReviews } from "@/data/DiscussionAndReviews";
 
 export default function ProductPage() {
   const router = useRouter();
@@ -27,7 +28,7 @@ export default function ProductPage() {
 
   const product = useMemo(() => UMKM.find((u) => u.id === umkmId), [umkmId]);
   const [mainImage, setMainImage] = useState(
-    product?.gallery?.[0] || product?.image,
+    product?.gallery?.[0],
   );
   const [wishlist, setWishlist] = useState<number[]>([]);
   const [tab, setTab] = useState("reviews");
@@ -35,13 +36,10 @@ export default function ProductPage() {
   const [likes, setLikes] = useState<Record<number, number>>({});
   const [dislikes, setDislikes] = useState<Record<number, number>>({});
   const [locked, setLocked] = useState<Record<number, boolean>>({});
-
-  const [discussion, setDiscussion] = useState<DiscussionItem[]>(() =>
-    (product?.discussion ?? []).map((d) => ({
-      ...d,
-      replies: Array.isArray(d.replies) ? d.replies : [],
-    })),
-  );
+  const review = discussionAndReviews.find(umkmId => umkmId == umkmId)?.reviews
+  const [reviews, setReviews] = useState(review)
+  const discussions = discussionAndReviews.find(umkmId => umkmId == umkmId)?.discussion
+  const [discussion, setDiscussion] = useState(discussions)
 
   const [replyTarget, setReplyTarget] = useState<number | null>(null);
   const [replyText, setReplyText] = useState("");
@@ -96,7 +94,6 @@ export default function ProductPage() {
     return base.filter((u) => u.name.toLowerCase());
   }, [product]);
 
-  const [reviews, setReviews] = useState(product?.reviews || []);
   const [newReview, setNewReview] = useState({
     name: "",
     comment: "",
@@ -124,7 +121,7 @@ export default function ProductPage() {
     if (!newReview.name || !newReview.comment || newReview.rating === 0) return;
 
     const reviewToAdd = {
-      id: reviews.length + 1,
+      id: reviews.length + 1 || 1,
       ...newReview,
     };
 
@@ -188,7 +185,7 @@ export default function ProductPage() {
             replies: [
               ...d.replies,
               {
-                id: d.replies.length + 1,
+                id: d.replies?.length + 1,
                 name: replyName,
                 comment: replyText,
               },
@@ -203,9 +200,13 @@ export default function ProductPage() {
     setReplyText("");
   };
 
+
+  const rating = (review?.reduce((sum, rating) => sum + rating.rating, 0) / review?.length).toFixed(1)
+
+
   return (
     <>
-      <main className="w[86vw] mx-auto px-4 py-12">
+      <main className="w-[86vw] py-12">
         {/* Grid Utama */}
         <div className="grid grid-cols-1 lg:grid-cols-[1.8fr_1fr] gap-8 pb-8">
           {/* Gallery Section */}
@@ -215,9 +216,9 @@ export default function ProductPage() {
               <Image
                 src={mainImage?.replace("./", "/") || "#"}
                 alt={product.name}
-                width={800}
-                height={800}
-                className="object-contain max-h-full w-full p-6 transition-transform duration-500 group-hover:scale-105"
+                width={1000}
+                height={1000}
+                className="object-cover max-h-full w-full transition-transform duration-500 group-hover:scale-105"
               />
 
               {/* Gradient Overlay */}
@@ -226,15 +227,14 @@ export default function ProductPage() {
               {/* Floating Rating */}
               <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-md flex items-center gap-2">
                 <FaStar className="text-yellow-400" />
-                <span className="font-semibold text-sm">4.5 (20 ulasan)</span>
+                <span className="font-semibold text-sm">{rating} ({review?.length} ulasan)</span>
               </div>
             </div>
 
             {/* Thumbnail Gallery */}
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {(product.gallery?.length
-                ? product.gallery
-                : [product.image]
+                && product.gallery
               ).map((src, idx) => (
                 <button
                   key={idx}
@@ -280,7 +280,7 @@ export default function ProductPage() {
                 </h1>
 
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Restoran • Masakan Rumahan
+                  {product.category}
                 </p>
               </div>
 
@@ -292,7 +292,7 @@ export default function ProductPage() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <span className="px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold">
+                  <span className={cn("px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold")}>
                     Buka Sekarang
                   </span>
 
@@ -353,28 +353,28 @@ export default function ProductPage() {
 
                 <span>{isWish ? "Tersimpan" : "Tambah Favorit"}</span>
               </button>
-              <button
-                onClick={() => router.push(product?.mapsUrl)}
+              <Link
+                href={"https://www.google.com/maps/search/" + product?.lat + "," + product.lng}
+                target="_blank"
                 className="flex-1 border border-primary text-primary hover:bg-primary/5 font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2"
               >
                 <LuMapPin size={18} />
                 Lihat Map
-              </button>
+              </Link>
             </div>
           </aside>
-        </div>
+        </div >
 
         <section id="maps-section" className="mt-14 z-0 scroll-mt-25">
           <div className="rounded-3xl z-0 overflow-hidden shadow-md border border-gray-100">
-            {product.siteMap ? (
+            {product.location ? (
               <iframe
-                src={product.siteMap}
+                src={"http://www.google.com/maps/search/" + product?.lat + "," + product.lng}
                 width="100%"
                 height="400"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             ) : (
               <p className="text-gray-500 text-center mt-20">
@@ -547,7 +547,7 @@ export default function ProductPage() {
                           Rating
                         </label>
 
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center justify-between gap-2">
                           {[1, 2, 3, 4, 5].map((star) => (
                             <FaStar
                               key={star}
@@ -568,7 +568,7 @@ export default function ProductPage() {
 
                       <button
                         onClick={handleAddReview}
-                        className="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-2xl font-semibold transition-all shadow-md"
+                        className="bg-primary w-full hover:bg-primary/90 text-white px-6 py-3 rounded-2xl font-semibold transition-all shadow-md"
                       >
                         Kirim Review
                       </button>
@@ -712,9 +712,9 @@ export default function ProductPage() {
                           )}
 
                           {/* Replies */}
-                          {d.replies.length > 0 && (
+                          {d.replies?.length > 0 && (
                             <div className="mt-5 pl-5 border-l-2 border-primary/10 space-y-4">
-                              {d.replies.map((r) => (
+                              {d.replies?.map((r) => (
                                 <div key={r.id} className="flex gap-3">
                                   <Image
                                     width={100}
@@ -862,7 +862,7 @@ export default function ProductPage() {
             </div>
           )}
         </section>
-      </main>
+      </main >
     </>
   );
 }

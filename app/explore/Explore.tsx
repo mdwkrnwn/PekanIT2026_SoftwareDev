@@ -5,21 +5,10 @@ import { categoryBadgeColor } from "@/lib/mockData";
 import { FaLocationDot, FaStar } from "react-icons/fa6";
 import SearchFilter from "./SearchFilter";
 import WishlistCard from "./WishlistCard";
-
-// Define the type based on your dummy data structure
-type UMKMItem = {
-  id: number;
-  name: string;
-  description: string;
-  category: keyof typeof categoryBadgeColor;
-  gallery: string[];
-  address: string;
-  rating: number;
-  reviews: any[];
-};
+import { typeUMKM } from "@/lib/UMKM.types";
 
 interface MainExploreProps {
-  filteredUMKM: UMKMItem[];
+  filteredUMKM: typeUMKM[];
   search: string;
   category: string;
 }
@@ -68,7 +57,7 @@ export default function MainExplore({ filteredUMKM, search, category }: MainExpl
 
                     <div className="text-black flex items-center gap-2 mb-4 text-sm">
                       <FaLocationDot size={14} />
-                      <span>{item.address}</span>
+                      <span>{item.location}</span>
                     </div>
 
                     <div className="flex items-center justify-between text-sm">
@@ -78,7 +67,7 @@ export default function MainExplore({ filteredUMKM, search, category }: MainExpl
                           {item.rating}
                         </span>
                         <span className="text-muted-foreground">
-                          ({item.reviews.length})
+                          ({item.reviews})
                         </span>
                       </div>
 
