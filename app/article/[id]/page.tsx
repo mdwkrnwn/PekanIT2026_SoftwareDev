@@ -23,7 +23,7 @@ export default async function ArticlePage({
   );
 
   return (
-    <section className="w-[86vw] grid gap-10 lg:grid-cols-[2fr_1fr]">
+    <section className="w-[80vw] grid gap-10 lg:grid-cols-[2fr_1fr]">
       <Content article={article} />
       <Sidebar
         popularArticles={popularArticles}
