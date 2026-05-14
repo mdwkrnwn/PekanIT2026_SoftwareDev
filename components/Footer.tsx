@@ -23,7 +23,7 @@ function Footer() {
           <p className='text-lg'>Platform digital untuk menemukan <br />
             dan mendukung UMKM lokal terbaik.</p>
         </div>
-        <div className='*:rounded-full h-fit w-fit *:outline-1 *:p-4 *:outline-primary flex-wrap gap-y-2 items-center justify-center flex col-span-3 *:*:fill-primary gap-4.5 md:gap-8'>
+        <div className='col-span-4 *:rounded-full h-fit w-fit *:outline-1 *:p-4 *:outline-primary flex-wrap gap-y-2 items-center justify-center flex *:*:fill-primary gap-4.5 md:gap-8'>
           <span>
             <FaSquareInstagram size={25} />
           </span>

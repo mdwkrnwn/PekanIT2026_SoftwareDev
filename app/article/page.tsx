@@ -5,7 +5,7 @@ import { FaRegClock } from "react-icons/fa6";
 
 export default function Articles() {
   return (
-    <div className="w-[86vw] mx-auto mt-16">
+    <div className="w-[86vw] mx-auto">
       <h3 className="text-primary mb-8 text-3xl font-bold">
         Cerita & Tips Pilihan
       </h3>
@@ -13,7 +13,7 @@ export default function Articles() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {ARTICLES.slice(0, 6).map((article) => (
           <Link
-            key={article.id} 
+            key={article.id}
             href={`/article/${article.id}`}
             className="border-slate-200 rounded-2xl hover:shadow-lg group flex flex-col overflow-hidden transition-shadow bg-white border"
           >

@@ -16,9 +16,9 @@ export function Sidebar({
     <aside className="space-y-8">
       {/* Share */}
       <div className="border-border rounded-[2rem] border p-8">
-        <h2 className="text-3xl font-semibold">Bagikan Artikel</h2>
+        <h2 className="md:text-3xl text-xl font-semibold">Bagikan Artikel</h2>
 
-        <div className="flex items-center gap-4 mt-8">
+        <div className="md:flex grid grid-cols-2 items-center gap-4 mt-8">
           <button className="border-primary text-primary hover:bg-primary hover:text-white size-16 flex items-center justify-center border rounded-full">
             <FaFacebookF size={22} />
           </button>

@@ -15,17 +15,17 @@ export function Content({ article }: any) {
       </span>
 
       {/* Title */}
-      <h1 className="text-foreground max-w-4xl mt-8 text-6xl font-semibold leading-tight">
+      <h1 className="text-foreground mt-8 md:text-6xl text-3xl wrap-break-word  font-semibold leading-tight">
         {article.title}
       </h1>
 
       {/* Description */}
-      <p className="text-muted-foreground max-w-2xl mt-6 text-xl leading-relaxed">
+      <p className="text-muted-foreground mt-6 text-xl leading-relaxed">
         {article.description}
       </p>
 
       {/* Author */}
-      <div className="flex items-center justify-between mt-10">
+      <div className="flex items-center flex-wrap justify-between mt-10">
         <div className="flex items-center gap-4">
           <div className="bg-primary/10 size-16 flex items-center justify-center rounded-full">
             <FaUser className="text-primary" size={22} />
@@ -69,7 +69,7 @@ export function Content({ article }: any) {
       </div>
 
       {/* Content List */}
-      <div className="max-w-4xl mt-10">
+      <div className="mt-10">
         <div className="flex flex-col gap-10 mt-12">
           {article.content.map((item: any, index: number) => (
             <div key={index} className="flex gap-6">
@@ -80,11 +80,11 @@ export function Content({ article }: any) {
               </div>
 
               <div className="flex flex-col gap-1">
-                <h3 className="text-foreground text-2xl font-semibold">
+                <h3 className="text-foreground wrap-break-word text-2xl font-semibold">
                   {item.title}
                 </h3>
 
-                <p className="text-foreground text-lg">
+                <p className="text-foreground wrap-break-word text-lg">
                   {item.description}
                 </p>
               </div>

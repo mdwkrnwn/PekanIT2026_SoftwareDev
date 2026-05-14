@@ -23,14 +23,12 @@ export default async function ArticlePage({
   );
 
   return (
-    <div className="w-[86vw]">
-      <section className="grid gap-10 xl:grid-cols-[2fr_1fr]">
-        <Content article={article} />
-        <Sidebar
-          popularArticles={popularArticles}
-          relatedArticles={relatedArticles}
-        />
-      </section>
-    </div>
+    <section className="w-[86vw] grid gap-10 lg:grid-cols-[2fr_1fr]">
+      <Content article={article} />
+      <Sidebar
+        popularArticles={popularArticles}
+        relatedArticles={relatedArticles}
+      />
+    </section>
   );
 }
