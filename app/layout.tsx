@@ -29,7 +29,7 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", poppins.variable, poppins.className)}
       suppressHydrationWarning
     >
-      <body className="relative flex flex-col items-center min-h-screen overflow-x-hidden" >
+      <body className="bg-background relative flex flex-col items-center min-h-screen overflow-x-hidden" >
         <ThemeProviders>
           <Navbar />
           <main className="flex flex-col items-center flex-1 mb-12">

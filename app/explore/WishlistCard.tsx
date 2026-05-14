@@ -1,32 +1,46 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
+
 import { FaHeart } from "react-icons/fa6";
+
 import Swal from "sweetalert2";
-import { addToWishlist, getWishlist, removeFromWishlist } from "@/lib/wishlist";
+
+import {
+  addToWishlist,
+  removeFromWishlist,
+  subscribeWishlist,
+  getWishlistSnapshot,
+} from "@/lib/wishlist";
 
 interface WishlistCardProps {
   id: number;
   name: string;
 }
 
-export default function WishlistCard({ id, name }: WishlistCardProps) {
-  const [isWishlisted, setIsWishlisted] = useState(false);
-  const [mounted, setMounted] = useState(false);
+const EMPTY: number[] = [];
 
-  useEffect(() => {
-    setMounted(true);
-    const ids = getWishlist();
-    setIsWishlisted(ids.includes(id));
-  }, [id]);
+export default function WishlistCard({
+  id,
+  name,
+}: WishlistCardProps) {
+  const wishlist = useSyncExternalStore(
+    subscribeWishlist,
+    getWishlistSnapshot,
+    () => EMPTY,
+  );
 
-  const toggleWishlist = (e: React.MouseEvent) => {
+  const isWishlisted = wishlist.includes(id);
+
+  const toggleWishlist = (
+    e: React.MouseEvent,
+  ) => {
     e.preventDefault();
     e.stopPropagation();
 
     if (isWishlisted) {
       removeFromWishlist(id);
-      setIsWishlisted(false);
+
       Swal.fire({
         icon: "error",
         title: "Dihapus!",
@@ -40,7 +54,7 @@ export default function WishlistCard({ id, name }: WishlistCardProps) {
       });
     } else {
       addToWishlist(id);
-      setIsWishlisted(true);
+
       Swal.fire({
         icon: "success",
         title: "Ditambahkan!",
@@ -54,8 +68,6 @@ export default function WishlistCard({ id, name }: WishlistCardProps) {
       });
     }
   };
-
-  if (!mounted) return <div className="absolute top-3 right-3 p-2 w-8 h-8 z-10" />; // Prevent layout shift during hydration
 
   return (
     <button
