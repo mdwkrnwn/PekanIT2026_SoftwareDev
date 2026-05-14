@@ -12,7 +12,7 @@ import {
   FaRegThumbsUp,
   FaRegThumbsDown,
 } from "react-icons/fa";
-import { addToWishlist, getWishlist, removeFromWishlist } from "@/lib/wishlist";
+import { addToWishlist, getWishlistSnapshot, removeFromWishlist } from "@/lib/wishlist";
 import Swal from "sweetalert2";
 import { FaRegClock } from "react-icons/fa6";
 import { LuMapPin } from "react-icons/lu";
@@ -48,7 +48,7 @@ export default function ProductPage() {
   const [newComment, setNewComment] = useState({ name: "", comment: "" });
 
   useEffect(() => {
-    const ids = getWishlist();
+    const ids = getWishlistSnapshot();
     setWishlist(ids);
   }, []);
 

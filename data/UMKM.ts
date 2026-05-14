@@ -23,27 +23,27 @@ export const UMKM = [
       {
         name: "Nasi Ayam Geprek",
         price: 18000,
-        image: "/assets/umkm/makanan/dapurnona/menu/ayamgeprek.jpeg",
+        image: "/assets/umkm/makanan/dapurnona/ayamgeprek.jpeg",
       },
       {
         name: "Nasi Telur Dadar",
         price: 18000,
-        image: "/assets/umkm/makanan/dapurnona/menu/nasitelurdadar.jpeg",
+        image: "/assets/umkm/makanan/dapurnona/nasitelurdadar.jpeg",
       },
       {
         name: "Sambal Cumi",
         price: 18000,
-        image: "/assets/umkm/makanan/dapurnona/menu/sambalcumi.jpeg",
+        image: "/assets/umkm/makanan/dapurnona/sambalcumi.jpeg",
       },
       {
         name: "Es Teh",
         price: 10000,
-        image: "/assets/umkm/makanan/dapurnona/menu/esteh.jpeg",
+        image: "/assets/umkm/makanan/dapurnona/esteh.jpeg",
       },
       {
         name: "Puding Cokelat",
         price: 18000,
-        image: "/assets/umkm/makanan/dapurnona/menu/pudingcokelat.jpeg",
+        image: "/assets/umkm/makanan/dapurnona/pudingcokelat.jpeg",
       },
     ],
   },
@@ -73,27 +73,27 @@ export const UMKM = [
       {
         name: "Beras Premium",
         price: 65000,
-        image: "/assets/umkm/toko/tokoberkah/menu/beras.jpg",
+        image: "/assets/umkm/toko/tokoberkah/beras.jpg",
       },
       {
         name: "Minyak Goreng",
         price: 18000,
-        image: "/assets/umkm/toko/tokoberkah/menu/minyak.jpg",
+        image: "/assets/umkm/toko/tokoberkah/minyak.jpg",
       },
       {
         name: "Gula Pasir",
         price: 15000,
-        image: "/assets/umkm/toko/tokoberkah/menu/gula.jpg",
+        image: "/assets/umkm/toko/tokoberkah/gula.jpg",
       },
       {
         name: "Kopi Sachet",
         price: 12000,
-        image: "/assets/umkm/toko/tokoberkah/menu/kopi.jpg",
+        image: "/assets/umkm/toko/tokoberkah/kopi.jpg",
       },
       {
         name: "Mi Instan",
         price: 3000,
-        image: "/assets/umkm/toko/tokoberkah/menu/mie.jpg",
+        image: "/assets/umkm/toko/tokoberkah/mie.jpg",
       },
     ],
   },
@@ -123,27 +123,27 @@ export const UMKM = [
       {
         name: "Monstera",
         price: 85000,
-        image: "/assets/umkm/hobi/greenyplant/menu/montserra.jpg",
+        image: "/assets/umkm/hobi/greenyplant/montserra.jpg",
       },
       {
         name: "Pot Keramik",
         price: 45000,
-        image: "/assets/umkm/hobi/greenyplant/menu/keramik.jpg",
+        image: "/assets/umkm/hobi/greenyplant/keramik.jpg",
       },
       {
         name: "Pupuk Organik",
         price: 25000,
-        image: "/assets/umkm/hobi/greenyplant/menu/pupuk.jpg",
+        image: "/assets/umkm/hobi/greenyplant/pupuk.jpg",
       },
       {
         name: "Sekop Mini",
         price: 15000,
-        image: "/assets/umkm/hobi/greenyplant/menu/shovel.jpg",
+        image: "/assets/umkm/hobi/greenyplant/shovel.jpg",
       },
       {
         name: "Kaktus Mini",
         price: 35000,
-        image: "/assets/umkm/hobi/greenyplant/menu/kaktus.jpg",
+        image: "/assets/umkm/hobi/greenyplant/kaktus.jpg",
       },
     ],
   },
@@ -167,16 +167,34 @@ export const UMKM = [
     about:
       "Local Outfit menawarkan produk fashion lokal dengan desain modern, bahan premium, dan harga yang cocok untuk anak muda.",
 
-    gallery: [
-      "/assets/umkm/fashion/lokaloutfit/thumbnail.jpeg",
-    ],
+    gallery: ["/assets/umkm/fashion/lokaloutfit/thumbnail.jpeg"],
 
     featuredMenus: [
-      { name: "Oversized T-Shirt", price: 99000 },
-      { name: "Cargo Pants", price: 149000 },
-      { name: "Denim Jacket", price: 199000 },
-      { name: "Bucket Hat", price: 65000 },
-      { name: "Sneakers", price: 299000 },
+      {
+        name: "Oversized T-Shirt",
+        price: 99000,
+        image: "/assets/umkm/fashion/lokaloutfit/oversize.jpg",
+      },
+      {
+        name: "Cargo Pants",
+        price: 149000,
+        image: "/assets/umkm/fashion/lokaloutfit/cargo.jpg",
+      },
+      {
+        name: "Denim Jacket",
+        price: 199000,
+        image: "/assets/umkm/fashion/lokaloutfit/denim.jpg",
+      },
+      {
+        name: "Bucket Hat",
+        price: 65000,
+        image: "/assets/umkm/fashion/lokaloutfit/white.jpg",
+      },
+      {
+        name: "Sneakers",
+        price: 299000,
+        image: "/assets/umkm/fashion/lokaloutfit/sepatu.jpg",
+      },
     ],
   },
 
@@ -199,16 +217,34 @@ export const UMKM = [
     about:
       "Kopi Titik menyediakan kopi pilihan dengan suasana nyaman untuk bekerja, meeting, maupun nongkrong bersama teman.",
 
-    gallery: [
-      "/assets/umkm/kafe/kopititik/thumbnail.jpeg",
-    ],
+    gallery: ["/assets/umkm/kafe/kopititik/thumbnail.jpeg"],
 
     featuredMenus: [
-      { name: "Cappuccino", price: 28000 },
-      { name: "Americano", price: 22000 },
-      { name: "Latte", price: 30000 },
-      { name: "Croissant", price: 25000 },
-      { name: "Cheesecake", price: 35000 },
+      {
+        name: "Cappuccino",
+        price: 28000,
+        image: "/assets/umkm/kafe/kopititik/cappuccino.jpg",
+      },
+      {
+        name: "Americano",
+        price: 22000,
+        image: "/assets/umkm/kafe/kopititik/americano.jpg",
+      },
+      {
+        name: "Latte",
+        price: 30000,
+        image: "/assets/umkm/kafe/kopititik/latte.jpg",
+      },
+      {
+        name: "Croissant",
+        price: 25000,
+        image: "/assets/umkm/kafe/kopititik/croissant.jpg",
+      },
+      {
+        name: "Cheesecake",
+        price: 35000,
+        image: "/assets/umkm/kafe/kopititik/cheese.jpg",
+      },
     ],
   },
 
@@ -231,16 +267,34 @@ export const UMKM = [
     about:
       "Fixit Home melayani berbagai kebutuhan perbaikan rumah mulai dari listrik, plumbing, hingga furniture.",
 
-    gallery: [
-      "/assets/umkm/jasa/fixithome/thumbnail.jpeg",
-    ],
+    gallery: ["/assets/umkm/jasa/fixithome/thumbnail.jpeg"],
 
     featuredMenus: [
-      { name: "Perbaikan Listrik", price: 75000 },
-      { name: "Service Pipa", price: 85000 },
-      { name: "Perbaikan Furniture", price: 100000 },
-      { name: "Pemasangan Lampu", price: 50000 },
-      { name: "Perbaikan AC", price: 150000 },
+      {
+        name: "Perbaikan Listrik",
+        price: 75000,
+        image: "/assets/umkm/jasa/fixithome/listrik.jpg",
+      },
+      {
+        name: "Service Pipa",
+        price: 85000,
+        image: "/assets/umkm/jasa/fixithome/pipa.jpg",
+      },
+      {
+        name: "Perbaikan Furniture",
+        price: 100000,
+        image: "/assets/umkm/jasa/fixithome/bor.jpg",
+      },
+      {
+        name: "Pemasangan Lampu",
+        price: 50000,
+        image: "/assets/umkm/jasa/fixithome/alat.jpg",
+      },
+      {
+        name: "Perbaikan AC",
+        price: 150000,
+        image: "/assets/umkm/jasa/fixithome/ac.jpg",
+      },
     ],
   },
 
@@ -263,16 +317,34 @@ export const UMKM = [
     about:
       "Glow & Go menghadirkan produk skincare lokal dengan bahan berkualitas, aman, dan cocok untuk berbagai jenis kulit.",
 
-    gallery: [
-      "/assets/umkm/kecantikan/glow&go/thumbnail.jpeg",
-    ],
+    gallery: ["/assets/umkm/kecantikan/glow&go/thumbnail.jpeg"],
 
     featuredMenus: [
-      { name: "Facial Wash", price: 65000 },
-      { name: "Serum Brightening", price: 120000 },
-      { name: "Moisturizer", price: 95000 },
-      { name: "Sunscreen", price: 85000 },
-      { name: "Night Cream", price: 110000 },
+      {
+        name: "Facial Wash",
+        price: 65000,
+        image: "/assets/umkm/kecantikan/glow&go/facialwash.jpg",
+      },
+      {
+        name: "Serum Brightening",
+        price: 120000,
+        image: "/assets/umkm/kecantikan/glow&go/serum.jpg",
+      },
+      {
+        name: "Moisturizer",
+        price: 95000,
+        image: "/assets/umkm/kecantikan/glow&go/moisturi.jpg",
+      },
+      {
+        name: "Sunscreen",
+        price: 85000,
+        image: "/assets/umkm/kecantikan/glow&go/spf.jpg",
+      },
+      {
+        name: "Night Cream",
+        price: 110000,
+        image: "/assets/umkm/kecantikan/glow&go/cosmeticcream.jpg",
+      },
     ],
   },
 
@@ -295,16 +367,34 @@ export const UMKM = [
     about:
       "Cemilan Mendang menawarkan berbagai camilan rumahan dan frozen food dengan rasa lezat dan bahan berkualitas.",
 
-    gallery: [
-      "/assets/umkm/makanan/cemilannendang/thumbnail.jpeg",
-    ],
+    gallery: ["/assets/umkm/makanan/cemilannendang/thumbnail.jpeg"],
 
     featuredMenus: [
-      { name: "Pisang Goreng", price: 15000 },
-      { name: "Cireng Isi", price: 18000 },
-      { name: "Kentang Goreng", price: 20000 },
-      { name: "Nugget Ayam", price: 25000 },
-      { name: "Risoles Mayo", price: 22000 },
+      {
+        name: "Pisang Goreng",
+        price: 15000,
+        image: "/assets/umkm/makanan/cemilannendang/pisang.jpg",
+      },
+      {
+        name: "Cireng Isi",
+        price: 18000,
+        image: "/assets/umkm/makanan/cemilannendang/cireng.jpg",
+      },
+      {
+        name: "Kentang Goreng",
+        price: 20000,
+        image: "/assets/umkm/makanan/cemilannendang/kentang.jpg",
+      },
+      {
+        name: "Nugget Ayam",
+        price: 25000,
+        image: "/assets/umkm/makanan/cemilannendang/nugget.jpg",
+      },
+      {
+        name: "Risoles Mayo",
+        price: 22000,
+        image: "/assets/umkm/makanan/cemilannendang/risoles.jpg",
+      },
     ],
   },
   {
@@ -329,11 +419,31 @@ export const UMKM = [
     gallery: ["/assets/umkm/fashion/batikheritage/thumbnail.jpg"],
 
     featuredMenus: [
-      { name: "Kemeja Batik", price: 189000 },
-      { name: "Dress Batik", price: 249000 },
-      { name: "Outer Batik", price: 199000 },
-      { name: "Rok Batik", price: 159000 },
-      { name: "Tas Batik", price: 129000 },
+      {
+        name: "Kemeja Batik",
+        price: 189000,
+        image: "/assets/umkm/fashion/batikheritage/batik1.jpg",
+      },
+      {
+        name: "Dress Batik",
+        price: 249000,
+        image: "/assets/umkm/fashion/batikheritage/batik2.jpg",
+      },
+      {
+        name: "Outer Batik",
+        price: 199000,
+        image: "/assets/umkm/fashion/batikheritage/batik3.jpg",
+      },
+      {
+        name: "Rok Batik",
+        price: 159000,
+        image: "/assets/umkm/fashion/batikheritage/batik4.jpg",
+      },
+      {
+        name: "Tas Batik",
+        price: 129000,
+        image: "/assets/umkm/fashion/batikheritage/batik5.jpg",
+      },
     ],
   },
 
@@ -359,11 +469,31 @@ export const UMKM = [
     gallery: ["/assets/umkm/fashion/urbanstyle/thumbnail.jpg"],
 
     featuredMenus: [
-      { name: "Hoodie", price: 179000 },
-      { name: "Oversized Tee", price: 99000 },
-      { name: "Cargo Pants", price: 159000 },
-      { name: "Topi", price: 59000 },
-      { name: "Sneakers", price: 299000 },
+      {
+        name: "Hoodie",
+        price: 179000,
+        image: "/assets/umkm/fashion/urbanstyle/hoodie.jpg",
+      },
+      {
+        name: "Oversized Tee",
+        price: 99000,
+        image: "/assets/umkm/fashion/urbanstyle/streetwear.jpg",
+      },
+      {
+        name: "Cargo Pants",
+        price: 159000,
+        image: "/assets/umkm/fashion/urbanstyle/cargo.jpg",
+      },
+      {
+        name: "Topi",
+        price: 59000,
+        image: "/assets/umkm/fashion/urbanstyle/topi.jpg",
+      },
+      {
+        name: "Sneakers",
+        price: 299000,
+        image: "/assets/umkm/fashion/urbanstyle/sneakers.jpg",
+      },
     ],
   },
 
@@ -388,11 +518,31 @@ export const UMKM = [
     gallery: ["/assets/umkm/hobi/hobbystation/thumbnail.jpg"],
 
     featuredMenus: [
-      { name: "Paint Set", price: 85000 },
-      { name: "Mini Figure", price: 120000 },
-      { name: "Puzzle", price: 75000 },
-      { name: "Sketchbook", price: 45000 },
-      { name: "Brush Set", price: 35000 },
+      {
+        name: "Paint Set",
+        price: 85000,
+        image: "/assets/umkm/hobi/hobbystation/akrilik.jpg",
+      },
+      {
+        name: "Mini Figure",
+        price: 120000,
+        image: "/assets/umkm/hobi/hobbystation/anime.jpg",
+      },
+      {
+        name: "Puzzle",
+        price: 75000,
+        image: "/assets/umkm/hobi/hobbystation/puzzle.jpg",
+      },
+      {
+        name: "Sketchbook",
+        price: 45000,
+        image: "/assets/umkm/hobi/hobbystation/sketchbook.jpg",
+      },
+      {
+        name: "Brush Set",
+        price: 35000,
+        image: "/assets/umkm/hobi/hobbystation/brush.jpg",
+      },
     ],
   },
 
@@ -418,11 +568,31 @@ export const UMKM = [
     gallery: ["/assets/umkm/hobi/creativehouse/thumbnail.jpg"],
 
     featuredMenus: [
-      { name: "Canvas", price: 45000 },
-      { name: "Cat Acrylic", price: 65000 },
-      { name: "Glue Gun", price: 55000 },
-      { name: "Craft Paper", price: 25000 },
-      { name: "Marker Set", price: 35000 },
+      {
+        name: "Canvas",
+        price: 45000,
+        image: "/assets/umkm/hobi/creativehouse/canvas.jpg",
+      },
+      {
+        name: "Cat Acrylic",
+        price: 65000,
+        image: "/assets/umkm/hobi/creativehouse/akrilik.jpg",
+      },
+      {
+        name: "Glue Gun",
+        price: 55000,
+        image: "/assets/umkm/hobi/creativehouse/gun.jpg",
+      },
+      {
+        name: "Craft Paper",
+        price: 25000,
+        image: "/assets/umkm/hobi/creativehouse/craftpaper.jpg",
+      },
+      {
+        name: "Marker Set",
+        price: 35000,
+        image: "/assets/umkm/hobi/creativehouse/artpens.jpg",
+      },
     ],
   },
 
@@ -448,11 +618,31 @@ export const UMKM = [
     gallery: ["/assets/umkm/jasa/quickservice/thumbnail.jpg"],
 
     featuredMenus: [
-      { name: "Service Lampu", price: 50000 },
-      { name: "Perbaikan Pipa", price: 80000 },
-      { name: "Service Kulkas", price: 120000 },
-      { name: "Service Mesin Cuci", price: 150000 },
-      { name: "Instalasi Listrik", price: 100000 },
+      {
+        name: "Service AC",
+        price: 50000,
+        image: "/assets/umkm/jasa/quickservice/ac.jpg",
+      },
+      {
+        name: "Perbaikan Pipa",
+        price: 80000,
+        image: "/assets/umkm/jasa/quickservice/pipa.jpg",
+      },
+      {
+        name: "Service",
+        price: 120000,
+        image: "/assets/umkm/jasa/quickservice/alat.jpg",
+      },
+      {
+        name: "Furniture",
+        price: 150000,
+        image: "/assets/umkm/jasa/quickservice/bor.jpg",
+      },
+      {
+        name: "Instalasi Listrik",
+        price: 100000,
+        image: "/assets/umkm/jasa/quickservice/listrik.jpg",
+      },
     ],
   },
 
@@ -478,11 +668,31 @@ export const UMKM = [
     gallery: ["/assets/umkm/jasa/smartelectric/thumbnail.jpg"],
 
     featuredMenus: [
-      { name: "Instalasi Lampu", price: 60000 },
-      { name: "Perbaikan Kabel", price: 85000 },
-      { name: "MCB Service", price: 95000 },
-      { name: "Panel Listrik", price: 175000 },
-      { name: "Stop Kontak", price: 50000 },
+      {
+        name: "Instalasi Lampu",
+        price: 60000,
+        image: "/assets/umkm/jasa/smartelectric/lalmpu.jpg",
+      },
+      {
+        name: "Perbaikan Kabel",
+        price: 85000,
+        image: "/assets/umkm/jasa/smartelectric/appliance.jpg",
+      },
+      {
+        name: "MCB Service",
+        price: 95000,
+        image: "/assets/umkm/jasa/smartelectric/pipa.jpg",
+      },
+      {
+        name: "Panel Listrik",
+        price: 175000,
+        image: "/assets/umkm/jasa/smartelectric/elektrik.jpg",
+      },
+      {
+        name: "Stop Kontak",
+        price: 50000,
+        image: "/assets/umkm/jasa/smartelectric/home.jpg",
+      },
     ],
   },
   {
@@ -507,11 +717,31 @@ export const UMKM = [
     gallery: ["/assets/umkm/kafe/beanscorner/thumbnail.jpg"],
 
     featuredMenus: [
-      { name: "Americano", price: 25000 },
-      { name: "Cappuccino", price: 30000 },
-      { name: "Cafe Latte", price: 32000 },
-      { name: "Croissant", price: 28000 },
-      { name: "Cheesecake", price: 35000 },
+      {
+        name: "Matcha Latte",
+        price: 32000,
+        image: "/assets/umkm/kafe/beanscorner/matcha.jpg",
+      },
+      {
+        name: "Chocolate Milk",
+        price: 28000,
+        image: "/assets/umkm/kafe/beanscorner/coklat.jpg",
+      },
+      {
+        name: "French Fries",
+        price: 25000,
+        image: "/assets/umkm/kafe/beanscorner/kenta.jpg",
+      },
+      {
+        name: "Burger",
+        price: 45000,
+        image: "/assets/umkm/kafe/beanscorner/burger.jpg",
+      },
+      {
+        name: "Waffle",
+        price: 35000,
+        image: "/assets/umkm/kafe/beanscorner/waffle.jpg",
+      },
     ],
   },
 
@@ -537,11 +767,31 @@ export const UMKM = [
     gallery: ["/assets/umkm/kafe/kafelife18190/thumbnail.jpg"],
 
     featuredMenus: [
-      { name: "Matcha Latte", price: 32000 },
-      { name: "Chocolate Milk", price: 28000 },
-      { name: "French Fries", price: 25000 },
-      { name: "Burger", price: 45000 },
-      { name: "Waffle", price: 35000 },
+      {
+        name: "Americano",
+        price: 25000,
+        image: "/assets/umkm/kafe/kafelife/americano.jpg",
+      },
+      {
+        name: "Cappuccino",
+        price: 30000,
+        image: "/assets/umkm/kafe/kafelife/cappuccino.jpg",
+      },
+      {
+        name: "Cafe Latte",
+        price: 32000,
+        image: "/assets/umkm/kafe/kafelife/latteart.jpg",
+      },
+      {
+        name: "Croissant",
+        price: 28000,
+        image: "/assets/umkm/kafe/kafelife/croissant.jpg",
+      },
+      {
+        name: "Cheesecake",
+        price: 35000,
+        image: "/assets/umkm/kafe/kafelife/cake.jpg",
+      },
     ],
   },
 
@@ -567,12 +817,33 @@ export const UMKM = [
     gallery: ["/assets/umkm/kecantikan/beautybliss/thumbnail.jpg"],
 
     featuredMenus: [
-      { name: "Facial Wash", price: 65000 },
-      { name: "Serum", price: 125000 },
-      { name: "Moisturizer", price: 95000 },
-      { name: "Sunscreen", price: 85000 },
-      { name: "Lip Tint", price: 55000 },
+      {
+        name: "Face Toner",
+        price: 70000,
+        image: "/assets/umkm/kecantikan/beautybliss/toner.jpg",
+      },
+      {
+        name: "Night Cream",
+        price: 110000,
+        image: "/assets/umkm/kecantikan/beautybliss/cream.jpg",
+      },
+      {
+        name: "Serum",
+        price: 120000,
+        image: "/assets/umkm/kecantikan/beautybliss/serum.jpg",
+      },
+      {
+        name: "Cleanser",
+        price: 60000,
+        image: "/assets/umkm/kecantikan/beautybliss/muka.jpg",
+      },
+      {
+        name: "Face Mask",
+        price: 45000,
+        image: "/assets/umkm/kecantikan/beautybliss/masker.jpg",
+      },
     ],
+    
   },
 
   {
@@ -597,11 +868,31 @@ export const UMKM = [
     gallery: ["/assets/umkm/kecantikan/freshbeauty/thumbnail.jpg"],
 
     featuredMenus: [
-      { name: "Face Toner", price: 70000 },
-      { name: "Night Cream", price: 110000 },
-      { name: "Serum", price: 120000 },
-      { name: "Cleanser", price: 60000 },
-      { name: "Face Mask", price: 45000 },
+      {
+        name: "Facial Wash",
+        price: 65000,
+        image: "/assets/umkm/kecantikan/freshbeauty/muka.jpg",
+      },
+      {
+        name: "Serum",
+        price: 125000,
+        image: "/assets/umkm/kecantikan/freshbeauty/serum.jpg",
+      },
+      {
+        name: "Moisturizer",
+        price: 95000,
+        image: "/assets/umkm/kecantikan/freshbeauty/mois.jpg",
+      },
+      {
+        name: "Sunscreen",
+        price: 85000,
+        image: "/assets/umkm/kecantikan/freshbeauty/sunscreen.jpg",
+      },
+      {
+        name: "Lip Tint",
+        price: 55000,
+        image: "/assets/umkm/kecantikan/freshbeauty/liptint.jpg",
+      },
     ],
   },
 ];
