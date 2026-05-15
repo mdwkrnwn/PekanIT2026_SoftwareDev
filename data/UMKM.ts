@@ -13,9 +13,15 @@ export const UMKM = [
     openHours: "09:00 - 21:00",
     lat: -7.981894,
     lng: 112.626503,
-    tagIds: [1, 2, 3],
-    about: "Dapur Nona menyajikan aneka masakan rumahan dengan cita rasa lezat dan harga terjangkau. Semua menu dibuat dengan bahan segar pilihan dan resep turun-temurun keluarga.",
-    gallery: ["/assets/umkm/makanan/dapurnona/thumbnail.jpeg"],
+    tagIds: [1, 2, 3, 6],
+    about:
+      "Dapur Nona menyajikan aneka masakan rumahan dengan cita rasa lezat dan harga terjangkau. Semua menu dibuat dengan bahan segar pilihan dan resep turun-temurun keluarga.",
+    gallery: [
+      "/assets/umkm/makanan/dapurnona/thumbnail.jpeg",
+      "/assets/detailtempatdapurnona/detail1.jpeg",
+      "/assets/detailtempatdapurnona/detail2.jpeg",
+      "/assets/detailtempatdapurnona/detail3.jpeg",
+    ],
     featuredMenus: [
       {
         name: "Nasi Ayam Geprek",
@@ -58,9 +64,15 @@ export const UMKM = [
     lng: 112.629182,
     status: "Buka Sekarang",
     openHours: "07:00 - 22:00",
-    tagIds: [4, 5, 6],
-    about: "Toko Berkah menyediakan kebutuhan rumah tangga, makanan ringan, minuman, dan berbagai kebutuhan harian dengan harga terjangkau.",
-    gallery: ["/assets/umkm/toko/tokoberkah/thumbnail.jpg"],
+    tagIds: [4, 5, 6, 7],
+    about:
+      "Toko Berkah menyediakan kebutuhan rumah tangga, makanan ringan, minuman, dan berbagai kebutuhan harian dengan harga terjangkau.",
+    gallery: [
+      "/assets/umkm/toko/tokoberkah/thumbnail.jpg",
+      "/assets/detailtempatdapurnona/minimal.jpg",
+      "/assets/detailtempatdapurnona/bisnis.jpg",
+      "/assets/detailtempatdapurnona/lokal.jpg",
+    ],
     featuredMenus: [
       {
         name: "Beras Premium",
@@ -93,7 +105,7 @@ export const UMKM = [
     id: 3,
     name: "Greeny Plant",
     category: "Hobi",
-    description: "Tanaman hias & perlengkapan berkebun.",
+  description: "Tanaman hias & perlengkapan berkebun. Cocok untuk mempercantik rumah dan area kerja.",
     location: "Bogor",
     address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.9,
@@ -103,9 +115,15 @@ export const UMKM = [
     distance: "3.1 km",
     status: "Buka Sekarang",
     openHours: "08:00 - 18:00",
-    tagIds: [7, 8, 9],
-    about: "Greeny Plant menghadirkan berbagai tanaman hias, pot dekoratif, pupuk, dan perlengkapan berkebun berkualitas.",
-    gallery: ["/assets/umkm/hobi/greenyplant/thumbnail.jpeg"],
+    tagIds: [7, 8, 9, 10],
+    about:
+      "Greeny Plant menghadirkan berbagai tanaman hias, pot dekoratif, pupuk, dan perlengkapan berkebun berkualitas.",
+    gallery: [
+      "/assets/umkm/hobi/greenyplant/thumbnail.jpeg",
+      "/assets/detailtempatdapurnona/minimal.jpg",
+      "/assets/detailtempatdapurnona/bisnis.jpg",
+      "/assets/detailtempatdapurnona/lokal.jpg",
+    ],
     featuredMenus: [
       {
         name: "Monstera",
@@ -154,7 +172,12 @@ export const UMKM = [
     about:
       "Local Outfit menawarkan produk fashion lokal dengan desain modern, bahan premium, dan harga yang cocok untuk anak muda.",
 
-    gallery: ["/assets/umkm/fashion/lokaloutfit/thumbnail.jpeg"],
+    gallery: [
+      "/assets/umkm/fashion/lokaloutfit/thumbnail.jpeg",
+      "/assets/detailtempatdapurnona/minimal.jpg",
+      "/assets/detailtempatdapurnona/bisnis.jpg",
+      "/assets/detailtempatdapurnona/lokal.jpg",
+    ],
 
     featuredMenus: [
       {
@@ -199,8 +222,14 @@ export const UMKM = [
     status: "Buka Sekarang",
     openHours: "08:00 - 23:00",
     tagIds: [13, 14, 15],
-    about: "Kopi Titik menyediakan kopi pilihan dengan suasana nyaman untuk bekerja, meeting, maupun nongkrong bersama teman.",
-    gallery: ["/assets/umkm/kafe/kopititik/thumbnail.jpeg"],
+    about:
+      "Kopi Titik menyediakan kopi pilihan dengan suasana nyaman untuk bekerja, meeting, maupun nongkrong bersama teman.",
+    gallery: [
+      "/assets/umkm/kafe/kopititik/thumbnail.jpeg",
+      "/assets/detailtempatdapurnona/minimal.jpg",
+      "/assets/detailtempatdapurnona/bisnis.jpg",
+      "/assets/detailtempatdapurnona/lokal.jpg",
+    ],
     featuredMenus: [
       {
         name: "Cappuccino",
@@ -251,6 +280,9 @@ export const UMKM = [
 
     gallery: [
       "/assets/umkm/jasa/fixithome/thumbnail.jpeg",
+      "/assets/detailtempatdapurnona/minimal.jpg",
+      "/assets/detailtempatdapurnona/bisnis.jpg",
+      "/assets/detailtempatdapurnona/lokal.jpg",
     ],
 
     featuredMenus: [
@@ -285,7 +317,7 @@ export const UMKM = [
     id: 7,
     name: "Glow & Go",
     category: "Kecantikan",
-    description: "Produk perawatan kulit aman & bernilai.",
+description: "Produk perawatan kulit aman & bernilai. Hadir dengan berbagai pilihan skincare untuk semua jenis kulit.",
     location: "Bekasi",
     address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.9,
@@ -302,7 +334,12 @@ export const UMKM = [
       "Glow & Go menghadirkan produk skincare lokal dengan bahan berkualitas, aman, dan cocok untuk berbagai jenis kulit.",
 
     tagIds: [19, 20, 21],
-    gallery: ["/assets/umkm/kecantikan/glow&go/thumbnail.jpeg"],
+    gallery: [
+      "/assets/umkm/kecantikan/glow&go/thumbnail.jpeg",
+      "/assets/detailtempatdapurnona/minimal.jpg",
+      "/assets/detailtempatdapurnona/bisnis.jpg",
+      "/assets/detailtempatdapurnona/lokal.jpg",
+    ],
     featuredMenus: [
       {
         name: "Facial Wash",
@@ -351,7 +388,12 @@ export const UMKM = [
     about:
       "Cemilan Mendang menawarkan berbagai camilan rumahan dan frozen food dengan rasa lezat dan bahan berkualitas.",
 
-    gallery: ["/assets/umkm/makanan/cemilannendang/thumbnail.jpeg"],
+    gallery: [
+      "/assets/umkm/makanan/cemilannendang/thumbnail.jpeg",
+      "/assets/detailtempatdapurnona/minimal.jpg",
+      "/assets/detailtempatdapurnona/bisnis.jpg",
+      "/assets/detailtempatdapurnona/lokal.jpg",
+    ],
 
     featuredMenus: [
       {
@@ -396,8 +438,14 @@ export const UMKM = [
     lng: 112.619284,
     openHours: "09:00 - 21:00",
     tagIds: [25, 10, 26],
-    about: "Batik Heritage menghadirkan koleksi batik modern dengan bahan premium yang cocok untuk acara formal maupun casual.",
-    gallery: ["/assets/umkm/fashion/batikheritage/thumbnail.jpg"],
+    about:
+      "Batik Heritage menghadirkan koleksi batik modern dengan bahan premium yang cocok untuk acara formal maupun casual.",
+    gallery: [
+      "/assets/umkm/fashion/batikheritage/thumbnail.jpg",
+      "/assets/detailtempatdapurnona/minimal.jpg",
+      "/assets/detailtempatdapurnona/bisnis.jpg",
+      "/assets/detailtempatdapurnona/lokal.jpg",
+    ],
     featuredMenus: [
       {
         name: "Kemeja Batik",
@@ -441,8 +489,14 @@ export const UMKM = [
     status: "Buka Sekarang",
     openHours: "10:00 - 22:00",
     tagIds: [27, 28, 29],
-    about: "Urban Style menyediakan fashion streetwear kekinian dengan kualitas premium dan desain stylish.",
-    gallery: ["/assets/umkm/fashion/urbanstyle/thumbnail.jpg"],
+    about:
+      "Urban Style menyediakan fashion streetwear kekinian dengan kualitas premium dan desain stylish.",
+    gallery: [
+      "/assets/umkm/fashion/urbanstyle/thumbnail.jpg",
+      "/assets/detailtempatdapurnona/minimal.jpg",
+      "/assets/detailtempatdapurnona/bisnis.jpg",
+      "/assets/detailtempatdapurnona/lokal.jpg",
+    ],
     featuredMenus: [
       {
         name: "Hoodie",
@@ -486,8 +540,14 @@ export const UMKM = [
     lat: -7.968514,
     lng: 112.636492,
     tagIds: [30, 31, 5],
-    about: "Hobby Station menyediakan berbagai perlengkapan koleksi, craft, dan kebutuhan hobi lainnya.",
-    gallery: ["/assets/umkm/hobi/hobbystation/thumbnail.jpg"],
+    about:
+      "Hobby Station menyediakan berbagai perlengkapan koleksi, craft, dan kebutuhan hobi lainnya.",
+    gallery: [
+      "/assets/umkm/hobi/hobbystation/thumbnail.jpg",
+      "/assets/detailtempatdapurnona/minimal.jpg",
+      "/assets/detailtempatdapurnona/bisnis.jpg",
+      "/assets/detailtempatdapurnona/lokal.jpg",
+    ],
     featuredMenus: [
       {
         name: "Paint Set",
@@ -520,7 +580,7 @@ export const UMKM = [
     id: 12,
     name: "Creative House",
     category: "Hobi",
-    description: "Peralatan craft dan DIY kreatif.",
+  description: "Peralatan craft dan DIY kreatif. Ideal untuk pemula maupun pecinta kerajinan tangan.",
     location: "Malang",
     address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.9,
@@ -531,8 +591,14 @@ export const UMKM = [
     status: "Buka Sekarang",
     openHours: "09:00 - 19:00",
     tagIds: [32, 33, 31],
-    about: "Creative House menawarkan berbagai perlengkapan DIY, kerajinan tangan, dan seni kreatif.",
-    gallery: ["/assets/umkm/hobi/creativehouse/thumbnail.jpg"],
+    about:
+      "Creative House menawarkan berbagai perlengkapan DIY, kerajinan tangan, dan seni kreatif.",
+    gallery: [
+      "/assets/umkm/hobi/creativehouse/thumbnail.jpg",
+      "/assets/detailtempatdapurnona/minimal.jpg",
+      "/assets/detailtempatdapurnona/bisnis.jpg",
+      "/assets/detailtempatdapurnona/lokal.jpg",
+    ],
     featuredMenus: [
       {
         name: "Canvas",
@@ -576,8 +642,14 @@ export const UMKM = [
     status: "Tersedia Hari Ini",
     openHours: "08:00 - 20:00",
     tagIds: [34, 17, 18],
-    about: "Quick Service melayani berbagai kebutuhan service rumah dengan teknisi profesional.",
-    gallery: ["/assets/umkm/jasa/quickservice/thumbnail.jpg"],
+    about:
+      "Quick Service melayani berbagai kebutuhan service rumah dengan teknisi profesional.",
+    gallery: [
+      "/assets/umkm/jasa/quickservice/thumbnail.jpg",
+      "/assets/detailtempatdapurnona/minimal.jpg",
+      "/assets/detailtempatdapurnona/bisnis.jpg",
+      "/assets/detailtempatdapurnona/lokal.jpg",
+    ],
     featuredMenus: [
       {
         name: "Service AC",
@@ -610,7 +682,7 @@ export const UMKM = [
     id: 14,
     name: "Smart Electric",
     category: "Jasa",
-    description: "Spesialis instalasi dan perbaikan listrik.",
+    description: "Spesialis instalasi dan perbaikan listrik. Teknisi profesional & terpercaya.", 
     location: "Bekasi",
     address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.8,
@@ -621,8 +693,14 @@ export const UMKM = [
     status: "Tersedia Hari Ini",
     openHours: "08:00 - 20:00",
     tagIds: [35, 16, 36],
-    about: "Smart Electric menyediakan jasa instalasi listrik rumah dan kantor dengan standar keamanan tinggi.",
-    gallery: ["/assets/umkm/jasa/smartelectric/thumbnail.jpg"],
+    about:
+      "Smart Electric menyediakan jasa instalasi listrik rumah dan kantor dengan standar keamanan tinggi.",
+    gallery: [
+      "/assets/umkm/jasa/smartelectric/thumbnail.jpg",
+      "/assets/detailtempatdapurnona/minimal.jpg",
+      "/assets/detailtempatdapurnona/bisnis.jpg",
+      "/assets/detailtempatdapurnona/lokal.jpg",
+    ],
     featuredMenus: [
       {
         name: "Instalasi Lampu",
@@ -666,8 +744,14 @@ export const UMKM = [
     status: "Buka Sekarang",
     openHours: "08:00 - 23:00",
     tagIds: [37, 38, 15],
-    about: "Beans Corner menghadirkan berbagai pilihan kopi premium dengan suasana nyaman untuk bekerja maupun bersantai.",
-    gallery: ["/assets/umkm/kafe/beanscorner/thumbnail.jpg"],
+    about:
+      "Beans Corner menghadirkan berbagai pilihan kopi premium dengan suasana nyaman untuk bekerja maupun bersantai.",
+    gallery: [
+      "/assets/umkm/kafe/beanscorner/thumbnail.jpg",
+      "/assets/detailtempatdapurnona/minimal.jpg",
+      "/assets/detailtempatdapurnona/bisnis.jpg",
+      "/assets/detailtempatdapurnona/lokal.jpg",
+    ],
     featuredMenus: [
       {
         name: "Matcha Latte",
@@ -711,8 +795,14 @@ export const UMKM = [
     status: "Buka Sekarang",
     openHours: "09:00 - 22:00",
     tagIds: [39, 28, 40],
-    about: "Kafe Life menawarkan suasana modern dan menu makanan serta minuman kekinian untuk anak muda.",
-    gallery: ["/assets/umkm/kafe/kafelife18190/thumbnail.jpg"],
+    about:
+      "Kafe Life menawarkan suasana modern dan menu makanan serta minuman kekinian untuk anak muda.",
+    gallery: [
+      "/assets/umkm/kafe/kafelife18190/thumbnail.jpg",
+      "/assets/detailtempatdapurnona/minimal.jpg",
+      "/assets/detailtempatdapurnona/bisnis.jpg",
+      "/assets/detailtempatdapurnona/lokal.jpg",
+    ],
     featuredMenus: [
       {
         name: "Americano",
@@ -756,8 +846,14 @@ export const UMKM = [
     status: "Buka Sekarang",
     openHours: "09:00 - 20:00",
     tagIds: [19, 20, 41],
-    about: "Beauty Bliss menghadirkan berbagai produk skincare dan kosmetik lokal dengan kualitas terbaik.",
-    gallery: ["/assets/umkm/kecantikan/beautybliss/thumbnail.jpg"],
+    about:
+      "Beauty Bliss menghadirkan berbagai produk skincare dan kosmetik lokal dengan kualitas terbaik.",
+    gallery: [
+      "/assets/umkm/kecantikan/beautybliss/thumbnail.jpg",
+      "/assets/detailtempatdapurnona/minimal.jpg",
+      "/assets/detailtempatdapurnona/bisnis.jpg",
+      "/assets/detailtempatdapurnona/lokal.jpg",
+    ],
     featuredMenus: [
       {
         name: "Face Toner",
@@ -785,7 +881,6 @@ export const UMKM = [
         image: "/assets/umkm/kecantikan/beautybliss/masker.jpg",
       },
     ],
-
   },
   {
     id: 18,
@@ -802,8 +897,14 @@ export const UMKM = [
     status: "Buka Sekarang",
     openHours: "09:00 - 20:00",
     tagIds: [21, 19, 42],
-    about: "Fresh Beauty menyediakan produk perawatan kulit berbahan alami dan aman digunakan setiap hari.",
-    gallery: ["/assets/umkm/kecantikan/freshbeauty/thumbnail.jpg"],
+    about:
+      "Fresh Beauty menyediakan produk perawatan kulit berbahan alami dan aman digunakan setiap hari.",
+    gallery: [
+      "/assets/umkm/kecantikan/freshbeauty/thumbnail.jpg",
+      "/assets/detailtempatdapurnona/minimal.jpg",
+      "/assets/detailtempatdapurnona/bisnis.jpg",
+      "/assets/detailtempatdapurnona/lokal.jpg",
+    ],
     featuredMenus: [
       {
         name: "Facial Wash",

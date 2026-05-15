@@ -5,6 +5,7 @@ import { UMKM } from "@/data/UMKM";
 import { addToWishlist, removeFromWishlist } from "@/lib/wishlist";
 import Swal from "sweetalert2";
 import { useWishlist } from "@/hooks/useWishlist";
+import Image from "next/image";
 import GallerySection from "./components/GallerySection";
 import InfoPanel from "./components/InfoPanel";
 import ReviewsSection from "./components/ReviewsSection";
@@ -13,8 +14,12 @@ import RatingSummary from "./components/RatingSummary";
 import SimilarUMKM from "./components/SimilarUMKM";
 import ReviewForm from "./components/ReviewForm";
 
-export default function ProductPage({ product, review, discussions }: {
-  product: typeof UMKM[number]
+export default function ProductPage({
+  product,
+  review,
+  discussions,
+}: {
+  product: (typeof UMKM)[number];
   review: Array<{
     id: number;
     name: string;
@@ -33,7 +38,7 @@ export default function ProductPage({ product, review, discussions }: {
   }>;
 }) {
   const [mainImage, setMainImage] = useState(product?.gallery?.[0]);
-  const wishes = useWishlist().map(item => item.id);
+  const wishes = useWishlist().map((item) => item.id);
   const [wishlist, setWishlist] = useState(wishes);
   const [tab, setTab] = useState("reviews");
   const [reviews, setReviews] = useState(review);
@@ -75,16 +80,16 @@ export default function ProductPage({ product, review, discussions }: {
   const filtered = useMemo(() => {
     if (!product) return [] as typeof UMKM;
     const base = UMKM.filter(
-      (u) => u.category === product.category && u.id !== product.id
+      (u) => u.category === product.category && u.id !== product.id,
     );
     return base.filter((u) => u.name.toLowerCase());
   }, [product]);
 
   const isWish = wishlist.includes(product.id);
   const rating = (
-    review?.reduce((sum: number, r: { rating: number }) => sum + r.rating, 0) / review?.length
+    review?.reduce((sum: number, r: { rating: number }) => sum + r.rating, 0) /
+    review?.length
   ).toFixed(1);
-
 
   return (
     <>
@@ -96,73 +101,83 @@ export default function ProductPage({ product, review, discussions }: {
             setMainImage={setMainImage}
             gallery={product.gallery}
             productName={product.name}
-            description={product.description}
-
+            description={product.about}
           />
 
           <InfoPanel
             product={product}
             isWish={isWish}
-            onToggleWishlist={toggleWishlist} rating={rating}
+            onToggleWishlist={toggleWishlist}
+            rating={rating}
             reviewCount={review?.length || 0}
           />
         </div>
 
-        {/* Tabs Section */}
-        <section className="mt-14">
-          {/* Tabs Navigation */}
-          <div className="flex gap-3 pb-2 overflow-x-auto">
-            {["reviews", "discussion"].map((t) => (
-              <button
-                key={t}
-                onClick={() => setTab(t)}
-                className={`px-5 py-2 rounded-full text-sm font-semibold capitalize transition-all whitespace-nowrap ${tab === t
-                  ? "bg-primary text-white shadow-md"
-                  : "text-muted-foreground outline-1 outline-border hover:bg-primary/5 hover:text-primary"
-                  }`}
-              >
-                {t}
+        <div className="mt-2 border-t border-slate-200 "></div>
+        {/* featured menu */}
+        {product.featuredMenus && product.featuredMenus.length > 0 && (
+          <section className="mt-5">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-slate-900 text-xl font-bold">Menu Andalan</h3>
+              <button className="text-primary hover:underline text-sm font-bold">
+                Lihat Semua
               </button>
-            ))}
-          </div>
+            </div>
+            <div className="grid grid-cols-5 gap-4">
+              {product.featuredMenus.map((item, i) => (
+                <div
+                  key={i}
+                  className="group rounded-xl hover:shadow-xl flex flex-col pb-4 transition-all shadow-md cursor-pointer"
+                >
+                  <div className="relative w-full h-32 mb-3 overflow-hidden">
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      fill
+                      className="group-hover:scale-110 object-cover transition-transform duration-300 rounded-tl-lg rounded-tr-lg"
+                    />
+                  </div>
 
-          {/* Content */}
-          <div className="mt-8">
-            {tab === "reviews" && (
-              <div className="flex flex-col gap-8">
-                {/* Top Section: Summary (Left) and Form (Right) */}
-                <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-6  rounded-xl bg-card">
-                  <RatingSummary reviews={reviews} />
+                  <div className="mx-4">
+                    <h4 className="text-foreground text-lg font-bold">
+                      {item.name}
+                    </h4>
 
-                  <ReviewForm
-                    onSubmit={(newReview) => {
-                      setReviews((prev) => [newReview, ...prev]);
-                    }}
-                  />
+                    <p className="text-foreground/70">
+                      Rp {item.price.toLocaleString("id-ID")}
+                    </p>
+                  </div>
                 </div>
+              ))}
+            </div>
+          </section>
+        )}
+        {/* reviews */}
+        <div className="mt-15 border-t border-slate-200 "></div>
+        <h2 className="mt-5 text-2xl font-semibold text-foreground">
+          Ulasan Pelanggan
+        </h2>
+        <section className="mt-5">
+          <div className="flex flex-col gap-8">
+            {/* Summary + Form */}
+            <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-6 rounded-xl bg-card">
+              <RatingSummary reviews={reviews} />
 
-                {/* Bottom Section: Filters and Review List */}
-                <div className="w-full">
-                  <ReviewsSection
-                    reviews={reviews}
-                    onUpdate={setReviews}
-                  />
-                </div>
-              </div>
-            )}
+              <ReviewForm
+                onSubmit={(newReview) => {
+                  setReviews((prev) => [newReview, ...prev]);
+                }}
+              />
+            </div>
 
-            {tab === "discussion" && (
-              <DiscussionSection discussion={discussion} onUpdate={setDiscussion} />
-            )}
+            {/* Review List */}
+            <div className="w-full">
+              <ReviewsSection reviews={reviews} onUpdate={setReviews} />
+            </div>
           </div>
         </section>
 
         {/* Similar UMKM Section */}
-        <SimilarUMKM
-          filtered={filtered}
-          wishlist={wishlist}
-          onToggleWishlist={toggleWishlist}
-        />
       </div>
     </>
   );

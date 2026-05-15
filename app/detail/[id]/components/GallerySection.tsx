@@ -36,39 +36,39 @@ export default function GallerySection({
       </div>
 
       {/* Thumbnail Gallery */}
-      <div className="md:grid-cols-4 grid grid-cols-2 gap-4">
-        {(gallery?.length && gallery).map((src, idx) => (
-          <button
-            key={idx}
-            onClick={() => setMainImage(src)}
-            className={`relative h-28 overflow-hidden rounded-2xl border-2 transition-all group ${mainImage === src
-              ? "border-primary ring-4 ring-primary/20 scale-[1.02]"
-              : "border-transparent hover:border-primary/40"
-              }`}
-          >
-            <Image
-              src={src.replace("./", "/")}
-              alt={`thumb-${idx}`}
-              fill
-              className="group-hover:scale-110 object-cover transition-transform duration-300"
-            />
+        <div className="md:grid-cols-4 grid grid-cols-2 gap-4">
+          {(gallery?.length && gallery).map((src, idx) => (
+            <button
+              key={idx}
+              onClick={() => setMainImage(src)}
+              className={`relative h-28 overflow-hidden rounded-2xl border-2 transition-all group ${mainImage === src
+                ? "border-primary ring-4 ring-primary/20 scale-[1.02]"
+                : "border-transparent hover:border-primary/40"
+                }`}
+            >
+              <Image
+                src={src.replace("./", "/")}
+                alt={`thumb-${idx}`}
+                fill
+                className="group-hover:scale-110 object-cover transition-transform duration-300"
+              />
 
-            {/* Overlay aktif */}
-            {mainImage === src && <div className="bg-primary/10 absolute inset-0" />}
-          </button>
-        ))}
+              {/* Overlay aktif */}
+              {mainImage === src && <div className="bg-primary/10 absolute inset-0" />}
+            </button>
+          ))}
 
-        {/* View All */}
-        {gallery && gallery.length > 4 && (
-          <button className="h-28 rounded-2xl bg-primary hover:opacity-90 flex flex-col items-center justify-center font-semibold text-white transition-all shadow-md">
-            <span className="text-2xl font-bold">+{gallery.length - 4}</span>
-            <span className="text-sm">Lihat Semua</span>
-          </button>
-        )}
-      </div>
+          {/* View All */}
+          {gallery && gallery.length > 4 && (
+            <button className="h-28 rounded-2xl bg-primary hover:opacity-90 flex flex-col items-center justify-center font-semibold text-white transition-all shadow-md">
+              <span className="text-2xl font-bold">+{gallery.length - 4}</span>
+              <span className="text-sm">Lihat Semua</span>
+            </button>
+          )}
+        </div>
 
       <div className="flex gap-4 flex-col">
-        <h1 className="text-4xl font-bold">Tentang {productName}</h1>
+        <h1 className="text-2xl font-bold">Tentang {productName}</h1>
         <p className="text-xl">{description}</p>
       </div>
     </section>
