@@ -96,7 +96,7 @@ export default function ReviewForm({ onSubmit }: ReviewFormProps) {
                 <button onClick={() => { setImages((prev) => prev.filter((_, i) => i !== index)); }} className="hover:bg-muted/80 right-[-5%] top-[-7.5%] absolute bg-muted rounded-full">
                   <BiX className="size-6" />
                 </button>
-                <Image key={index} src={item ?? null} className="max-h-full max-w-full w-auto rounded-lg" width={50} height={50} alt="skibidi" />
+                <Image key={index} src={item ?? null} className="max-h-full max-w-full w-auto rounded-lg" width={50} height={50} alt={"Preview Image" + index} />
               </div>
             )
             }

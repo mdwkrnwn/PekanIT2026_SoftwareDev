@@ -25,12 +25,12 @@ export default function RatingSummary({ reviews }: RatingSummaryProps) {
   })();
 
   return (
-    <aside className="rounded-2xl h-fit sticky top-24 bg-white border border-gray-200 p-6 shadow-sm">
+    <aside className="rounded-2xl h-fit lg:sticky top-24 bg-background border border-border p-6 shadow-sm">
       {/* Main Rating */}
       <div className="mb-6 text-center">
         <div className="inline-flex items-baseline gap-1 mb-3">
-          <div className="text-5xl font-bold text-gray-900">{averageRating}</div>
-          <div className="text-lg text-gray-500 mb-0.5">/ 5</div>
+          <div className="text-5xl font-bold text-foreground">{averageRating}</div>
+          <div className="text-lg text-foreground mb-0.5">/ 5</div>
         </div>
 
         <div className="flex justify-center gap-1 mb-3">
@@ -38,16 +38,16 @@ export default function RatingSummary({ reviews }: RatingSummaryProps) {
             <FaStar
               key={i}
               className={`${i < Math.round(parseFloat(averageRating))
-                  ? "text-yellow-400"
-                  : "text-gray-300"
+                ? "text-yellow-400"
+                : "text-gray-300"
                 }`}
               size={16}
             />
           ))}
         </div>
 
-        <p className="text-gray-600 text-sm">
-          ({reviews.length} {reviews.length === 1 ? "ulasan" : "ulasan"})
+        <p className="text-foreground text-sm">
+          ({reviews.length}) ulasan
         </p>
 
         {/* Recommendation Percentage */}
@@ -68,7 +68,7 @@ export default function RatingSummary({ reviews }: RatingSummaryProps) {
           return (
             <div key={star} className="flex items-center gap-2">
               <div className="flex items-center gap-1">
-                <span className="text-sm font-medium text-gray-900 w-4">
+                <span className="text-sm font-medium text-foreground w-4">
                   {star}
                 </span>
                 <FaStar className="text-xs text-yellow-400" />
@@ -83,7 +83,7 @@ export default function RatingSummary({ reviews }: RatingSummaryProps) {
                 />
               </div>
 
-              <span className="text-gray-600 text-xs font-medium w-6 text-right">
+              <span className="text-foreground text-xs font-medium w-6 text-right">
                 {count}
               </span>
             </div>

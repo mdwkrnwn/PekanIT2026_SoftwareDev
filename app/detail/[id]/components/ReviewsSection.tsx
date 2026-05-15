@@ -101,7 +101,7 @@ export default function ReviewsSection({
       <div className="grid grid-cols-2 gap-8">
         {filteredReviews.length === 0 ? (
           <div className="rounded-2xl p-8 text-center bg-gray-50 border border-border col-span-2">
-            <p className="text-gray-600 text-sm">
+            <p className="text-foreground text-sm">
               {filter === "verified"
                 ? "Belum ada review dari Verified Visit"
                 : filter === "photo"
@@ -113,7 +113,7 @@ export default function ReviewsSection({
           filteredReviews.map((review) => (
             <div
               key={review.id}
-              className={cn("rounded-2xl p-5 bg-white border border-gray-200 hover:shadow-md transition-shadow",
+              className={cn("rounded-2xl p-5 bg-background border border-border hover:shadow-md transition-shadow",
                 filteredReviews.length % 2 != 0 && "last:col-span-2 last:justify-center"
               )}
             >
@@ -129,7 +129,7 @@ export default function ReviewsSection({
 
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <h4 className="font-semibold text-gray-900">
+                    <h4 className="font-semibold text-foreground">
                       {review.name}
                     </h4>
                     {review.verified && (
@@ -147,7 +147,7 @@ export default function ReviewsSection({
                           <FaStar key={i} size={12} />
                         ))}
                       </div>
-                      <span className="text-xs text-gray-500">
+                      <span className="text-xs text-foreground/80">
                         {review.timeago || "1 hari lalu"}
                       </span>
                     </div>
@@ -156,7 +156,7 @@ export default function ReviewsSection({
               </div>
 
               {/* Comment */}
-              <p className="text-gray-700 text-sm leading-relaxed mb-3">
+              <p className="text-foreground text-sm leading-relaxed mb-3">
                 {review.comment}
               </p>
 
@@ -180,8 +180,8 @@ export default function ReviewsSection({
               <button
                 onClick={() => toggleLike(review.id)}
                 className={`flex items-center gap-2 text-sm font-medium transition-colors ${userLikes[review.id]
-                  ? "text-blue-500"
-                  : "text-gray-600 hover:text-blue-500"
+                  ? "text-primary/90"
+                  : "text-foreground hover:text-primary/90"
                   }`}
               >
                 <FaThumbsUp size={14} />

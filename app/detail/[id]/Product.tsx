@@ -95,17 +95,17 @@ export default function ProductPage({
           />
         </div>
 
-        <div className="mt-2 border-t border-slate-200 "></div>
+        <hr className="border-border " />
         {/* featured menu */}
         {product.featuredMenus && product.featuredMenus.length > 0 && (
-          <section className="mt-5">
+          <section className="mt-5 ">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-slate-900 text-xl font-bold">Menu Andalan</h3>
               <button className="text-primary hover:underline text-sm font-bold">
                 Lihat Semua
               </button>
             </div>
-            <div className="grid grid-cols-5 gap-4">
+            <div className="*:flex-1 grid lg:grid-cols-5 md:grid-cols-3 gap-4">
               {product.featuredMenus.map((item, i) => (
                 <div
                   key={i}
