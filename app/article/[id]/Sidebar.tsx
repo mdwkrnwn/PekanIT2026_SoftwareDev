@@ -106,7 +106,7 @@ export function Sidebar({
                   {article.title}
                 </h3>
                 <p className="text-muted-foreground mt-2 text-sm">
-                  {article.readTime} Menit
+                  {article.readTime} 
                 </p>
               </div>
             </Link>

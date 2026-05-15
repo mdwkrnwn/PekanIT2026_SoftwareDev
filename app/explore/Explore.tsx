@@ -15,7 +15,7 @@ interface MainExploreProps {
 
 export default function MainExplore({ filteredUMKM, search, category }: MainExploreProps) {
   return (
-    <div className="w-[86vw]">
+    <div className="w-[80vw]">
       {/* Pass the resolved params to the client-side filter */}
       <SearchFilter initialSearch={search} initialCategory={category} />
 
@@ -55,7 +55,7 @@ export default function MainExplore({ filteredUMKM, search, category }: MainExpl
                       {item.description}
                     </p>
 
-                    <div className="text-black flex items-center gap-2 mb-4 text-sm">
+                    <div className="text-muted-foreground flex items-center gap-2 mb-4 text-sm">
                       <FaLocationDot size={14} />
                       <span>{item.location}</span>
                     </div>
@@ -72,8 +72,8 @@ export default function MainExplore({ filteredUMKM, search, category }: MainExpl
                       </div>
 
                       <div className="text-muted-foreground flex items-center gap-1">
-                        <FaLocationDot size={13} />
-                        <span>{item.name}</span>
+                        <FaLocationDot className="text-primary" size={13} />
+                        <span>{item.distance}</span>
                       </div>
                     </div>
                   </div>

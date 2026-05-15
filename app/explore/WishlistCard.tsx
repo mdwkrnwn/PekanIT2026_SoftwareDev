@@ -72,7 +72,7 @@ export default function WishlistCard({
   return (
     <button
       className={`absolute top-3 right-3 p-2 rounded-full transition z-10 ${isWishlisted
-          ? "bg-red-100 text-red-600"
+          ? "bg-blue-100 text-blue-600"
           : "bg-white text-gray-600 hover:bg-gray-100"
         }`}
       onClick={toggleWishlist}

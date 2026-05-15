@@ -2,7 +2,7 @@
 import Image from "next/image";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { FaChevronLeft, FaHeart } from "react-icons/fa";
-import { LuMousePointer2 } from "react-icons/lu";
+import { SiGooglemaps } from "react-icons/si";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
@@ -20,6 +20,12 @@ import { cn } from "@/lib/utils";
 function Navbar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const path = usePathname();
+  const navItems = [
+    { name: "Beranda", href: "/" },
+    { name: "Explore", href: "/explore" },
+    { name: "About", href: "/about" },
+    { name: "Article", href: "/article" },
+  ];
   useEffect(() => {
     if (isSidebarOpen) {
       document.body.style.overflow = "hidden";
@@ -38,7 +44,7 @@ function Navbar() {
     <>
       <header className="sticky top-0 z-999 w-full">
         <div className="sm:flex hidden bg-background justify-center shadow-[#A9A1A140] shadow-md ">
-          <nav className="grid grid-cols-[1fr_1fr_3fr] justify-center items-center w-[86vw]">
+          <nav className="grid grid-cols-[1fr_1fr_3fr] justify-center items-center w-[80vw]">
             <section className="flex items-center">
               <Image
                 loading="eager"
@@ -51,18 +57,23 @@ function Navbar() {
             </section>
             <section>
               <ul className="flex gap-6 text-lg font-medium">
-                <li>
-                  <Link href="/">Beranda</Link>
-                </li>
-                <li>
-                  <Link href="/explore">Explore</Link>
-                </li>
-                <li>
-                  <Link href="/about">About</Link>
-                </li>
-                <li>
-                  <Link href="/article">Article</Link>
-                </li>
+                {navItems.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className={`relative inline-block pb-3
+                      after:absolute after:bottom-0 after:left-0
+                      after:rounded-full after:transition-all
+                      ${
+                        path === item.href
+                          ? "after:w-8 after:h-[4px] after:bg-primary"
+                          : "after:w-8 after:h-[4px] after:bg-transparent hover:after-text-primary"
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </section>
             <section className="place-self-end flex items-center self-center gap-3">
@@ -78,11 +89,11 @@ function Navbar() {
                 href={"/maps"}
                 className="outline-1 outline-primary flex items-center justify-center p-2 transition-colors bg-transparent rounded-full cursor-pointer"
               >
-                <span className="bg-primary p-1 rounded-full">
-                  <LuMousePointer2
-                    className="scale-x-[-1] fill-background"
+                <span>
+                  <SiGooglemaps
+                    className="fill-primary"
                     strokeWidth={0}
-                    size={16}
+                    size={26}
                   />
                 </span>
               </Link>
@@ -119,20 +130,16 @@ function Navbar() {
           <section className={cn("z-50")}>
             <ul className="flex flex-col gap-6 text-lg font-medium">
               <li>
-                <Link
-                  href="/">Beranda</Link>
+                <Link href="/">Beranda</Link>
               </li>
               <li>
-                <Link
-                  href="/explore">Explore</Link>
+                <Link href="/explore">Explore</Link>
               </li>
               <li>
-                <Link
-                  href="/about">About</Link>
+                <Link href="/about">About</Link>
               </li>
               <li>
-                <Link
-                  href="/article">Article</Link>
+                <Link href="/article">Article</Link>
               </li>
             </ul>
           </section>
@@ -149,11 +156,11 @@ function Navbar() {
               href={"/maps"}
               className="outline-1 outline-primary flex items-center justify-center p-2 transition-colors bg-transparent rounded-full cursor-pointer"
             >
-              <span className="bg-primary p-1 rounded-full">
-                <LuMousePointer2
-                  className="scale-x-[-1] fill-background"
+              <span>
+                <SiGooglemaps
+                  className="fill-primary"
                   strokeWidth={0}
-                  size={16}
+                  size={26}
                 />
               </span>
             </Link>

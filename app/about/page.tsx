@@ -8,7 +8,7 @@ import { reasons, statistics } from "@/lib/mockData";
 export default function AboutPage() {
 
   return (
-    <section className="w-[86vw] grid gap-8 lg:grid-cols-2">
+    <section className="w-[80vw] grid gap-8 lg:grid-cols-2">
       <div className="border-border flex flex-col justify-center rounded-[2rem] border p-10 lg:p-14">
         <h1 className="text-foreground md:text-6xl mb-8 text-3xl font-bold leading-tight">
           Mendukung UMKM Lokal Lewat Solusi Digital

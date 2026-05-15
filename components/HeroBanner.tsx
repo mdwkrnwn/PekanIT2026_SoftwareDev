@@ -82,7 +82,7 @@ export function HeroBanner() {
   ];
 
   return (
-    <section className="relative w-[86vw] mt-10">
+    <section className="relative w-[80vw] mt-10">
       <div className="gap-14 lg:flex-row flex flex-col items-center justify-between w-full">
         {/* LEFT */}
         <div className="z-10 flex-1">
@@ -169,7 +169,7 @@ export function HeroBanner() {
 
         {/* RIGHT */}
         <div className="relative xl:flex w-full flex-1 top-15 items-center justify-center mask-[linear-gradient(to_top,rgba(0,0,0,0)_0%,rgba(0,0,0,0)_15%,rgba(0,0,0,1)_30%,rgba(0,0,0,1)_100%)] scale-125 hidden">
-          <Image src={'/home2.png'} width={1000} height={1000} className="" alt="phone" />
+          <Image src={'/homee.png'} width={1000} height={1000} className="" alt="phone" />
         </div>
       </div>
 

@@ -5,13 +5,13 @@ import { FaRegClock } from "react-icons/fa6";
 
 export default function Articles() {
   return (
-    <div className="w-[86vw]">
+    <div className="w-[80vw]">
       <h3 className="text-primary mb-8 text-3xl font-bold">
         Cerita & Tips Pilihan
       </h3>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {ARTICLES.slice(0, 6).map((article) => (
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        {ARTICLES.slice(0, 8).map((article) => (
           <Link
             key={article.id}
             href={`/article/${article.id}`}

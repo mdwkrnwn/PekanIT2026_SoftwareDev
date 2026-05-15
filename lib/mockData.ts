@@ -8,6 +8,7 @@ import {
 } from "react-icons/fa6";
 import { FaBorderAll, FaCoffee, FaGamepad, FaHeart, FaMugHot, FaSearch, FaStar, FaUsers, FaUtensils } from "react-icons/fa";
 
+import { ARTICLES } from "@/data/ARTIKEL";
 import {
   MdFastfood,
   MdOutlineMiscellaneousServices,
@@ -146,65 +147,16 @@ export const categoryBadgeColor: Record<string, string> = {
   Kecantikan: "bg-rose-100 text-rose-700",
 };
 
-export const popularArticles = [
-  {
-    id: 1,
-    title: "Rekomendasi jajanan lokal favorit anak muda",
-    image: "https://picsum.photos/200/200?random=301",
-    readTime: 5
-  },
-  {
-    id: 2,
-    title: "Tips menemukan hidden GEM di kotamu",
-    image: "https://picsum.photos/200/200?random=302",
-    readTime: 5
-  },
-  {
-    id: 3,
-    title: "Cara mudah belanja lokal tanpa ribet",
-    image: "https://picsum.photos/200/200?random=303",
-    readTime: 5
-  },
-  {
-    id: 4,
-    title: "Kenapa dukung UMKM itu penting?",
-    image: "https://picsum.photos/200/200?random=304",
-    readTime: 5
-  },
-];
+export const popularArticles = ARTICLES.slice(1, 5).map((article) => ({
+  id: article.id,
+  title: article.title,
+  image: article.thumbnail,
+  readTime: article.readTime,
+}));
 
-export const articlePoints = [
-  {
-    title: "Belanja Produk Lokal",
-    description:
-      "Pilih produk lokal untuk kebutuhan sehari-hari. Mulai dari makanan, minuman, fashion, hingga kerajinan tangan",
-    icon: RiShoppingBag4Fill,
-  },
-  {
-    title: "Cari di Sekitar Kamu",
-    description:
-      "Gunakan platform seperti UFinder untuk menemukan UMKM terdekat. Belanja jadi lebih praktis dan hemat ongkir!",
-    icon: FaLocationDot,
-  },
-  {
-    title: "Beri Review & Rating",
-    description:
-      "Ulasan positif darimu sangat berarti bagi pelaku UMKM. Ini membantu mereka menarik lebih banyak pelanggan.",
-    icon: FaStar,
-  },
-  {
-    title: "Bagikan ke Teman & Keluarga",
-    description:
-      "Rekomendasikan UMKM favoritmu ke orang terdekat. Dukungan kecilmu bisa jadi besar bagi mereka.",
-    icon: IoPaperPlane,
-  },
-  {
-    title: "Dukung Secara Konsisten",
-    description:
-      "Dukungan terbaik adalah yang berkelanjutan. Jadikan belanja lokal sebagai kebiasaan baik setiap hari.",
-    icon: FaHeart,
-  },
-];
+const article = ARTICLES.find((item) => item.id === 1);
+
+const articlePoints = article?.content || [];
 
 export const categoriesMerchant = [
   {

@@ -7,7 +7,7 @@ export const ARTICLES = [
     authorAvatar: "/team-avatar.jpeg",
     readTime: "5 menit",
 
-    thumbnail: "/assets/artikel/7umkm.jpeg",
+    thumbnail: "/assets/artikel/7umkm.jpg",
 
     description:
       "Yuk, kenalan sama cara-cara simple yang bisa kamu lakuin buat support UMKM lokal setiap hari.",
@@ -267,7 +267,7 @@ export const ARTICLES = [
     authorAvatar: "/team-avatar.jpeg",
     readTime: "5 menit",
 
-    thumbnail: "/assets/artikel/hidengem.jpeg",
+    thumbnail: "/assets/artikel/lokal.jpg",
 
     description:
       "Bingung cari hadiah yang unik? Produk UMKM lokal bisa jadi pilihan spesial.",
@@ -312,7 +312,7 @@ export const ARTICLES = [
     authorAvatar: "/team-avatar.jpeg",
     readTime: "5 menit",
 
-    thumbnail: "/assets/artikel/rekomendasijajananlokal.jpeg",
+    thumbnail: "/assets/artikel/belanjalokal.jpg",
 
     description:
       "Dukungan kecil dari pelanggan setia bisa memberi dampak besar bagi UMKM.",
