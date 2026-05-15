@@ -43,8 +43,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   }
   const comments = discussionAndReviews.find((item) => item.umkmId === Number(id))
   const review = comments!.reviews;
-  const discussions = comments!.discussion;
 
 
-  return <ProductPage discussions={discussions} review={review} product={umkm} />
+  return <ProductPage review={review} product={umkm} />
 }

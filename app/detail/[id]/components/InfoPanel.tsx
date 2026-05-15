@@ -2,6 +2,7 @@
 
 import { TAGS } from "@/data/TAGS";
 import { UMKM } from "@/data/UMKM";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { FaHeart, FaMapMarkerAlt, FaRegClock, FaStar } from "react-icons/fa";
 import { HiOutlineLocationMarker } from "react-icons/hi";
@@ -85,10 +86,11 @@ export default function InfoPanel({
           </Link>
         </div>
       </div>
-      {/* Feature Cards */}
-      <div className="flex flex-wrap justify-center gap-3 outline-border rounded-xl outline-1">
+      {/* Tags Cards */}
+      <div className="grid grid-cols-2 outline-border rounded-xl outline-1 ">
         {tags.map((item) => (
-          <div key={item.id} className="rounded-2xl flex flex-row items-center gap-2 p-4 ">
+          <div key={item.id} className={cn(`rounded-2xl flex  flex-row items-center gap-2 p-4 `, tags.length % 2 != 0 && "last:col-span-2 last:justify-center"
+          )}>
             <div className="bg-primary/10 text-primary p-3 rounded-full">
               <item.icon size={22} />
             </div>

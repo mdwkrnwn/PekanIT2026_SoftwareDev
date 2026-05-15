@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { UMKM } from "@/data/UMKM";
 import { addToWishlist, removeFromWishlist } from "@/lib/wishlist";
 import Swal from "sweetalert2";
@@ -9,15 +9,12 @@ import Image from "next/image";
 import GallerySection from "./components/GallerySection";
 import InfoPanel from "./components/InfoPanel";
 import ReviewsSection from "./components/ReviewsSection";
-import DiscussionSection from "./components/DiscussionSection";
 import RatingSummary from "./components/RatingSummary";
-import SimilarUMKM from "./components/SimilarUMKM";
 import ReviewForm from "./components/ReviewForm";
 
 export default function ProductPage({
   product,
   review,
-  discussions,
 }: {
   product: (typeof UMKM)[number];
   review: Array<{
@@ -30,19 +27,11 @@ export default function ProductPage({
     timeago?: string;
     likes?: number;
   }>;
-  discussions: Array<{
-    id: number;
-    name: string;
-    comment: string;
-    replies: Array<{ id: number; name: string; comment: string }>;
-  }>;
 }) {
   const [mainImage, setMainImage] = useState(product?.gallery?.[0]);
   const wishes = useWishlist().map((item) => item.id);
   const [wishlist, setWishlist] = useState(wishes);
-  const [tab, setTab] = useState("reviews");
   const [reviews, setReviews] = useState(review);
-  const [discussion, setDiscussion] = useState(discussions);
 
   const toggleWishlist = (id: number, name: string) => {
     const isInWishlist = wishlist.includes(id);
@@ -77,13 +66,6 @@ export default function ProductPage({
     }
   };
 
-  const filtered = useMemo(() => {
-    if (!product) return [] as typeof UMKM;
-    const base = UMKM.filter(
-      (u) => u.category === product.category && u.id !== product.id,
-    );
-    return base.filter((u) => u.name.toLowerCase());
-  }, [product]);
 
   const isWish = wishlist.includes(product.id);
   const rating = (
@@ -162,7 +144,6 @@ export default function ProductPage({
             {/* Summary + Form */}
             <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-6 rounded-xl bg-card">
               <RatingSummary reviews={reviews} />
-
               <ReviewForm
                 onSubmit={(newReview) => {
                   setReviews((prev) => [newReview, ...prev]);
@@ -172,7 +153,7 @@ export default function ProductPage({
 
             {/* Review List */}
             <div className="w-full">
-              <ReviewsSection reviews={reviews} onUpdate={setReviews} />
+              <ReviewsSection reviews={reviews} />
             </div>
           </div>
         </section>
