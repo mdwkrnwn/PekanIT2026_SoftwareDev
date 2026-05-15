@@ -2,7 +2,7 @@
 
 import { useMemo, useSyncExternalStore } from "react";
 
-import { UMKM } from "@/data/UMKM.dummy";
+import { UMKM } from "@/data/UMKM";
 
 import {
   getWishlistSnapshot,

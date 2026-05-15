@@ -49,7 +49,12 @@ export const discussionAndReviews = [
       {
         "id": 1,
         "name": "Darimin",
-        "comment": "Mollitia deleniti pariatur fugit quibusdam. Nulla error molestias a. Distinctio ratione non eum ipsam."
+        "comment": "Mollitia deleniti pariatur fugit quibusdam. Nulla error molestias a. Distinctio ratione non eum ipsam.",
+        replies: [{
+          id: 1,
+          name: "Alice",
+          comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+        }]
       },
       {
         "id": 2,

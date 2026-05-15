@@ -5,6 +5,7 @@ export const UMKM = [
     category: "Makanan",
     description: "Aneka makanan rumahan lezat & berkualitas.",
     location: "Jakarta Selatan",
+    address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.5,
     reviews: 20,
     distance: "1.2 km",
@@ -12,48 +13,24 @@ export const UMKM = [
     openHours: "09:00 - 21:00",
     lat: -7.981894,
     lng: 112.626503,
-    tags: ["Makanan Rumahan", "Harga Terjangkau", "Halal"],
-
-    about:
-      "Dapur Nona menyajikan aneka masakan rumahan dengan cita rasa lezat dan harga terjangkau. Semua menu dibuat dengan bahan segar pilihan dan resep turun-temurun keluarga.",
-
+    tagIds: [1, 2, 3],
+    about: "Dapur Nona menyajikan aneka masakan rumahan dengan cita rasa lezat dan harga terjangkau. Semua menu dibuat dengan bahan segar pilihan dan resep turun-temurun keluarga.",
     gallery: ["/assets/umkm/makanan/dapurnona/thumbnail.jpeg"],
-
     featuredMenus: [
-      {
-        name: "Nasi Ayam Geprek",
-        price: 18000,
-        image: "/assets/umkm/makanan/dapurnona/menu/ayamgeprek.jpeg",
-      },
-      {
-        name: "Nasi Telur Dadar",
-        price: 18000,
-        image: "/assets/umkm/makanan/dapurnona/menu/nasitelurdadar.jpeg",
-      },
-      {
-        name: "Sambal Cumi",
-        price: 18000,
-        image: "/assets/umkm/makanan/dapurnona/menu/sambalcumi.jpeg",
-      },
-      {
-        name: "Es Teh",
-        price: 10000,
-        image: "/assets/umkm/makanan/dapurnona/menu/esteh.jpeg",
-      },
-      {
-        name: "Puding Cokelat",
-        price: 18000,
-        image: "/assets/umkm/makanan/dapurnona/menu/pudingcokelat.jpeg",
-      },
+      { name: "Nasi Ayam Geprek", price: 18000, image: "/assets/umkm/makanan/dapurnona/menu/ayamgeprek.jpeg" },
+      { name: "Nasi Telur Dadar", price: 18000, image: "/assets/umkm/makanan/dapurnona/menu/nasitelurdadar.jpeg" },
+      { name: "Sambal Cumi", price: 18000, image: "/assets/umkm/makanan/dapurnona/menu/sambalcumi.jpeg" },
+      { name: "Es Teh", price: 10000, image: "/assets/umkm/makanan/dapurnona/menu/esteh.jpeg" },
+      { name: "Puding Cokelat", price: 18000, image: "/assets/umkm/makanan/dapurnona/menu/pudingcokelat.jpeg" },
     ],
   },
-
   {
     id: 2,
     name: "Toko Berkah",
     category: "Toko Kelontong",
     description: "Kebutuhan sehari-hari lengkap & terjangkau.",
     location: "Depok",
+    address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.6,
     reviews: 10,
     distance: "2.0 km",
@@ -61,49 +38,24 @@ export const UMKM = [
     lng: 112.629182,
     status: "Buka Sekarang",
     openHours: "07:00 - 22:00",
-
-    tags: ["Kebutuhan Harian", "Lengkap", "Murah"],
-
-    about:
-      "Toko Berkah menyediakan kebutuhan rumah tangga, makanan ringan, minuman, dan berbagai kebutuhan harian dengan harga terjangkau.",
-
+    tagIds: [4, 5, 6],
+    about: "Toko Berkah menyediakan kebutuhan rumah tangga, makanan ringan, minuman, dan berbagai kebutuhan harian dengan harga terjangkau.",
     gallery: ["/assets/umkm/toko/tokoberkah/thumbnail.jpg"],
-
     featuredMenus: [
-      {
-        name: "Beras Premium",
-        price: 65000,
-        image: "/assets/umkm/toko/tokoberkah/menu/beras.jpg",
-      },
-      {
-        name: "Minyak Goreng",
-        price: 18000,
-        image: "/assets/umkm/toko/tokoberkah/menu/minyak.jpg",
-      },
-      {
-        name: "Gula Pasir",
-        price: 15000,
-        image: "/assets/umkm/toko/tokoberkah/menu/gula.jpg",
-      },
-      {
-        name: "Kopi Sachet",
-        price: 12000,
-        image: "/assets/umkm/toko/tokoberkah/menu/kopi.jpg",
-      },
-      {
-        name: "Mi Instan",
-        price: 3000,
-        image: "/assets/umkm/toko/tokoberkah/menu/mie.jpg",
-      },
+      { name: "Beras Premium", price: 65000, image: "/assets/umkm/toko/tokoberkah/menu/beras.jpg" },
+      { name: "Minyak Goreng", price: 18000, image: "/assets/umkm/toko/tokoberkah/menu/minyak.jpg" },
+      { name: "Gula Pasir", price: 15000, image: "/assets/umkm/toko/tokoberkah/menu/gula.jpg" },
+      { name: "Kopi Sachet", price: 12000, image: "/assets/umkm/toko/tokoberkah/menu/kopi.jpg" },
+      { name: "Mi Instan", price: 3000, image: "/assets/umkm/toko/tokoberkah/menu/mie.jpg" },
     ],
   },
-
   {
     id: 3,
     name: "Greeny Plant",
     category: "Hobi",
     description: "Tanaman hias & perlengkapan berkebun.",
     location: "Bogor",
+    address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.9,
     reviews: 60,
     lat: -7.975634,
@@ -111,49 +63,24 @@ export const UMKM = [
     distance: "3.1 km",
     status: "Buka Sekarang",
     openHours: "08:00 - 18:00",
-
-    tags: ["Tanaman Hias", "Berkebun", "Indoor Plant"],
-
-    about:
-      "Greeny Plant menghadirkan berbagai tanaman hias, pot dekoratif, pupuk, dan perlengkapan berkebun berkualitas.",
-
+    tagIds: [7, 8, 9],
+    about: "Greeny Plant menghadirkan berbagai tanaman hias, pot dekoratif, pupuk, dan perlengkapan berkebun berkualitas.",
     gallery: ["/assets/umkm/hobi/greenyplant/thumbnail.jpeg"],
-
     featuredMenus: [
-      {
-        name: "Monstera",
-        price: 85000,
-        image: "/assets/umkm/hobi/greenyplant/menu/montserra.jpg",
-      },
-      {
-        name: "Pot Keramik",
-        price: 45000,
-        image: "/assets/umkm/hobi/greenyplant/menu/keramik.jpg",
-      },
-      {
-        name: "Pupuk Organik",
-        price: 25000,
-        image: "/assets/umkm/hobi/greenyplant/menu/pupuk.jpg",
-      },
-      {
-        name: "Sekop Mini",
-        price: 15000,
-        image: "/assets/umkm/hobi/greenyplant/menu/shovel.jpg",
-      },
-      {
-        name: "Kaktus Mini",
-        price: 35000,
-        image: "/assets/umkm/hobi/greenyplant/menu/kaktus.jpg",
-      },
+      { name: "Monstera", price: 85000, image: "/assets/umkm/hobi/greenyplant/menu/montserra.jpg" },
+      { name: "Pot Keramik", price: 45000, image: "/assets/umkm/hobi/greenyplant/menu/keramik.jpg" },
+      { name: "Pupuk Organik", price: 25000, image: "/assets/umkm/hobi/greenyplant/menu/pupuk.jpg" },
+      { name: "Sekop Mini", price: 15000, image: "/assets/umkm/hobi/greenyplant/menu/shovel.jpg" },
+      { name: "Kaktus Mini", price: 35000, image: "/assets/umkm/hobi/greenyplant/menu/kaktus.jpg" },
     ],
   },
-
   {
     id: 4,
     name: "Local Outfit",
     category: "Fashion",
     description: "Fashion lokal berkualitas dengan harga bersahabat.",
     location: "Jakarta Timur",
+    address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.7,
     reviews: 20,
     lat: -7.984216,
@@ -161,16 +88,9 @@ export const UMKM = [
     distance: "1.8 km",
     status: "Buka Sekarang",
     openHours: "10:00 - 21:00",
-
-    tags: ["Fashion Lokal", "Stylish", "Affordable"],
-
-    about:
-      "Local Outfit menawarkan produk fashion lokal dengan desain modern, bahan premium, dan harga yang cocok untuk anak muda.",
-
-    gallery: [
-      "/assets/umkm/fashion/lokaloutfit/thumbnail.jpeg",
-    ],
-
+    tagIds: [10, 11, 12],
+    about: "Local Outfit menawarkan produk fashion lokal dengan desain modern, bahan premium, dan harga yang cocok untuk anak muda.",
+    gallery: ["/assets/umkm/fashion/lokaloutfit/thumbnail.jpeg"],
     featuredMenus: [
       { name: "Oversized T-Shirt", price: 99000 },
       { name: "Cargo Pants", price: 149000 },
@@ -179,13 +99,13 @@ export const UMKM = [
       { name: "Sneakers", price: 299000 },
     ],
   },
-
   {
     id: 5,
     name: "Kopi Titik",
     category: "Kafe",
     description: "Tempat nongkrong nyaman dengan kopi pilihan.",
     location: "Jakarta Selatan",
+    address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.5,
     reviews: 70,
     lat: -7.988542,
@@ -193,16 +113,9 @@ export const UMKM = [
     distance: "1.0 km",
     status: "Buka Sekarang",
     openHours: "08:00 - 23:00",
-
-    tags: ["Coffee Shop", "Cozy Place", "WiFi"],
-
-    about:
-      "Kopi Titik menyediakan kopi pilihan dengan suasana nyaman untuk bekerja, meeting, maupun nongkrong bersama teman.",
-
-    gallery: [
-      "/assets/umkm/kafe/kopititik/thumbnail.jpeg",
-    ],
-
+    tagIds: [13, 14, 15],
+    about: "Kopi Titik menyediakan kopi pilihan dengan suasana nyaman untuk bekerja, meeting, maupun nongkrong bersama teman.",
+    gallery: ["/assets/umkm/kafe/kopititik/thumbnail.jpeg"],
     featuredMenus: [
       { name: "Cappuccino", price: 28000 },
       { name: "Americano", price: 22000 },
@@ -211,13 +124,13 @@ export const UMKM = [
       { name: "Cheesecake", price: 35000 },
     ],
   },
-
   {
     id: 6,
     name: "Fixit Home",
     category: "Jasa",
     description: "Jasa perbaikan rumah cepat & terpercaya.",
     location: "Tangerang",
+    address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.8,
     reviews: 45,
     lat: -7.972184,
@@ -225,16 +138,9 @@ export const UMKM = [
     distance: "1.0 km",
     status: "Tersedia Hari Ini",
     openHours: "08:00 - 20:00",
-
-    tags: ["Teknisi", "Cepat", "Profesional"],
-
-    about:
-      "Fixit Home melayani berbagai kebutuhan perbaikan rumah mulai dari listrik, plumbing, hingga furniture.",
-
-    gallery: [
-      "/assets/umkm/jasa/fixithome/thumbnail.jpeg",
-    ],
-
+    tagIds: [16, 17, 18],
+    about: "Fixit Home melayani berbagai kebutuhan perbaikan rumah mulai dari listrik, plumbing, hingga furniture.",
+    gallery: ["/assets/umkm/jasa/fixithome/thumbnail.jpeg"],
     featuredMenus: [
       { name: "Perbaikan Listrik", price: 75000 },
       { name: "Service Pipa", price: 85000 },
@@ -243,13 +149,13 @@ export const UMKM = [
       { name: "Perbaikan AC", price: 150000 },
     ],
   },
-
   {
     id: 7,
     name: "Glow & Go",
     category: "Kecantikan",
     description: "Produk perawatan kulit aman & bernilai.",
     location: "Bekasi",
+    address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.9,
     reviews: 20,
     distance: "2.4 km",
@@ -257,16 +163,9 @@ export const UMKM = [
     lng: 112.624551,
     status: "Buka Sekarang",
     openHours: "09:00 - 20:00",
-
-    tags: ["Skincare", "Beauty", "Natural"],
-
-    about:
-      "Glow & Go menghadirkan produk skincare lokal dengan bahan berkualitas, aman, dan cocok untuk berbagai jenis kulit.",
-
-    gallery: [
-      "/assets/umkm/kecantikan/glow&go/thumbnail.jpeg",
-    ],
-
+    tagIds: [19, 20, 21],
+    about: "Glow & Go menghadirkan produk skincare lokal dengan bahan berkualitas, aman, dan cocok untuk berbagai jenis kulit.",
+    gallery: ["/assets/umkm/kecantikan/glow&go/thumbnail.jpeg"],
     featuredMenus: [
       { name: "Facial Wash", price: 65000 },
       { name: "Serum Brightening", price: 120000 },
@@ -275,13 +174,13 @@ export const UMKM = [
       { name: "Night Cream", price: 110000 },
     ],
   },
-
   {
     id: 8,
     name: "Cemilan Nendang",
     category: "Makanan",
     description: "Aneka makanan rumahan lezat & berkualitas.",
     location: "Bogor",
+    address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.9,
     reviews: 42,
     distance: "3.6 km",
@@ -289,16 +188,9 @@ export const UMKM = [
     lat: -7.986327,
     lng: 112.640293,
     openHours: "10:00 - 22:00",
-
-    tags: ["Snack", "Homemade", "Fresh"],
-
-    about:
-      "Cemilan Mendang menawarkan berbagai camilan rumahan dan frozen food dengan rasa lezat dan bahan berkualitas.",
-
-    gallery: [
-      "/assets/umkm/makanan/cemilannendang/thumbnail.jpeg",
-    ],
-
+    tagIds: [22, 23, 24],
+    about: "Cemilan Mendang menawarkan berbagai camilan rumahan dan frozen food dengan rasa lezat dan bahan berkualitas.",
+    gallery: ["/assets/umkm/makanan/cemilannendang/thumbnail.jpeg"],
     featuredMenus: [
       { name: "Pisang Goreng", price: 15000 },
       { name: "Cireng Isi", price: 18000 },
@@ -313,6 +205,7 @@ export const UMKM = [
     category: "Fashion",
     description: "Fashion batik lokal dengan desain modern & elegan.",
     location: "Yogyakarta",
+    address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.8,
     reviews: 35,
     distance: "2.1 km",
@@ -320,14 +213,9 @@ export const UMKM = [
     lat: -7.991742,
     lng: 112.619284,
     openHours: "09:00 - 21:00",
-
-    tags: ["Batik", "Fashion Lokal", "Elegant"],
-
-    about:
-      "Batik Heritage menghadirkan koleksi batik modern dengan bahan premium yang cocok untuk acara formal maupun casual.",
-
+    tagIds: [25, 10, 26],
+    about: "Batik Heritage menghadirkan koleksi batik modern dengan bahan premium yang cocok untuk acara formal maupun casual.",
     gallery: ["/assets/umkm/fashion/batikheritage/thumbnail.jpg"],
-
     featuredMenus: [
       { name: "Kemeja Batik", price: 189000 },
       { name: "Dress Batik", price: 249000 },
@@ -336,13 +224,13 @@ export const UMKM = [
       { name: "Tas Batik", price: 129000 },
     ],
   },
-
   {
     id: 10,
     name: "Urban Style",
     category: "Fashion",
     description: "Streetwear modern untuk anak muda aktif.",
     location: "Bandung",
+    address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.7,
     lat: -7.977193,
     lng: 112.643817,
@@ -350,14 +238,9 @@ export const UMKM = [
     distance: "1.7 km",
     status: "Buka Sekarang",
     openHours: "10:00 - 22:00",
-
-    tags: ["Streetwear", "Modern", "Casual"],
-
-    about:
-      "Urban Style menyediakan fashion streetwear kekinian dengan kualitas premium dan desain stylish.",
-
+    tagIds: [27, 28, 29],
+    about: "Urban Style menyediakan fashion streetwear kekinian dengan kualitas premium dan desain stylish.",
     gallery: ["/assets/umkm/fashion/urbanstyle/thumbnail.jpg"],
-
     featuredMenus: [
       { name: "Hoodie", price: 179000 },
       { name: "Oversized Tee", price: 99000 },
@@ -366,13 +249,13 @@ export const UMKM = [
       { name: "Sneakers", price: 299000 },
     ],
   },
-
   {
     id: 11,
     name: "Hobby Station",
     category: "Hobi",
     description: "Perlengkapan hobi lengkap dan berkualitas.",
     location: "Surabaya",
+    address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.8,
     reviews: 40,
     distance: "2.5 km",
@@ -380,13 +263,9 @@ export const UMKM = [
     openHours: "08:00 - 20:00",
     lat: -7.968514,
     lng: 112.636492,
-    tags: ["Hobi", "Creative", "Lengkap"],
-
-    about:
-      "Hobby Station menyediakan berbagai perlengkapan koleksi, craft, dan kebutuhan hobi lainnya.",
-
+    tagIds: [30, 31, 5],
+    about: "Hobby Station menyediakan berbagai perlengkapan koleksi, craft, dan kebutuhan hobi lainnya.",
     gallery: ["/assets/umkm/hobi/hobbystation/thumbnail.jpg"],
-
     featuredMenus: [
       { name: "Paint Set", price: 85000 },
       { name: "Mini Figure", price: 120000 },
@@ -395,13 +274,13 @@ export const UMKM = [
       { name: "Brush Set", price: 35000 },
     ],
   },
-
   {
     id: 12,
     name: "Creative House",
     category: "Hobi",
     description: "Peralatan craft dan DIY kreatif.",
     location: "Malang",
+    address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.9,
     reviews: 38,
     lat: -7.973625,
@@ -409,14 +288,9 @@ export const UMKM = [
     distance: "2.0 km",
     status: "Buka Sekarang",
     openHours: "09:00 - 19:00",
-
-    tags: ["DIY", "Craft", "Creative"],
-
-    about:
-      "Creative House menawarkan berbagai perlengkapan DIY, kerajinan tangan, dan seni kreatif.",
-
+    tagIds: [32, 33, 31],
+    about: "Creative House menawarkan berbagai perlengkapan DIY, kerajinan tangan, dan seni kreatif.",
     gallery: ["/assets/umkm/hobi/creativehouse/thumbnail.jpg"],
-
     featuredMenus: [
       { name: "Canvas", price: 45000 },
       { name: "Cat Acrylic", price: 65000 },
@@ -425,13 +299,13 @@ export const UMKM = [
       { name: "Marker Set", price: 35000 },
     ],
   },
-
   {
     id: 13,
     name: "Quick Service",
     category: "Jasa",
     description: "Layanan perbaikan cepat dan profesional.",
     location: "Jakarta Barat",
+    address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.7,
     reviews: 32,
     distance: "1.5 km",
@@ -439,14 +313,9 @@ export const UMKM = [
     lng: 112.633951,
     status: "Tersedia Hari Ini",
     openHours: "08:00 - 20:00",
-
-    tags: ["Service", "Cepat", "Profesional"],
-
-    about:
-      "Quick Service melayani berbagai kebutuhan service rumah dengan teknisi profesional.",
-
+    tagIds: [34, 17, 18],
+    about: "Quick Service melayani berbagai kebutuhan service rumah dengan teknisi profesional.",
     gallery: ["/assets/umkm/jasa/quickservice/thumbnail.jpg"],
-
     featuredMenus: [
       { name: "Service Lampu", price: 50000 },
       { name: "Perbaikan Pipa", price: 80000 },
@@ -455,13 +324,13 @@ export const UMKM = [
       { name: "Instalasi Listrik", price: 100000 },
     ],
   },
-
   {
     id: 14,
     name: "Smart Electric",
     category: "Jasa",
     description: "Spesialis instalasi dan perbaikan listrik.",
     location: "Bekasi",
+    address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.8,
     reviews: 29,
     lat: -7.982756,
@@ -469,14 +338,9 @@ export const UMKM = [
     distance: "1.9 km",
     status: "Tersedia Hari Ini",
     openHours: "08:00 - 20:00",
-
-    tags: ["Listrik", "Teknisi", "Trusted"],
-
-    about:
-      "Smart Electric menyediakan jasa instalasi listrik rumah dan kantor dengan standar keamanan tinggi.",
-
+    tagIds: [35, 16, 36],
+    about: "Smart Electric menyediakan jasa instalasi listrik rumah dan kantor dengan standar keamanan tinggi.",
     gallery: ["/assets/umkm/jasa/smartelectric/thumbnail.jpg"],
-
     featuredMenus: [
       { name: "Instalasi Lampu", price: 60000 },
       { name: "Perbaikan Kabel", price: 85000 },
@@ -491,6 +355,7 @@ export const UMKM = [
     category: "Kafe",
     description: "Coffee shop nyaman dengan menu kopi premium.",
     location: "Surabaya",
+    address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.8,
     reviews: 45,
     lat: -7.965384,
@@ -498,14 +363,9 @@ export const UMKM = [
     distance: "1.8 km",
     status: "Buka Sekarang",
     openHours: "08:00 - 23:00",
-
-    tags: ["Coffee", "Cozy", "WiFi"],
-
-    about:
-      "Beans Corner menghadirkan berbagai pilihan kopi premium dengan suasana nyaman untuk bekerja maupun bersantai.",
-
+    tagIds: [37, 38, 15],
+    about: "Beans Corner menghadirkan berbagai pilihan kopi premium dengan suasana nyaman untuk bekerja maupun bersantai.",
     gallery: ["/assets/umkm/kafe/beanscorner/thumbnail.jpg"],
-
     featuredMenus: [
       { name: "Americano", price: 25000 },
       { name: "Cappuccino", price: 30000 },
@@ -514,13 +374,13 @@ export const UMKM = [
       { name: "Cheesecake", price: 35000 },
     ],
   },
-
   {
     id: 16,
     name: "Kafe Life",
     category: "Kafe",
     description: "Tempat nongkrong modern dengan menu kekinian.",
     location: "Malang",
+    address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.7,
     reviews: 39,
     lat: -7.971628,
@@ -528,14 +388,9 @@ export const UMKM = [
     distance: "2.2 km",
     status: "Buka Sekarang",
     openHours: "09:00 - 22:00",
-
-    tags: ["Cafe", "Modern", "Hangout"],
-
-    about:
-      "Kafe Life menawarkan suasana modern dan menu makanan serta minuman kekinian untuk anak muda.",
-
+    tagIds: [39, 28, 40],
+    about: "Kafe Life menawarkan suasana modern dan menu makanan serta minuman kekinian untuk anak muda.",
     gallery: ["/assets/umkm/kafe/kafelife18190/thumbnail.jpg"],
-
     featuredMenus: [
       { name: "Matcha Latte", price: 32000 },
       { name: "Chocolate Milk", price: 28000 },
@@ -544,13 +399,13 @@ export const UMKM = [
       { name: "Waffle", price: 35000 },
     ],
   },
-
   {
     id: 17,
     name: "Beauty Bliss",
     category: "Kecantikan",
     description: "Produk kecantikan lokal berkualitas premium.",
     location: "Jakarta Selatan",
+    address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.9,
     reviews: 52,
     distance: "1.4 km",
@@ -558,14 +413,9 @@ export const UMKM = [
     lng: 112.623748,
     status: "Buka Sekarang",
     openHours: "09:00 - 20:00",
-
-    tags: ["Skincare", "Beauty", "Premium"],
-
-    about:
-      "Beauty Bliss menghadirkan berbagai produk skincare dan kosmetik lokal dengan kualitas terbaik.",
-
+    tagIds: [19, 20, 41],
+    about: "Beauty Bliss menghadirkan berbagai produk skincare dan kosmetik lokal dengan kualitas terbaik.",
     gallery: ["/assets/umkm/kecantikan/beautybliss/thumbnail.jpg"],
-
     featuredMenus: [
       { name: "Facial Wash", price: 65000 },
       { name: "Serum", price: 125000 },
@@ -574,13 +424,13 @@ export const UMKM = [
       { name: "Lip Tint", price: 55000 },
     ],
   },
-
   {
     id: 18,
     name: "Fresh Beauty",
     category: "Kecantikan",
     description: "Produk skincare natural untuk semua jenis kulit.",
     location: "Bandung",
+    address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.8,
     lat: -7.976841,
     lng: 112.612394,
@@ -588,14 +438,9 @@ export const UMKM = [
     distance: "2.0 km",
     status: "Buka Sekarang",
     openHours: "09:00 - 20:00",
-
-    tags: ["Natural", "Skincare", "Healthy"],
-
-    about:
-      "Fresh Beauty menyediakan produk perawatan kulit berbahan alami dan aman digunakan setiap hari.",
-
+    tagIds: [21, 19, 42],
+    about: "Fresh Beauty menyediakan produk perawatan kulit berbahan alami dan aman digunakan setiap hari.",
     gallery: ["/assets/umkm/kecantikan/freshbeauty/thumbnail.jpg"],
-
     featuredMenus: [
       { name: "Face Toner", price: 70000 },
       { name: "Night Cream", price: 110000 },
