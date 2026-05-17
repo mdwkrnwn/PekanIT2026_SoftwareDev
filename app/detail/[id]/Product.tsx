@@ -11,7 +11,6 @@ import InfoPanel from "./components/InfoPanel";
 import ReviewsSection from "./components/ReviewsSection";
 import RatingSummary from "./components/RatingSummary";
 import ReviewForm from "./components/ReviewForm";
-import { usePathname } from "next/navigation";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb";
 import Link from "next/link";
 import { FaChevronLeft } from "react-icons/fa";

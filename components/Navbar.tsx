@@ -36,6 +36,7 @@ function Navbar() {
       document.body.style.overflow = "";
     };
   }, [isSidebarOpen]);
+  const disAllowedBreadcrumb = ['detail', '/article/'];
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsSidebarOpen(false);
@@ -170,7 +171,7 @@ function Navbar() {
         {/* Breadcrumbs */}
       </header>
 
-      {path !== "/" && !path.includes('detail') && (
+      {path !== "/" && disAllowedBreadcrumb.some(item => path.includes(item)) ? "" : (
         <Breadcrumb className="w-[80vw] mt-5 mb-9">
           <BreadcrumbList>
             {/* Back Button */}
@@ -187,7 +188,7 @@ function Navbar() {
 
             {/* Dynamic Path */}
             {
-              path.includes('detail') ? "" :
+              disAllowedBreadcrumb.some(item => path.includes(item)) ? "" :
                 <>
                   {path
                     .split("/")
