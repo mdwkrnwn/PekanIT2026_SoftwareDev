@@ -171,7 +171,7 @@ function Navbar() {
         {/* Breadcrumbs */}
       </header>
 
-      {path !== "/" && disAllowedBreadcrumb.some(item => path.includes(item)) ? "" : (
+      {path == "/" || disAllowedBreadcrumb.some(item => path.includes(item)) ? "" : (
         <Breadcrumb className="w-[80vw] mt-5 mb-9">
           <BreadcrumbList>
             {/* Back Button */}
