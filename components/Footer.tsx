@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/accordion";
 function Footer() {
   return (
-    <footer className='w-full md:mb-0 mb-20 grid md:px-0 px-4 md:grid-cols-[2fr_4fr] md:w-[86vw]'>
+    <footer className='w-full md:mb-0 mb-20 grid md:px-0 px-4 md:grid-cols-[2fr_4fr] md:w-[80vw]'>
       <section className='grid grid-cols-4 place-content-center lg:place-content-start grid-rows-[repeat(3,1fr)]'>
         <div className='flex items-center col-span-4 -ml-4'>
           <Image loading='eager' height={1000} width={1000} className="max-w-24 max-h-24" src={'/UFLogo.png'} alt="logo" />

@@ -63,12 +63,11 @@ function Navbar() {
                       href={item.href}
                       className={`relative inline-block pb-3
                       after:absolute after:bottom-0 after:left-0
-                      after:rounded-full after:transition-all
-                      ${
-                        path === item.href
-                          ? "after:w-8 after:h-[4px] after:bg-primary"
-                          : "after:w-8 after:h-[4px] after:bg-transparent hover:after-text-primary"
-                      }`}
+                      after:rounded-full after:transition-all after:h-1 after:w-full
+                      ${path === item.href
+                          ? "after:bg-primary"
+                          : "after:bg-transparent hover:after-text-primary"
+                        }`}
                     >
                       {item.name}
                     </Link>
@@ -78,7 +77,7 @@ function Navbar() {
             </section>
             <section className="place-self-end flex items-center self-center gap-3">
               <Link
-                href={"/favorite"}
+                href={"/favorit"}
                 className="outline-1 outline-primary flex items-center justify-center p-2 transition-colors bg-transparent rounded-full cursor-pointer"
               >
                 <span>
@@ -171,8 +170,8 @@ function Navbar() {
         {/* Breadcrumbs */}
       </header>
 
-      {path !== "/" && (
-        <Breadcrumb className="w-[86vw] mt-5 mb-9">
+      {path !== "/" && !path.includes('detail') && (
+        <Breadcrumb className="w-[80vw] mt-5 mb-9">
           <BreadcrumbList>
             {/* Back Button */}
             <BreadcrumbItem>
@@ -187,30 +186,36 @@ function Navbar() {
             </BreadcrumbItem>
 
             {/* Dynamic Path */}
-            {path
-              .split("/")
-              .filter(Boolean)
-              .map((item, i, arr) => (
-                <div key={i} className="flex items-center gap-2">
-                  <BreadcrumbSeparator>
-                    <FaChevronLeft size={25} />
-                  </BreadcrumbSeparator>
-                  {i === arr.length - 1 ? (
-                    <BreadcrumbPage className="text-[1.375rem] font-semibold text-foreground">
-                      {item.charAt(0).toUpperCase() + item.slice(1)}
-                    </BreadcrumbPage>
-                  ) : (
-                    <BreadcrumbLink asChild>
-                      <Link
-                        href={`/${arr.slice(0, i + 1).join("/")}`}
-                        className="text-[1.375rem] font-semibold text-muted-foreground hover:text-primary transition"
-                      >
-                        {item.charAt(0).toUpperCase() + item.slice(1)}
-                      </Link>
-                    </BreadcrumbLink>
-                  )}
-                </div>
-              ))}
+            {
+              path.includes('detail') ? "" :
+                <>
+                  {path
+                    .split("/")
+                    .filter(Boolean)
+                    .map((item, i, arr) => (
+                      <div key={i} className="flex items-center gap-2">
+                        <BreadcrumbSeparator>
+                          <FaChevronLeft size={25} />
+                        </BreadcrumbSeparator>
+                        {i === arr.length - 1 ? (
+                          <BreadcrumbPage className="text-[1.375rem] font-semibold text-foreground">
+                            {item.charAt(0).toUpperCase() + item.slice(1)}
+                          </BreadcrumbPage>
+                        ) : (
+                          <BreadcrumbLink asChild>
+                            <Link
+                              href={`/${arr.slice(0, i + 1).join("/")}`}
+                              className="text-[1.375rem] font-semibold text-muted-foreground hover:text-primary transition"
+                            >
+                              {item.charAt(0).toUpperCase() + item.slice(1)}
+                            </Link>
+                          </BreadcrumbLink>
+                        )}
+                      </div>
+                    ))}
+                </>
+
+            }
           </BreadcrumbList>
         </Breadcrumb>
       )}

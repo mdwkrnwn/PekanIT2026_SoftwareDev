@@ -51,7 +51,7 @@ export default function Favorite({
   };
 
   return (
-    <div className="w-[86vw]">
+    <div className="w-[80vw]">
       {/* HEADER */}
       <section className="flex flex-row items-center justify-between">
         <div className="flex flex-row items-center gap-4">
@@ -168,7 +168,7 @@ export default function Favorite({
 
       {/* CTA */}
       <section className="bg-primary relative mt-20 overflow-hidden rounded-[2rem] bg-linear-to-r from-[#8EAFE5] to-[#E5EEFD] text-white">
-        <div className="md:grid-cols-2 grid items-center grid-cols-1 gap-6 px-10 py-10">
+        <div className="md:grid-cols-2 grid items-center grid-cols-1 gap-6 px-10">
           <div className="space-y-5">
             <h2 className="text-primary text-4xl font-semibold">
               Belum menemukan favorit lain?
@@ -182,7 +182,7 @@ export default function Favorite({
 
             <Link
               href="/explore"
-              className="bg-primary rounded-2xl hover:bg-blue-600 inline-block px-6 py-3 font-semibold text-white transition"
+              className="bg-primary rounded-2xl hover:bg-primary inline-block px-6 py-3 font-semibold text-white transition"
             >
               Jelajahi Sekarang
             </Link>

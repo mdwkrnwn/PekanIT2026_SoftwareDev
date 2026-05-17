@@ -74,7 +74,7 @@ export function Control() {
   }, []);
 
   return (
-    <main className="w-[86vw] mx-auto px-4 md:px-8 py-10 pb-28 mt-3 space-y-10">
+    <main className="w-[80vw] mx-auto px-4 md:px-8 py-10 pb-28 mt-3 space-y-10">
       <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* === LEFT LIST === */}
         <div className="bg-white rounded-3xl shadow-md p-4 flex flex-col md:col-span-1 h-[75dvh] min-h-[75dvh]">

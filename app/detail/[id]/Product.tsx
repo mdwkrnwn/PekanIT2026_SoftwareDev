@@ -11,6 +11,10 @@ import InfoPanel from "./components/InfoPanel";
 import ReviewsSection from "./components/ReviewsSection";
 import RatingSummary from "./components/RatingSummary";
 import ReviewForm from "./components/ReviewForm";
+import { usePathname } from "next/navigation";
+import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb";
+import Link from "next/link";
+import { FaChevronLeft } from "react-icons/fa";
 
 export default function ProductPage({
   product,
@@ -75,7 +79,38 @@ export default function ProductPage({
 
   return (
     <>
-      <div className="w-[86vw]">
+      <Breadcrumb className="w-[80vw] mt-5 mb-9">
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild>
+              <Link
+                href="/"
+                className="flex items-center gap-2 text-[1.375rem] font-semibold hover:text-primary transition"
+              >
+                Home
+              </Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator>
+            <FaChevronLeft size={25} />
+          </BreadcrumbSeparator>
+          <BreadcrumbLink asChild>
+            <Link
+              href={`/explore`}
+              className="text-[1.375rem] font-semibold text-muted-foreground hover:text-primary transition"
+            >
+              Explore
+            </Link>
+          </BreadcrumbLink>
+          <BreadcrumbSeparator>
+            <FaChevronLeft size={25} />
+          </BreadcrumbSeparator>
+          <BreadcrumbPage className="text-[1.375rem] font-semibold text-foreground">
+            {product.name}
+          </BreadcrumbPage>
+        </BreadcrumbList>
+      </Breadcrumb>
+      <div className="w-[80vw]">
         {/* Grid Utama */}
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 pb-8">
           <GallerySection

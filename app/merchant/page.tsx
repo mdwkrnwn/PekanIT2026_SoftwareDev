@@ -18,7 +18,7 @@ export default async function MerchantPage({
   });
 
   return (
-    <div className="w-[86vw]">
+    <div className="w-[80vw]">
       {/* Header */}
       <section className="flex items-center gap-8 pt-6">
         <div className="md:bg-primary/10 size-26 flex items-center justify-center rounded-full">
