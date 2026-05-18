@@ -85,7 +85,7 @@ export default function Favorite({
 
       {/* CONTENT */}
       {filtered.length === 0 ? (
-        <div className="rounded-3xl py-20 text-center bg-white border border-dashed">
+        <div className="rounded-3xl py-20 text-center bg-background border border-dashed border-border">
           <FaHeart className="text-primary mx-auto mb-4 text-4xl" />
 
           <h3 className="text-lg font-semibold">
@@ -167,10 +167,10 @@ export default function Favorite({
       )}
 
       {/* CTA */}
-      <section className="bg-primary relative mt-20 overflow-hidden rounded-[2rem] bg-linear-to-r from-[#8EAFE5] to-[#E5EEFD] text-white">
+      <section className="bg-primary relative mt-20 overflow-hidden rounded-[2rem] bg-linear-to-r dark:from-hero-end dark:to-hero-start from-[#8EAFE5] to-[#E5EEFD] text-white">
         <div className="md:grid-cols-2 grid items-center grid-cols-1 gap-6 px-10">
           <div className="space-y-5">
-            <h2 className="text-primary text-4xl font-semibold">
+            <h2 className="text-primary dark:text-white text-4xl font-semibold">
               Belum menemukan favorit lain?
             </h2>
 
