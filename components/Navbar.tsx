@@ -62,7 +62,9 @@ function Navbar() {
                   const isActive =
                     item.href === "/explore"
                       ? path === "/explore" || path.startsWith("/detail")
-                      : path === item.href;
+                      : item.href === "/article"
+                        ? path.startsWith("/article")
+                        : path === item.href;
                   return (
                     <li key={item.href}>
                       <Link
