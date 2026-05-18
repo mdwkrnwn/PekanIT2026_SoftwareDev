@@ -20,7 +20,7 @@ export default async function MerchantPage({
   return (
     <div className="w-[80vw]">
       {/* Header */}
-      <section className="flex items-center gap-8 pt-6">
+      <section className="flex items-center gap-3">
         <div className="md:bg-primary/10 size-26 flex items-center justify-center rounded-full">
           <FaStore className="text-primary" size={50} />
         </div>
@@ -39,7 +39,7 @@ export default async function MerchantPage({
       </section>
 
       {/* Filter and Sort */}
-      <section className="flex items-center justify-between gap-8 mt-16">
+      <section className="flex items-center justify-between gap-8 mt-8">
         {/* Extracted Client Component for URL-based filtering */}
         <MerchantFilter activeCategory={activeCategory} />
       </section>
@@ -48,7 +48,7 @@ export default async function MerchantPage({
       {filteredMerchants.length > 0 ? (
         <Card UMKM={filteredMerchants} />
       ) : (
-        <div className="border-border mt-14 flex h-60 flex-col items-center justify-center rounded-3xl border border-dashed text-center">
+        <div className="border-border mt-14 h-60 rounded-3xl flex flex-col items-center justify-center text-center border border-dashed">
           <h3 className="text-xl font-semibold">Merchant tidak ditemukan</h3>
           <p className="text-muted-foreground mt-2 text-sm">
             Kategori ini belum memiliki merchant.

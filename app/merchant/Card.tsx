@@ -11,7 +11,7 @@ export function Card({ UMKM }: { UMKM: typeUMKM[] }) {
         <Link
           href={`/detail/${merchant.id}`}
           key={merchant.name}
-          className="border-border overflow-hidden rounded-[2rem] border bg-white transition-all hover:-translate-y-1 hover:shadow-xl cursor-pointer"
+          className="border-border overflow-hidden rounded-[2rem] border bg-background transition-all hover:-translate-y-1 hover:shadow-xl cursor-pointer"
         >
           {/* Image Container */}
           <div className="h-80 relative overflow-hidden">
@@ -22,7 +22,7 @@ export function Card({ UMKM }: { UMKM: typeUMKM[] }) {
               className="hover:scale-105 object-cover transition-transform duration-300"
             />
 
-            <button className="absolute top-5 right-5 flex size-10 items-center justify-center rounded-full bg-white text-foreground hover:bg-primary hover:*:text-background cursor-pointer">
+            <button className="absolute top-5 right-5 flex size-10 items-center justify-center rounded-full bg-background text-foreground hover:bg-primary hover:*:text-background cursor-pointer">
               <FaRegHeart size={22} />
             </button>
 
@@ -32,17 +32,17 @@ export function Card({ UMKM }: { UMKM: typeUMKM[] }) {
           </div>
 
           {/* Content */}
-          <div className="p-7">
-            <h2 className="text-foreground text-3xl font-bold">
+          <div className="p-5">
+            <h2 className="text-foreground text-xl font-bold">
               {merchant.name}
             </h2>
 
-            <p className="text-muted-foreground mt-4 text-xl leading-relaxed line-clamp-2">
+            <p className="text-muted-foreground line-clamp-2 mt-4 leading-relaxed">
               {merchant.description}
             </p>
 
             {/* Location */}
-            <div className="text-muted-foreground flex items-center justify-between mt-8 text-lg">
+            <div className="text-muted-foreground flex items-center justify-between mt-6">
               <div className="flex items-center gap-3">
                 <FaLocationDot size={16} />
                 <span>{merchant.location}</span>
@@ -54,12 +54,12 @@ export function Card({ UMKM }: { UMKM: typeUMKM[] }) {
             </div>
 
             {/* Rating */}
-            <div className="flex items-center gap-2 mt-6">
+            <div className="flex items-center gap-2 mt-4">
               <FaStar className="text-yellow-500" size={20} />
-              <span className="text-lg font-semibold text-yellow-600">
+              <span className="font-semibold text-yellow-600">
                 {merchant.rating}
               </span>
-              <span className="text-muted-foreground text-lg">
+              <span className="text-muted-foreground">
                 ({merchant.reviews})
               </span>
             </div>

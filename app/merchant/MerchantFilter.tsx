@@ -34,7 +34,7 @@ export default function MerchantFilter({ activeCategory }: { activeCategory: str
             key={category.name}
             onClick={() => handleCategoryChange(category.name)}
             className={cn(
-              "border text-primary-foreground hover:bg-primary hover:text-white flex items-center gap-3 rounded-full border-border px-4 py-2 text-lg font-semibold transition-colors cursor-pointer",
+              "border text-foreground hover:bg-primary hover:text-white flex items-center gap-3 rounded-full border-border px-4 py-2 font-semibold transition-colors cursor-pointer",
               isActive && "bg-primary text-white"
             )}
           >
