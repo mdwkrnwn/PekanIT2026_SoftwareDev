@@ -32,6 +32,7 @@ export default function SearchFilter({ initialSearch, initialCategory }: SearchF
 
   useEffect(() => {
     router.replace(`${pathname}?${createQueryString("search", debouncedSearch)}`, { scroll: false });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearch, pathname, router]);
 
   const handleCategoryChange = (category: string) => {
@@ -50,7 +51,7 @@ export default function SearchFilter({ initialSearch, initialCategory }: SearchF
           placeholder="Cari UMKM, produk, kategori..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="border-border focus:ring-primary/20 focus:border-primary w-full h-16 rounded-full border bg-white px-6 pr-16 text-lg outline-none transition-all focus:ring-4"
+          className="border-border focus:ring-primary/20 focus:border-primary w-full h-16 rounded-full border bg-background px-6 pr-16 text-lg outline-none transition-all focus:ring-4"
         />
       </div>
 
@@ -62,7 +63,7 @@ export default function SearchFilter({ initialSearch, initialCategory }: SearchF
               key={category.name}
               onClick={() => handleCategoryChange(category.name)}
               className={cn(
-                "border-primary/20 text-primary hover:bg-primary hover:text-white flex items-center gap-2 rounded-full border px-5 py-2.5 font-medium transition-all",
+                "border-primary/40 text-primary hover:bg-primary hover:text-white flex items-center gap-2 rounded-full border px-5 py-2.5 font-medium transition-all",
                 initialCategory === category.name && "bg-primary text-white"
               )}
             >
