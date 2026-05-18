@@ -74,12 +74,12 @@ export function Control() {
   }, []);
 
   return (
-    <main className="w-[80vw] mx-auto px-4 md:px-8 py-10 pb-28 mt-3 space-y-10">
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="w-[80vw] mx-auto px-4 md:px-8 space-y-10">
+      <section className="md:grid-cols-3 grid grid-cols-1 gap-6">
         {/* === LEFT LIST === */}
-        <div className="bg-white rounded-3xl shadow-md p-4 flex flex-col md:col-span-1 h-[75dvh] min-h-[75dvh]">
+        <div className="bg-background shadow-foreground/20 rounded-3xl shadow-md p-4 flex flex-col md:col-span-1 h-[75dvh] min-h-[75dvh]">
           {/* Search */}
-          <div className="flex items-center mb-4 gap-3">
+          <div className="flex items-center gap-3 mb-4">
             <div className="w-full">
               <div className="flex items-center gap-2">
                 <input
@@ -87,7 +87,7 @@ export function Control() {
                   placeholder="Cari UMKM atau jasa..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className="px-4 py-3 border border-gray-200 rounded-2xl text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all w-75"
+                  className="border-border rounded-2xl focus:ring-2 focus:ring-primary/20 focus:border-primary w-75 px-4 py-3 text-sm transition-all border outline-none"
                 />
               </div>
             </div>
@@ -95,7 +95,7 @@ export function Control() {
             <div className="h-full">
               <button
                 onClick={locateUser}
-                className="px-4 py-3 h-full bg-primary hover:bg-primary/90 text-white rounded-2xl flex items-center justify-center transition-all"
+                className="bg-primary hover:bg-primary/90 rounded-2xl flex items-center justify-center h-full px-4 py-3 text-white transition-all"
               >
                 <FaLocationCrosshairs className="text-lg" />
               </button>
@@ -104,7 +104,7 @@ export function Control() {
 
           {/* Radius */}
           <div className="flex items-center justify-between mb-3">
-            <label className="text-sm font-medium text-gray-700">Radius</label>
+            <label className="text-foreground text-sm font-medium">Radius</label>
 
             <span className="text-primary text-sm font-semibold">
               {radius} km
@@ -121,9 +121,9 @@ export function Control() {
           />
 
           {/* === LIST UMKM DALAM RADIUS === */}
-          <div className="flex-1 min-h-0 overflow-y-auto space-y-3 pr-1">
+          <div className="flex-1 min-h-0 pr-1 space-y-3 overflow-y-auto">
             {visible.length === 0 ? (
-              <div className="h-full flex items-center justify-center">
+              <div className="flex items-center justify-center h-full">
                 <p className="text-muted-foreground text-sm text-center">
                   Tidak ada UMKM dalam radius ini
                 </p>
@@ -139,43 +139,43 @@ export function Control() {
                   <div
                     key={item.id}
                     onClick={() => handleItemClick(item)}
-                    className={`flex items-center gap-3 p-3 min-h-[92px] rounded-2xl border-2 transition-all cursor-pointer ${activeItem === item.id
+                    className={`flex items-center gap-3 p-3 min-h-23 rounded-2xl border-2 transition-all cursor-pointer ${activeItem === item.id
                       ? "border-primary bg-primary/5"
                       : "border-transparent hover:bg-primary/5"
                       }`}
                   >
                     {/* Thumbnail */}
-                    <div className="w-16 h-16 flex-shrink-0 overflow-hidden rounded-xl bg-gray-100">
+                    <div className="shrink-0 rounded-xl w-16 h-16 overflow-hidden bg-gray-100">
                       <Image
                         src={item.gallery[0]}
                         alt={item.name}
                         width={64}
                         height={64}
-                        className="w-full h-full object-cover"
+                        className="object-cover w-full h-full"
                       />
                     </div>
 
                     {/* Content */}
-                    <div className="flex flex-col justify-between flex-1 min-w-0 h-full">
+                    <div className="flex flex-col justify-between flex-1 h-full min-w-0">
                       {/* Top */}
                       <div className="flex items-start justify-between gap-2">
-                        <h4 className="text-sm font-semibold text-gray-800 line-clamp-1">
+                        <h4 className="text-foreground line-clamp-1 text-sm font-semibold">
                           {item.name}
                         </h4>
 
-                        <div className="bg-primary/10 text-primary rounded-lg px-2 py-1 text-xs font-semibold flex-shrink-0">
+                        <div className="bg-primary/10 text-primary shrink-0 px-2 py-1 text-xs font-semibold rounded-lg">
                           {item.rating}
                         </div>
                       </div>
 
                       {/* Category */}
-                      <p className="text-xs font-medium text-muted-foreground line-clamp-1">
+                      <p className="text-muted-foreground line-clamp-1 text-xs font-medium">
                         {item.category}
                       </p>
 
                       {/* Distance */}
-                      <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                        <FaLocationDot className="text-primary flex-shrink-0" />
+                      <div className="text-muted-foreground flex items-center gap-1 text-xs">
+                        <FaLocationDot className="text-primary shrink-0" />
 
                         <span className="whitespace-nowrap">
                           {distance !== null
@@ -202,12 +202,12 @@ export function Control() {
               onVisibleChange={setVisible}
             />
           ) : (
-            <div className="h-full flex items-center justify-center">
+            <div className="flex items-center justify-center h-full">
               <p className="text-gray-500">Memuat peta...</p>
             </div>
           )}
         </div>
       </section>
-    </main>
+    </div>
   );
 }
