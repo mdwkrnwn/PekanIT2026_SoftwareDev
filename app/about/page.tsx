@@ -28,12 +28,12 @@ export default function AboutPage() {
       </div>
 
       <div className="border-border relative overflow-hidden rounded-[2rem] border p-8 lg:block hidden">
-        <div className="relative w-full h-full">
+        <div className="relative size-full overflow-hidden rounded-[1.5rem]">
           <Image
             src="/About.png"
             alt="About Illustration"
             fill
-            className="rounded-[1.5rem] object-cover"
+            className="scale-120 object-cover origin-top"
           />
         </div>
       </div>
@@ -49,7 +49,7 @@ export default function AboutPage() {
             return (
               <article
                 key={reason.title}
-                className="bg-[#F7F8FA] grid grid-rows-3 items-center rounded-2xl p-6 text-center *:place-self-center "
+                className="bg-accent grid grid-rows-3 items-center rounded-2xl p-6 text-center *:place-self-center "
               >
                 <div className="bg-primary/10 size-16 flex items-center justify-center rounded-full">
                   <Icon className="text-primary" size={24} />
