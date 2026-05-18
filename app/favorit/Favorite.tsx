@@ -120,8 +120,8 @@ export default function Favorite({
                 <FaTrash />
               </button>
 
-              <Link href={`/detail/${item.id}`}>
-                <div className="border-border bg-background hover:-translate-y-1 h-120 overflow-hidden rounded-[1.75rem] border transition-all hover:shadow-xl">
+              <Link href={`/detail/${item.id}?src=Favorit`}>
+                <div className="border-border bg-background hover:-translate-y-1 overflow-hidden rounded-[1.75rem] border transition-all hover:shadow-xl">
                   <div className="relative h-64 overflow-hidden">
                     <Image
                       src={item.gallery[0]}
@@ -153,7 +153,7 @@ export default function Favorite({
                       <div className="flex items-center gap-1 text-yellow-500">
                         <FaStar size={15} />
 
-                        <span className="text-slate-700 font-semibold">
+                        <span className="text-foreground/70 font-semibold">
                           {item.rating}
                         </span>
                       </div>

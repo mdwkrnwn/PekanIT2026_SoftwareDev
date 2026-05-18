@@ -23,15 +23,15 @@ export default function FavoriteFilter() {
   };
 
   return (
-    <div className="flex items-center w-full mt-10 mb-6">
+    <div className="flex items-center w-full mb-6">
       <div className="relative w-full">
-        <FaSearch className="left-4 top-1/2 absolute text-gray-400 -translate-y-1/2" />
+        <FaSearch className="left-4 top-1/2 absolute text-foreground/40 -translate-y-1/2" />
 
         <input
           value={currentSearch}
           onChange={(e) => handleSearchChange(e.target.value)}
           placeholder="Cari favorit UMKM..."
-          className="rounded-2xl pl-11 focus:border-primary focus:ring-2 focus:ring-primary/20 disabled:opacity-50 w-full py-3 pr-4 border border-gray-200 outline-none"
+          className="rounded-2xl pl-11 focus:border-primary focus:ring-2 focus:ring-primary/20 disabled:opacity-50 w-full py-3 pr-4 border border-border outline-none"
         />
       </div>
     </div>

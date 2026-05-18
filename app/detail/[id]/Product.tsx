@@ -18,6 +18,7 @@ import { FaChevronLeft } from "react-icons/fa";
 export default function ProductPage({
   product,
   review,
+  src
 }: {
   product: (typeof UMKM)[number];
   review: Array<{
@@ -30,6 +31,7 @@ export default function ProductPage({
     timeago?: string;
     likes?: number;
   }>;
+  src?: string
 }) {
   const [mainImage, setMainImage] = useState(product?.gallery?.[0]);
   const wishes = useWishlist().map((item) => item.id);
@@ -98,7 +100,7 @@ export default function ProductPage({
               href={`/explore`}
               className="text-[1.375rem] font-semibold text-muted-foreground hover:text-primary transition"
             >
-              Explore
+              {src ?? 'Explore'}
             </Link>
           </BreadcrumbLink>
           <BreadcrumbSeparator>

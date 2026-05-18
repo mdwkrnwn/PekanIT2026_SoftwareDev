@@ -22,9 +22,12 @@ export async function generateMetadata(
 }
 
 
-export default async function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function ProductDetailPage({ params, searchParams }: {
+  params: Promise<{ id: string }>
+  searchParams: Promise<{ src: string }>
+}) {
   const { id } = await params;
-
+  const { src } = await searchParams;
   const umkm = UMKM.find(
     (item: { id: number }) => item.id === Number(id)
   );
@@ -44,6 +47,5 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   const comments = discussionAndReviews.find((item) => item.umkmId === Number(id))
   const review = comments!.reviews;
 
-
-  return <ProductPage review={review} product={umkm} />
+  return <ProductPage review={review} product={umkm} src={src} />
 }
