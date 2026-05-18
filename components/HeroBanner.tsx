@@ -87,24 +87,24 @@ export function HeroBanner() {
         {/* LEFT */}
         <div className="z-10 flex-1">
           {/* Badge */}
-          <div className="inline-flex items-center gap-3 px-5 py-3 mb-8 bg-white border border-blue-100 rounded-full shadow-sm">
-            <div className="size-8 text-primary flex items-center justify-center bg-blue-100 rounded-full">
+          <div className="inline-flex items-center gap-3 px-5 py-3 mb-8 bg-background border border-primary/10 rounded-full shadow-foreground/20 shadow-sm">
+            <div className="size-8 text-primary flex items-center justify-center bg-primary/10 rounded-full">
               <FaHeart />
             </div>
 
-            <span className="text-slate-700 md:text-base text-sm font-medium">
+            <span className="text-foreground md:text-base text-sm font-medium">
               Dukung Lokal, Bangun Negeri
             </span>
           </div>
 
           {/* Heading */}
-          <h1 className="md:text-7xl text-3xl font-bold tracking-tight text-black">
+          <h1 className="md:text-7xl text-3xl font-bold tracking-tight text-foreground">
             Cari UMKM keren,
             <span className="text-primary"> dukung lokal</span> bareng!
           </h1>
 
           {/* Description */}
-          <p className="text-slate-500 md:text-xl max-w-2xl mt-8 text-lg leading-relaxed">
+          <p className="text-foreground md:text-xl max-w-2xl mt-8 text-lg leading-relaxed">
             Dari usaha rumahan sampai produk lokal favorit banyak orang,
             semua ada di UFinder dan temukan dengan lebih mudah di sini.
           </p>
@@ -117,7 +117,7 @@ export function HeroBanner() {
                 key={item.label}
                 className={`flex items-center gap-3 rounded-full border px-6 py-3 text-sm font-semibold transition-all md:text-base ${item.active
                   ? "border-primary bg-primary text-white"
-                  : "border-border bg-white text-primary hover:border-primary hover:text-primary"
+                  : "border-border bg-background text-primary hover:border-primary hover:bg-primary hover:text-white"
                   }`}
               >
                 <span className="*:size-6">
@@ -133,16 +133,16 @@ export function HeroBanner() {
             {features.map((item) => (
               <div key={item.title} className={cn("flex items-start gap-4"
               )}>
-                <div className="flex *:size-10 size-18 shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary shadow-md">
+                <div className="flex *:size-10 size-18 shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary shadow-md shadow-foreground/20">
                   {item.icon}
                 </div>
 
                 <div>
-                  <h4 className="text-slate-800 font-semibold">
+                  <h4 className="text-foreground font-semibold">
                     {item.title}
                   </h4>
 
-                  <p className="mt-1 text-sm leading-relaxed text-black">
+                  <p className="mt-1 text-sm leading-relaxed text-foreground">
                     {item.desc}
                   </p>
                 </div>
@@ -151,7 +151,7 @@ export function HeroBanner() {
           </div>
 
           {/* CTA Banner */}
-          <div className="w-full bg-linear-to-t to-secondary from-secondary-foreground py-4 text-white rounded-[2rem] px-12 flex sm:flex-col md:flex-row lg:flex-row items-center justify-between mt-12 overflow-hidden shadow-lg gap-4 relative *:sm:w-full">
+          <div className="w-full bg-linear-to-t from-hero-end to-hero-start py-4 text-white rounded-[2rem] px-12 flex sm:flex-col md:flex-row lg:flex-row items-center justify-between mt-12 overflow-hidden shadow-lg gap-4 relative *:sm:w-full">
             <div className="md:block size-auto relative z-10 hidden">
               <Image src="/home.png" height={500} width={500} className="w-80 h-fit object-cover" alt="Hero Background" />
             </div>
@@ -174,13 +174,13 @@ export function HeroBanner() {
       </div>
 
       {/* Stats */}
-      <div className="mx-auto mt-16 grid grid-cols-1 gap-6 rounded-[2rem] bg-white p-8 outline-1 outline-border md:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto mt-16 grid grid-cols-1 gap-6 rounded-[2rem] bg-background p-8 outline-1 outline-border md:grid-cols-2 lg:grid-cols-4">
         {stats.map((item, index) => (
           <div
             key={index}
             className="border-border last:border-none lg:border-r flex items-center gap-5"
           >
-            <div className="size-16 bg-blue-50 text-primary flex items-center justify-center text-2xl rounded-full">
+            <div className="size-16 bg-primary/25 text-primary flex items-center justify-center text-2xl rounded-full">
               {item.icon}
             </div>
 
@@ -188,8 +188,7 @@ export function HeroBanner() {
               <h4 className="text-primary text-2xl font-bold">
                 {item.value}
               </h4>
-
-              <p className="text-slate-500 mt-1">{item.label}</p>
+              <p className="text-foreground/80 mt-1">{item.label}</p>
             </div>
           </div>
         ))}

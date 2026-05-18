@@ -25,7 +25,7 @@ export function ForYou() {
           },
         ].map((cat, i) => (
           <Link
-            href=""
+            href={"/explore?category=" + cat.name}
             key={i}
             className="group relative h-48 overflow-hidden rounded-2xl cursor-pointer"
           >
@@ -36,7 +36,10 @@ export function ForYou() {
               alt={cat.name}
             />
 
-            <div className="absolute inset-0 bg-linear-to-t from-primary/80 via-primary/10 to-transparent group-hover:from-primary group-hover:via-primary/40" />
+            <div className="absolute inset-0 bg-linear-to-t from-primary/80 via-primary/10 to-transparent" />
+            <div
+              className="absolute inset-0 bg-linear-to-t from-primary via-primary/40 to-transparent opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
+            />
 
             <span className="absolute bottom-4 left-4 text-xl font-bold text-white">
               {cat.name}

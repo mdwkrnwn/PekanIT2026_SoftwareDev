@@ -30,7 +30,7 @@ export default function ThemeSwitcher() {
   return (
     <button
       onClick={toggleTheme}
-      className="outline-1 outline-primary-foreground flex items-center justify-center p-2 transition-colors bg-transparent rounded-full cursor-pointer"
+      className="outline-1 outline-primary flex items-center justify-center p-2 transition-colors bg-transparent rounded-full cursor-pointer"
       title={resolvedTheme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
     >
       {currentIcon}

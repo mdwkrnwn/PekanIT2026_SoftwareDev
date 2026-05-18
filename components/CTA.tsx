@@ -26,7 +26,7 @@ export function CTA() {
         Ayo bagikan pengalamanmu, temukan UMKM lokal terbaik, dan dukung
         pertumbuhan ekonomi sekitar!
       </p>
-      <button className="hover:bg-slate-100 text-primary bg-background z-10 flex items-end gap-2 p-2 px-4 text-lg font-bold transition-colors rounded-full shadow-md">
+      <button className="hover:bg-slate-100 text-primary bg-white z-10 flex items-end gap-2 p-2 px-4 text-lg font-bold transition-colors rounded-full shadow-md">
         Daftar Sekarang <BsArrowRightCircleFill size={24} />
       </button>
     </div>

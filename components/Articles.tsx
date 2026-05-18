@@ -13,7 +13,7 @@ export function Articles() {
           <Link
             href={`/article/${article.id}`}
             key={article.id}
-            className="border-slate-200 group flex flex-col overflow-hidden rounded-2xl border bg-white transition-shadow hover:shadow-lg"
+            className="border-border group flex flex-col overflow-hidden rounded-2xl border bg-background transition-shadow hover:shadow-lg"
           >
             <div className="relative h-56 overflow-hidden">
               <Image
@@ -29,15 +29,15 @@ export function Articles() {
             </div>
 
             <div className="flex flex-1 flex-col p-6">
-              <h4 className="text-slate-800 mb-3 line-clamp-2 text-xl font-bold">
+              <h4 className="text-foreground mb-3 line-clamp-2 text-xl font-bold">
                 {article.title}
               </h4>
 
-              <p className="text-slate-600 mb-6 line-clamp-3 text-sm leading-relaxed">
+              <p className="text-foreground/80 mb-6 line-clamp-3 text-sm leading-relaxed">
                 {article.description}
               </p>
 
-              <div className="text-slate-500 border-slate-100 mt-auto flex items-center justify-between border-t pt-4 text-xs font-medium">
+              <div className="text-foreground/80 border-border/10 mt-auto flex items-center justify-between border-t pt-4 text-xs font-medium">
                 <span>{article.createdAt}</span>
 
                 <span className="flex items-center gap-1.5">
