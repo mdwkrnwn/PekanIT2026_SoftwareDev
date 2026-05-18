@@ -168,7 +168,7 @@ export function HeroBanner() {
         </div>
 
         {/* RIGHT */}
-        <div className="relative xl:flex w-full flex-1 top-15 items-center justify-center mask-[linear-gradient(to_top,rgba(0,0,0,0)_0%,rgba(0,0,0,0)_15%,rgba(0,0,0,1)_30%,rgba(0,0,0,1)_100%)] scale-125 hidden">
+        <div className="relative xl:flex w-full flex-1 top-10 items-center justify-center mask-[linear-gradient(to_top,rgba(0,0,0,0)_0%,rgba(0,0,0,0)_15%,rgba(0,0,0,1)_30%,rgba(0,0,0,1)_100%)] scale-125 hidden">
           <Image src={'/homee.png'} width={1000} height={1000} className="" alt="phone" />
         </div>
       </div>

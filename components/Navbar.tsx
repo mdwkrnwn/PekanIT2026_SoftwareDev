@@ -64,11 +64,12 @@ function Navbar() {
                       href={item.href}
                       className={`relative inline-block pb-3
                       after:absolute after:bottom-0 after:left-0
-                      after:rounded-full after:transition-all after:h-1 after:w-full
-                      ${path === item.href
-                          ? "after:bg-primary"
-                          : "after:bg-transparent hover:after-text-primary"
-                        }`}
+                      after:rounded-full after:transition-all
+                      ${
+                        path === item.href
+                          ? "after:w-8 after:h-[4px] after:bg-primary"
+                          : "after:w-8 after:h-[4px] after:bg-transparent hover:after-text-primary"
+                      }`}
                     >
                       {item.name}
                     </Link>
