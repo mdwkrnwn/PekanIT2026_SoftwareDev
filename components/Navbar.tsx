@@ -58,22 +58,28 @@ function Navbar() {
             </section>
             <section>
               <ul className="flex gap-6 text-lg font-medium">
-                {navItems.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className={`relative inline-block pb-3
+                {navItems.map((item) => {
+                  const isActive =
+                    item.href === "/explore"
+                      ? path === "/explore" || path.startsWith("/detail")
+                      : path === item.href;
+                  return (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        className={`relative inline-block pb-3
                       after:absolute after:bottom-0 after:left-0
                       after:rounded-full after:w-full after:h-1 after:transition-all
-                      ${path === item.href
-                          ? "after:bg-primary"
-                          : "after:bg-transparent hover:after-text-primary"
-                        }`}
-                    >
-                      {item.name}
-                    </Link>
-                  </li>
-                ))}
+                      ${isActive
+                            ? "after:bg-primary"
+                            : "after:bg-transparent hover:after-text-primary"
+                          }`}
+                      >
+                        {item.name}
+                      </Link>
+                    </li>
+                  )
+                })}
               </ul>
             </section>
             <section className="place-self-end flex items-center self-center gap-3">
