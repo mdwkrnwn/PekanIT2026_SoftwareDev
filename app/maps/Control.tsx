@@ -74,22 +74,20 @@ export function Control() {
   }, []);
 
   return (
-    <div className="w-[80vw] mx-auto px-4 md:px-8 space-y-10">
-      <section className="md:grid-cols-3 grid grid-cols-1 gap-6">
+    <div className="w-[80vw] space-y-10">
+      <section className="md:grid-cols-[1fr_3fr] grid grid-cols-1 gap-6">
         {/* === LEFT LIST === */}
         <div className="bg-background shadow-foreground/20 rounded-3xl shadow-md p-4 flex flex-col md:col-span-1 h-[75dvh] min-h-[75dvh]">
           {/* Search */}
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-full">
-              <div className="flex items-center gap-2">
-                <input
-                  type="text"
-                  placeholder="Cari UMKM atau jasa..."
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  className="border-border rounded-2xl focus:ring-2 focus:ring-primary/20 focus:border-primary w-75 px-4 py-3 text-sm transition-all border outline-none"
-                />
-              </div>
+            <div className="w-full ">
+              <input
+                type="text"
+                placeholder="Cari UMKM atau jasa..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="border-border rounded-2xl focus:ring-2 focus:ring-primary/20 focus:border-primary px-4 py-3 text-sm transition-all border outline-none w-full"
+              />
             </div>
 
             <div className="h-full">
@@ -192,7 +190,7 @@ export function Control() {
         </div>
 
         {/* === MAP AREA === */}
-        <div className="rounded-3xl overflow-hidden shadow-md border border-gray-100 md:col-span-2 h-[75dvh] min-h-[75dvh]">
+        <div className="rounded-3xl overflow-hidden shadow-md border border-gray-100 h-[75dvh] min-h-[75dvh]">
           {geo ? (
             <LeafletMap
               ref={mapRef}

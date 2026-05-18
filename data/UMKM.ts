@@ -798,7 +798,7 @@ export const UMKM = [
     about:
       "Kafe Life menawarkan suasana modern dan menu makanan serta minuman kekinian untuk anak muda.",
     gallery: [
-      "/assets/umkm/kafe/kafelife18190/thumbnail.jpg",
+      "/assets/umkm/kafe/kafelife/thumbnail.jpg",
       "/assets/detailtempatdapurnona/minimal.jpg",
       "/assets/detailtempatdapurnona/bisnis.jpg",
       "/assets/detailtempatdapurnona/lokal.jpg",

@@ -77,7 +77,7 @@ export default function InfoPanel({
             <span>{isWish ? "Tersimpan" : "Tambah Favorit"}</span>
           </button>
           <Link
-            href={"https://www.google.com/maps/place/" + product?.lat + "," + product.lng}
+            href={"/maps"}
             target="_blank"
             className="border-primary text-primary hover:bg-primary/5 rounded-xl flex items-center justify-center flex-1 gap-2 py-3 font-semibold transition-all border"
           >

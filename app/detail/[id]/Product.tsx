@@ -136,7 +136,7 @@ export default function ProductPage({
         {product.featuredMenus && product.featuredMenus.length > 0 && (
           <section className="mt-5 ">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-slate-900 text-xl font-bold">Menu Andalan</h3>
+              <h3 className="text-foreground text-xl font-bold">Menu Andalan</h3>
               <button className="text-primary hover:underline text-sm font-bold">
                 Lihat Semua
               </button>
