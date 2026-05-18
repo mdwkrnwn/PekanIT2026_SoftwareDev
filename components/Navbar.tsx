@@ -43,7 +43,7 @@ function Navbar() {
   }, [path]);
   return (
     <>
-      <header className="sticky top-0 z-999 w-full">
+      <header className="z-999 sticky top-0 w-full mb-1">
         <div className="sm:flex hidden bg-background justify-center shadow-[#A9A1A140] shadow-md ">
           <nav className="grid grid-cols-[1fr_1fr_3fr] justify-center items-center w-[80vw]">
             <section className="flex items-center">

@@ -17,6 +17,11 @@ export default function ReviewForm({ onSubmit }: ReviewFormProps) {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
   const [image, setImages] = useState<string[]>([]);
+  const addComment = (comment: string) => {
+    if (comment.length > 500) {
+      return null;
+    } setComment(comment)
+  }
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (rating === 0 || !comment.trim()) return;
@@ -42,10 +47,10 @@ export default function ReviewForm({ onSubmit }: ReviewFormProps) {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <div>
-        <h3 className="font-semibold text-lg flex items-center gap-2">
-          Tulis Ulasanmu <span className="text-green-600 text-xs bg-green-100 px-2 py-1 rounded-full">Verified Visit</span>
+        <h3 className="flex items-center gap-2 text-lg font-semibold">
+          Tulis Ulasanmu <span className="dark:text-emerald-100 dark:bg-green-950 px-2 py-1 text-xs text-green-600 bg-green-100 rounded-full">Verified Visit</span>
         </h3>
-        <p className="text-sm text-muted-foreground">Bagikan pengalamanmu setelah berkunjung.</p>
+        <p className="text-muted-foreground text-sm">Bagikan pengalamanmu setelah berkunjung.</p>
       </div>
 
       <div>
@@ -68,35 +73,35 @@ export default function ReviewForm({ onSubmit }: ReviewFormProps) {
         <label className="text-sm font-medium">Tulis ulasan</label>
         <textarea
           value={comment}
-          onChange={(e) => setComment(e.target.value)}
+          onChange={({ target: { value } }) => addComment(value)}
           placeholder="Ceritakan pengalamanmu tentang makanan, suasana, dan pelayanan..."
-          className="w-full mt-1 p-3 border rounded-lg resize-none h-24 text-sm outline-none focus:ring-1 focus:ring-primary"
+          className="focus:ring-1 focus:ring-primary w-full h-24 p-3 mt-1 text-sm border rounded-lg outline-none resize-none"
           maxLength={500}
         />
-        <div className="text-right text-xs text-muted-foreground mt-1">
+        <div className="text-muted-foreground mt-1 text-xs text-right">
           {comment.length}/500
         </div>
       </div>
       {/* Comment */}
       <div>
-        <p className="text-sm font-medium mb-2">Tambah Foto (opsional)</p>
-        <p className="text-sm mb-2">Upload Foto Makanan Atau Tempat (maks. 5 foto)</p>
-        <div className="flex gap-4 w-full">
-          <button type="button" className="h-16 w-18 border-2 border-dashed rounded-lg text-primary hover:bg-primary/5 max-w-25 transition">
-            <label htmlFor="inputPhoto" className="size-full text-3xl flex items-center cursor-pointer justify-center">
+        <p className="mb-2 text-sm font-medium">Tambah Foto (opsional)</p>
+        <p className="mb-2 text-sm">Upload Foto Makanan Atau Tempat (maks. 5 foto)</p>
+        <div className="flex w-full gap-4">
+          <button type="button" className="w-18 text-primary hover:bg-primary/5 max-w-25 h-16 transition border-2 border-dashed rounded-lg">
+            <label htmlFor="inputPhoto" className="size-full flex items-center justify-center text-3xl cursor-pointer">
               +
             </label>
             <input onChange={(e: BaseSyntheticEvent) => { setImages((prev) => [...prev, URL.createObjectURL(e.target.files[0])]) }
             } type="file" id="inputPhoto" accept="image/*" className="hidden" />
           </button>
-          <div className="w-full grid grid-cols-5 gap-4">
+          <div className="grid w-full grid-cols-5 gap-4">
             {/* preview image */}
             {image.length > 0 && image.map((item, index) =>
               <div key={index} className="relative">
                 <button onClick={() => { setImages((prev) => prev.filter((_, i) => i !== index)); }} className="hover:bg-muted/80 right-[-5%] top-[-7.5%] absolute bg-muted rounded-full">
                   <BiX className="size-6" />
                 </button>
-                <Image key={index} src={item ?? null} className="max-h-full max-w-full w-auto rounded-lg" width={50} height={50} alt={"Preview Image" + index} />
+                <Image key={index} src={item ?? null} className="w-auto max-w-full max-h-full rounded-lg" width={50} height={50} alt={"Preview Image" + index} />
               </div>
             )
             }
@@ -106,7 +111,7 @@ export default function ReviewForm({ onSubmit }: ReviewFormProps) {
       <button
         type="submit"
         disabled={!rating || !comment}
-        className="bg-primary size-fit text-white px-6 py-2 rounded-lg font-medium disabled:opacity-50 hover:bg-blue-700 transition place-self-end"
+        className="bg-primary size-fit disabled:opacity-50 hover:bg-blue-700 place-self-end disabled:cursor-not-allowed! px-6 py-2 font-medium text-white transition rounded-lg"
       >
         Kirim Ulasan
       </button>

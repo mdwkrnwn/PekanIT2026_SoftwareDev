@@ -51,11 +51,11 @@ export default function RatingSummary({ reviews }: RatingSummaryProps) {
         </p>
 
         {/* Recommendation Percentage */}
-        <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
-          <p className="text-green-800 font-semibold text-sm">
+        <div className="mt-4 p-3 dark:bg-green-950 bg-green-50 border border-green-200 dark:border-green-900 rounded-lg">
+          <p className="text-green-800 dark:text-emerald-100 font-semibold text-sm">
             {recommendationPercentage}%
           </p>
-          <p className="text-green-700 text-xs">merekomendasikan</p>
+          <p className="text-green-700 dark:text-emerald-50 text-xs">merekomendasikan</p>
         </div>
       </div>
 

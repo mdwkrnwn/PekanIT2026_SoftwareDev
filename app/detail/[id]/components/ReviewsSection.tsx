@@ -66,7 +66,7 @@ export default function ReviewsSection({
   return (
     <div className="space-y-6">
       {/* Filter Tabs */}
-      <div className="flex gap-2 overflow-x-auto pb-2 border-b border-gray-200">
+      <div className="border-border flex gap-2 pb-2 overflow-x-auto border-b">
         {[
           { id: "all", label: "Semua ulasan", icon: "📋" },
           { id: "verified", label: "Verified Visit", icon: "✓" },
@@ -78,7 +78,7 @@ export default function ReviewsSection({
             onClick={() => setFilter(tab.id)}
             className={`px-4 py-2 whitespace-nowrap text-sm font-medium transition-all ${filter === tab.id
               ? "text-primary border-b-2 border-primary"
-              : "text-gray-600 hover:text-gray-900"
+              : "text-foreground/80 hover:text-foreground"
               }`}
           >
             {tab.label}
@@ -87,20 +87,20 @@ export default function ReviewsSection({
       </div>
 
       {/* Recommendation Box */}
-      <div className="bg-linear-to-r from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-4 flex items-center gap-3">
+      <div className="bg-linear-to-r dark:from-green-950 dark:to-emerald-950 from-green-50 to-emerald-50 dark:border-green-950 rounded-2xl flex items-center gap-3 p-4 border border-green-200">
         <div className="text-2xl">👍</div>
         <div>
-          <p className="font-semibold text-gray-900">
+          <p className="text-foreground font-semibold">
             {recommendationPercentage}% pengunjung merekomendasikan
           </p>
-          <p className="text-xs text-gray-600">Berdasarkan rating 4-5 bintang</p>
+          <p className="text-foreground/80 text-xs">Berdasarkan rating 4-5 bintang</p>
         </div>
       </div>
 
       {/* Reviews List */}
       <div className="grid grid-cols-2 gap-8">
         {filteredReviews.length === 0 ? (
-          <div className="rounded-2xl p-8 text-center bg-gray-50 border border-border col-span-2">
+          <div className="rounded-2xl bg-background border-border col-span-2 p-8 text-center border">
             <p className="text-foreground text-sm">
               {filter === "verified"
                 ? "Belum ada review dari Verified Visit"
@@ -124,16 +124,16 @@ export default function ReviewsSection({
                   height={40}
                   src="/products/user.jpg"
                   alt={review.name}
-                  className="w-10 h-10 rounded-full object-cover"
+                  className="object-cover w-10 h-10 rounded-full"
                 />
 
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <h4 className="font-semibold text-foreground">
+                    <h4 className="text-foreground font-semibold">
                       {review.name}
                     </h4>
                     {review.verified && (
-                      <div className="flex items-center gap-1 text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">
+                      <div className="dark:text-emerald-100 dark:bg-green-950 flex items-center gap-1 px-2 py-1 text-xs text-green-700 bg-green-100 rounded-full">
                         <FaCheckCircle size={10} />
                         Verified Visit
                       </div>
@@ -147,7 +147,7 @@ export default function ReviewsSection({
                           <FaStar key={i} size={12} />
                         ))}
                       </div>
-                      <span className="text-xs text-foreground/80">
+                      <span className="text-foreground/80 text-xs">
                         {review.timeago || "1 hari lalu"}
                       </span>
                     </div>
@@ -156,7 +156,7 @@ export default function ReviewsSection({
               </div>
 
               {/* Comment */}
-              <p className="text-foreground text-sm leading-relaxed mb-3">
+              <p className="text-foreground wrap-break-word mb-3 text-sm leading-relaxed">
                 {review.comment}
               </p>
 
@@ -164,7 +164,7 @@ export default function ReviewsSection({
               {review.images && review.images.length > 0 && (
                 <div className="flex gap-2 mb-3 overflow-x-auto">
                   {review.images.map((img, idx) => (
-                    <div key={idx} className="relative w-20 h-20 shrink-0">
+                    <div key={idx} className="shrink-0 relative w-20 h-20">
                       <Image
                         src={img}
                         alt={`Review ${idx + 1}`}

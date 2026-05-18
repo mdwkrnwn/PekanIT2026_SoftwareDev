@@ -36,7 +36,7 @@ export default function InfoPanel({
 
         {/* Rating & Distance */}
         <div className="mb-6 space-y-3">
-          <div className="flex items-center gap-2 rounded-full ">
+          <div className=" flex items-center gap-2 rounded-full">
             <FaStar className="text-yellow-400" />
             <span className="text-sm font-semibold">
               {rating} ({reviewCount} ulasan)
@@ -51,7 +51,7 @@ export default function InfoPanel({
           </div>
 
           <div className="flex items-center gap-3">
-            <span className="px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold">
+            <span className="dark:text-emerald-100 dark:bg-green-950 px-3 py-1 text-xs font-semibold text-green-700 bg-green-100 rounded-full">
               Buka Sekarang
             </span>
 
@@ -87,7 +87,7 @@ export default function InfoPanel({
         </div>
       </div>
       {/* Tags Cards */}
-      <div className="grid grid-cols-2 outline-border rounded-xl outline-1 ">
+      <div className="outline-border rounded-xl outline-1 grid grid-cols-2">
         {tags.map((item) => (
           <div key={item.id} className={cn(`rounded-2xl flex  flex-row items-center gap-2 p-4 `, tags.length % 2 != 0 && "last:col-span-2 last:justify-center"
           )}>
@@ -101,14 +101,14 @@ export default function InfoPanel({
       {/* Location Info */}
       <div className="grid gap-4 grid-cols-[auto_1fr] outline-border rounded-xl outline-1 p-4">
         <div className="flex">
-          <span className="flex w-full bg-primary/10 rounded-2xl gap-2 p-4 items-center">
+          <span className="bg-primary/10 rounded-2xl flex items-center w-full gap-2 p-4">
             <FaMapMarkerAlt size={25} className="fill-primary" />
             Alamat
           </span>
         </div>
         {product.address}
         <div className="flex">
-          <span className="flex w-full bg-primary/10 rounded-2xl gap-2 p-4 items-center">
+          <span className="bg-primary/10 rounded-2xl flex items-center w-full gap-2 p-4">
             <HiOutlineLocationMarker size={25} className="stroke-primary" />
             Jarak
           </span>
@@ -117,7 +117,7 @@ export default function InfoPanel({
         <Link
           href={"https://www.google.com/maps/place/" + product?.lat + "," + product.lng}
           target="_blank"
-          className="border-primary text-primary hover:bg-primary/5 rounded-xl flex items-center justify-center flex-1 gap-2 py-3 font-semibold transition-all border col-span-2"
+          className="border-primary text-primary hover:bg-primary/5 rounded-xl flex items-center justify-center flex-1 col-span-2 gap-2 py-3 font-semibold transition-all border"
         >
           <LuMapPin size={18} />
           Buka DI Google Maps
