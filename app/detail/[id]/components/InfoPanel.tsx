@@ -62,7 +62,7 @@ export default function InfoPanel({
           </div>
         </div>
         {/* Action Buttons */}
-        <div className="flex gap-3 mt-8">
+        <div className="flex md:flex-row flex-col gap-3 mt-8">
           <button
             onClick={() => onToggleWishlist(product.id, product.name)}
             className={`flex-1 py-3 rounded-2xl font-medium transition-all duration-200 flex items-center justify-center gap-2 border ${isWish
@@ -89,7 +89,7 @@ export default function InfoPanel({
       {/* Tags Cards */}
       <div className="outline-border rounded-xl outline-1 grid grid-cols-2">
         {tags.map((item) => (
-          <div key={item.id} className={cn(`rounded-2xl flex  flex-row items-center gap-2 p-4 `, tags.length % 2 != 0 && "last:col-span-2 last:justify-center"
+          <div key={item.id} className={cn(`rounded-2xl flex  md:flex-row flex-col items-center gap-2 p-4 `, tags.length % 2 != 0 && "last:col-span-2 last:justify-center"
           )}>
             <div className="bg-primary/10 text-primary p-3 rounded-full">
               <item.icon size={22} />
@@ -99,7 +99,7 @@ export default function InfoPanel({
         ))}
       </div>
       {/* Location Info */}
-      <div className="grid gap-4 grid-cols-[auto_1fr] outline-border rounded-xl outline-1 p-4">
+      <div className="md:grid gap-4 flex flex-col md:grid-cols-[auto_1fr] outline-border rounded-xl outline-1 p-4">
         <div className="flex">
           <span className="bg-primary/10 rounded-2xl flex items-center w-full gap-2 p-4">
             <FaMapMarkerAlt size={25} className="fill-primary" />

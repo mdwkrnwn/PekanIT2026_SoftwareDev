@@ -98,7 +98,7 @@ export default function ReviewsSection({
       </div>
 
       {/* Reviews List */}
-      <div className="grid grid-cols-2 gap-8">
+      <div className="md:grid grid grid-cols-1 md:grid-cols-2 gap-8">
         {filteredReviews.length === 0 ? (
           <div className="rounded-2xl bg-background border-border col-span-2 p-8 text-center border">
             <p className="text-foreground text-sm">
@@ -114,7 +114,7 @@ export default function ReviewsSection({
             <div
               key={review.id}
               className={cn("rounded-2xl p-5 bg-background border border-border hover:shadow-md transition-shadow",
-                filteredReviews.length % 2 != 0 && "last:col-span-2 last:justify-center"
+                filteredReviews.length % 2 != 0 && "md:last:col-span-2 last:justify-center"
               )}
             >
               {/* Header */}
