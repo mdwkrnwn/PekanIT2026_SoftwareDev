@@ -90,8 +90,8 @@ export default function ChatPopup() {
 
       <div
         className={cn(
-          "fixed -bottom-full md:right-[5%] z-50 flex w-full md:w-105 origin-bottom-right flex-col rounded-[2rem] shadow-2xl transition-all duration-300 ease-[cubic-bezier(0,0.22,0.12,1)]",
-          isOpen ? "bottom-10" : "pointer-events-none scale-50",
+          "fixed scale-y-105 -bottom-full md:right-[5%] z-50 flex w-full md:w-105 origin-bottom-right flex-col rounded-[2rem] shadow-2xl transition-all duration-300 ease-[cubic-bezier(0,0.22,0.12,1)]",
+          isOpen ? "bottom-0 md:bottom-5 2xl:bottom-10" : "pointer-events-none scale-50",
         )}
       >
         {/* Header */}
@@ -127,7 +127,7 @@ export default function ChatPopup() {
         </div>
 
         {/* Chat Body */}
-        <div className="flex h-120 flex-col overflow-y-auto bg-[#F8F9FB] p-6 custom-scrollbar">
+        <div className="flex h-120 flex-col overflow-y-auto bg-background p-6 custom-scrollbar">
           {messages.map((msg, index) => (
             <div
               key={index}
@@ -135,7 +135,7 @@ export default function ChatPopup() {
                 }`}
             >
               {msg.role === "assistant" && (
-                <div className="shrink-0 border-slate-200 flex items-center justify-center w-10 h-10 bg-white border rounded-full">
+                <div className="shrink-0 border-border flex items-center justify-center w-10 h-10 bg-background border rounded-full">
                   <Image
                     src="/assets/iconai.png"
                     alt="Bot Avatar"
@@ -149,7 +149,7 @@ export default function ChatPopup() {
               <div
                 className={`max-w-[80%] rounded-2xl p-5 text-[0.95rem] ${msg.role === "user"
                   ? "bg-primary text-white rounded-tr-sm"
-                  : "bg-white border border-slate-200 rounded-tl-sm text-black"
+                  : "bg-background border border-border rounded-tl-sm text-foreground"
                   }`}
               >
                 <ReactMarkdown>{msg.text}</ReactMarkdown>
@@ -159,7 +159,7 @@ export default function ChatPopup() {
 
           {loading && (
             <div className="flex gap-3 mb-4">
-              <div className="shrink-0 border-slate-200 flex items-center justify-center w-10 h-10 bg-white border rounded-full">
+              <div className="shrink-0 border-border flex items-center justify-center w-10 h-10 bg-background border rounded-full">
                 <Image
                   src="/assets/iconai.png"
                   alt="Bot Avatar"
@@ -169,7 +169,7 @@ export default function ChatPopup() {
                 />
               </div>
 
-              <div className="rounded-2xl border-slate-200 p-5 bg-white border rounded-tl-sm shadow-sm">
+              <div className="rounded-2xl border-border p-5 bg-background border rounded-tl-sm shadow-sm">
                 Mengetik...
               </div>
             </div>
@@ -177,47 +177,47 @@ export default function ChatPopup() {
 
           {/* Quick Questions */}
           <div className="mt-auto">
-            <h3 className="mb-4 text-[1.05rem] font-bold text-slate-900">
+            <h3 className="mb-4 text-[1.05rem] font-bold text-foreground">
               Pertanyaan cepat:
             </h3>
 
             <div className="md:grid md:grid-cols-2 flex flex-wrap gap-3">
               <button
                 onClick={() => sendMessage("Cari cafe estetik")}
-                className="rounded-xl hover:bg-primary/20 flex items-center gap-3 p-3 text-left text-primary transition-colors bg-white border border-primary"
+                className="rounded-xl hover:bg-primary/20 flex items-center gap-3 p-3 text-left text-primary transition-colors bg-background border border-primary"
               >
                 <LuCoffee size={20} className="shrink-0" />
-                <span className="text-black text-sm font-semibold">
+                <span className="text-foreground text-sm font-semibold">
                   Cari cafe estetik
                 </span>
               </button>
 
               <button
                 onClick={() => sendMessage("Rekomendasi kuliner")}
-                className="rounded-xl hover:bg-primary/20 flex items-center gap-3 p-3 text-left text-primary transition-colors bg-white border border-primary"
+                className="rounded-xl hover:bg-primary/20 flex items-center gap-3 p-3 text-left text-primary transition-colors bg-background border border-primary"
               >
                 <MdOutlineRamenDining size={22} className="shrink-0" />
-                <span className="text-black text-sm font-semibold">
+                <span className="text-foreground text-sm font-semibold">
                   Rekomendasi Kuliner
                 </span>
               </button>
 
               <button
                 onClick={() => sendMessage("Hidden gem dekat sini")}
-                className="rounded-xl hover:bg-primary/20 flex items-center gap-3 p-3 text-left text-primary transition-colors bg-white border border-primary"
+                className="rounded-xl hover:bg-primary/20 flex items-center gap-3 p-3 text-left text-primary transition-colors bg-background border border-primary"
               >
                 <LuMapPin size={20} className="shrink-0" />
-                <span className="text-black text-sm font-semibold">
+                <span className="text-foreground text-sm font-semibold">
                   Hidden GEM
                 </span>
               </button>
 
               <button
                 onClick={() => sendMessage("Cari produk lokal")}
-                className="rounded-xl hover:bg-primary/20 flex items-center gap-3 p-3 text-left text-primary transition-colors bg-white border border-primary"
+                className="rounded-xl hover:bg-primary/20 flex items-center gap-3 p-3 text-left text-primary transition-colors bg-background border border-primary"
               >
                 <LuShoppingBag size={20} className="shrink-0" />
-                <span className="text-black text-sm font-semibold">
+                <span className="text-foreground text-sm font-semibold">
                   Cari Produk Lokal
                 </span>
               </button>
@@ -226,7 +226,7 @@ export default function ChatPopup() {
         </div>
 
         {/* Input Area */}
-        <div className="bg-[#F8F9FB] p-6 pt-2">
+        <div className="bg-background p-6 pt-2">
           <div className="relative flex items-center">
             <input
               value={input}
@@ -238,7 +238,7 @@ export default function ChatPopup() {
               }}
               type="text"
               placeholder="Tanyakan tentang UMKM..."
-              className="w-full rounded-full border border-slate-300 bg-white py-4 pl-6 pr-16 text-[0.95rem] text-black shadow-sm outline-none placeholder:text-slate-400 focus:border-primary"
+              className="w-full rounded-full border border-border bg-secondary py-4 pl-6 pr-16 text-[0.95rem] text-foreground shadow-sm outline-none placeholder:text-foreground/80  focus:border-primary"
             />
 
             <button
