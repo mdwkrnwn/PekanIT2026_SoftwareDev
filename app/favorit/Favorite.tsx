@@ -53,7 +53,7 @@ export default function Favorite({
   return (
     <div className="w-[80vw]">
       {/* HEADER */}
-      <section className="flex flex-row items-center justify-between">
+      <section className="flex flex-row mb-4 md:m-0 items-center justify-between">
         <div className="flex flex-row items-center gap-4">
           <FaHeart size={80} className="fill-primary" />
 
@@ -70,7 +70,7 @@ export default function Favorite({
           </div>
         </div>
 
-        <div>
+        <div className="hidden md:block">
           <Image
             src="/Favorite.png"
             width={450}
@@ -169,12 +169,12 @@ export default function Favorite({
       {/* CTA */}
       <section className="bg-primary relative mt-20 overflow-hidden rounded-[2rem] bg-linear-to-r dark:from-hero-end dark:to-hero-start from-[#8EAFE5] to-[#E5EEFD] text-white">
         <div className="md:grid-cols-2 grid items-center grid-cols-1 gap-6 px-10">
-          <div className="space-y-5">
-            <h2 className="text-primary dark:text-white text-4xl font-semibold">
+          <div className="space-y-5 mt-5 md:my-5">
+            <h2 className="text-primary dark:text-white text-2xl md:text-4xl font-semibold">
               Belum menemukan favorit lain?
             </h2>
 
-            <p className="text-foreground text-xl">
+            <p className="text-foreground text-lg md:text-xl">
               Jelajahi lebih banyak UMKM lokal dan
               temukan produk serta layanan terbaik di
               sekitarmu.
@@ -188,12 +188,12 @@ export default function Favorite({
             </Link>
           </div>
 
-          <div className="flex justify-center">
+          <div className="relative size-full flex justify-center">
             <Image
               src="/Favourite2.png"
               alt="Explore"
-              width={600}
-              height={400}
+              fill
+              className="object-cover"
             />
           </div>
         </div>
