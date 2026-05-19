@@ -120,7 +120,7 @@ export default function Favorite({
                 <FaTrash />
               </button>
 
-              <Link href={`/detail/${item.id}?src=Favorit`}>
+              <Link href={`/detail/${item.id}?src=favorit`}>
                 <div className="border-border bg-background hover:-translate-y-1 overflow-hidden rounded-[1.75rem] border transition-all hover:shadow-xl">
                   <div className="relative h-64 overflow-hidden">
                     <Image

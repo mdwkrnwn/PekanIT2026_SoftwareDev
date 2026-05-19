@@ -55,7 +55,7 @@ export function Card({ UMKM }: { UMKM: typeUMKM[] }) {
 
         return (
           <Link
-            href={`/detail/${merchant.id}?src=Merchant`}
+            href={`/detail/${merchant.id}?src=merchant`}
             key={merchant.id}
             className="border-border overflow-hidden rounded-[2rem] border bg-background transition-all hover:-translate-y-1 hover:shadow-xl cursor-pointer"
           >
