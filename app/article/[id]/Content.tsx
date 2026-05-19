@@ -26,7 +26,7 @@ export function Content({ article }: { article: typeof ARTICLES[number] }) {
       </p>
 
       {/* Author */}
-      <div className="flex items-center md:flex-row flex-col justify-between mt-10 gap-y-4">
+      <div className="flex items-start md:flex-row flex-col justify-between mt-10 gap-y-4">
         <div className="flex items-center gap-4">
           <div className="bg-primary/10 size-16 flex items-center justify-center rounded-full">
             <FaUser className="text-primary" size={22} />
@@ -44,7 +44,7 @@ export function Content({ article }: { article: typeof ARTICLES[number] }) {
         </div>
 
         {/* Actions */}
-        <div className="flex items-center md:gap-4 w-full md:w-fit justify-between">
+        <div className="flex items-center gap-4 w-full md:w-fit justify-start">
           <button className="border-primary hover:bg-primary hover:text-white size-16 text-primary flex items-center justify-center transition-colors border rounded-full">
             <FaHeart size={25} />
           </button>
