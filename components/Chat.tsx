@@ -90,7 +90,7 @@ export default function ChatPopup() {
 
       <div
         className={cn(
-          "fixed scale-y-105 -bottom-full md:right-[5%] z-50 flex w-full md:w-105 origin-bottom-right flex-col rounded-[2rem] shadow-2xl transition-all duration-300 ease-[cubic-bezier(0,0.22,0.12,1)]",
+          "fixed -bottom-full md:right-[5%] z-50 flex w-full md:w-105 origin-bottom-right flex-col rounded-[2rem] shadow-2xl transition-all duration-300 ease-[cubic-bezier(0,0.22,0.12,1)]",
           isOpen ? "bottom-0 md:bottom-5 2xl:bottom-10" : "pointer-events-none scale-50",
         )}
       >
