@@ -100,7 +100,7 @@ export default function ProductPage({
               href={`/` + (src ?? 'explore')}
               className="text-[1.375rem] font-semibold text-muted-foreground hover:text-primary transition"
             >
-              {src ? src?.charAt(1).toUpperCase() + src?.slice(1) : "Explore"}
+              {src ? src?.charAt(0).toUpperCase() + src?.slice(1) : "Explore"}
             </Link>
           </BreadcrumbLink>
           <BreadcrumbSeparator>
