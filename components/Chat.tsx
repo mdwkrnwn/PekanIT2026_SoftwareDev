@@ -90,7 +90,7 @@ export default function ChatPopup() {
 
       <div
         className={cn(
-          "fixed -bottom-full md:right-[5%] z-50 flex w-full md:w-105 origin-bottom-right flex-col rounded-[2rem] shadow-2xl transition-all duration-300 ease-[cubic-bezier(0,0.22,0.12,1)]",
+          "fixed max-h-[85svh] -bottom-full md:right-[5%] z-50 flex w-full md:w-105 origin-bottom-right flex-col rounded-[2rem] shadow-2xl transition-all duration-300 ease-[cubic-bezier(0,0.22,0.12,1)]",
           isOpen ? "bottom-0 md:bottom-5 2xl:bottom-10" : "pointer-events-none scale-50",
         )}
       >
@@ -106,7 +106,7 @@ export default function ChatPopup() {
             />
           </div>
 
-          <div className="flex flex-row  justify-between w-full">
+          <div className="flex flex-row justify-between w-full">
             <div className="flex flex-col">
               <h2 className="text-xl font-bold text-white">Asisten UFinder</h2>
 
@@ -127,7 +127,7 @@ export default function ChatPopup() {
         </div>
 
         {/* Chat Body */}
-        <div className="flex h-120 flex-col overflow-y-auto bg-background p-6 custom-scrollbar">
+        <div className="h-120 bg-background custom-scrollbar flex flex-col p-6 overflow-y-auto">
           {messages.map((msg, index) => (
             <div
               key={index}
@@ -135,7 +135,7 @@ export default function ChatPopup() {
                 }`}
             >
               {msg.role === "assistant" && (
-                <div className="shrink-0 border-border flex items-center justify-center w-10 h-10 bg-background border rounded-full">
+                <div className="shrink-0 border-border bg-background flex items-center justify-center w-10 h-10 border rounded-full">
                   <Image
                     src="/assets/iconai.png"
                     alt="Bot Avatar"
@@ -159,7 +159,7 @@ export default function ChatPopup() {
 
           {loading && (
             <div className="flex gap-3 mb-4">
-              <div className="shrink-0 border-border flex items-center justify-center w-10 h-10 bg-background border rounded-full">
+              <div className="shrink-0 border-border bg-background flex items-center justify-center w-10 h-10 border rounded-full">
                 <Image
                   src="/assets/iconai.png"
                   alt="Bot Avatar"
@@ -169,7 +169,7 @@ export default function ChatPopup() {
                 />
               </div>
 
-              <div className="rounded-2xl border-border p-5 bg-background border rounded-tl-sm shadow-sm">
+              <div className="rounded-2xl border-border bg-background p-5 border rounded-tl-sm shadow-sm">
                 Mengetik...
               </div>
             </div>
@@ -184,7 +184,7 @@ export default function ChatPopup() {
             <div className="md:grid md:grid-cols-2 flex flex-wrap gap-3">
               <button
                 onClick={() => sendMessage("Cari cafe estetik")}
-                className="rounded-xl hover:bg-primary/20 flex items-center gap-3 p-3 text-left text-primary transition-colors bg-background border border-primary"
+                className="rounded-xl hover:bg-primary/20 text-primary bg-background border-primary flex items-center gap-3 p-3 text-left transition-colors border"
               >
                 <LuCoffee size={20} className="shrink-0" />
                 <span className="text-foreground text-sm font-semibold">
@@ -194,7 +194,7 @@ export default function ChatPopup() {
 
               <button
                 onClick={() => sendMessage("Rekomendasi kuliner")}
-                className="rounded-xl hover:bg-primary/20 flex items-center gap-3 p-3 text-left text-primary transition-colors bg-background border border-primary"
+                className="rounded-xl hover:bg-primary/20 text-primary bg-background border-primary flex items-center gap-3 p-3 text-left transition-colors border"
               >
                 <MdOutlineRamenDining size={22} className="shrink-0" />
                 <span className="text-foreground text-sm font-semibold">
@@ -204,7 +204,7 @@ export default function ChatPopup() {
 
               <button
                 onClick={() => sendMessage("Hidden gem dekat sini")}
-                className="rounded-xl hover:bg-primary/20 flex items-center gap-3 p-3 text-left text-primary transition-colors bg-background border border-primary"
+                className="rounded-xl hover:bg-primary/20 text-primary bg-background border-primary flex items-center gap-3 p-3 text-left transition-colors border"
               >
                 <LuMapPin size={20} className="shrink-0" />
                 <span className="text-foreground text-sm font-semibold">
@@ -214,7 +214,7 @@ export default function ChatPopup() {
 
               <button
                 onClick={() => sendMessage("Cari produk lokal")}
-                className="rounded-xl hover:bg-primary/20 flex items-center gap-3 p-3 text-left text-primary transition-colors bg-background border border-primary"
+                className="rounded-xl hover:bg-primary/20 text-primary bg-background border-primary flex items-center gap-3 p-3 text-left transition-colors border"
               >
                 <LuShoppingBag size={20} className="shrink-0" />
                 <span className="text-foreground text-sm font-semibold">
