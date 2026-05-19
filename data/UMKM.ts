@@ -10,6 +10,7 @@ export const UMKM = [
     reviews: 20,
     distance: "1.2 km",
     status: "Buka Sekarang",
+    tags: ["Makanan Rumahan", "Harga Terjangkau", "Halal", "Murah"],
     openHours: "09:00 - 21:00",
     lat: -7.981894,
     lng: 112.626503,
@@ -60,11 +61,12 @@ export const UMKM = [
     rating: 4.6,
     reviews: 10,
     distance: "2.0 km",
+    tags: ["Kebutuhan Harian", "Lengkap", "Murah", "Harga Terjangkau"],
     lat: -7.978421,
     lng: 112.629182,
     status: "Buka Sekarang",
     openHours: "07:00 - 22:00",
-    tagIds: [4, 5, 6, 7],
+    tagIds: [4, 5, 6, 2],
     about:
       "Toko Berkah menyediakan kebutuhan rumah tangga, makanan ringan, minuman, dan berbagai kebutuhan harian dengan harga terjangkau.",
     gallery: [
@@ -105,7 +107,8 @@ export const UMKM = [
     id: 3,
     name: "Greeny Plant",
     category: "Hobi",
-    description: "Tanaman hias & perlengkapan berkebun. Cocok untuk mempercantik rumah dan area kerja.",
+    description:
+      "Tanaman hias & perlengkapan berkebun. Cocok untuk mempercantik rumah dan area kerja.",
     location: "Bogor",
     address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.9,
@@ -114,8 +117,9 @@ export const UMKM = [
     lng: 112.622745,
     distance: "3.1 km",
     status: "Buka Sekarang",
+    tags: ["Tanaman Hias", "Berkebun", "Indoor Plant", "Creative"],
     openHours: "08:00 - 18:00",
-    tagIds: [7, 8, 9, 10],
+    tagIds: [7, 8, 9, 31],
     about:
       "Greeny Plant menghadirkan berbagai tanaman hias, pot dekoratif, pupuk, dan perlengkapan berkebun berkualitas.",
     gallery: [
@@ -166,8 +170,8 @@ export const UMKM = [
     distance: "1.8 km",
     status: "Buka Sekarang",
     openHours: "10:00 - 21:00",
-
-    tagIds: [10, 11, 12],
+    tags: ["Fashion Lokal", "Stylish", "Affordable", "Modern"],
+    tagIds: [10, 11, 12, 28],
 
     about:
       "Local Outfit menawarkan produk fashion lokal dengan desain modern, bahan premium, dan harga yang cocok untuk anak muda.",
@@ -218,10 +222,11 @@ export const UMKM = [
     reviews: 70,
     lat: -7.988542,
     lng: 112.618934,
+    tags: ["Coffee Shop", "Cozy Place", "WiFi", "Hangout"],
     distance: "1.0 km",
     status: "Buka Sekarang",
     openHours: "08:00 - 23:00",
-    tagIds: [13, 14, 15],
+    tagIds: [13, 14, 15, 40],
     about:
       "Kopi Titik menyediakan kopi pilihan dengan suasana nyaman untuk bekerja, meeting, maupun nongkrong bersama teman.",
     gallery: [
@@ -269,11 +274,12 @@ export const UMKM = [
     reviews: 45,
     lat: -7.972184,
     lng: 112.631827,
+    tags: ["Teknisi", "Cepat", "Profesional", "Service"],
     distance: "1.0 km",
     status: "Tersedia Hari Ini",
     openHours: "08:00 - 20:00",
 
-    tagIds: [16, 17, 18],
+    tagIds: [16, 17, 18,34],
 
     about:
       "Fixit Home melayani berbagai kebutuhan perbaikan rumah mulai dari listrik, plumbing, hingga furniture.",
@@ -317,23 +323,23 @@ export const UMKM = [
     id: 7,
     name: "Glow & Go",
     category: "Kecantikan",
-    description: "Produk perawatan kulit aman & bernilai. Hadir dengan berbagai pilihan skincare untuk semua jenis kulit.",
+    description:
+      "Produk perawatan kulit aman & bernilai. Hadir dengan berbagai pilihan skincare untuk semua jenis kulit.",
     location: "Bekasi",
     address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.9,
     reviews: 20,
     distance: "2.4 km",
+    tags: ["Skincare", "Beauty", "Natural", "Premium"],
     lat: -7.969835,
     lng: 112.624551,
     status: "Buka Sekarang",
     openHours: "09:00 - 20:00",
 
-    tags: ["Skincare", "Beauty", "Natural"],
-
     about:
       "Glow & Go menghadirkan produk skincare lokal dengan bahan berkualitas, aman, dan cocok untuk berbagai jenis kulit.",
 
-    tagIds: [19, 20, 21],
+    tagIds: [19, 20, 21,41],
     gallery: [
       "/assets/umkm/kecantikan/glow&go/thumbnail.jpeg",
       "/assets/detailtempatdapurnona/minimal.jpg",
@@ -382,8 +388,9 @@ export const UMKM = [
     lat: -7.986327,
     lng: 112.640293,
     openHours: "10:00 - 22:00",
+    tags: ["Snack", "Homemade", "Fresh", "Halal"],
 
-    tagIds: [19, 20, 21],
+    tagIds:  [22, 23, 24, 3],
 
     about:
       "Cemilan Mendang menawarkan berbagai camilan rumahan dan frozen food dengan rasa lezat dan bahan berkualitas.",
@@ -437,7 +444,9 @@ export const UMKM = [
     lat: -7.991742,
     lng: 112.619284,
     openHours: "09:00 - 21:00",
-    tagIds: [25, 10, 26],
+    tags: ["Batik", "Fashion Lokal", "Elegant", "Premium"],
+
+    tagIds: [25, 10, 26, 41],
     about:
       "Batik Heritage menghadirkan koleksi batik modern dengan bahan premium yang cocok untuk acara formal maupun casual.",
     gallery: [
@@ -488,7 +497,9 @@ export const UMKM = [
     distance: "1.7 km",
     status: "Buka Sekarang",
     openHours: "10:00 - 22:00",
-    tagIds: [27, 28, 29],
+    tags: ["Streetwear", "Modern", "Casual", "Stylish"],
+
+    tagIds:  [27, 28, 29, 11],
     about:
       "Urban Style menyediakan fashion streetwear kekinian dengan kualitas premium dan desain stylish.",
     gallery: [
@@ -535,11 +546,12 @@ export const UMKM = [
     rating: 4.8,
     reviews: 40,
     distance: "2.5 km",
+    tags: ["Hobi", "Creative", "DIY", "Craft"],
     status: "Buka Sekarang",
     openHours: "08:00 - 20:00",
     lat: -7.968514,
     lng: 112.636492,
-    tagIds: [30, 31, 5],
+    tagIds: [30, 31, 32, 33],
     about:
       "Hobby Station menyediakan berbagai perlengkapan koleksi, craft, dan kebutuhan hobi lainnya.",
     gallery: [
@@ -580,7 +592,8 @@ export const UMKM = [
     id: 12,
     name: "Creative House",
     category: "Hobi",
-    description: "Peralatan craft dan DIY kreatif. Ideal untuk pemula maupun pecinta kerajinan tangan.",
+    description:
+      "Peralatan craft dan DIY kreatif. Ideal untuk pemula maupun pecinta kerajinan tangan.",
     location: "Malang",
     address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.9,
@@ -590,7 +603,8 @@ export const UMKM = [
     distance: "2.0 km",
     status: "Buka Sekarang",
     openHours: "09:00 - 19:00",
-    tagIds: [32, 33, 31],
+    tagIds:  [32, 33, 31, 30],
+    tags: ["DIY", "Craft", "Creative", "Hobi"],
     about:
       "Creative House menawarkan berbagai perlengkapan DIY, kerajinan tangan, dan seni kreatif.",
     gallery: [
@@ -638,10 +652,11 @@ export const UMKM = [
     reviews: 32,
     distance: "1.5 km",
     lat: -7.989413,
+    tags: ["Service", "Cepat", "Profesional", "Teknisi"],
     lng: 112.633951,
     status: "Tersedia Hari Ini",
     openHours: "08:00 - 20:00",
-    tagIds: [34, 17, 18],
+    tagIds: [34, 17, 18, 16],
     about:
       "Quick Service melayani berbagai kebutuhan service rumah dengan teknisi profesional.",
     gallery: [
@@ -682,7 +697,8 @@ export const UMKM = [
     id: 14,
     name: "Smart Electric",
     category: "Jasa",
-    description: "Spesialis instalasi dan perbaikan listrik. Teknisi profesional & terpercaya.",
+    description:
+      "Spesialis instalasi dan perbaikan listrik. Teknisi profesional & terpercaya.",
     location: "Bekasi",
     address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.8,
@@ -692,7 +708,8 @@ export const UMKM = [
     distance: "1.9 km",
     status: "Tersedia Hari Ini",
     openHours: "08:00 - 20:00",
-    tagIds: [35, 16, 36],
+    tags: ["Listrik", "Teknisi", "Trusted", "Profesional"],
+    tagIds: [35, 16, 36, 18],
     about:
       "Smart Electric menyediakan jasa instalasi listrik rumah dan kantor dengan standar keamanan tinggi.",
     gallery: [
@@ -742,8 +759,9 @@ export const UMKM = [
     lng: 112.627581,
     distance: "1.8 km",
     status: "Buka Sekarang",
+    tags: ["Coffee", "Cozy", "WiFi", "Premium"],
     openHours: "08:00 - 23:00",
-    tagIds: [37, 38, 15],
+    tagIds: [37, 38, 15, 41],
     about:
       "Beans Corner menghadirkan berbagai pilihan kopi premium dengan suasana nyaman untuk bekerja maupun bersantai.",
     gallery: [
@@ -791,10 +809,11 @@ export const UMKM = [
     reviews: 39,
     lat: -7.971628,
     lng: 112.648195,
+    tags: ["Cafe", "Modern", "Hangout", "WiFi"],
     distance: "2.2 km",
     status: "Buka Sekarang",
     openHours: "09:00 - 22:00",
-    tagIds: [39, 28, 40],
+    tagIds: [39, 28, 40, 15],
     about:
       "Kafe Life menawarkan suasana modern dan menu makanan serta minuman kekinian untuk anak muda.",
     gallery: [
@@ -845,7 +864,8 @@ export const UMKM = [
     lng: 112.623748,
     status: "Buka Sekarang",
     openHours: "09:00 - 20:00",
-    tagIds: [19, 20, 41],
+    tags: ["Skincare", "Beauty", "Premium", "Natural"],
+    tagIds: [19, 20, 41, 21],
     about:
       "Beauty Bliss menghadirkan berbagai produk skincare dan kosmetik lokal dengan kualitas terbaik.",
     gallery: [
@@ -895,8 +915,9 @@ export const UMKM = [
     reviews: 44,
     distance: "2.0 km",
     status: "Buka Sekarang",
+    tags: ["Natural", "Skincare", "Healthy", "Beauty"],
     openHours: "09:00 - 20:00",
-    tagIds: [21, 19, 42],
+    tagIds: [21, 19, 42, 20],
     about:
       "Fresh Beauty menyediakan produk perawatan kulit berbahan alami dan aman digunakan setiap hari.",
     gallery: [
