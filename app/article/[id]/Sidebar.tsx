@@ -55,7 +55,7 @@ export function Sidebar({
             <Link
               href={`/article/${article.id}`}
               key={article?.id}
-              className="md:flex hover:shadow-md rounded-2xl grid grid-cols-2 gap-4 py-2"
+              className="hover:shadow-md rounded-2xl grid grid-cols-2 gap-4 py-2"
             >
               <div className="rounded-xl relative w-full h-auto overflow-hidden">
                 <Image
@@ -90,7 +90,7 @@ export function Sidebar({
             <Link
               href={`/article/${article.id}`}
               key={article.id}
-              className="md:flex hover:shadow-md rounded-2xl grid grid-cols-2 gap-4 py-2"
+              className="hover:shadow-md rounded-2xl grid grid-cols-2 gap-4 py-2"
             >
               <div className="rounded-xl relative w-full h-auto overflow-hidden">
                 <Image
@@ -106,7 +106,7 @@ export function Sidebar({
                   {article.title}
                 </h3>
                 <p className="text-muted-foreground mt-2 text-sm">
-                  {article.readTime} 
+                  {article.readTime}
                 </p>
               </div>
             </Link>
