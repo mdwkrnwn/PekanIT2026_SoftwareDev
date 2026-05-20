@@ -25,8 +25,13 @@
 > https://ufinder-ten.vercel.app/maps
 > ```
 >
-> Setelah halaman dibuka akan muncul popup permintaan lokasi. Silakan tekan tombol **"Block"** agar fitur maps tetap dapat dicoba tanpa memberikan akses lokasi perangkat.
----
+> Setelah halaman dibuka akan muncul popup permintaan lokasi seperti berikut:
+>
+> <p align="center">
+>   <img src="./public/popup.png.png" width="320" alt="Location Permission Popup" />
+> </p>
+>
+> Silakan tekan tombol **"Block"** agar fitur maps tetap dapat dicoba tanpa memberikan akses lokasi perangkat.
 
 # 📌 Tentang Project
 
