@@ -3,7 +3,7 @@ export const UMKM = [
     id: 1,
     name: "Dapur Nona",
     category: "Makanan",
-    description: "Aneka makanan rumahan lezat & berkualitas.",
+    description: "Aneka makanan rumahan lezat, higienis, & berkualitas.",
     location: "Jakarta Selatan",
     address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.5,
@@ -855,7 +855,8 @@ export const UMKM = [
     id: 17,
     name: "Beauty Bliss",
     category: "Kecantikan",
-description: "Produk kecantikan premium, aman, berkualitas, & cocok untuk harian.",
+    description:
+      "Produk kecantikan premium, aman, berkualitas, & cocok untuk harian.",
     location: "Jakarta Selatan",
     address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.9,
@@ -907,7 +908,8 @@ description: "Produk kecantikan premium, aman, berkualitas, & cocok untuk harian
     id: 18,
     name: "Fresh Beauty",
     category: "Kecantikan",
-description: "Skincare natural untuk kulit sehat, segar, & terawat setiap hari.",
+    description:
+      "Skincare natural untuk kulit sehat, segar, & terawat setiap hari.",
     location: "Bandung",
     address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.8,
