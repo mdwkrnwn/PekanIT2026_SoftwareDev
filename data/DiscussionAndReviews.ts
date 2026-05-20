@@ -946,5 +946,139 @@ export const discussionAndReviews = [
         "comment": "Occaecati sunt quisquam illo alias sint. Iusto impedit sapiente quaerat soluta reprehenderit repudiandae."
       }
     ]
-  }
+  },
+  {
+    "umkmId": 19,
+    "reviews": [
+      {
+        "id": 1,
+        "name": "Manah",
+        "comment": "Voluptas molestias magni. Labore enim velit voluptatem nemo.",
+        "rating": 3
+      },
+      {
+        "id": 2,
+        "name": "Martani",
+        "comment": "Odit nesciunt dolore vel eius ad modi ipsum. Voluptate hic laudantium nobis.",
+        "rating": 5
+      },
+      {
+        "id": 3,
+        "name": "Samsul",
+        "comment": "Laudantium reprehenderit error nesciunt laudantium qui dolore. Culpa error odit.",
+        "rating": 3
+      },
+      {
+        "id": 4,
+        "name": "Pangeran",
+        "comment": "Accusantium ea neque corporis itaque possimus facere. Earum in totam. Aliquid eos odit asperiores deserunt occaecati.",
+        "rating": 4
+      },
+      {
+        "id": 5,
+        "name": "Panca",
+        "comment": "Recusandae maiores animi. Tenetur aliquam error ab.",
+        "rating": 5
+      }
+    ],
+    "discussion": [
+      {
+        "id": 1,
+        "name": "Jayadi",
+        "comment": "Distinctio dolorem beatae voluptates commodi beatae. Libero facere enim quam. Eveniet blanditiis eligendi nobis."
+      },
+      {
+        "id": 2,
+        "name": "Vicky",
+        "comment": "Corporis id nihil aut. Aperiam voluptate excepturi nisi."
+      },
+      {
+        "id": 3,
+        "name": "Dalimin",
+        "comment": "Libero ad debitis non."
+      },
+      {
+        "id": 4,
+        "name": "Parman",
+        "comment": "Rem inventore molestiae dicta illo numquam iste. Debitis accusantium provident sint nemo distinctio vitae."
+      },
+      {
+        "id": 5,
+        "name": "Kemal",
+        "comment": "Porro doloremque dolores corrupti adipisci. Iure nam ipsa officia alias."
+      },
+      {
+        "id": 6,
+        "name": "Caturangga",
+        "comment": "Occaecati sunt quisquam illo alias sint. Iusto impedit sapiente quaerat soluta reprehenderit repudiandae."
+      }
+    ]
+  },
+  {
+    "umkmId": 20,
+    "reviews": [
+      {
+        "id": 1,
+        "name": "Manah",
+        "comment": "Voluptas molestias magni. Labore enim velit voluptatem nemo.",
+        "rating": 3
+      },
+      {
+        "id": 2,
+        "name": "Martani",
+        "comment": "Odit nesciunt dolore vel eius ad modi ipsum. Voluptate hic laudantium nobis.",
+        "rating": 5
+      },
+      {
+        "id": 3,
+        "name": "Samsul",
+        "comment": "Laudantium reprehenderit error nesciunt laudantium qui dolore. Culpa error odit.",
+        "rating": 3
+      },
+      {
+        "id": 4,
+        "name": "Pangeran",
+        "comment": "Accusantium ea neque corporis itaque possimus facere. Earum in totam. Aliquid eos odit asperiores deserunt occaecati.",
+        "rating": 4
+      },
+      {
+        "id": 5,
+        "name": "Panca",
+        "comment": "Recusandae maiores animi. Tenetur aliquam error ab.",
+        "rating": 5
+      }
+    ],
+    "discussion": [
+      {
+        "id": 1,
+        "name": "Jayadi",
+        "comment": "Distinctio dolorem beatae voluptates commodi beatae. Libero facere enim quam. Eveniet blanditiis eligendi nobis."
+      },
+      {
+        "id": 2,
+        "name": "Vicky",
+        "comment": "Corporis id nihil aut. Aperiam voluptate excepturi nisi."
+      },
+      {
+        "id": 3,
+        "name": "Dalimin",
+        "comment": "Libero ad debitis non."
+      },
+      {
+        "id": 4,
+        "name": "Parman",
+        "comment": "Rem inventore molestiae dicta illo numquam iste. Debitis accusantium provident sint nemo distinctio vitae."
+      },
+      {
+        "id": 5,
+        "name": "Kemal",
+        "comment": "Porro doloremque dolores corrupti adipisci. Iure nam ipsa officia alias."
+      },
+      {
+        "id": 6,
+        "name": "Caturangga",
+        "comment": "Occaecati sunt quisquam illo alias sint. Iusto impedit sapiente quaerat soluta reprehenderit repudiandae."
+      }
+    ]
+  },
 ]

@@ -957,4 +957,111 @@ export const UMKM = [
       },
     ],
   },
+  {
+    id: 19,
+    name: "Ayam Bakar Juara",
+    category: "Makanan",
+    description:
+      "Spesialis ayam bakar dengan bumbu khas nusantara yang meresap sempurna.",
+    location: "Malang",
+    address: "Jl. Veteran No.18, Lowokwaru, Malang, Jawa Timur",
+    rating: 4.7,
+    reviews: 35,
+    distance: "2.1 km",
+    status: "Buka Sekarang",
+    tags: ["Ayam Bakar", "Pedas", "Halal", "Favorit Mahasiswa"],
+    openHours: "10:00 - 22:00",
+    lat: -7.952421,
+    lng: 112.614937,
+    tagIds: [1, 3, 4, 5],
+    about:
+      "Ayam Bakar Juara menghadirkan menu ayam bakar dengan cita rasa khas rempah Indonesia. Dibakar langsung saat dipesan sehingga menghasilkan aroma smokey yang menggugah selera.",
+    gallery: [
+      "/assets/umkm/makanan/ayambakarjuara/thumbnail.jpg",
+      "/assets/detailtempatdapurnona/minimal.jpg",
+      "/assets/detailtempatdapurnona/bisnis.jpg",
+      "/assets/detailtempatdapurnona/lokal.jpg",
+    ],
+    featuredMenus: [
+      {
+        name: "Ayam Bakar Original",
+        price: 25000,
+        image: "/assets/umkm/makanan/ayambakarjuara/menu1.jpg",
+      },
+      {
+        name: "Ayam Bakar Pedas",
+        price: 27000,
+        image: "/assets/umkm/makanan/ayambakarjuara/menu2.jpg",
+      },
+      {
+        name: "Paket Ayam + Es Teh",
+        price: 30000,
+        image: "/assets/umkm/makanan/ayambakarjuara/menu3.jpg",
+      },
+      {
+        name: "Tahu Tempe Crispy",
+        price: 12000,
+        image: "/assets/umkm/makanan/ayambakarjuara/menu4.jpg",
+      },
+      {
+        name: "Jus Jeruk",
+        price: 10000,
+        image: "/assets/umkm/makanan/ayambakarjuara/menu5.jpg",
+      },
+    ],
+  },
+
+  {
+    id: 20,
+    name: "Ricebowl Corner",
+    category: "Makanan",
+    description:
+      "Ricebowl kekinian dengan topping melimpah dan harga ramah kantong.",
+    location: "Malang",
+    address: "Jl. MT Haryono No.45, Dinoyo, Malang, Jawa Timur",
+    rating: 4.6,
+    reviews: 28,
+    distance: "1.8 km",
+    status: "Buka Sekarang",
+    tags: ["Ricebowl", "Kekinian", "Murah", "Halal"],
+    openHours: "11:00 - 23:00",
+    lat: -7.944783,
+    lng: 112.613204,
+    tagIds: [1, 2, 3, 6],
+    about:
+      "Ricebowl Corner menyediakan berbagai pilihan ricebowl modern dengan topping melimpah dan saus spesial homemade yang cocok untuk pelajar hingga mahasiswa.",
+    gallery: [
+      "/assets/umkm/makanan/ricebowlcorner/thumbnail.jpg",
+      "/assets/detailtempatdapurnona/minimal.jpg",
+      "/assets/detailtempatdapurnona/bisnis.jpg",
+      "/assets/detailtempatdapurnona/lokal.jpg",
+    ],
+    featuredMenus: [
+      {
+        name: "Ricebowl Chicken Teriyaki",
+        price: 22000,
+        image: "/assets/umkm/makanan/ricebowlcorner/menu1.jpg",
+      },
+      {
+        name: "Ricebowl Spicy Chicken",
+        price: 23000,
+        image: "/assets/umkm/makanan/ricebowlcorner/menu2.jpg",
+      },
+      {
+        name: "Ricebowl Beef Blackpepper",
+        price: 27000,
+        image: "/assets/umkm/makanan/ricebowlcorner/menu3.jpg",
+      },
+      {
+        name: "French Fries",
+        price: 15000,
+        image: "/assets/umkm/makanan/ricebowlcorner/menu4.jpg",
+      },
+      {
+        name: "Ice Matcha",
+        price: 14000,
+        image: "/assets/umkm/makanan/ricebowlcorner/menu5.jpg",
+      },
+    ],
+  },
 ];
