@@ -15,9 +15,17 @@
 * Website: [LOW CORTISOL Web App](https://ufinder-ten.vercel.app)
 * Repository: [GitHub Repository](https://github.com/mdwkrnwn/SEFEST26WEBDESIGN_LOW-CORTISOL)
 
+
 > [!IMPORTANT]
 > Saat ini implementasi project hanya berfokus pada wilayah **Malang**. Dukungan untuk wilayah lain akan dikembangkan pada tahap selanjutnya.
-
+>
+> Untuk mencoba fitur **Maps**, disarankan membuka website menggunakan mode **Incognito/Private Window** terlebih dahulu lalu akses halaman berikut:
+>
+> ```bash
+> https://ufinder-ten.vercel.app/maps
+> ```
+>
+> Setelah halaman dibuka akan muncul popup permintaan lokasi. Silakan tekan tombol **"Block"** agar fitur maps tetap dapat dicoba tanpa memberikan akses lokasi perangkat.
 ---
 
 # 📌 Tentang Project
