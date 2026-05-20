@@ -55,7 +55,8 @@ export const UMKM = [
     id: 2,
     name: "Toko Berkah",
     category: "Toko Kelontong",
-    description: "Kebutuhan sehari-hari lengkap & terjangkau.",
+    description:
+      "Kebutuhan sehari-hari lengkap & terjangkau. Tersedia sembako, snack, minuman, dan perlengkapan rumah tangga.",
     location: "Depok",
     address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.6,
@@ -267,7 +268,7 @@ export const UMKM = [
     id: 6,
     name: "Fixit Home",
     category: "Jasa",
-    description: "Jasa perbaikan rumah cepat & terpercaya.",
+    description: "Jasa perbaikan rumah cepat, rapi, & terpercaya.",
     location: "Tangerang",
     address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.8,
@@ -279,7 +280,7 @@ export const UMKM = [
     status: "Tersedia Hari Ini",
     openHours: "08:00 - 20:00",
 
-    tagIds: [16, 17, 18,34],
+    tagIds: [16, 17, 18, 34],
 
     about:
       "Fixit Home melayani berbagai kebutuhan perbaikan rumah mulai dari listrik, plumbing, hingga furniture.",
@@ -339,7 +340,7 @@ export const UMKM = [
     about:
       "Glow & Go menghadirkan produk skincare lokal dengan bahan berkualitas, aman, dan cocok untuk berbagai jenis kulit.",
 
-    tagIds: [19, 20, 21,41],
+    tagIds: [19, 20, 21, 41],
     gallery: [
       "/assets/umkm/kecantikan/glow&go/thumbnail.jpeg",
       "/assets/detailtempatdapurnona/minimal.jpg",
@@ -378,7 +379,7 @@ export const UMKM = [
     id: 8,
     name: "Cemilan Nendang",
     category: "Makanan",
-    description: "Aneka makanan rumahan lezat & berkualitas.",
+    description: "Cemilan rumahan lezat, gurih, berkualitas, & bikin nagih.",
     location: "Bogor",
     address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.9,
@@ -390,7 +391,7 @@ export const UMKM = [
     openHours: "10:00 - 22:00",
     tags: ["Snack", "Homemade", "Fresh", "Halal"],
 
-    tagIds:  [22, 23, 24, 3],
+    tagIds: [22, 23, 24, 3],
 
     about:
       "Cemilan Mendang menawarkan berbagai camilan rumahan dan frozen food dengan rasa lezat dan bahan berkualitas.",
@@ -487,7 +488,7 @@ export const UMKM = [
     id: 10,
     name: "Urban Style",
     category: "Fashion",
-    description: "Streetwear modern untuk anak muda aktif.",
+    description: "Streetwear modern, stylish, & nyaman untuk anak muda.",
     location: "Bandung",
     address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.7,
@@ -499,7 +500,7 @@ export const UMKM = [
     openHours: "10:00 - 22:00",
     tags: ["Streetwear", "Modern", "Casual", "Stylish"],
 
-    tagIds:  [27, 28, 29, 11],
+    tagIds: [27, 28, 29, 11],
     about:
       "Urban Style menyediakan fashion streetwear kekinian dengan kualitas premium dan desain stylish.",
     gallery: [
@@ -540,7 +541,7 @@ export const UMKM = [
     id: 11,
     name: "Hobby Station",
     category: "Hobi",
-    description: "Perlengkapan hobi lengkap dan berkualitas.",
+    description: "Perlengkapan hobi lengkap, kreatif, & berkualitas.",
     location: "Surabaya",
     address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.8,
@@ -603,7 +604,7 @@ export const UMKM = [
     distance: "2.0 km",
     status: "Buka Sekarang",
     openHours: "09:00 - 19:00",
-    tagIds:  [32, 33, 31, 30],
+    tagIds: [32, 33, 31, 30],
     tags: ["DIY", "Craft", "Creative", "Hobi"],
     about:
       "Creative House menawarkan berbagai perlengkapan DIY, kerajinan tangan, dan seni kreatif.",
@@ -645,7 +646,7 @@ export const UMKM = [
     id: 13,
     name: "Quick Service",
     category: "Jasa",
-    description: "Layanan perbaikan cepat dan profesional.",
+    description: "Layanan service cepat, profesional, & terpercaya.",
     location: "Jakarta Barat",
     address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.7,
@@ -854,7 +855,7 @@ export const UMKM = [
     id: 17,
     name: "Beauty Bliss",
     category: "Kecantikan",
-    description: "Produk kecantikan lokal berkualitas premium.",
+description: "Produk kecantikan premium, aman, berkualitas, & cocok untuk harian.",
     location: "Jakarta Selatan",
     address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.9,
@@ -906,7 +907,7 @@ export const UMKM = [
     id: 18,
     name: "Fresh Beauty",
     category: "Kecantikan",
-    description: "Produk skincare natural untuk semua jenis kulit.",
+description: "Skincare natural untuk kulit sehat, segar, & terawat setiap hari.",
     location: "Bandung",
     address: "Jl. Soekarno Hatta No.32 Lowokwaru, Malang, Jawa Timur",
     rating: 4.8,
