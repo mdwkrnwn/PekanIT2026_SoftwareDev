@@ -94,7 +94,7 @@ export default function InfoPanel({
             <div className="bg-primary/10 text-primary p-3 rounded-full">
               <item.icon size={22} />
             </div>
-            <span className="text-sm font-medium">{item.name}</span>
+            <span className="text-sm text-center font-medium">{item.name}</span>
           </div>
         ))}
       </div>
