@@ -4,6 +4,8 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { BiRightArrow } from "react-icons/bi";
+import { FaArrowRight, FaMapSigns } from "react-icons/fa";
 import {
   FaCircleArrowRight,
   FaHeart,
@@ -18,6 +20,7 @@ import {
   FaShieldHalved,
   FaUsers,
 } from "react-icons/fa6";
+import { SiGooglemaps } from "react-icons/si";
 
 export function HeroBanner() {
   const categories = [
@@ -87,45 +90,45 @@ export function HeroBanner() {
         {/* LEFT */}
         <div className="z-10 flex-1">
           {/* Badge */}
-          <div className="inline-flex items-center gap-3 px-5 py-3 mb-8 bg-background border border-primary/10 rounded-full shadow-foreground/20 shadow-sm">
-            <div className="size-8 text-primary flex items-center justify-center bg-primary/10 rounded-full">
-              <FaHeart />
-            </div>
-
-            <span className="text-foreground md:text-base text-sm font-medium">
-              Dukung Lokal, Bangun Negeri
+          <div className="inline-flex items-center gap-3 px-5 py-3 mb-8 border border-primary/10 rounded-full shadow-foreground/20 bg-[#DFFCF0]">
+            <span className="text-[#238660] md:text-base text-sm font-bold">
+              Platform Digitalisasi UMKM Indonesia
             </span>
           </div>
 
           {/* Heading */}
-          <h1 className="md:text-7xl text-3xl font-bold tracking-tight text-foreground">
-            Cari UMKM keren,
-            <span className="text-primary"> dukung lokal</span> bareng!
+          <h1 className="md:text-7xl text-3xl font-bold leading-[125%] text-foreground">
+            Tumbuhkan UMKM Lebih Cepat dengan
+            <span className="text-primary"> Data & AI </span>
           </h1>
 
           {/* Description */}
           <p className="text-foreground md:text-xl max-w-2xl mt-8 text-lg leading-relaxed">
-            Dari usaha rumahan sampai produk lokal favorit banyak orang,
-            semua ada di UFinder dan temukan dengan lebih mudah di sini.
+            Bakool membantu UMKM memahami pelanggan,
+            meningkatkan penjualan, dan mengembangkan
+            bisnis melalui teknologi digital.
           </p>
 
           {/* Categories */}
-          <div className="flex flex-wrap items-center gap-6 mt-10">
-            {categories.map((item) => (
-              <Link
-                href={"merchant?category=" + item.label.replace(" ", "+")}
-                key={item.label}
-                className={`flex items-center gap-3 rounded-full border px-6 py-3 text-sm font-semibold transition-all md:text-base ${item.active
-                  ? "border-primary bg-primary text-white"
-                  : "border-border bg-background text-primary hover:border-primary hover:bg-primary hover:text-white"
-                  }`}
-              >
-                <span className="*:size-6">
-                  {item.icon}
-                </span>
-                {item.label}
-              </Link>
-            ))}
+          <div className="flex flex-wrap items-center gap-3 mt-10">
+            <Link
+              href={"/login"}
+              className={`flex flex-row items-center gap-3 rounded-lg border px-6 py-3 text-background font-semibold transition-all bg-primary md:text-base`}
+            >
+              <span className="*:size-6">
+                Daftarkan UMKM Anda
+              </span>
+              <FaArrowRight />
+            </Link>
+            <Link
+              href={"/login"}
+              className={`flex flex-row items-center gap-3 rounded-lg border px-6 py-3 text-sm border-primary text-primary font-semibold transition-all md:text-base`}
+            >
+              <span className="*:size-6">
+                Jelajahi UMKM
+              </span>
+              <SiGooglemaps />
+            </Link>
           </div>
 
           {/* Features */}
@@ -148,22 +151,6 @@ export function HeroBanner() {
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* CTA Banner */}
-          <div className="w-full bg-linear-to-t from-hero-end to-hero-start py-4 text-white rounded-[2rem] px-12 flex sm:flex-col md:flex-row lg:flex-row items-center justify-between mt-12 overflow-hidden shadow-lg gap-4 relative *:sm:w-full">
-            <div className="md:block size-auto relative z-10 hidden">
-              <Image src="/home.png" height={500} width={500} className="w-80 h-fit object-cover" alt="Hero Background" />
-            </div>
-            <div className="z-10 w-full h-full">
-              <h2 className="mb-6 text-2xl font-semibold leading-tight">Belanja Lokal, Untungnya Double Buat Kamu dan UMKM!</h2>
-              <button className="hover:bg-slate-100 text-primary flex items-center justify-center gap-4 px-6 py-3 font-bold text-lg md:text-[1.25rem] transition-colors bg-white rounded-full ">
-                <Link href={'/explore'}>
-                  Eksplor Sekarang
-                </Link>
-                <FaCircleArrowRight className="size-8" size={25} />
-              </button>
-            </div>
           </div>
         </div>
 

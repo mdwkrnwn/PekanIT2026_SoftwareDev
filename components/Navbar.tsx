@@ -44,20 +44,20 @@ function Navbar() {
   return (
     <>
       <header className="z-999 sticky top-0 w-full mb-1">
-        <div className="sm:flex hidden bg-background justify-center shadow-[#A9A1A140] shadow-md ">
-          <nav className="grid grid-cols-[1fr_1fr_3fr] justify-center items-center w-[80vw]">
+        <div className="sm:flex hidden bg-background justify-center shadow-[#A9A1A140] shadow-md">
+          <nav className="grid grid-cols-[1fr_1fr_3fr] justify-center items-center w-[80vw] py-6">
             <section className="flex items-center">
               <Image
                 loading="eager"
                 height={1000}
                 width={1000}
                 className="max-w-24 max-h-24"
-                src={"/UFLogo.png"}
+                src={"/Bakul.png"}
                 alt="logo"
               />
             </section>
             <section>
-              <ul className="flex gap-6 text-lg font-medium">
+              <ul className="flex gap-6 text-lg font-medium ">
                 {navItems.map((item) => {
                   const isActive =
                     item.href === "/explore"
@@ -73,7 +73,7 @@ function Navbar() {
                       after:absolute after:bottom-0 after:left-0
                       after:rounded-full after:w-full after:h-1 after:transition-all
                       ${isActive
-                            ? "after:bg-primary"
+                            ? "after:bg-primary text-[#169876]"
                             : "after:bg-transparent hover:after-text-primary"
                           }`}
                       >

@@ -13,7 +13,7 @@
 ## 🌐 Live Demo
 
 * Website: [LOW CORTISOL Web App](https://ufinder-ten.vercel.app)
-* Repository: [GitHub Repository](https://github.com/mdwkrnwn/SEFEST26WEBDESIGN_LOW-CORTISOL)
+* Repository: [GitHub Repository](https://github.com/mdwkrnwn/PekanIT2026_SoftwareDev)
 
 
 > [!IMPORTANT]
@@ -21,9 +21,7 @@
 >
 > Untuk mencoba fitur **Maps**, disarankan membuka website menggunakan mode **Incognito/Private Window** terlebih dahulu lalu akses halaman berikut:
 >
-> ```bash
-> https://ufinder-ten.vercel.app/maps
-> ```
+> <a>https://ufinder-ten.vercel.app/maps</a>
 >
 > Setelah halaman dibuka akan muncul popup permintaan lokasi seperti berikut:
 >
@@ -44,13 +42,13 @@
 ## 1. Clone Repository
 
 ```bash
-git clone https://github.com/mdwkrnwn/SEFEST26WEBDESIGN_LOW-CORTISOL.git
+git clone https://github.com/mdwkrnwn/PekanIT2026_SoftwareDev.git
 ```
 
 ## 2. Masuk ke Folder Project
 
 ```bash
-cd SEFEST26WEBDESIGN_LOW-CORTISOL
+cd PekanIT2026_SoftwareDev
 ```
 
 ## 3. Install Dependencies
@@ -94,4 +92,4 @@ Project ini dibuat untuk:
 
 # 👨‍💻 Tim Pengembang
 
-Developed with ❤️ by LOW CORTISOL Team
+Developed with ❤️ by rusdi ngawi Team

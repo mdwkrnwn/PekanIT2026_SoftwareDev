@@ -8,10 +8,10 @@
   --background: oklch(98.006% 0.00973 253.023);
   --foreground: oklch(17.375% 0.03391 271.86);
 
-  --primary: oklch(51.891% 0.21518 260.702);
+  --primary: #0C7C61;
   --primary-foreground: oklch(40.566% 0.12226 260.336);
 
-  --secondary: oklch(59.311% 0.22253 259.858);
+  --secondary: #DCFCE7;
   --secondary-foreground: oklch(41.1% 0.14828 259.782);
 
   --muted: oklch(92.191% 0.0001 271.152);
