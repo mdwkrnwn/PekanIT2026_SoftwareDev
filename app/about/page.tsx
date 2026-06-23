@@ -15,7 +15,7 @@ export default function AboutPage() {
         </h1>
 
         <p className="text-muted-foreground md:text-xl mb-10 leading-relaxed">
-          UFinder hadir untuk membantu masyarakat menemukan UMKM lokal
+          Bakool hadir untuk membantu masyarakat menemukan UMKM lokal
           terbaik dengan cara yang lebih mudah, cepat, dan modern.
           Kami percaya setiap usaha kecil punya potensi besar jika
           mendapatkan akses pelanggan yang tepat.
@@ -40,7 +40,7 @@ export default function AboutPage() {
 
       <div className="border-border rounded-[2rem] border p-8 lg:p-10">
         <h2 className="text-primary mb-8 text-3xl font-bold">
-          Kenapa Pilih UFinder?
+          Kenapa Pilih Bakool?
         </h2>
 
         <div className="md:grid-cols-3 grid gap-5">

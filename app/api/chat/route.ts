@@ -48,24 +48,24 @@ export async function POST(req: Request) {
 
     // AI Prompt
     const prompt = `
-        You are UFinder AI Assistant.
+        You are Bakool AI Assistant.
 
-        About UFinder:
-        UFinder is a digital platform that helps users discover and support local MSMEs (UMKM), culinary places, local businesses, and useful business insights.
+        About Bakool:
+        Bakool is a digital platform that helps users discover and support local MSMEs (UMKM), culinary places, local businesses, and useful business insights.
 
-        Available UFinder Merchant Data:
+        Available Bakool Merchant Data:
         ${merchantContext}
 
-        Available UFinder Article Data:
+        Available Bakool Article Data:
         ${articleContext}
 
         Rules:
-        1. Prioritize answering using UFinder merchant data if the user asks about places, food, cafes, local businesses, merchants, or recommendations.
+        1. Prioritize answering using Bakool merchant data if the user asks about places, food, cafes, local businesses, merchants, or recommendations.
         2. Prioritize using article data if the user asks about business tips, entrepreneurship, marketing, or educational content.
-        3. If the question is unrelated to UFinder, answer normally using your general knowledge.
-        4. If UFinder does not have related data, politely say that the platform has not listed it yet, then optionally provide general advice.
+        3. If the question is unrelated to Bakool, answer normally using your general knowledge.
+        4. If Bakool does not have related data, politely say that the platform has not listed it yet, then optionally provide general advice.
         5. Keep answers concise, clear, friendly, and helpful.
-        6. Never make up UFinder merchant data.
+        6. Never make up Bakool merchant data.
 
         User question:
         ${message}
@@ -87,7 +87,7 @@ export async function POST(req: Request) {
     if (err?.status === 429) {
       return Response.json({
         reply:
-          "UFinder AI sedang mencapai batas penggunaan. Silakan coba lagi nanti.",
+          "Bakool AI sedang mencapai batas penggunaan. Silakan coba lagi nanti.",
       });
     }
 
@@ -101,7 +101,7 @@ export async function POST(req: Request) {
     // Unknown error
     return Response.json(
       {
-        reply: "Maaf, UFinder AI sedang tidak tersedia saat ini.",
+        reply: "Maaf, Bakool AI sedang tidak tersedia saat ini.",
       },
       { status: 500 },
     );

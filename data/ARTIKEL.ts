@@ -3,7 +3,7 @@ export const ARTICLES = [
     id: 1,
     title: "5 Tips Mudah Dukung UMKM Lokal di Sekitarmu",
     category: "Tips & Edukasi",
-    author: "UFinder Team",
+    author: "Bakool Team",
     authorAvatar: "/team-avatar.jpeg",
     readTime: "5 menit",
 
@@ -28,7 +28,7 @@ export const ARTICLES = [
       {
         title: "Cari di Sekitar Kamu",
         description:
-          "Gunakan platform seperti UFinder untuk menemukan UMKM terdekat. Belanja jadi lebih praktis dan hemat ongkir.",
+          "Gunakan platform seperti Bakool untuk menemukan UMKM terdekat. Belanja jadi lebih praktis dan hemat ongkir.",
       },
       {
         title: "Beri Review & Rating",
@@ -55,7 +55,7 @@ export const ARTICLES = [
     id: 2,
     title: "Rekomendasi Jajanan Lokal Favorit Anak Muda",
     category: "Tips & Edukasi",
-    author: "UFinder Team",
+    author: "Bakool Team",
     authorAvatar: "/team-avatar.jpeg",
     readTime: "5 menit",
 
@@ -99,7 +99,7 @@ export const ARTICLES = [
     id: 3,
     title: "Tips Menemukan Hidden GEM di Kotamu",
     category: "Tips & Edukasi",
-    author: "UFinder Team",
+    author: "Bakool Team",
     authorAvatar: "/team-avatar.jpeg",
     readTime: "5 menit",
 
@@ -142,7 +142,7 @@ export const ARTICLES = [
     id: 4,
     title: "7 UMKM Kuliner yang Wajib Kamu Coba",
     category: "Tips & Edukasi",
-    author: "UFinder Team",
+    author: "Bakool Team",
     authorAvatar: "/team-avatar.jpeg",
     readTime: "5 menit",
 
@@ -183,7 +183,7 @@ export const ARTICLES = [
     id: 5,
     title: "Kenapa Dukung UMKM itu Penting?",
     category: "Tips & Edukasi",
-    author: "UFinder Team",
+    author: "Bakool Team",
     authorAvatar: "/team-avatar.jpeg",
     readTime: "5 menit",
 
@@ -225,7 +225,7 @@ export const ARTICLES = [
     id: 6,
     title: "Cara Mudah Belanja Lokal Tanpa Ribet",
     category: "Tips & Edukasi",
-    author: "UFinder Team",
+    author: "Bakool Team",
     authorAvatar: "/team-avatar.jpeg",
     readTime: "5 menit",
 
@@ -263,7 +263,7 @@ export const ARTICLES = [
     id: 7,
     title: "Produk Lokal yang Cocok Jadi Hadiah",
     category: "Tips & Edukasi",
-    author: "UFinder Team",
+    author: "Bakool Team",
     authorAvatar: "/team-avatar.jpeg",
     readTime: "5 menit",
 
@@ -308,7 +308,7 @@ export const ARTICLES = [
     id: 8,
     title: "Cara Menjadi Pelanggan Setia UMKM Favoritmu",
     category: "Tips & Edukasi",
-    author: "UFinder Team",
+    author: "Bakool Team",
     authorAvatar: "/team-avatar.jpeg",
     readTime: "5 menit",
 

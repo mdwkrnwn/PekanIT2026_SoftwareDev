@@ -20,7 +20,7 @@ export function CTA() {
       />
 
       <h2 className="z-10 mb-4 text-2xl md:text-4xl font-bold text-center">
-        Saatnya Jelajahi Lokal Bareng UFinder
+        Saatnya Jelajahi Lokal Bareng Bakool
       </h2>
       <p className=" z-10 mb-8 md:text-xl text-center">
         Ayo bagikan pengalamanmu, temukan UMKM lokal terbaik, dan dukung

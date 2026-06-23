@@ -262,7 +262,7 @@ export const statistics = [
   {
     title: "500+",
     subtitle: "UMKM bergabung",
-    description: "Bergabung dan tumbuh bersama UFinder",
+    description: "Bergabung dan tumbuh bersama Bakool",
     icon: FaUsers,
   },
   {

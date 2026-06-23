@@ -10,7 +10,7 @@ export function Testimonials() {
   return <div className="bg-[linear-gradient(180deg,#1974FF_0%,#0F4599_100%)] md:py-16 flex flex-row justify-center w-screen px-5 py-8 mt-16 overflow-hidden text-white">
     <div className="w-full md:w-[80vw] flex flex-col justify-center md:flex-row gap-4 items-center lg:*:w-1/2 *:w-full">
       <div className="md:w-[35%]">
-        <h3 className="mb-2 wrap-break-word text-[clamp(1.5rem,3.125rem,3vw)] font-bold">Kata Mereka Tentang <br /> UFinder 👀</h3>
+        <h3 className="mb-2 wrap-break-word text-[clamp(1.5rem,3.125rem,3vw)] font-bold">Kata Mereka Tentang <br /> Bakool 👀</h3>
         <p className="opacity-90 font-normal md:mb-8 wrap-break-word text-[clamp(1.25rem,2rem,2vw)]">Pengalaman seru dari pengguna yang sudah dukung UMKM lokal.</p>
         <button className="hover:bg-slate-100 text-primary md:flex items-center hidden gap-2 px-6 py-3 font-bold transition-colors bg-white rounded-full">
           Lihat Semua Ulasan <BsArrowRightCircleFill className="md:block hidden" size={20} />
@@ -35,12 +35,12 @@ export function Testimonials() {
         <div>
           <div className={cn(animation.animate_scroll_x_right, "w-max flex gap-6 pr-6")}>
             {[...Array(5)].map((_, i) => (
-              <TestimonialCard key={`r-${i}`} name="Siti Aminah" text="Berkat UFinder, jangkauan pasar toko kue saya jadi lebih luas. Fitur ulasannya sangat transparan." />
+              <TestimonialCard key={`r-${i}`} name="Siti Aminah" text="Berkat Bakool, jangkauan pasar toko kue saya jadi lebih luas. Fitur ulasannya sangat transparan." />
             ))}
           </div>
           <div className={cn(animation.animate_scroll_x_right, "w-max flex gap-6 pr-6")}>
             {[...Array(5)].map((_, i) => (
-              <TestimonialCard key={`r-${i}`} name="Siti Aminah" text="Berkat UFinder, jangkauan pasar toko kue saya jadi lebih luas. Fitur ulasannya sangat transparan." />
+              <TestimonialCard key={`r-${i}`} name="Siti Aminah" text="Berkat Bakool, jangkauan pasar toko kue saya jadi lebih luas. Fitur ulasannya sangat transparan." />
             ))}
           </div>
         </div>

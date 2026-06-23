@@ -119,7 +119,7 @@ function Navbar() {
               className="max-w-24 max-h-24"
               src={"/UFLogo.png"}
               alt="logo"
-              title="UFinder."
+              title="Bakool."
             />
           </section>
           <section>

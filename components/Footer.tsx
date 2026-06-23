@@ -16,7 +16,7 @@ function Footer() {
         <div className='flex items-center col-span-4 -ml-4'>
           <Image loading='eager' height={1000} width={1000} className="max-w-24 max-h-24" src={'/UFLogo.png'} alt="logo" />
           <span className="text-primary text-[1.375rem] font-bold">
-            UFinder.
+            Bakool.
           </span>
         </div>
         <div className='col-span-4'>
@@ -70,7 +70,7 @@ function Footer() {
         <div>
           <p className='self-center text-xl font-semibold'>Hubungi Kami</p>
           <ul className='*:text-lg *:text-accent-foreground *:mb-2'>
-            <li>ufinder@gmail.com</li>
+            <li>Bakool@gmail.com</li>
             <li>000-0000-000</li>
             <li>Indonesia</li>
           </ul>
@@ -143,7 +143,7 @@ function Footer() {
           <AccordionContent>
             <ul className="space-y-2">
               <li className="text-accent-foreground text-lg">
-                ufinder@gmail.com
+                Bakool@gmail.com
               </li>
               <li className="text-accent-foreground text-lg">
                 000-0000-000

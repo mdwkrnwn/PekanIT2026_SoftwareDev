@@ -25,7 +25,7 @@ export default function ChatPopup() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      text: "Halo! Saya Asisten UFinder. Saya bisa bantu kamu menemukan UMKM terdekat, hidden gem, tempat nongkrong, sampai produk lokal terbaik sesuai kebutuhanmu. Ada yang ingin kamu cari hari ini?",
+      text: "Halo! Saya Asisten Bakool. Saya bisa bantu kamu menemukan UMKM terdekat, hidden gem, tempat nongkrong, sampai produk lokal terbaik sesuai kebutuhanmu. Ada yang ingin kamu cari hari ini?",
     },
   ]);
 
@@ -70,7 +70,7 @@ export default function ChatPopup() {
         ...prev,
         {
           role: "assistant",
-          text: "Maaf, UFinder AI sedang tidak tersedia.",
+          text: "Maaf, Bakool AI sedang tidak tersedia.",
         },
       ]);
     } finally {
@@ -108,7 +108,7 @@ export default function ChatPopup() {
 
           <div className="flex flex-row justify-between w-full">
             <div className="flex flex-col">
-              <h2 className="text-xl font-bold text-white">Asisten UFinder</h2>
+              <h2 className="text-xl font-bold text-white">Asisten Bakool</h2>
 
               <div className="flex items-center gap-2 mt-1">
                 <span className="h-2.5 w-2.5 rounded-full bg-green-400"></span>
