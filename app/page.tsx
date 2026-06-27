@@ -1,28 +1,20 @@
-import { ForYou } from '../components/ForYou';
-import { Trending } from "../components/Trending";
+import { SolusiUMKM } from '../components/SolusiUMKM';
+import { FeatureDashboard } from "../components/FeatureDashboard";
+import { InsightHariIni } from "../components/InsightHariIni";
+import { AiBisnis } from "../components/AiBisnis";
 import { Testimonials } from "../components/Testimonials";
-import { Articles } from "../components/Articles";
-import { CTA } from "../components/CTA";
 import { HeroBanner } from "../components/HeroBanner";
+import { CTA } from "../components/CTA";
 
 export default function Home() {
   return (
     <>
-      {/* Hero Banner */}
       <HeroBanner />
-
-      {/* Buat Kamu Nih */}
-      <ForYou />
-
-      {/* Trending Section (Vertical Marquee) */}
-      <Trending />
-
-      {/* Testimonials (Horizontal Marquee) */}
+      <SolusiUMKM />
+      <FeatureDashboard />
+      <InsightHariIni />
+      <AiBisnis />
       <Testimonials />
-
-      {/* Articles & Tips */}
-      <Articles />
-
       <CTA />
     </>
   );
