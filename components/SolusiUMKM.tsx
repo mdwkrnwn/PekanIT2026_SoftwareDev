@@ -13,7 +13,7 @@ const SOLUSI = [
 
 export function SolusiUMKM() {
   return (
-    <div className="w-[80vw] mx-auto mt-24 text-center">
+    <div className="w-[80vw] mx-auto mt-24 text-center" id="solusi">
       <h3 className="text-slate-900 text-3xl font-bold tracking-tight">Solusi Lengkap untuk UMKM</h3>
       <p className="text-slate-500 max-w-xl mx-auto mt-2">
         Semua yang Anda butuhkan untuk mengelola dan mengembangkan bisnis dalam satu platform.

@@ -23,7 +23,7 @@ function Navbar() {
   const navItems = [
     { name: "Beranda", href: "/" },
     { name: "Explore", href: "/explore" },
-    { name: "About", href: "/about" },
+    { name: "Solusi", href: "/#solusi" },
     { name: "Article", href: "/article" },
   ];
   useEffect(() => {
@@ -144,7 +144,7 @@ function Navbar() {
                 <Link href="/explore">Explore</Link>
               </li>
               <li>
-                <Link href="/about">About</Link>
+                <Link href="/#solusi">Solusi</Link>
               </li>
               <li>
                 <Link href="/article">Article</Link>
