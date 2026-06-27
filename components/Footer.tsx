@@ -10,13 +10,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 function Footer() {
-  return (
-    <footer className='w-full md:mb-0 mb-20 grid md:px-0 px-4 md:grid-cols-[2fr_4fr] md:w-[80vw]'>
+  return (<>
+    <footer className='w-full md:mb-8 mb-20 grid md:px-0 px-4 md:grid-cols-[2fr_4fr] md:w-[80vw] *:gap-8'>
       <section className='grid grid-cols-4 place-content-center lg:place-content-start grid-rows-[repeat(3,1fr)]'>
         <div className='flex items-center col-span-4 -ml-4'>
-          <Image loading='eager' height={1000} width={1000} className="max-w-24 max-h-24" src={'/UFLogo.png'} alt="logo" />
+          <Image loading='eager' height={1000} width={1000} className="max-w-24 max-h-24" src={'/Bakul.png'} alt="logo" />
           <span className="text-primary text-[1.375rem] font-bold">
-            Bakool.
+            Bakool
           </span>
         </div>
         <div className='col-span-4'>
@@ -155,7 +155,12 @@ function Footer() {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
+
     </footer>
+    <section className='text-lg flex justify-center items-center w-screen py-4 bg-[#05553C]'>
+      <p className='text-white'>2026 Bakool. All Rights Reserved.</p>
+    </section>
+  </>
   )
 }
 

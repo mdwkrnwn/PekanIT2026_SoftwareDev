@@ -3,32 +3,27 @@ import Image from "next/image";
 
 export function CTA() {
   return (
-    <div className="w-[80vw] mx-auto bg-primary text-white rounded-[2rem] flex flex-col items-center justify-center px-8 py-8 md:py-16 mt-20 relative overflow-hidden shadow-lg">
-      <Image
-        src="/banner.png"
-        width={140}
-        height={140}
-        alt="Decoration"
-        className="top-8 md:block left-16 rounded-2xl hidden -rotate-12 absolute"
-      />
-      <Image
-        src="/banner2.png"
-        width={140}
-        height={140}
-        alt="Decoration"
-        className="bottom-8 right-20 md:block hidden rotate-15 absolute rounded-full"
-      />
-
-      <h2 className="z-10 mb-4 text-2xl md:text-4xl font-bold text-center">
-        Saatnya Jelajahi Lokal Bareng Bakool
-      </h2>
-      <p className=" z-10 mb-8 md:text-xl text-center">
-        Ayo bagikan pengalamanmu, temukan UMKM lokal terbaik, dan dukung
-        pertumbuhan ekonomi sekitar!
-      </p>
-      <button className="hover:bg-slate-100 text-primary bg-white z-10 flex items-end gap-2 p-2 px-4 text-lg font-bold transition-colors rounded-full shadow-md">
-        Daftar Sekarang <BsArrowRightCircleFill size={24} />
-      </button>
+    <div className="w-[80vw] mx-auto bg-primary text-white rounded-[2rem] flex flex-row items-center px-8 py-8 md:py-16 mt-20 relative overflow-hidden shadow-lg justify-between">
+      <div className="w-1/3 *:leading-[-2]">
+        <h2 className="md:text-4xl z-10 mb-4 text-2xl font-bold">
+          Saatnya UMKM Naik Kelas Bersama Bakool
+        </h2>
+        <p className="md:text-xl z-10 mb-8">
+          Gabung sekarang dan rasakan manfaat teknologi untuk pertumbuhan bisnis anda
+        </p>
+        <button className="hover:bg-slate-100 text-primary z-10 flex items-end gap-2 px-6 py-4 text-xl font-semibold text-center transition-colors bg-white rounded-md shadow-md">
+          Mulai Konsultasi Gratis <BsArrowRightCircleFill size={24} />
+        </button>
+      </div>
+      <div>
+        <Image
+          src="/UMKMnaik.png"
+          width={600}
+          height={286}
+          alt="Decoration"
+          className=""
+        />
+      </div>
     </div>
   );
 }

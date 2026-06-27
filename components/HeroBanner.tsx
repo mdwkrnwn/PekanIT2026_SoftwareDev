@@ -129,25 +129,10 @@ export function HeroBanner() {
           </div>
 
           {/* Features */}
-          <div className="md:flex-row md:items-start flex flex-col gap-8 mt-12">
-            {features.map((item) => (
-              <div key={item.title} className={cn("flex items-start gap-4"
-              )}>
-                <div className="flex *:size-10 size-18 shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary shadow-md shadow-foreground/20">
-                  {item.icon}
-                </div>
-
-                <div>
-                  <h4 className="text-foreground font-semibold">
-                    {item.title}
-                  </h4>
-
-                  <p className="mt-1 text-sm leading-relaxed text-foreground">
-                    {item.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
+          <div className="md:flex-row items-center flex flex-col gap-8 mt-12">
+            <Image src={'/menungso.png'} alt="menungso" width={100} height={100} />
+            <p className="text-foreground md:text-xl max-w-2xl text-lg leading-relaxed">
+              Bergabung bersama ribuan UMKM lainnya</p>
           </div>
         </div>
 
@@ -164,7 +149,7 @@ export function HeroBanner() {
             key={index}
             className="border-border last:border-none lg:border-r flex items-center gap-5"
           >
-            <div className="size-16 bg-primary/25 text-primary flex items-center justify-center text-2xl rounded-full">
+            <div className="size-16 bg-primary/2 text-primary flex items-center justify-center text-2xl rounded-full">
               {item.icon}
             </div>
 
