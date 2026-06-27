@@ -53,7 +53,7 @@ export default function Favorite({
   return (
     <div className="w-[80vw]">
       {/* HEADER */}
-      <section className="flex flex-row mb-4 md:m-0 items-center justify-between">
+      <section className="md:m-0 flex flex-row items-center justify-between mb-4">
         <div className="flex flex-row items-center gap-4">
           <FaHeart size={80} className="fill-primary" />
 
@@ -70,9 +70,9 @@ export default function Favorite({
           </div>
         </div>
 
-        <div className="hidden md:block">
+        <div className="md:block hidden">
           <Image
-            src="/Favorite.png"
+            src="/bakulFavorit.png"
             width={450}
             height={300}
             alt="Favorite Image"
@@ -85,7 +85,7 @@ export default function Favorite({
 
       {/* CONTENT */}
       {filtered.length === 0 ? (
-        <div className="rounded-3xl py-20 text-center bg-background border border-dashed border-border">
+        <div className="rounded-3xl bg-background border-border py-20 text-center border border-dashed">
           <FaHeart className="text-primary mx-auto mb-4 text-4xl" />
 
           <h3 className="text-lg font-semibold">
@@ -167,14 +167,14 @@ export default function Favorite({
       )}
 
       {/* CTA */}
-      <section className="bg-primary relative mt-20 overflow-hidden rounded-[2rem] bg-linear-to-r dark:from-hero-end dark:to-hero-start from-[#8EAFE5] to-[#E5EEFD] text-white">
-        <div className="md:grid-cols-2 grid items-center grid-cols-1 gap-6 px-10">
-          <div className="space-y-5 mt-5 md:my-5">
-            <h2 className="text-primary dark:text-white text-2xl md:text-4xl font-semibold">
+      <section className="relative mt-20 rounded-lg bg-linear-to-r dark:from-hero-end dark:to-hero-start bg-[#E9F4EF] text-white">
+        <div className="md:grid-cols-2 grid items-center h-full grid-cols-1 gap-6 px-10">
+          <div className="md:my-5 mt-5 space-y-10">
+            <h2 className="text-primary dark:text-white md:text-4xl text-2xl font-semibold">
               Belum menemukan favorit lain?
             </h2>
 
-            <p className="text-foreground text-lg md:text-xl">
+            <p className="text-foreground md:text-xl text-lg">
               Jelajahi lebih banyak UMKM lokal dan
               temukan produk serta layanan terbaik di
               sekitarmu.
@@ -188,12 +188,13 @@ export default function Favorite({
             </Link>
           </div>
 
-          <div className="relative size-full flex justify-center">
+          <div className="size-full relative flex justify-center">
             <Image
-              src="/Favourite2.png"
+              src="/bakulFavorit2.png"
               alt="Explore"
-              fill
-              className="object-cover"
+              width={500}
+              height={500}
+              className=""
             />
           </div>
         </div>

@@ -35,7 +35,6 @@ export default function MainExplore({ filteredUMKM, search, category }: MainExpl
                       fill
                       className="hover:scale-105 object-cover transition-transform duration-300"
                     />
-
                     <span
                       className={cn(
                         "absolute bottom-4 left-4 rounded-full px-3 py-1 text-xs font-semibold text-white",
@@ -83,7 +82,7 @@ export default function MainExplore({ filteredUMKM, search, category }: MainExpl
           ))}
         </section>
       ) : (
-        <div className="border-border flex h-60 flex-col items-center justify-center rounded-3xl border border-dashed text-center">
+        <div className="border-border h-60 rounded-3xl flex flex-col items-center justify-center text-center border border-dashed">
           <h3 className="text-xl font-semibold">UMKM tidak ditemukan</h3>
           <p className="text-muted-foreground mt-2 text-sm">
             Coba gunakan kata kunci atau kategori lain.
@@ -93,33 +92,33 @@ export default function MainExplore({ filteredUMKM, search, category }: MainExpl
 
       {/* CTA Section */}
       <section className="bg-primary relative mt-20 overflow-hidden rounded-[2rem] bg-linear-to-r from-primary to-primary-foreground text-white">
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center px-8 lg:px-16 py-12">
+        <div className="lg:grid-cols-2 lg:px-16 grid items-center grid-cols-1 px-8 py-12">
           <div className="z-10 space-y-5">
-            <h2 className="text-3xl lg:text-5xl font-bold leading-tight">
+            <h2 className="lg:text-5xl text-3xl font-bold leading-tight">
               Temukan lebih banyak
               <br />
               UMKM lokal favoritmu
             </h2>
 
-            <p className="text-white/90 text-lg lg:text-xl leading-relaxed">
+            <p className="text-white/90 lg:text-xl text-lg leading-relaxed">
               Dukung usaha lokal dan jadilah bagian dari pertumbuhan ekonomi daerah.
             </p>
 
             <Link
               href="/explore"
-              className="text-primary inline-flex rounded-2xl bg-white px-6 py-3 font-semibold transition-all hover:bg-slate-100"
+              className="text-primary rounded-2xl hover:bg-slate-100 inline-flex px-6 py-3 font-semibold transition-all bg-white"
             >
               Jelajahi Sekarang
             </Link>
           </div>
 
-          <div className="relative hidden lg:flex justify-center">
+          <div className="lg:flex relative justify-center hidden">
             <Image
               src="/Explore.png"
               alt="Explore"
               width={1106}
               height={738}
-              className="h-105 w-auto object-contain"
+              className="h-105 object-contain w-auto"
             />
           </div>
         </div>

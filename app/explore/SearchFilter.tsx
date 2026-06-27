@@ -18,7 +18,7 @@ export default function SearchFilter({ initialSearch, initialCategory }: SearchF
   const searchParams = useSearchParams();
 
   const [search, setSearch] = useState(initialSearch);
-  const debouncedSearch = useDebounce(search, 750);
+  const debouncedSearch = useDebounce(search, 300);
 
   const createQueryString = (name: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -44,18 +44,18 @@ export default function SearchFilter({ initialSearch, initialCategory }: SearchF
       <div className="relative mb-6">
         <FaSearch
           size={20}
-          className="text-muted-foreground absolute top-1/2 right-6 -translate-y-1/2"
+          className="text-muted-foreground top-1/2 right-6 absolute -translate-y-1/2"
         />
         <input
           type="text"
           placeholder="Cari UMKM, produk, kategori..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="border-border focus:ring-primary/20 focus:border-primary w-full h-16 rounded-full border bg-background px-6 pr-16 text-lg outline-none transition-all focus:ring-4"
+          className="border-border focus:ring-primary/20 focus:border-primary bg-background focus:ring-4 w-full h-16 px-6 pr-16 text-lg transition-all border rounded-full outline-none"
         />
       </div>
 
-      <div className="mb-10 flex flex-wrap items-center gap-4">
+      <div className="flex flex-wrap items-center gap-4 mb-10">
         {categories.map((category) => {
           const Icon = category.icon;
           return (
