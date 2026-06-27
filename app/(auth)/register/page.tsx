@@ -6,8 +6,8 @@ import { BiCheckCircle } from "react-icons/bi";
 
 export default function RegisterPage() {
   return (
-    <div className="min-h-screen bg-white text-base py-16 px-6">
-      <div className="max-w-4xl mx-auto w-full flex flex-col items-center">
+    <div className="min-h-screen w-[50vw] bg-white text-base py-16 px-6">
+      <div className=" w-full flex flex-col items-center">
 
         {/* Header Branding */}
         <div className="flex items-center gap-3 mb-8">
@@ -31,8 +31,8 @@ export default function RegisterPage() {
               <span className="text-xl font-bold text-slate-950">Pengguna</span>
             </div>
 
-            <div className="relative w-full aspect-[4/3] max-w-[240px] mx-auto mix-blend-multiply">
-              <Image src="https://picsum.photos/400/300?random=20" fill className="object-contain" alt="Pengguna Illustration" />
+            <div className="relative w-full aspect-4/3 max-w-60 mx-auto mix-blend-multiply">
+              <Image src="/register1.png" fill className="object-contain" alt="Pengguna Illustration" />
             </div>
 
             <div className="flex flex-col gap-3 mt-auto">
@@ -56,8 +56,8 @@ export default function RegisterPage() {
               <span className="text-xl font-bold text-slate-950">Pemilik UMKM</span>
             </div>
 
-            <div className="relative w-full aspect-[4/3] max-w-[240px] mx-auto mix-blend-multiply">
-              <Image src="https://picsum.photos/400/300?random=21" fill className="object-contain" alt="UMKM Illustration" />
+            <div className="relative w-full aspect-4/3 max-w-60 mx-auto mix-blend-multiply">
+              <Image src="/register2.png" fill className="object-contain" alt="UMKM Illustration" />
             </div>
 
             <div className="flex flex-col gap-3 mt-auto">
@@ -77,9 +77,9 @@ export default function RegisterPage() {
 
         {/* Divider */}
         <div className="relative flex py-4 items-center w-full my-4">
-          <div className="flex-grow border-t border-slate-100"></div>
-          <span className="flex-shrink mx-4 text-slate-400 font-medium">atau</span>
-          <div className="flex-grow border-t border-slate-100"></div>
+          <div className="grow border-t border-slate-200"></div>
+          <span className="shrink mx-4 text-slate-400 font-medium">atau</span>
+          <div className="grow border-t border-slate-200"></div>
         </div>
 
         {/* Form Container */}
