@@ -1,0 +1,9 @@
+/* When visible, keep it at its normal position */
+.header_show {
+  transform: translateY(0);
+}
+
+/* When hidden, slide it completely up out of the viewport */
+.header_hide {
+  transform: translateY(-100%);
+}

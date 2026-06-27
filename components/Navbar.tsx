@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
 import ThemeSwitcher from "./ThemeSwitcher";
-import { FaChevronLeft, FaHeart, FaSearch } from "react-icons/fa";
-import { SiGooglemaps } from "react-icons/si";
+import { FaChevronLeft, FaSearch } from "react-icons/fa";
 import Link from "next/link";
+
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import {
@@ -16,6 +16,8 @@ import {
 } from "./ui/breadcrumb";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { cn } from "@/lib/utils";
+
+import header from './Navbar.module.css'
 
 function Navbar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -41,9 +43,30 @@ function Navbar() {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsSidebarOpen(false);
   }, [path]);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  useEffect(() => {
+    const controlHeader = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', controlHeader);
+
+    return () => {
+      window.removeEventListener('scroll', controlHeader);
+    };
+  }, [lastScrollY]);
   return (
     <>
-      <header className="z-999 sticky top-0 w-full mb-1">
+      <header className={`z-999 sticky top-0 w-full mb-1 transition-transform ${isVisible ? header.header_show : header.header_hide}`}>
         <div className="sm:flex hidden bg-background justify-center shadow-[#A9A1A140] shadow-md">
           <nav className="grid grid-cols-[1fr_1fr_3fr] justify-center items-center w-[80vw] py-6">
             <section className="flex items-center">
