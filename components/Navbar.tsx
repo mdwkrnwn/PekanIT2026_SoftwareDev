@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import ThemeSwitcher from "./ThemeSwitcher";
-import { FaChevronLeft, FaHeart } from "react-icons/fa";
+import { FaChevronLeft, FaHeart, FaSearch } from "react-icons/fa";
 import { SiGooglemaps } from "react-icons/si";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -57,7 +57,7 @@ function Navbar() {
               />
             </section>
             <section>
-              <ul className="flex gap-6 text-lg font-medium ">
+              <ul className=" flex gap-6 text-lg font-medium">
                 {navItems.map((item) => {
                   const isActive =
                     item.href === "/explore"
@@ -85,27 +85,27 @@ function Navbar() {
               </ul>
             </section>
             <section className="place-self-end flex items-center self-center gap-3">
-              <Link
-                href={"/favorit"}
-                className="outline-1 outline-primary flex items-center justify-center p-2 transition-colors bg-transparent rounded-full cursor-pointer"
-              >
-                <span>
-                  <FaHeart strokeWidth={0} size={24} className="fill-primary" />
-                </span>
-              </Link>
-              <Link
-                href={"/maps"}
-                className="outline-1 outline-primary flex items-center justify-center p-2 transition-colors bg-transparent rounded-full cursor-pointer"
-              >
-                <span>
-                  <SiGooglemaps
-                    className="fill-primary"
-                    strokeWidth={0}
-                    size={26}
+              <div className="flex items-center mr-10">
+                <div className="relative w-full">
+                  <FaSearch className="left-4 top-1/2 text-foreground/40 absolute -translate-y-1/2" />
+                  <input
+                    type="search"
+                    // value={}
+                    // onChange={(e) => handleSearchChange(e.target.value)}
+                    placeholder="Cari UMKM, produk atau lokasi..."
+                    className="pl-11 focus:border-primary focus:ring-2 focus:ring-primary/20 disabled:opacity-50 border-border w-full py-3 pr-4 border rounded-lg outline-none"
                   />
+                </div>
+              </div>
+              <ThemeSwitcher />
+              <Link
+                href={"/login"}
+                className={`flex flex-row items-center gap-3 rounded-lg border p-3 text-background font-semibold transition-all bg-primary md:text-base`}
+              >
+                <span className="*:size-6">
+                  Masuk / Daftar
                 </span>
               </Link>
-              <ThemeSwitcher />
             </section>
           </nav>
           {/* Chat */}
@@ -152,26 +152,6 @@ function Navbar() {
             </ul>
           </section>
           <section className="flex flex-row items-center self-center justify-between w-full">
-            <Link
-              href={"/favorit"}
-              className="outline-1 outline-primary flex items-center justify-center p-2 transition-colors bg-transparent rounded-full cursor-pointer"
-            >
-              <span>
-                <FaHeart strokeWidth={0} size={24} className="fill-primary" />
-              </span>
-            </Link>
-            <Link
-              href={"/maps"}
-              className="outline-1 outline-primary flex items-center justify-center p-2 transition-colors bg-transparent rounded-full cursor-pointer"
-            >
-              <span>
-                <SiGooglemaps
-                  className="fill-primary"
-                  strokeWidth={0}
-                  size={26}
-                />
-              </span>
-            </Link>
             <ThemeSwitcher />
           </section>
         </aside>
