@@ -182,55 +182,60 @@ function Navbar() {
         {/* Breadcrumbs */}
       </header>
 
-      {path == "/" || disAllowedBreadcrumb.some(item => path.includes(item)) ? "" : (
-        <Breadcrumb className="w-[80vw] mt-5 mb-9">
-          <BreadcrumbList>
-            {/* Back Button */}
-            <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <Link
-                  href="/"
-                  className="flex items-center gap-2 text-[1.375rem] font-semibold hover:text-primary transition"
-                >
-                  Home
-                </Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
+      {!path.startsWith("/login") && !path.startsWith("/register") &&
+        <>
+          {path == "/" || disAllowedBreadcrumb.some(item => path.includes(item)) ? "" : (
+            <Breadcrumb className="w-[80vw] mt-5 mb-9">
+              <BreadcrumbList>
+                {/* Back Button */}
+                <BreadcrumbItem>
+                  <BreadcrumbLink asChild>
+                    <Link
+                      href="/"
+                      className="flex items-center gap-2 text-[1.375rem] font-semibold hover:text-primary transition"
+                    >
+                      Home
+                    </Link>
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
 
-            {/* Dynamic Path */}
-            {
-              disAllowedBreadcrumb.some(item => path.includes(item)) ? "" :
-                <>
-                  {path
-                    .split("/")
-                    .filter(Boolean)
-                    .map((item, i, arr) => (
-                      <div key={i} className="flex items-center gap-2">
-                        <BreadcrumbSeparator>
-                          <FaChevronLeft size={25} />
-                        </BreadcrumbSeparator>
-                        {i === arr.length - 1 ? (
-                          <BreadcrumbPage className="text-[1.375rem] font-semibold text-foreground">
-                            {item.charAt(0).toUpperCase() + item.slice(1)}
-                          </BreadcrumbPage>
-                        ) : (
-                          <BreadcrumbLink asChild>
-                            <Link
-                              href={`/${arr.slice(0, i + 1).join("/")}`}
-                              className="text-[1.375rem] font-semibold text-muted-foreground hover:text-primary transition"
-                            >
-                              {item.charAt(0).toUpperCase() + item.slice(1)}
-                            </Link>
-                          </BreadcrumbLink>
-                        )}
-                      </div>
-                    ))}
-                </>
+                {/* Dynamic Path */}
+                {
+                  disAllowedBreadcrumb.some(item => path.includes(item)) ? "" :
+                    <>
+                      {path
+                        .split("/")
+                        .filter(Boolean)
+                        .map((item, i, arr) => (
+                          <div key={i} className="flex items-center gap-2">
+                            <BreadcrumbSeparator>
+                              <FaChevronLeft size={25} />
+                            </BreadcrumbSeparator>
+                            {i === arr.length - 1 ? (
+                              <BreadcrumbPage className="text-[1.375rem] font-semibold text-foreground">
+                                {item.charAt(0).toUpperCase() + item.slice(1)}
+                              </BreadcrumbPage>
+                            ) : (
+                              <BreadcrumbLink asChild>
+                                <Link
+                                  href={`/${arr.slice(0, i + 1).join("/")}`}
+                                  className="text-[1.375rem] font-semibold text-muted-foreground hover:text-primary transition"
+                                >
+                                  {item.charAt(0).toUpperCase() + item.slice(1)}
+                                </Link>
+                              </BreadcrumbLink>
+                            )}
+                          </div>
+                        ))}
+                    </>
 
-            }
-          </BreadcrumbList>
-        </Breadcrumb>
-      )}
+                }
+              </BreadcrumbList>
+            </Breadcrumb>
+          )}
+
+        </>
+      }
     </>
   );
 }
