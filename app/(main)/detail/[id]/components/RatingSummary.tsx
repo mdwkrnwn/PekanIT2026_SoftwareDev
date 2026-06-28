@@ -25,11 +25,11 @@ export default function RatingSummary({ reviews }: RatingSummaryProps) {
   })();
 
   return (
-    <aside className="rounded-2xl h-fit lg:sticky top-24 bg-background border border-border p-6 shadow-sm">
+    <aside className="rounded-2xl h-fit lg:sticky top-24 bg-background border-border p-6 border shadow-sm">
       {/* Main Rating */}
       <div className="mb-6 text-center">
         <div className="inline-flex items-baseline gap-1 mb-3">
-          <div className="text-5xl font-bold text-foreground">{averageRating}</div>
+          <div className="text-foreground text-5xl font-bold">{averageRating}</div>
           <div className="text-lg text-foreground mb-0.5">/ 5</div>
         </div>
 
@@ -51,16 +51,16 @@ export default function RatingSummary({ reviews }: RatingSummaryProps) {
         </p>
 
         {/* Recommendation Percentage */}
-        <div className="mt-4 p-3 dark:bg-green-950 bg-green-50 border border-green-200 dark:border-green-900 rounded-lg">
-          <p className="text-green-800 dark:text-emerald-100 font-semibold text-sm">
+        <div className="dark:bg-green-950 bg-green-50 dark:border-green-900 p-3 mt-4 border border-green-200 rounded-lg">
+          <p className="dark:text-emerald-100 text-sm font-semibold text-green-800">
             {recommendationPercentage}%
           </p>
-          <p className="text-green-700 dark:text-emerald-50 text-xs">merekomendasikan</p>
+          <p className="dark:text-emerald-50 text-xs text-green-700">merekomendasikan</p>
         </div>
       </div>
 
       {/* Distribution */}
-      <div className="space-y-3 border-t border-gray-200 pt-6">
+      <div className="pt-6 space-y-3 border-t border-gray-200">
         {[5, 4, 3, 2, 1].map((star) => {
           const count = reviews.filter((r) => r.rating === star).length;
           const percentage = reviews.length > 0 ? (count / reviews.length) * 100 : 0;
@@ -68,22 +68,22 @@ export default function RatingSummary({ reviews }: RatingSummaryProps) {
           return (
             <div key={star} className="flex items-center gap-2">
               <div className="flex items-center gap-1">
-                <span className="text-sm font-medium text-foreground w-4">
+                <span className="text-foreground w-4 text-sm font-medium">
                   {star}
                 </span>
                 <FaStar className="text-xs text-yellow-400" />
               </div>
 
-              <div className="flex-1 h-2 overflow-hidden bg-gray-200 rounded-full">
+              <div className="dark: dark:bg-gray-600 flex-1 h-2 overflow-hidden bg-gray-200 rounded-full">
                 <div
-                  className="h-full bg-yellow-400 rounded-full transition-all"
+                  className="h-full transition-all bg-yellow-400 rounded-full"
                   style={{
                     width: `${percentage}%`,
                   }}
                 />
               </div>
 
-              <span className="text-foreground text-xs font-medium w-6 text-right">
+              <span className="text-foreground w-6 text-xs font-medium text-right">
                 {count}
               </span>
             </div>

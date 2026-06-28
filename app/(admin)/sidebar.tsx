@@ -50,7 +50,7 @@ function Sidebar() {
             { name: "Produk & Menu", icon: LuUtensilsCrossed, href: "/admin/products" },
             { name: "Promo Management", icon: LuTicket, href: "/admin/promo" },
             { name: "Ulasan", icon: LuMessageSquare, href: "/admin/ulasan" },
-            { name: "AI Bussines Assistant", icon: LuSparkles, href: "/admin/assistant" },
+            { name: "AI Business Assistant", icon: LuSparkles, href: "/admin/assistant" },
           ].map((item) => {
             const IsActive = activePath === item.href;
             return (

@@ -28,7 +28,7 @@ export default function PromoPage() {
                 <Image src="https://picsum.photos/200/150?random=77" fill className="object-cover" alt={promo.name} />
               </div>
               <div>
-                <h4 className="text-lg font-bold text-slate-900">={promo.name}</h4>
+                <h4 className="text-lg font-bold text-slate-900">{promo.name}</h4>
                 <p className="text-slate-500 font-medium mt-1">{promo.desc}</p>
               </div>
             </div>

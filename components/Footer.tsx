@@ -15,7 +15,7 @@ function Footer() {
       <section className='grid grid-cols-4 place-content-center lg:place-content-start grid-rows-[repeat(3,1fr)]'>
         <div className='flex items-center col-span-4 -ml-4'>
           <Image loading='eager' height={1000} width={1000} className="max-w-24 max-h-24" src={'/Bakul.png'} alt="logo" />
-          <span className="text-primary text-[1.375rem] font-bold">
+          <span className="text-primary-foreground text-[1.375rem] font-bold">
             Bakool
           </span>
         </div>

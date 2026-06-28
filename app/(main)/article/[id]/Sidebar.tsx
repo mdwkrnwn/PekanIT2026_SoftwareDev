@@ -21,15 +21,15 @@ export function Sidebar({
         <h2 className="md:text-3xl text-xl font-semibold">Bagikan Artikel</h2>
 
         <div className="md:flex grid items-center grid-cols-2 gap-4 mt-8">
-          <button className="border-primary text-primary hover:bg-primary hover:text-white size-16 flex items-center justify-center border rounded-full">
+          <button className="border-primary text-primary-foreground hover:bg-primary hover:text-white size-16 flex items-center justify-center border rounded-full">
             <FaFacebookF size={22} />
           </button>
 
-          <button className="border-primary text-primary hover:bg-primary hover:text-white size-16 flex items-center justify-center border rounded-full">
+          <button className="border-primary text-primary-foreground hover:bg-primary hover:text-white size-16 flex items-center justify-center border rounded-full">
             <BsWhatsapp size={22} />
           </button>
 
-          <button className="border-primary text-primary hover:bg-primary hover:text-white size-16 flex items-center justify-center border rounded-full">
+          <button className="border-primary text-primary-foreground hover:bg-primary hover:text-white size-16 flex items-center justify-center border rounded-full">
             <FaTwitter size={22} />
           </button>
 
@@ -37,7 +37,7 @@ export function Sidebar({
             onClick={() =>
               navigator.clipboard.writeText(window.location.href)
             }
-            className="border-primary text-primary hover:bg-primary hover:text-white size-16 flex items-center justify-center border rounded-full"
+            className="border-primary text-primary-foreground hover:bg-primary hover:text-white size-16 flex items-center justify-center border rounded-full"
           >
             <BsLink45Deg size={22} />
           </button>

@@ -20,43 +20,6 @@ import {
 import { SiGooglemaps } from "react-icons/si";
 
 export function HeroBanner() {
-  const categories = [
-    {
-      label: "Semua",
-      icon: <FaStore />,
-      active: true,
-    },
-    {
-      label: "Toko Kelontong",
-      icon: <FaBagShopping />,
-    },
-    {
-      label: "Jasa",
-      icon: <FaWandMagicSparkles />,
-    },
-    {
-      label: "Fashion",
-      icon: <FaShirt />,
-    },
-  ];
-
-  const features = [
-    {
-      icon: <FaLocationDot />,
-      title: "Temukan UMKM",
-      desc: "terdekat dari lokasimu",
-    },
-    {
-      icon: <FaRobot />,
-      title: "Rekomendasi pintar",
-      desc: "sesuai kebutuhanmu",
-    },
-    {
-      icon: <FaStar />,
-      title: "Dukung lokal,",
-      desc: "bangun ekonomi kita",
-    },
-  ];
 
   const stats = [
     {
@@ -110,7 +73,7 @@ export function HeroBanner() {
           <div className="flex flex-wrap items-center gap-3 mt-10">
             <Link
               href={"/login"}
-              className={`flex flex-row items-center gap-3 rounded-lg border px-6 py-3 text-background font-semibold transition-all bg-primary md:text-base`}
+              className={`flex flex-row items-center gap-3 rounded-lg border border-border px-6 py-3 text-white font-semibold transition-all bg-primary md:text-base`}
             >
               <span className="*:size-6">
                 Daftarkan UMKM Anda
@@ -119,7 +82,7 @@ export function HeroBanner() {
             </Link>
             <Link
               href={"/login"}
-              className={`flex flex-row items-center gap-3 rounded-lg border px-6 py-3 text-sm border-primary text-primary font-semibold transition-all md:text-base`}
+              className={`flex flex-row items-center gap-3 rounded-lg border px-6 py-3 text-sm border-primary text-primary-foreground font-semibold transition-all md:text-base`}
             >
               <span className="*:size-6">
                 Jelajahi UMKM

@@ -75,7 +75,7 @@ export default function ReviewForm({ onSubmit }: ReviewFormProps) {
           value={comment}
           onChange={({ target: { value } }) => addComment(value)}
           placeholder="Ceritakan pengalamanmu tentang makanan, suasana, dan pelayanan..."
-          className="focus:ring-1 focus:ring-primary w-full h-24 p-3 mt-1 text-sm border rounded-lg outline-none resize-none"
+          className="focus:ring-1 focus:ring-primary border-border w-full h-24 p-3 mt-1 text-sm border rounded-lg outline-none resize-none"
           maxLength={500}
         />
         <div className="text-muted-foreground mt-1 text-xs text-right">

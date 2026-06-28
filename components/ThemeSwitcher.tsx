@@ -19,18 +19,18 @@ export default function ThemeSwitcher() {
 
   if (!mounted) {
     return (
-      <div className="dark:bg-gray-700 flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full">
+      <div className="flex items-center justify-center w-10 h-10 bg-background rounded-full">
       </div>
     )
   }
 
-  const currentIcon = resolvedTheme === 'dark' ? (<FaSun className="text-primary fill-primary" size={24} />) :
-    (<IoMoonSharp className="fill-primary" size={24} strokeWidth={2} />);
+  const currentIcon = resolvedTheme === 'dark' ? (<FaSun className="text-primary-foreground fill-primary-foreground" size={24} />) :
+    (<IoMoonSharp className="fill-primary-foreground" size={24} strokeWidth={2} />);
 
   return (
     <button
       onClick={toggleTheme}
-      className="outline-1 outline-primary flex items-center justify-center p-2 transition-colors bg-transparent rounded-full cursor-pointer"
+      className="outline-1 outline-primary-foreground flex items-center justify-center p-2 transition-colors bg-transparent rounded-full cursor-pointer"
       title={resolvedTheme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
     >
       {currentIcon}
