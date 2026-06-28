@@ -26,10 +26,9 @@ export default function AdminLayout({
       className={cn("h-full", "antialiased", poppins.variable, poppins.className)}
       suppressHydrationWarning
     >
-      <body className="bg-background relative flex flex-row items-center min-h-screen overflow-x-hidden" >
+      <body className="bg-background relative flex flex-row min-h-screen overflow-x-hidden" >
         <Sidebar />
-        <main className="flex-1">
-
+        <main className="flex-1 p-6">
           {children}
         </main>
       </body>

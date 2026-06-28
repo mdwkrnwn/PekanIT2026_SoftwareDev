@@ -26,7 +26,7 @@ export default function AdminPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-row text-base text-slate-800">
+    <div className="min-h-screen flex flex-row text-base text-slate-800">
       {/* ================= MAIN CONTENT CONTAINER ================= */}
       <main className="flex-1 p-12 overflow-y-auto max-h-screen">
         {/* Header Profile Top Right */}

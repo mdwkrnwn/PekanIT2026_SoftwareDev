@@ -10,13 +10,14 @@ import {
   LuLogOut
 } from "react-icons/lu";
 import { FiBarChart2 } from "react-icons/fi";
-import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 function Sidebar() {
-  const [activeTab, setActiveTab] = useState("Dashboard");
+  const activePath = usePathname();
 
   return (
-    <aside className="w-[22vw] bg-white border-r border-slate-200 flex flex-col p-8 justify-between shrink-0 h-screen">
+    <aside className="w-[22vw] bg-white border-r border-slate-200 flex flex-col p-8 justify-between shrink-0 h-screen top-0 sticky">
       <div className="flex flex-col gap-10">
         {/* Brand Logo */}
         <div className="flex items-center gap-3">
@@ -25,7 +26,7 @@ function Sidebar() {
           </div>
           <div>
             <span className="text-2xl font-bold tracking-tight text-slate-900 block">Bakool</span>
-            <span className="text-slate-400 font-medium block">Bussines</span>
+            <span className="text-slate-400 font-medium block">Business</span>
           </div>
         </div>
 
@@ -44,18 +45,18 @@ function Sidebar() {
         {/* Navigation Links */}
         <nav className="flex flex-col gap-2">
           {[
-            { name: "Dashboard", icon: LuLayoutDashboard },
-            { name: "Analytics", icon: FiBarChart2 },
-            { name: "Produk & Menu", icon: LuUtensilsCrossed },
-            { name: "Promo Management", icon: LuTicket },
-            { name: "Ulasan", icon: LuMessageSquare },
-            { name: "AI Bussines Assistant", icon: LuSparkles },
+            { name: "Dashboard", icon: LuLayoutDashboard, href: "/admin/dashboard" },
+            { name: "Analytics", icon: FiBarChart2, href: "/admin/analytics" },
+            { name: "Produk & Menu", icon: LuUtensilsCrossed, href: "/admin/products" },
+            { name: "Promo Management", icon: LuTicket, href: "/admin/promo" },
+            { name: "Ulasan", icon: LuMessageSquare, href: "/admin/ulasan" },
+            { name: "AI Bussines Assistant", icon: LuSparkles, href: "/admin/assistant" },
           ].map((item) => {
-            const IsActive = activeTab === item.name;
+            const IsActive = activePath === item.href;
             return (
-              <button
+              <Link
+                href={item.href}
                 key={item.name}
-                onClick={() => setActiveTab(item.name)}
                 className={`flex items-center gap-4 px-5 py-4 rounded-xl font-bold transition-colors text-left ${IsActive
                   ? "bg-emerald-50 text-[#15803d]"
                   : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
@@ -63,7 +64,7 @@ function Sidebar() {
               >
                 <item.icon size={24} className={IsActive ? "text-[#15803d]" : "text-slate-400"} />
                 <span>{item.name}</span>
-              </button>
+              </Link>
             );
           })}
         </nav>
