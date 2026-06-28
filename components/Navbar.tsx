@@ -64,6 +64,7 @@ function Navbar() {
       window.removeEventListener('scroll', controlHeader);
     };
   }, [lastScrollY]);
+  if (path.startsWith("/admin")) return;
   return (
     <>
       <header className={`z-999 sticky top-0 w-full mb-1 transition-transform ${isVisible ? header.header_show : header.header_hide}`}>
