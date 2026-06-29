@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { UMKM } from "../../data/UMKM";
+import { UMKM } from "../../../data/UMKM";
 import Image from "next/image";
 import LeafletMap from "./LeafletMap";
 import { FaLocationCrosshairs, FaLocationDot } from "react-icons/fa6";

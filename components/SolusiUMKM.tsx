@@ -14,19 +14,19 @@ const SOLUSI = [
 export function SolusiUMKM() {
   return (
     <div className="w-[80vw] mx-auto mt-24 text-center" id="solusi">
-      <h3 className="text-slate-900 text-3xl font-bold tracking-tight">Solusi Lengkap untuk UMKM</h3>
+      <h3 className="text-foreground text-3xl font-bold tracking-tight">Solusi Lengkap untuk UMKM</h3>
       <p className="text-slate-500 max-w-xl mx-auto mt-2">
         Semua yang Anda butuhkan untuk mengelola dan mengembangkan bisnis dalam satu platform.
       </p>
 
       <div className="md:grid-cols-3 lg:grid-cols-6 grid grid-cols-1 gap-4 mt-12 text-left">
         {SOLUSI.map((item, idx) => (
-          <div key={idx} className="border-slate-100 rounded-2xl min-h-55 flex flex-col justify-between p-5 bg-white border shadow-xs">
+          <div key={idx} className="border-border rounded-2xl min-h-55 flex flex-col justify-between p-5 bg-accent border shadow-xs">
             <div>
               <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${item.color} mb-4`}>
                 <item.icon size={25} />
               </div>
-              <h4 className="text-slate-900 mb-1 text-lg font-bold leading-snug">{item.title}</h4>
+              <h4 className="text-foreground mb-1 text-lg font-bold leading-snug">{item.title}</h4>
               <p className="text-slate-500 leading-normal">{item.desc}</p>
             </div>
             <Link href="/explore" className="text-emerald-600 hover:underline inline-flex items-center gap-1 mt-4 font-bold">

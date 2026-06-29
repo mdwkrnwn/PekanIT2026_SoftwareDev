@@ -77,7 +77,7 @@ export default function ReviewsSection({
             key={tab.id}
             onClick={() => setFilter(tab.id)}
             className={`px-4 py-2 whitespace-nowrap text-sm font-medium transition-all ${filter === tab.id
-              ? "text-primary border-b-2 border-primary"
+              ? "text-primary-foreground border-b-2 border-primary"
               : "text-foreground/80 hover:text-foreground"
               }`}
           >
@@ -98,7 +98,7 @@ export default function ReviewsSection({
       </div>
 
       {/* Reviews List */}
-      <div className="md:grid grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="md:grid md:grid-cols-2 grid grid-cols-1 gap-8">
         {filteredReviews.length === 0 ? (
           <div className="rounded-2xl bg-background border-border col-span-2 p-8 text-center border">
             <p className="text-foreground text-sm">

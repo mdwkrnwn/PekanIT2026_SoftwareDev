@@ -6,7 +6,7 @@ import { FaRegClock } from "react-icons/fa6";
 export default function Articles() {
   return (
     <div className="w-[80vw]">
-      <h3 className="text-primary mb-8 text-3xl font-bold">
+      <h3 className="text-primary-foreground mb-8 text-3xl font-bold">
         Cerita & Tips Pilihan
       </h3>
 
@@ -15,7 +15,7 @@ export default function Articles() {
           <Link
             key={article.id}
             href={`/article/${article.id}`}
-            className="border-border rounded-2xl hover:shadow-lg group bg-background flex flex-col overflow-hidden transition-shadow border"
+            className="border-border rounded-2xl shadow-foreground/20 hover:shadow-lg group bg-background flex flex-col overflow-hidden transition-shadow border"
           >
             {/* IMAGE */}
             <div className="relative h-56 overflow-hidden">

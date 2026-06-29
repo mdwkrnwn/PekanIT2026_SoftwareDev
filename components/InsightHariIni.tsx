@@ -10,24 +10,24 @@ const INSIGHTS = [
 export function InsightHariIni() {
   return (
     <div className="w-[80vw] mx-auto mt-24 text-center">
-      <h3 className="text-slate-900 text-3xl font-bold">Insight UMKM Hari ini</h3>
+      <h3 className="text-primary-foreground text-3xl font-bold">Insight UMKM Hari ini</h3>
       <p className="text-slate-500 max-w-xl mx-auto mt-2">
         Terus update wawasan bisnis kamu berdasarkan data riil pasar lokal terkini.
       </p>
 
       <div className="md:grid-cols-2 lg:grid-cols-4 grid grid-cols-1 gap-6 mt-12 text-left">
         {INSIGHTS.map((insight, idx) => (
-          <div key={idx} className="border-slate-100 rounded-2xl relative p-6 bg-white border shadow-xs">
+          <div key={idx} className="border-border rounded-2xl relative p-6 bg-accent border shadow-xs">
             <div className="flex items-start justify-between">
-              <span className="text-slate-400 font-semibold">{insight.title}</span>
+              <span className="text-foreground font-semibold">{insight.title}</span>
               <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${insight.color}`}>
                 <insight.icon size={20} />
               </div>
             </div>
-            <h4 className="text-slate-900 mt-4 text-xl font-bold leading-tight">{insight.value}</h4>
+            <h4 className="text-foreground mt-4 text-xl font-bold leading-tight">{insight.value}</h4>
             <div className="flex items-center gap-2 mt-2">
-              <span className="text-xs text-emerald-600 font-bold bg-emerald-50 px-2 py-0.5 rounded-sm">{insight.change}</span>
-              <p className="text-slate-400 text-sm">{insight.desc}</p>
+              <span className="text-xs text-emerald-600 font-bold bg-primary/5 px-2 py-0.5 rounded-sm">{insight.change}</span>
+              <p className="text-foreground text-sm">{insight.desc}</p>
             </div>
           </div>
         ))}

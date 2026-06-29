@@ -64,6 +64,7 @@ function Navbar() {
       window.removeEventListener('scroll', controlHeader);
     };
   }, [lastScrollY]);
+  if (path.startsWith("/admin")) return;
   return (
     <>
       <header className={`z-999 sticky top-0 w-full mb-1 transition-transform ${isVisible ? header.header_show : header.header_hide}`}>
@@ -96,8 +97,8 @@ function Navbar() {
                       after:absolute after:bottom-0 after:left-0
                       after:rounded-full after:w-full after:h-1 after:transition-all
                       ${isActive
-                            ? "after:bg-primary text-[#169876]"
-                            : "after:bg-transparent hover:after-text-primary"
+                            ? "after:bg-primary text-primary-foreground"
+                            : "after:bg-transparent hover:text-primary-foreground/50"
                           }`}
                       >
                         {item.name}
@@ -123,7 +124,7 @@ function Navbar() {
               <ThemeSwitcher />
               <Link
                 href={"/login"}
-                className={`flex flex-row items-center gap-3 rounded-lg border p-3 text-background font-semibold transition-all bg-primary md:text-base`}
+                className={`flex flex-row items-center gap-3 rounded-lg border border-border p-3 text-white font-semibold transition-all bg-primary md:text-base`}
               >
                 <span className="*:size-6">
                   Masuk / Daftar
@@ -192,7 +193,7 @@ function Navbar() {
                   <BreadcrumbLink asChild>
                     <Link
                       href="/"
-                      className="flex items-center gap-2 text-[1.375rem] font-semibold hover:text-primary transition"
+                      className="flex items-center gap-2 text-[1.375rem] font-semibold hover:text-primary-foreground transition"
                     >
                       Home
                     </Link>
@@ -219,7 +220,7 @@ function Navbar() {
                               <BreadcrumbLink asChild>
                                 <Link
                                   href={`/${arr.slice(0, i + 1).join("/")}`}
-                                  className="text-[1.375rem] font-semibold text-muted-foreground hover:text-primary transition"
+                                  className="text-[1.375rem] font-semibold text-muted-foreground hover:text-primary-foreground transition"
                                 >
                                   {item.charAt(0).toUpperCase() + item.slice(1)}
                                 </Link>

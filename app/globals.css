@@ -9,7 +9,7 @@
   --foreground: oklch(17.375% 0.03391 271.86);
 
   --primary: #0C7C61;
-  --primary-foreground: oklch(40.566% 0.12226 260.336);
+  --primary-foreground: #159577;
 
   --secondary: #DCFCE7;
   --secondary-foreground: oklch(41.1% 0.14828 259.782);
@@ -34,8 +34,8 @@
   --background: oklch(17.375% 0.03391 271.86);
   --foreground: oklch(98.006% 0.00973 253.023);
 
-  --primary: oklch(56.347% 0.24089 260.834);
-  --primary-foreground: oklch(15.000% 0.12226 260.336);
+  --primary: #0b5946;
+  --primary-foreground: #19c19a;
 
   --secondary: oklch(25.000% 0.05000 259.858);
   --secondary-foreground: oklch(85.000% 0.14828 259.782);

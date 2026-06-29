@@ -46,7 +46,7 @@ export default function InfoPanel({
             {product.category}
           </p>
           <div className="text-muted-foreground flex items-center gap-2 text-sm">
-            <FaMapMarkerAlt className="text-primary" />
+            <FaMapMarkerAlt className="text-primary-foreground" />
             <span>1.2 km dari lokasi kamu</span>
           </div>
 
@@ -62,16 +62,16 @@ export default function InfoPanel({
           </div>
         </div>
         {/* Action Buttons */}
-        <div className="flex md:flex-row flex-col gap-3 mt-8">
+        <div className="md:flex-row flex flex-col gap-3 mt-8">
           <button
             onClick={() => onToggleWishlist(product.id, product.name)}
-            className={`flex-1 py-3 rounded-2xl font-medium transition-all duration-200 flex items-center justify-center gap-2 border ${isWish
-              ? "bg-primary/10 text-primary border-primary/20"
-              : "bg-primary text-white border-primary hover:bg-primary/90"
+            className={`flex-1 py-3 rounded-2xl font-medium transition-all duration-200 flex text-white items-center justify-center gap-2 border ${isWish
+              ? "bg-primary border-primary/20"
+              : "bg-primary  border-primary hover:bg-primary/90"
               }`}
           >
             <FaHeart
-              className={`text-sm ${isWish ? "fill-primary" : "fill-white"}`}
+              className={`text-sm fill-white`}
             />
 
             <span>{isWish ? "Tersimpan" : "Tambah Favorit"}</span>
@@ -79,7 +79,7 @@ export default function InfoPanel({
           <Link
             href={"/maps"}
             target="_blank"
-            className="border-primary text-primary hover:bg-primary/5 rounded-xl flex items-center justify-center flex-1 gap-2 py-3 font-semibold transition-all border"
+            className="border-primary text-primary-foreground hover:bg-primary/5 rounded-xl flex items-center justify-center flex-1 gap-2 py-3 font-semibold transition-all border"
           >
             <LuMapPin size={18} />
             Lihat Map
@@ -91,25 +91,25 @@ export default function InfoPanel({
         {tags.map((item) => (
           <div key={item.id} className={cn(`rounded-2xl flex  md:flex-row flex-col items-center gap-2 p-4 `, tags.length % 2 != 0 && "last:col-span-2 last:justify-center"
           )}>
-            <div className="bg-primary/10 text-primary p-3 rounded-full">
+            <div className="border-primary border-2 text-primary-foreground p-3 rounded-full">
               <item.icon size={22} />
             </div>
-            <span className="text-sm text-center font-medium">{item.name}</span>
+            <span className="text-sm font-medium text-center">{item.name}</span>
           </div>
         ))}
       </div>
       {/* Location Info */}
-      <div className="md:grid gap-4 flex flex-col md:grid-cols-[auto_1fr] outline-border rounded-xl outline-1 p-4">
+      <div className="md:grid gap-4 flex flex-col md:grid-cols-[auto_1fr] outline-border items-center rounded-xl outline-1 p-4">
         <div className="flex">
-          <span className="bg-primary/10 rounded-2xl flex items-center w-full gap-2 p-4">
-            <FaMapMarkerAlt size={25} className="fill-primary" />
+          <span className="border border-primary rounded-2xl flex items-center w-full gap-2 p-4">
+            <FaMapMarkerAlt size={25} className="fill-primary-foreground" />
             Alamat
           </span>
         </div>
         {product.address}
         <div className="flex">
-          <span className="bg-primary/10 rounded-2xl flex items-center w-full gap-2 p-4">
-            <HiOutlineLocationMarker size={25} className="stroke-primary" />
+          <span className="border border-primary rounded-2xl flex items-center w-full gap-2 p-4">
+            <HiOutlineLocationMarker size={25} className="stroke-primary-foreground" />
             Jarak
           </span>
         </div>
@@ -117,7 +117,7 @@ export default function InfoPanel({
         <Link
           href={"https://www.google.com/maps/place/" + product?.lat + "," + product.lng}
           target="_blank"
-          className="border-primary text-primary hover:bg-primary/5 rounded-xl flex items-center justify-center flex-1 col-span-2 gap-2 py-3 font-semibold transition-all border"
+          className="border-primary text-primary-foreground hover:bg-primary hover:text-white rounded-xl flex items-center justify-center flex-1 col-span-2 gap-2 py-3 font-semibold transition-all border"
         >
           <LuMapPin size={18} />
           Buka DI Google Maps

@@ -62,7 +62,7 @@ export default function MainExplore({ filteredUMKM, search, category }: MainExpl
                     <div className="flex items-center justify-between text-sm">
                       <div className="flex items-center gap-1 text-yellow-500">
                         <FaStar size={15} />
-                        <span className="text-slate-700 font-semibold">
+                        <span className="text-muted-foreground font-semibold">
                           {item.rating}
                         </span>
                         <span className="text-muted-foreground">
@@ -71,7 +71,7 @@ export default function MainExplore({ filteredUMKM, search, category }: MainExpl
                       </div>
 
                       <div className="text-muted-foreground flex items-center gap-1">
-                        <FaLocationDot className="text-primary" size={13} />
+                        <FaLocationDot className="text-primary-foreground" size={13} />
                         <span>{item.distance}</span>
                       </div>
                     </div>
@@ -92,7 +92,7 @@ export default function MainExplore({ filteredUMKM, search, category }: MainExpl
 
       {/* CTA Section */}
       <section className="bg-primary relative mt-20 overflow-hidden rounded-[2rem] bg-linear-to-r from-primary to-primary-foreground text-white">
-        <div className="lg:grid-cols-2 lg:px-16 grid items-center grid-cols-1 px-8 py-12">
+        <div className="lg:grid-cols-2 lg:px-12 grid items-center grid-cols-1 px-8 py-6">
           <div className="z-10 space-y-5">
             <h2 className="lg:text-5xl text-3xl font-bold leading-tight">
               Temukan lebih banyak

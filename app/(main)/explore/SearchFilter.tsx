@@ -63,7 +63,7 @@ export default function SearchFilter({ initialSearch, initialCategory }: SearchF
               key={category.name}
               onClick={() => handleCategoryChange(category.name)}
               className={cn(
-                "border-primary/40 text-primary hover:bg-primary hover:text-white flex items-center gap-2 rounded-full border px-5 py-2.5 font-medium transition-all",
+                "border-primary text-primary-foreground hover:bg-primary hover:text-white flex items-center gap-2 rounded-full border px-5 py-2.5 font-medium transition-all",
                 initialCategory === category.name && "bg-primary text-white"
               )}
             >

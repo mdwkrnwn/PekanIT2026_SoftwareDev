@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "../globals.css";
 import { Poppins } from 'next/font/google';
-import Navbar from "../components/Navbar";
-import ThemeProviders from "../components/ThemeProviders";
+import Navbar from "../../components/Navbar";
+import ThemeProviders from "../../components/ThemeProviders";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/Footer";
 import ChatPopup from "@/components/Chat";
