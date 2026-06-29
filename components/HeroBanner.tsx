@@ -1,18 +1,10 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import {
-  FaLocationDot,
   FaBagShopping,
-  FaWandMagicSparkles,
-  FaShirt,
-  FaStore,
-  FaRobot,
-  FaStar,
   FaChartSimple,
   FaShieldHalved,
   FaUsers,
@@ -50,8 +42,8 @@ export function HeroBanner() {
         {/* LEFT */}
         <div className="z-10 flex-1">
           {/* Badge */}
-          <div className="inline-flex items-center gap-3 px-5 py-3 mb-8 border border-primary/10 rounded-full shadow-foreground/20 bg-[#DFFCF0]">
-            <span className="text-[#238660] md:text-base text-sm font-bold">
+          <div className="inline-flex items-center gap-3 px-5 py-3 mb-8 border border-primary rounded-full shadow-foreground/20">
+            <span className="text-primary-foreground md:text-base text-sm font-bold">
               Platform Digitalisasi UMKM Indonesia
             </span>
           </div>
@@ -59,7 +51,7 @@ export function HeroBanner() {
           {/* Heading */}
           <h1 className="md:text-7xl text-3xl font-bold leading-[125%] text-foreground">
             Tumbuhkan UMKM Lebih Cepat dengan
-            <span className="text-primary"> Data & AI </span>
+            <span className="text-primary-foreground"> Data & AI </span>
           </h1>
 
           {/* Description */}
@@ -106,18 +98,18 @@ export function HeroBanner() {
       </div>
 
       {/* Stats */}
-      <div className="mx-auto mt-16 grid grid-cols-1 gap-6 rounded-[2rem] bg-background p-8 outline-1 outline-border md:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto mt-16 grid grid-cols-1 gap-6 rounded-[2rem] bg-background p-8 outline-1 outline-primary md:grid-cols-2 lg:grid-cols-4">
         {stats.map((item, index) => (
           <div
             key={index}
-            className="border-border last:border-none lg:border-r flex items-center gap-5"
+            className="border-primary last:border-none lg:border-r flex items-center gap-5"
           >
-            <div className="size-16 bg-primary/2 text-primary flex items-center justify-center text-2xl rounded-full">
+            <div className="size-16 border border-primary text-primary-foreground flex items-center justify-center text-2xl rounded-full">
               {item.icon}
             </div>
 
             <div>
-              <h4 className="text-primary text-2xl font-bold">
+              <h4 className="text-primary-foreground text-2xl font-bold">
                 {item.value}
               </h4>
               <p className="text-foreground/80 mt-1">{item.label}</p>
