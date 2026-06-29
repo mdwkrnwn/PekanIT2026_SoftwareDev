@@ -91,7 +91,7 @@ export default function InfoPanel({
         {tags.map((item) => (
           <div key={item.id} className={cn(`rounded-2xl flex  md:flex-row flex-col items-center gap-2 p-4 `, tags.length % 2 != 0 && "last:col-span-2 last:justify-center"
           )}>
-            <div className="bg-primary/20 text-primary p-3 rounded-full">
+            <div className="border-primary border-2 text-primary-foreground p-3 rounded-full">
               <item.icon size={22} />
             </div>
             <span className="text-sm font-medium text-center">{item.name}</span>
@@ -101,15 +101,15 @@ export default function InfoPanel({
       {/* Location Info */}
       <div className="md:grid gap-4 flex flex-col md:grid-cols-[auto_1fr] outline-border items-center rounded-xl outline-1 p-4">
         <div className="flex">
-          <span className="bg-primary/20 rounded-2xl flex items-center w-full gap-2 p-4">
-            <FaMapMarkerAlt size={25} className="fill-primary" />
+          <span className="border border-primary rounded-2xl flex items-center w-full gap-2 p-4">
+            <FaMapMarkerAlt size={25} className="fill-primary-foreground" />
             Alamat
           </span>
         </div>
         {product.address}
         <div className="flex">
-          <span className="bg-primary/20 rounded-2xl flex items-center w-full gap-2 p-4">
-            <HiOutlineLocationMarker size={25} className="stroke-primary" />
+          <span className="border border-primary rounded-2xl flex items-center w-full gap-2 p-4">
+            <HiOutlineLocationMarker size={25} className="stroke-primary-foreground" />
             Jarak
           </span>
         </div>
@@ -117,7 +117,7 @@ export default function InfoPanel({
         <Link
           href={"https://www.google.com/maps/place/" + product?.lat + "," + product.lng}
           target="_blank"
-          className="border-primary text-primary hover:bg-primary/5 rounded-xl flex items-center justify-center flex-1 col-span-2 gap-2 py-3 font-semibold transition-all border"
+          className="border-primary text-primary-foreground hover:bg-primary hover:text-white rounded-xl flex items-center justify-center flex-1 col-span-2 gap-2 py-3 font-semibold transition-all border"
         >
           <LuMapPin size={18} />
           Buka DI Google Maps
