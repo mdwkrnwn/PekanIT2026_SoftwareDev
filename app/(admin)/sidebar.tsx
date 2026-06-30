@@ -7,7 +7,7 @@ import {
   LuTicket,
   LuMessageSquare,
   LuSparkles,
-  LuLogOut
+  LuLogOut,
 } from "react-icons/lu";
 import { FiBarChart2 } from "react-icons/fi";
 import Link from "next/link";
@@ -17,53 +17,106 @@ function Sidebar() {
   const activePath = usePathname();
 
   return (
-    <aside className="w-[22vw] bg-white border-r border-slate-200 flex flex-col p-8 justify-between shrink-0 h-screen top-0 sticky">
+    <aside className="w-[18vw] bg-white border-r border-[#F3F4F7] flex flex-col p-8 justify-between shrink-0 h-screen top-0 sticky">
       <div className="flex flex-col gap-10">
         {/* Brand Logo */}
-        <div className="flex items-center gap-3">
-          <div className="w-12 h-12 bg-[#15803d] rounded-xl flex items-center justify-center font-black text-white text-2xl">
-            B
-          </div>
-          <div>
-            <span className="text-2xl font-bold tracking-tight text-slate-900 block">Bakool</span>
-            <span className="text-slate-400 font-medium block">Business</span>
+        <div className="mb-10 flex items-center gap-3">
+          <Image
+            src="/Bakul.png"
+            alt="Bakool Business"
+            width={60}
+            height={60}
+            priority
+            className="h-auto w-[120px] -ml-4"
+          />
+
+          <div className="flex flex-col -ml-8">
+            <h1 className="text-3xl mt-2 font-bold leading-none text-[#06C179]">
+              Bakool
+            </h1>
+            <p className="text-[15px]  font-medium text-[#7A7F8B]">Business</p>
           </div>
         </div>
 
         {/* Store Profile Card */}
-        <div className="border border-slate-100 rounded-2xl p-4 bg-slate-50 flex items-center gap-4">
-          <div className="w-14 h-14 relative rounded-xl overflow-hidden shrink-0">
-            <Image src="https://picsum.photos/100?random=40" fill className="object-cover" alt="Store Avatar" />
+        <div className="border-2 border-[#F3F4F7] rounded-2xl p-4 -mt-15 bg-white flex items-center gap-4">
+          <div className="w-14 h-14 relative rounded-full overflow-hidden shrink-0">
+            <Image
+              src="/assets/umkm/makanan/dapurnona/thumbnail.jpeg"
+              fill
+              className="object-cover"
+              alt="Store Avatar"
+            />
           </div>
           <div>
             <h4 className="font-bold text-slate-900 text-lg">Dapur Nona</h4>
             <span className="text-slate-500 font-medium block">Makanan</span>
-            <span className="inline-block bg-emerald-100 text-emerald-700 text-base font-bold px-2 py-0.5 rounded-md mt-1">Terverifikasi</span>
+            <span className="inline-block bg-emerald-100 text-emerald-700 text-base font-bold px-2 py-0.5 rounded-md mt-1">
+              Terverifikasi
+            </span>
           </div>
         </div>
 
         {/* Navigation Links */}
         <nav className="flex flex-col gap-2">
           {[
-            { name: "Dashboard", icon: LuLayoutDashboard, href: "/admin/dashboard" },
-            { name: "Analytics", icon: FiBarChart2, href: "/admin/analytics" },
-            { name: "Produk & Menu", icon: LuUtensilsCrossed, href: "/admin/products" },
-            { name: "Promo Management", icon: LuTicket, href: "/admin/promo" },
-            { name: "Ulasan", icon: LuMessageSquare, href: "/admin/ulasan" },
-            { name: "AI Business Assistant", icon: LuSparkles, href: "/admin/assistant" },
+            {
+              name: "Dashboard",
+              icon: LuLayoutDashboard,
+              href: "/admin/dashboard",
+            },
+            {
+              name: "Analytics",
+              icon: FiBarChart2,
+              href: "/admin/analytics",
+            },
+            {
+              name: "Produk & Menu",
+              icon: LuUtensilsCrossed,
+              href: "/admin/products",
+            },
+            {
+              name: "Promo Management",
+              icon: LuTicket,
+              href: "/admin/promo",
+            },
+            {
+              name: "Ulasan",
+              icon: LuMessageSquare,
+              href: "/admin/ulasan",
+            },
+            {
+              name: "AI Business Assistant",
+              icon: LuSparkles,
+              href: "/admin/assistant",
+            },
           ].map((item) => {
-            const IsActive = activePath === item.href;
+            const isActive = activePath === item.href;
+
             return (
               <Link
-                href={item.href}
                 key={item.name}
-                className={`flex items-center gap-4 px-5 py-4 rounded-xl font-bold transition-colors text-left ${IsActive
-                  ? "bg-emerald-50 text-[#15803d]"
-                  : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
-                  }`}
+                href={item.href}
+                className={`flex items-center gap-4 rounded-xl px-6 py-3 transition-all duration-200 ${
+                  isActive
+                    ? "bg-[#F2F9F5] text-[#279959]"
+                    : "text-[#344054] hover:bg-[#F9FAFB]"
+                }`}
               >
-                <item.icon size={24} className={IsActive ? "text-[#15803d]" : "text-slate-400"} />
-                <span>{item.name}</span>
+                <div className="flex w-6 justify-center">
+                  <item.icon
+                    size={22}
+                    className={isActive ? "text-[#279959]" : "text-[#344054]"}
+                  />
+                </div>
+
+                <span
+                  className={`text-[18px] ${
+                    isActive ? "font-semibold" : "font-medium"
+                  }`}
+                >
+                  {item.name}
+                </span>
               </Link>
             );
           })}
@@ -76,7 +129,7 @@ function Sidebar() {
         <span>Keluar</span>
       </button>
     </aside>
-  )
+  );
 }
 
-export default Sidebar
+export default Sidebar;
