@@ -153,13 +153,6 @@ export default function SolutionPage() {
             </div>
           ))}
         </div>
-
-        {/* Carousel Pagination Dots Mimicry */}
-        <div className="flex justify-center gap-2 mt-8">
-          <span className="w-6 h-2 rounded-full bg-[#15803d]" />
-          <span className="w-2 h-2 rounded-full bg-slate-300 dark:bg-slate-700" />
-          <span className="w-2 h-2 rounded-full bg-slate-300 dark:bg-slate-700" />
-        </div>
       </section>
 
       {/* ================= SECTION 5: FINAL CTA COMPONENT ================= */}
