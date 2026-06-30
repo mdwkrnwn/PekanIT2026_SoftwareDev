@@ -1,7 +1,7 @@
 # `Bakool` - Cari UMKM keren, dukung lokal bareng!
 
 <p align="center">
-  <img src="https://Bakool-ten.vercel.app/UFLogo.png" width="120" alt="Low Cortisol Logo" />
+  <img src="https://bakool.vercel.app/bakol.png" width="120" alt="Low Cortisol Logo" />
 </p>
 
 <p align="center">
@@ -21,12 +21,12 @@
 >
 > Untuk mencoba fitur **Maps**, disarankan membuka website menggunakan mode **Incognito/Private Window** terlebih dahulu lalu akses halaman berikut:
 >
-> <a>https://Bakool-ten.vercel.app/maps</a>
+> <a>https://bakool.vercel.app/maps</a>
 >
 > Setelah halaman dibuka akan muncul popup permintaan lokasi seperti berikut:
 >
 > <p align="center">
->   <img src="https://Bakool-ten.vercel.app/popup.png" width="320" alt="Location Permission Popup" />
+>   <img src="https://bakool.vercel.app/popup.png" width="320" alt="Location Permission Popup" />
 > </p>
 >
 > Silakan tekan tombol **"Block"** agar fitur maps tetap dapat dicoba tanpa memberikan akses lokasi perangkat.
