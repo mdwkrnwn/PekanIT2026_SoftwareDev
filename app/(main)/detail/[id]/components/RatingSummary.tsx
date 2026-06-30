@@ -14,9 +14,13 @@ interface RatingSummaryProps {
 }
 
 export default function RatingSummary({ reviews }: RatingSummaryProps) {
-  const averageRating = (
-    reviews.reduce((a, b) => a + b.rating, 0) / reviews.length
-  ).toFixed(1);
+  const averageRating =
+    reviews.length > 0
+      ? (
+          reviews.reduce((sum, review) => sum + review.rating, 0) /
+          reviews.length
+        ).toFixed(1)
+      : "0.0";
 
   const recommendationPercentage = (() => {
     if (reviews.length === 0) return 0;
@@ -29,7 +33,9 @@ export default function RatingSummary({ reviews }: RatingSummaryProps) {
       {/* Main Rating */}
       <div className="mb-6 text-center">
         <div className="inline-flex items-baseline gap-1 mb-3">
-          <div className="text-foreground text-5xl font-bold">{averageRating}</div>
+          <div className="text-foreground text-5xl font-bold">
+            {averageRating}
+          </div>
           <div className="text-lg text-foreground mb-0.5">/ 5</div>
         </div>
 
@@ -37,25 +43,26 @@ export default function RatingSummary({ reviews }: RatingSummaryProps) {
           {Array.from({ length: 5 }, (_, i) => (
             <FaStar
               key={i}
-              className={`${i < Math.round(parseFloat(averageRating))
-                ? "text-yellow-400"
-                : "text-gray-300"
-                }`}
+              className={`${
+                i < Math.round(parseFloat(averageRating))
+                  ? "text-yellow-400"
+                  : "text-gray-300"
+              }`}
               size={16}
             />
           ))}
         </div>
 
-        <p className="text-foreground text-sm">
-          ({reviews.length}) ulasan
-        </p>
+        <p className="text-foreground text-sm">({reviews.length}) ulasan</p>
 
         {/* Recommendation Percentage */}
         <div className="dark:bg-green-950 bg-green-50 dark:border-green-900 p-3 mt-4 border border-green-200 rounded-lg">
           <p className="dark:text-emerald-100 text-sm font-semibold text-green-800">
             {recommendationPercentage}%
           </p>
-          <p className="dark:text-emerald-50 text-xs text-green-700">merekomendasikan</p>
+          <p className="dark:text-emerald-50 text-xs text-green-700">
+            merekomendasikan
+          </p>
         </div>
       </div>
 
@@ -63,7 +70,8 @@ export default function RatingSummary({ reviews }: RatingSummaryProps) {
       <div className="pt-6 space-y-3 border-t border-gray-200">
         {[5, 4, 3, 2, 1].map((star) => {
           const count = reviews.filter((r) => r.rating === star).length;
-          const percentage = reviews.length > 0 ? (count / reviews.length) * 100 : 0;
+          const percentage =
+            reviews.length > 0 ? (count / reviews.length) * 100 : 0;
 
           return (
             <div key={star} className="flex items-center gap-2">

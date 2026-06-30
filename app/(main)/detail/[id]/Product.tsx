@@ -36,7 +36,6 @@ export default function ProductPage({
     verified?: boolean;
     images?: string[];
     timeago?: string;
-    likes?: number;
   }>;
   src?: string;
 }) {
@@ -90,10 +89,13 @@ export default function ProductPage({
     },
   ];
   const isWish = wishlist.includes(product.id);
-  const rating = (
-    review?.reduce((sum: number, r: { rating: number }) => sum + r.rating, 0) /
-    review?.length
-  ).toFixed(1);
+
+  const rating =
+    reviews.length > 0
+      ? (
+          reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length
+        ).toFixed(1)
+      : "0.0";
 
   return (
     <>
@@ -159,7 +161,7 @@ export default function ProductPage({
               isWish={isWish}
               onToggleWishlist={toggleWishlist}
               rating={rating}
-              reviewCount={review?.length || 0}
+              reviewCount={reviews.length}
             />
           </div>
         </div>
