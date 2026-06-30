@@ -98,7 +98,7 @@ export default function ChatPopup() {
         <div className="bg-primary flex items-center gap-4 p-6">
           <div className="h-14 w-14 shrink-0 relative flex items-center justify-center bg-white rounded-full">
             <Image
-              src="/assets/iconai.png"
+              src="/iconai.png"
               alt="Bot Avatar"
               width={28}
               height={28}
@@ -137,7 +137,7 @@ export default function ChatPopup() {
               {msg.role === "assistant" && (
                 <div className="shrink-0 border-border bg-background flex items-center justify-center w-10 h-10 border rounded-full">
                   <Image
-                    src="/assets/iconai.png"
+                    src="/iconai.png"
                     alt="Bot Avatar"
                     width={28}
                     height={28}
@@ -161,7 +161,7 @@ export default function ChatPopup() {
             <div className="flex gap-3 mb-4">
               <div className="shrink-0 border-border bg-background flex items-center justify-center w-10 h-10 border rounded-full">
                 <Image
-                  src="/assets/iconai.png"
+                  src="/iconai.png"
                   alt="Bot Avatar"
                   width={28}
                   height={28}
@@ -238,7 +238,7 @@ export default function ChatPopup() {
               }}
               type="text"
               placeholder="Tanyakan tentang UMKM..."
-              className="w-full rounded-full border border-border bg-secondary py-4 pl-6 pr-16 text-[0.95rem] text-foreground shadow-sm outline-none placeholder:text-foreground/80  focus:border-primary"
+              className="w-full rounded-full border border-border  py-4 pl-6 pr-16 text-[0.95rem] text-foreground shadow-sm outline-none placeholder:text-foreground/80  focus:border-primary"
             />
 
             <button

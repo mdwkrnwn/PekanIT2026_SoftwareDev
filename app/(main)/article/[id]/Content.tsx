@@ -26,7 +26,7 @@ export function Content({ article }: { article: (typeof ARTICLES)[number] }) {
         <div className="flex items-center gap-4">
           <div className=" bg-[#E4F0E9] size-16 flex items-center justify-center  rounded-full">
             <Image
-              src="/bakul.png" 
+              src="/Bakul.png" 
               alt="Bakool"
               width={60}
               height={60}
@@ -74,8 +74,8 @@ export function Content({ article }: { article: (typeof ARTICLES)[number] }) {
         <div className="flex flex-col gap-10 mt-12">
           {article.content.map((item, index) => (
             <div key={index} className="flex gap-6">
-              <div className="size-18 shrink-0 border-foreground flex items-center justify-center bg-transparent border rounded-full">
-                <span className="text-foreground text-2xl font-bold">
+              <div className="size-18 shrink-0  flex items-center justify-center bg-[#E4F0E9]  rounded-full">
+                <span className="text-[#06724C] text-2xl font-bold">
                   {index + 1}
                 </span>
               </div>

@@ -44,7 +44,7 @@ export default async function ArticlePage({
           </BreadcrumbSeparator>
           <BreadcrumbLink asChild>
             <Link
-              href={`/explore`}
+              href={`/article`}
               className="text-[1.375rem] font-semibold text-muted-foreground hover:text-primary transition"
             >
               Article

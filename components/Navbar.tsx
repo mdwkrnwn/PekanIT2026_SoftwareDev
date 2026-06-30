@@ -83,7 +83,7 @@ function Navbar() {
         <div className="sm:flex hidden bg-background justify-center shadow-[#A9A1A140] shadow-md">
           <nav className="grid grid-cols-[1fr_1fr_3fr] justify-center items-center w-[80vw] py-6">
             <section className="flex items-center">
-              <div className="flex items-center">
+              <Link href = "/" className="flex items-center">
                 <Image
                   src="/Bakul.png"
                   alt="Bakool"
@@ -96,7 +96,7 @@ function Navbar() {
                 <h2 className="text-[25px] font-semibold -ml-3 text-[#0B0F1F] dark:text-white ">
                   Bakool
                 </h2>
-              </div>
+              </Link>
             </section>
             <section>
               <ul className=" flex gap-6 text-lg font-medium">
