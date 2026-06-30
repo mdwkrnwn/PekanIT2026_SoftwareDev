@@ -51,7 +51,7 @@ export function SolusiUMKM() {
   return (
     <section id="solusi" className="mx-auto mt-20 w-[80vw]">
       <div className="text-center">
-        <h2 className="text-[40px] font-semibold text-[#0B0F1F]">
+        <h2 className="text-[40px] font-semibold text-[#0B0F1F] dark:text-white ">
           Solusi Lengkap untuk UMKM
         </h2>
 

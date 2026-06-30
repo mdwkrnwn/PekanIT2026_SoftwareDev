@@ -3,7 +3,8 @@ import Image from "next/image";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { FaChevronLeft, FaSearch } from "react-icons/fa";
 import Link from "next/link";
-
+import { FaHeart, FaRegClock } from "react-icons/fa";
+import { IoChevronDown } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import {
@@ -20,6 +21,15 @@ import { cn } from "@/lib/utils";
 import header from "./Navbar.module.css";
 
 function Navbar() {
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    const data = localStorage.getItem("user");
+
+    if (data) {
+      setUser(JSON.parse(data));
+    }
+  }, []);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const path = usePathname();
   const navItems = [
@@ -75,7 +85,7 @@ function Navbar() {
             <section className="flex items-center">
               <div className="flex items-center">
                 <Image
-                  src="/bakul.png"
+                  src="/Bakul.png"
                   alt="Bakool"
                   width={100}
                   height={100}
@@ -83,7 +93,7 @@ function Navbar() {
                   priority
                 />
 
-                <h2 className="text-[25px] font-semibold -ml-3 text-[#0B0F1F]">
+                <h2 className="text-[25px] font-semibold -ml-3 text-[#0B0F1F] dark:text-white ">
                   Bakool
                 </h2>
               </div>
@@ -130,13 +140,38 @@ function Navbar() {
                   />
                 </div>
               </div>
-              <ThemeSwitcher />
-              <Link
-                href={"/login"}
-                className={`flex flex-row items-center gap-3 rounded-lg border border-border p-3 text-white font-semibold transition-all bg-primary md:text-base`}
-              >
-                <span className="*:size-6">Masuk / Daftar</span>
-              </Link>
+             <ThemeSwitcher className={user ? "mr-0" : "mr-5"} />
+
+              {user ? (
+                <div className="flex items-center gap-4">
+                  {/* Favorite */}
+                  <Link href="/favorite" className="outline-1 outline-primary-foreground flex items-center justify-center p-2 transition-colors bg-transparent rounded-full cursor-pointer hover:bg-primary/10">
+                    <FaHeart className="text-primary-foreground h-6 w-6 text-lg" />
+                  </Link>
+
+                  {/* Profile */}
+                  <button className="flex items-center gap-3">
+                    <Image
+                      src="/avatar.png"
+                      alt={user.name}
+                      width={50}
+                      height={50}
+                      className="rounded-full object-cover"
+                    />
+
+                    <span className="font-semibold text-sm">{user.name}</span>
+
+                    <IoChevronDown className="text-gray-500" />
+                  </button>
+                </div>
+              ) : (
+                <Link
+                  href="/login"
+                  className="flex items-center gap-3 rounded-lg border border-border px-5 py-3 bg-primary text-white font-semibold hover:opacity-90 transition"
+                >
+                  Masuk / Daftar
+                </Link>
+              )}
             </section>
           </nav>
           {/* Chat */}

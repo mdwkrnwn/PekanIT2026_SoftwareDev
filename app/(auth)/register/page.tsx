@@ -16,7 +16,7 @@ export default function RegisterPage() {
           <div className="flex justify-center">
             <div className="flex items-center gap-3">
               <Image
-                src="/bakul.png"
+                src="/Bakul.png"
                 alt="Bakool"
                 width={150}
                 className="-ml-10"

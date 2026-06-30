@@ -1,8 +1,36 @@
 "use client";
 
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { dummyUsers } from "@/lib/dummyUser";
 import Link from "next/link";
 import Image from "next/image";
 export default function LoginPage() {
+  const router = useRouter();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const user = dummyUsers.find(
+      (u) => u.email === email && u.password === password,
+    );
+
+    if (!user) {
+      alert("Email atau password salah");
+      return;
+    }
+    
+    localStorage.setItem("user", JSON.stringify(user));
+
+    if (user.role === "owner") {
+      router.push("/dashboard");
+    } else {
+      router.push("/");
+    }
+  };
   return (
     <div className="min-h-screen bg-[#F8FAFC] p-4 lg:p-6">
       <div className="mx-auto grid min-h-[95vh] max-w-[2000px] grid-cols-[42%_58%] overflow-hidden rounded-[20px] bg-white shadow-sm">
@@ -47,7 +75,7 @@ export default function LoginPage() {
             {/* Logo */}
             <div className="flex items-center">
               <Image
-                src="/bakul.png"
+                src="/Bakul.png"
                 alt="Bakool"
                 width={100}
                 height={100}
@@ -73,7 +101,7 @@ export default function LoginPage() {
 
             {/* Form */}
             <form
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={handleLogin}
               className="mt-10 space-y-6"
             >
               {/* Email */}
@@ -84,6 +112,8 @@ export default function LoginPage() {
 
                 <input
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Masukkan email kamu"
                   className="h-14 w-full rounded-xl border border-[#E5E7EB] px-4 text-[15px] outline-none transition focus:border-[#158A62]"
                 />
@@ -97,6 +127,8 @@ export default function LoginPage() {
 
                 <input
                   type="password"
+                   value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="Masukkan password kamu"
                   className="h-14 w-full rounded-xl border border-[#E5E7EB] px-4 text-[15px] outline-none transition focus:border-[#158A62]"
                 />

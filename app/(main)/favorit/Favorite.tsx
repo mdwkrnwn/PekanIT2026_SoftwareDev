@@ -167,14 +167,14 @@ export default function Favorite({
       )}
 
       {/* CTA */}
-      <section className="relative mt-20 rounded-lg bg-linear-to-r dark:to-[#00931d] dark:from-[#005c12] to-[#00af23] from-[#00f131] text-white">
+      <section className="relative mt-20 rounded-lg bg-[#E6F5EF] text-white">
         <div className="md:grid-cols-2 grid items-center h-full grid-cols-1 gap-6 px-10">
           <div className="md:my-5 mt-5 space-y-10">
-            <h2 className="text-[#102b00] dark:text-white md:text-4xl text-2xl font-semibold">
+            <h2 className="text-[#125C4C] md:text-4xl text-2xl font-semibold">
               Belum menemukan favorit lain?
             </h2>
 
-            <p className="text-foreground font-semibold md:text-xl text-lg">
+            <p className="text-[#0B0F1F] font-semibold md:text-xl text-lg">
               Jelajahi lebih banyak UMKM lokal dan
               temukan produk serta layanan terbaik di
               sekitarmu.
@@ -192,8 +192,8 @@ export default function Favorite({
             <Image
               src="/bakulFavorit2.png"
               alt="Explore"
-              width={500}
-              height={500}
+              width={600}
+              height={600}
               className=""
             />
           </div>

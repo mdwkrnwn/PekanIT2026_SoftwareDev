@@ -55,7 +55,7 @@ const INSIGHTS = [
 export function InsightHariIni() {
   return (
     <div className="w-[80vw] mx-auto mt-24 text-center">
-      <h3 className="text-[#0B0F1F] text-4xl font-semibold">
+      <h3 className="text-[#0B0F1F] text-4xl dark:text-white  font-semibold">
         Insight UMKM Hari ini
       </h3>
       <p className="text-slate-500 max-w-2xl mx-auto mt-2">
