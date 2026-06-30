@@ -11,14 +11,21 @@ import InfoPanel from "./components/InfoPanel";
 import ReviewsSection from "./components/ReviewsSection";
 import RatingSummary from "./components/RatingSummary";
 import ReviewForm from "./components/ReviewForm";
-import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+  BreadcrumbPage,
+} from "@/components/ui/breadcrumb";
 import Link from "next/link";
 import { FaChevronLeft } from "react-icons/fa";
 
 export default function ProductPage({
   product,
   review,
-  src
+  src,
 }: {
   product: (typeof UMKM)[number];
   review: Array<{
@@ -31,7 +38,7 @@ export default function ProductPage({
     timeago?: string;
     likes?: number;
   }>;
-  src?: string
+  src?: string;
 }) {
   const [mainImage, setMainImage] = useState(product?.gallery?.[0]);
   const wishes = useWishlist().map((item) => item.id);
@@ -70,8 +77,18 @@ export default function ProductPage({
       });
     }
   };
-
-
+  const PROMOS = [
+    {
+      id: 1,
+      image: "/promo1.png",
+      alt: "Promo Diskon 20%",
+    },
+    {
+      id: 2,
+      image: "/promo2.png",
+      alt: "Promo Gratis Ongkir",
+    },
+  ];
   const isWish = wishlist.includes(product.id);
   const rating = (
     review?.reduce((sum: number, r: { rating: number }) => sum + r.rating, 0) /
@@ -97,7 +114,7 @@ export default function ProductPage({
           </BreadcrumbSeparator>
           <BreadcrumbLink asChild>
             <Link
-              href={`/` + (src ?? 'explore')}
+              href={`/` + (src ?? "explore")}
               className="text-[1.375rem] font-semibold text-muted-foreground hover:text-primary transition"
             >
               {src ? src?.charAt(0).toUpperCase() + src?.slice(1) : "Explore"}
@@ -136,7 +153,35 @@ export default function ProductPage({
         {product.featuredMenus && product.featuredMenus.length > 0 && (
           <section className="mt-5 ">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-foreground text-xl font-bold">Menu Andalan</h3>
+              <h3 className="text-foreground text-xl font-bold">
+                Promo Spesial
+              </h3>
+              <button className="text-primary hover:underline text-sm font-bold">
+                Lihat Semua
+              </button>
+            </div>
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+              {PROMOS.map((promo) => (
+                <div
+                  key={promo.id}
+                  className="group relative overflow-hidden rounded-2xl shadow-sm"
+                >
+                  <Image
+                    src={promo.image}
+                    alt={promo.alt}
+                    width={600}
+                    height={260}
+                    className="h-auto w-full transition duration-300 group-hover:scale-[1.02]"
+                    priority
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="mt-15 border-t mb-5 border-slate-200 "></div>
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-foreground text-xl font-bold">
+                Menu Andalan
+              </h3>
               <button className="text-primary hover:underline text-sm font-bold">
                 Lihat Semua
               </button>

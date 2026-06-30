@@ -1,78 +1,148 @@
-"use client"
+"use client";
 
 import Link from "next/link";
-
+import Image from "next/image";
 export default function LoginPage() {
   return (
-    <div className="flex flex-row justify-center w-screen min-h-screen overflow-x-hidden text-base bg-white">
-      {/* Right Panel: Login Form */}
-      <div className="w-[65vw] flex flex-col justify-center px-24 py-12">
-        <div className="w-full max-w-2xl mx-auto">
-          {/* Top Logo */}
-          <div className="flex items-center gap-3 mb-16">
-            <div className="w-10 h-10 bg-[#15803d] rounded-xl flex items-center justify-center font-black text-white text-2xl">
-              B
-            </div>
-            <span className="text-slate-900 text-2xl font-bold tracking-wide">Bakool</span>
+    <div className="min-h-screen bg-[#F8FAFC] p-4 lg:p-6">
+      <div className="mx-auto grid min-h-[95vh] max-w-[2000px] grid-cols-[42%_58%] overflow-hidden rounded-[20px] bg-white shadow-sm">
+        {/* LEFT */}
+        <div className="hidden w-[100%] bg-[#158A62] lg:flex flex-col justify-between p-10 relative overflow-hidden">
+          <div>
+            <Image
+              src="/bakol.png"
+              alt="Bakool"
+              width={200}
+              height={200}
+              priority
+              className="mt-10 -ml-2"
+            />
+
+            <h1 className="mt- text-4xl font-bold leading-tight text-white">
+              Selamat Datang
+              <br />
+              Kembali
+            </h1>
+
+            <p className="mt-6 max-w-[280px] text-lg leading-8 text-white/90">
+              Kelola usahamu lebih mudah dengan data dan AI
+            </p>
           </div>
 
-          <h2 className="text-slate-950 text-3xl font-bold tracking-tight">Masuk ke akunmu</h2>
-          <p className="text-slate-500 mt-2 mb-10 text-base">
-            Yuk, masuk untuk lanjut kelola usahamu.
-          </p>
+          <div className="relative flex justify-center">
+            <Image
+              src="/loginilustrasi.png"
+              alt="Login Illustration"
+              width={550}
+              height={550}
+              className="h-auto w-full mb-20 max-w-[450px]"
+              priority
+            />
+          </div>
+        </div>
 
-          <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
-            {/* Email Field */}
-            <div className="flex flex-col gap-2">
-              <label className="text-slate-900 font-bold">Email</label>
-              <input
-                type="email"
-                placeholder="Masukkan email kamu"
-                className="w-full border border-slate-200 rounded-xl p-4 text-slate-800 placeholder-slate-300 focus:outline-none focus:border-[#15803d] transition-colors"
+        {/* RIGHT */}
+        <div className="flex flex-1 items-center  bg-white px-8 py-12 lg:px-14">
+          <div className="w-full max-w-[680px]">
+            {/* Logo */}
+            <div className="flex items-center">
+              <Image
+                src="/bakul.png"
+                alt="Bakool"
+                width={100}
+                height={100}
+                className="h-auto w-[100px] -ml-8"
+                priority
               />
+
+              <h2 className="text-[30px] font-semibold -ml-3 text-[#0B0F1F]">
+                Bakool
+              </h2>
             </div>
 
-            {/* Password Field */}
-            <div className="flex flex-col gap-2">
-              <label className="text-slate-900 font-bold">Password</label>
-              <input
-                type="password"
-                placeholder="Masukkan password kamu"
-                className="w-full border border-slate-200 rounded-xl p-4 text-slate-800 placeholder-slate-300 focus:outline-none focus:border-[#15803d] transition-colors"
-              />
+            {/* Heading */}
+            <div className="mt-2">
+              <h2 className="text-[40px] font-bold leading-tight text-[#0B0F1F]">
+                Masuk ke akunmu
+              </h2>
+
+              <p className="mt-2 text-[17px] text-[#667085]">
+                Yuk, masuk untuk lanjut kelola usahamu.
+              </p>
             </div>
 
-            {/* Options Row */}
-            <div className="flex items-center justify-between mt-2 text-base">
-              <label className="text-slate-400 flex items-center gap-3 cursor-pointer select-none">
-                <input type="checkbox" className="w-5 h-5 accent-[#15803d] rounded-md border-slate-300" />
-                <span>Ingat Saya</span>
-              </label>
-              <Link href="/forgot-password" className="text-[#15803d] font-semibold hover:underline">
-                Lupa Password?
+            {/* Form */}
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              className="mt-10 space-y-6"
+            >
+              {/* Email */}
+              <div>
+                <label className="mb-2 block text-[15px] font-semibold text-[#0B0F1F]">
+                  Email
+                </label>
+
+                <input
+                  type="email"
+                  placeholder="Masukkan email kamu"
+                  className="h-14 w-full rounded-xl border border-[#E5E7EB] px-4 text-[15px] outline-none transition focus:border-[#158A62]"
+                />
+              </div>
+
+              {/* Password */}
+              <div>
+                <label className="mb-2 block text-[15px] font-semibold text-[#0B0F1F]">
+                  Password
+                </label>
+
+                <input
+                  type="password"
+                  placeholder="Masukkan password kamu"
+                  className="h-14 w-full rounded-xl border border-[#E5E7EB] px-4 text-[15px] outline-none transition focus:border-[#158A62]"
+                />
+              </div>
+
+              {/* Remember */}
+              <div className="flex items-center justify-between">
+                <label className="flex cursor-pointer items-center gap-3 text-[15px] text-[#98A2B3]">
+                  <input
+                    type="checkbox"
+                    className="h-5 w-5 rounded border-[#D0D5DD] accent-[#158A62]"
+                  />
+                  Ingat Saya
+                </label>
+
+                <Link
+                  href=""
+                  className="text-[15px] font-medium text-[#158A62] hover:underline"
+                >
+                  Lupa Password?
+                </Link>
+              </div>
+
+              {/* Button */}
+              <button className="h-14 w-full rounded-xl bg-[#158A62] text-[17px] font-semibold text-white transition hover:bg-[#127553]">
+                Masuk
+              </button>
+            </form>
+
+            {/* Divider */}
+            <div className="my-8 flex items-center gap-4">
+              <div className="h-px flex-1 bg-[#EAECF0]" />
+
+              <span className="text-[15px] text-[#98A2B3]">atau</span>
+
+              <div className="h-px flex-1 bg-[#EAECF0]" />
+            </div>
+
+            {/* Register */}
+            <p className="text-center text-[15px] text-[#101828]">
+              Belum punya akun?{" "}
+              <Link href="/register" className="font-semibold text-[#158A62]">
+                Daftar sekarang
               </Link>
-            </div>
-
-            {/* Submit Button */}
-            <button type="submit" className="w-full bg-[#15803d] text-white font-bold py-4 rounded-xl text-lg hover:bg-[#166534] transition-colors mt-4 shadow-sm">
-              Masuk
-            </button>
-          </form>
-
-          {/* Divider */}
-          <div className="relative flex items-center py-6 my-6">
-            <div className="border-slate-100 flex-grow border-t"></div>
-            <span className="text-slate-400 flex-shrink mx-4 font-medium">atau</span>
-            <div className="border-slate-100 flex-grow border-t"></div>
+            </p>
           </div>
-
-          {/* Registration Trigger */}
-          <p className="text-slate-900 text-base font-medium text-center">
-            Belum punya akun?{" "}
-            <Link href="/register" className="text-[#15803d] font-bold hover:underline">
-              Daftar sekarang
-            </Link>
-          </p>
         </div>
       </div>
     </div>

@@ -17,7 +17,7 @@ import {
 import { RxHamburgerMenu } from "react-icons/rx";
 import { cn } from "@/lib/utils";
 
-import header from './Navbar.module.css'
+import header from "./Navbar.module.css";
 
 function Navbar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -38,7 +38,7 @@ function Navbar() {
       document.body.style.overflow = "";
     };
   }, [isSidebarOpen]);
-  const disAllowedBreadcrumb = ['detail', '/article/'];
+  const disAllowedBreadcrumb = ["detail", "/article/"];
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsSidebarOpen(false);
@@ -58,27 +58,35 @@ function Navbar() {
       setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener('scroll', controlHeader);
+    window.addEventListener("scroll", controlHeader);
 
     return () => {
-      window.removeEventListener('scroll', controlHeader);
+      window.removeEventListener("scroll", controlHeader);
     };
   }, [lastScrollY]);
   if (path.startsWith("/admin")) return;
   return (
     <>
-      <header className={`z-999 sticky top-0 w-full mb-1 transition-transform ${isVisible ? header.header_show : header.header_hide}`}>
+      <header
+        className={`z-999 sticky top-0 w-full mb-1 transition-transform ${isVisible ? header.header_show : header.header_hide}`}
+      >
         <div className="sm:flex hidden bg-background justify-center shadow-[#A9A1A140] shadow-md">
           <nav className="grid grid-cols-[1fr_1fr_3fr] justify-center items-center w-[80vw] py-6">
             <section className="flex items-center">
-              <Image
-                loading="eager"
-                height={1000}
-                width={1000}
-                className="max-w-24 max-h-24"
-                src={"/Bakul.png"}
-                alt="logo"
-              />
+              <div className="flex items-center">
+                <Image
+                  src="/bakul.png"
+                  alt="Bakool"
+                  width={100}
+                  height={100}
+                  className="h-auto w-[100px] -ml-8"
+                  priority
+                />
+
+                <h2 className="text-[25px] font-semibold -ml-3 text-[#0B0F1F]">
+                  Bakool
+                </h2>
+              </div>
             </section>
             <section>
               <ul className=" flex gap-6 text-lg font-medium">
@@ -96,15 +104,16 @@ function Navbar() {
                         className={`relative inline-block pb-3
                       after:absolute after:bottom-0 after:left-0
                       after:rounded-full after:w-full after:h-1 after:transition-all
-                      ${isActive
-                            ? "after:bg-primary text-primary-foreground"
-                            : "after:bg-transparent hover:text-primary-foreground/50"
-                          }`}
+                      ${
+                        isActive
+                          ? "after:bg-primary text-primary-foreground"
+                          : "after:bg-transparent hover:text-primary-foreground/50"
+                      }`}
                       >
                         {item.name}
                       </Link>
                     </li>
-                  )
+                  );
                 })}
               </ul>
             </section>
@@ -126,9 +135,7 @@ function Navbar() {
                 href={"/login"}
                 className={`flex flex-row items-center gap-3 rounded-lg border border-border p-3 text-white font-semibold transition-all bg-primary md:text-base`}
               >
-                <span className="*:size-6">
-                  Masuk / Daftar
-                </span>
+                <span className="*:size-6">Masuk / Daftar</span>
               </Link>
             </section>
           </nav>
@@ -183,9 +190,12 @@ function Navbar() {
         {/* Breadcrumbs */}
       </header>
 
-      {!path.startsWith("/login") && !path.startsWith("/register") &&
+      {!path.startsWith("/login") && !path.startsWith("/register") && (
         <>
-          {path == "/" || disAllowedBreadcrumb.some(item => path.includes(item)) ? "" : (
+          {path == "/" ||
+          disAllowedBreadcrumb.some((item) => path.includes(item)) ? (
+            ""
+          ) : (
             <Breadcrumb className="w-[80vw] mt-5 mb-9">
               <BreadcrumbList>
                 {/* Back Button */}
@@ -201,42 +211,41 @@ function Navbar() {
                 </BreadcrumbItem>
 
                 {/* Dynamic Path */}
-                {
-                  disAllowedBreadcrumb.some(item => path.includes(item)) ? "" :
-                    <>
-                      {path
-                        .split("/")
-                        .filter(Boolean)
-                        .map((item, i, arr) => (
-                          <div key={i} className="flex items-center gap-2">
-                            <BreadcrumbSeparator>
-                              <FaChevronLeft size={25} />
-                            </BreadcrumbSeparator>
-                            {i === arr.length - 1 ? (
-                              <BreadcrumbPage className="text-[1.375rem] font-semibold text-foreground">
+                {disAllowedBreadcrumb.some((item) => path.includes(item)) ? (
+                  ""
+                ) : (
+                  <>
+                    {path
+                      .split("/")
+                      .filter(Boolean)
+                      .map((item, i, arr) => (
+                        <div key={i} className="flex items-center gap-2">
+                          <BreadcrumbSeparator>
+                            <FaChevronLeft size={25} />
+                          </BreadcrumbSeparator>
+                          {i === arr.length - 1 ? (
+                            <BreadcrumbPage className="text-[1.375rem] font-semibold text-foreground">
+                              {item.charAt(0).toUpperCase() + item.slice(1)}
+                            </BreadcrumbPage>
+                          ) : (
+                            <BreadcrumbLink asChild>
+                              <Link
+                                href={`/${arr.slice(0, i + 1).join("/")}`}
+                                className="text-[1.375rem] font-semibold text-muted-foreground hover:text-primary-foreground transition"
+                              >
                                 {item.charAt(0).toUpperCase() + item.slice(1)}
-                              </BreadcrumbPage>
-                            ) : (
-                              <BreadcrumbLink asChild>
-                                <Link
-                                  href={`/${arr.slice(0, i + 1).join("/")}`}
-                                  className="text-[1.375rem] font-semibold text-muted-foreground hover:text-primary-foreground transition"
-                                >
-                                  {item.charAt(0).toUpperCase() + item.slice(1)}
-                                </Link>
-                              </BreadcrumbLink>
-                            )}
-                          </div>
-                        ))}
-                    </>
-
-                }
+                              </Link>
+                            </BreadcrumbLink>
+                          )}
+                        </div>
+                      ))}
+                  </>
+                )}
               </BreadcrumbList>
             </Breadcrumb>
           )}
-
         </>
-      }
+      )}
     </>
   );
 }

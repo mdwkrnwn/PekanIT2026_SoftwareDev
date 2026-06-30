@@ -1,137 +1,203 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
-import { BiCheckCircle } from "react-icons/bi";
+import { useState } from "react";
+import { Check } from "lucide-react";
 
 export default function RegisterPage() {
+  const [role, setRole] = useState<"user" | "owner">("owner");
+
   return (
-    <div className="min-h-screen w-[50vw] bg-white text-base py-16 px-6">
-      <div className=" w-full flex flex-col items-center">
+    <div className="min-h-screen bg-[#F7FAFC] py-8">
+      <div className="mx-auto w-full max-w-[2000px] rounded-[24px] bg-white px-14 py-10 shadow-sm">
+        <div className="-mt-10 w-full max-w-[1100px] px-16 py-12">
+          {/* Logo */}
+          <div className="flex justify-center">
+            <div className="flex items-center gap-3">
+              <Image
+                src="/bakul.png"
+                alt="Bakool"
+                width={150}
+                className="-ml-10"
+                height={150}
+                priority
+              />
 
-        {/* Header Branding */}
-        <div className="flex items-center gap-3 mb-8">
-          <div className="w-12 h-12 bg-[#15803d] rounded-xl flex items-center justify-center font-black text-white text-3xl">
-            B
+              <h1 className="text-[30px] -ml-10 font-bold text-[#0B0F1F]">
+                Bakool
+              </h1>
+            </div>
           </div>
-          <span className="text-3xl font-bold tracking-wide text-slate-900">Bakool</span>
+
+          {/* Heading */}
+          <div className=" text-center">
+            <h2 className="text-[34px] font-bold text-[#0B0F1F]">
+              Daftar Akun Bakool
+            </h2>
+
+            <p className="mt-2 text-[16px] text-[#667085]">
+              Pilih peran yang paling sesuai denganmu
+            </p>
+          </div>
+
+          {/* ROLE */}
+          <div className="mx-auto mt-10 grid max-w-[760px] grid-cols-2 gap-6">
+            {/* Pengguna */}
+            <div
+              onClick={() => setRole("user")}
+              className={`relative h-[330px] cursor-pointer overflow-hidden rounded-xl border transition-all duration-200
+              ${
+                role === "user"
+                  ? "border-2 border-[#0C7C61] bg-[#F6FCFA]"
+                  : "border border-[#E5E7EB] bg-[#F6FCFA]"
+              }`}
+            >
+              {/* Radio */}
+              <div
+                className={`absolute left-5 top-5 flex h-6 w-6 items-center justify-center rounded-full border
+                ${
+                  role === "user"
+                    ? "border-[#0C7C61] bg-[#0C7C61]"
+                    : "border-[#D0D5DD] bg-white"
+                }`}
+              >
+                {role === "user" && (
+                  <Check size={13} className="text-white" strokeWidth={3} />
+                )}
+              </div>
+
+              <h3 className="pt-4 text-center text-[17px] font-semibold text-[#101828]">
+                Pengguna
+              </h3>
+
+             <div className="mt-3 flex h-[240px] items-center justify-center">
+                <Image
+                  src="/register1.png"
+                  alt=""
+                  width={240}
+                  height={240}
+                  className="mt-6 h-auto w-[240px]"
+                  priority
+                />
+              </div>
+            </div>
+
+            {/* UMKM */}
+            <div
+              onClick={() => setRole("owner")}
+              className={`relative cursor-pointer rounded-2xl border p-4 transition-all
+
+            ${role === "owner" ? "border-[#0C7C61]" : "border-[#E4E7EC]"}`}
+            >
+              {/* Radio */}
+              <div
+                className={`absolute left-4 top-4 flex h-5 w-5 items-center justify-center rounded-full border
+
+              ${
+                role === "owner"
+                  ? "border-[#0C7C61] bg-[#0C7C61]"
+                  : "border-[#D0D5DD]"
+              }`}
+              >
+                {role === "owner" && (
+                  <Check size={13} className="text-white" strokeWidth={3} />
+                )}
+              </div>
+
+              <h3 className="text-center text-[18px] font-semibold text-[#0B0F1F]">
+                Pemilik UMKM
+              </h3>
+
+              <div className="mt-3 flex h-[240px] items-center justify-center">
+                <Image
+                  src="/register2.png"
+                  alt=""
+                  width={240}
+                  height={240}
+                  className="mt-6 h-auto w-[240px]"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className="my-10 flex items-center gap-5">
+            <div className="h-px flex-1 bg-[#EAECF0]" />
+
+            <span className="text-[14px] text-[#667085]">atau</span>
+
+            <div className="h-px flex-1 bg-[#EAECF0]" />
+          </div>
+
+          {/* Form */}
+          <div className="mx-auto mt-2 max-w-[760px]">
+            <h3 className="mb-6 text-[20px] font-semibold text-[#0B0F1F]">
+              Buat Akun Baru
+            </h3>
+
+            <form className="space-y-5">
+              {/* Nama */}
+              <div>
+                <label className="mb-2 block text-[14px] font-semibold text-[#0B0F1F]">
+                  Nama Lengkap
+                </label>
+
+                <input
+                  type="text"
+                  placeholder="Masukkan nama lengkap"
+                  className="h-12 w-full rounded-lg border border-[#DDE3EA] px-4 text-[15px] outline-none transition focus:border-[#0C7C61]"
+                />
+              </div>
+
+              {/* Email */}
+              <div>
+                <label className="mb-2 block text-[14px] font-semibold text-[#0B0F1F]">
+                  Email
+                </label>
+
+                <input
+                  type="email"
+                  placeholder="Masukkan email kamu"
+                  className="h-12 w-full rounded-lg border border-[#DDE3EA] px-4 text-[15px] outline-none transition focus:border-[#0C7C61]"
+                />
+              </div>
+
+              {/* Password */}
+              <div>
+                <label className="mb-2 block text-[14px] font-semibold text-[#0B0F1F]">
+                  Password
+                </label>
+
+                <input
+                  type="password"
+                  placeholder="Masukkan password kamu"
+                  className="h-12 w-full rounded-lg border border-[#DDE3EA] px-4 text-[15px] outline-none transition focus:border-[#0C7C61]"
+                />
+              </div>
+
+              {/* Button */}
+              <button
+                type="submit"
+                className="mt-3 h-12 w-full rounded-lg bg-[#158A62] text-[16px] font-semibold text-white transition hover:bg-[#09624D]"
+              >
+                Daftar
+              </button>
+            </form>
+
+            {/* Login */}
+            <p className="mt-7 text-center text-[14px] text-[#0B0F1F]">
+              Sudah punya akun?{" "}
+              <Link
+                href="/login"
+                className="font-semibold text-[#0C7C61] hover:underline"
+              >
+                Masuk sekarang
+              </Link>
+            </p>
+          </div>
         </div>
-
-        <h1 className="text-3xl font-bold text-slate-950 tracking-tight text-center">Daftar Akun Bakool</h1>
-        <p className="text-slate-500 mt-2 text-base text-center mb-10">
-          Pilih peran yang paling sesuai denganmu
-        </p>
-
-        {/* Role Selection Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-10">
-          {/* Card: Pengguna */}
-          <label className="border-2 border-slate-100 rounded-3xl p-8 bg-slate-50/50 flex flex-col gap-6 cursor-pointer hover:border-[#15803d] transition-all relative group">
-            <div className="flex items-center justify-between">
-              <input type="radio" name="role" defaultChecked className="w-6 h-6 accent-[#15803d]" />
-              <span className="text-xl font-bold text-slate-950">Pengguna</span>
-            </div>
-
-            <div className="relative w-full aspect-4/3 max-w-60 mx-auto mix-blend-multiply">
-              <Image src="/register1.png" fill className="object-contain" alt="Pengguna Illustration" />
-            </div>
-
-            <div className="flex flex-col gap-3 mt-auto">
-              {[
-                "Cari UMKM lokal",
-                "Simpan favorit",
-                "Dapatkan badge & achievement"
-              ].map((text, idx) => (
-                <div key={idx} className="flex items-center gap-3 text-slate-800 font-medium">
-                  <BiCheckCircle className="text-[#15803d] shrink-0" size={20} />
-                  <span>{text}</span>
-                </div>
-              ))}
-            </div>
-          </label>
-
-          {/* Card: Pemilik UMKM */}
-          <label className="border-2 border-slate-100 rounded-3xl p-8 bg-slate-50/50 flex flex-col gap-6 cursor-pointer hover:border-[#15803d] transition-all relative group">
-            <div className="flex items-center justify-between">
-              <input type="radio" name="role" className="w-6 h-6 accent-[#15803d]" />
-              <span className="text-xl font-bold text-slate-950">Pemilik UMKM</span>
-            </div>
-
-            <div className="relative w-full aspect-4/3 max-w-60 mx-auto mix-blend-multiply">
-              <Image src="/register2.png" fill className="object-contain" alt="UMKM Illustration" />
-            </div>
-
-            <div className="flex flex-col gap-3 mt-auto">
-              {[
-                "Kelola operasional toko digital",
-                "Akses fitur analitik data & AI",
-                "Perluas jangkauan pasar lokal"
-              ].map((text, idx) => (
-                <div key={idx} className="flex items-center gap-3 text-slate-800 font-medium">
-                  <BiCheckCircle className="text-[#15803d] shrink-0" size={20} />
-                  <span>{text}</span>
-                </div>
-              ))}
-            </div>
-          </label>
-        </div>
-
-        {/* Divider */}
-        <div className="relative flex py-4 items-center w-full my-4">
-          <div className="grow border-t border-slate-200"></div>
-          <span className="shrink mx-4 text-slate-400 font-medium">atau</span>
-          <div className="grow border-t border-slate-200"></div>
-        </div>
-
-        {/* Form Container */}
-        <div className="w-full text-left mt-4">
-          <h3 className="text-xl font-bold text-slate-950 mb-6">Buat Akun Baru</h3>
-
-          <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
-            {/* Full Name */}
-            <div className="flex flex-col gap-2">
-              <label className="font-bold text-slate-900">Nama Lengkap</label>
-              <input
-                type="text"
-                placeholder="Masukkan nama lengkap"
-                className="w-full border border-slate-200 rounded-xl p-4 text-slate-800 placeholder-slate-300 focus:outline-none focus:border-[#15803d] transition-colors"
-              />
-            </div>
-
-            {/* Email */}
-            <div className="flex flex-col gap-2">
-              <label className="font-bold text-slate-900">Email</label>
-              <input
-                type="email"
-                placeholder="Masukkan email kamu"
-                className="w-full border border-slate-200 rounded-xl p-4 text-slate-800 placeholder-slate-300 focus:outline-none focus:border-[#15803d] transition-colors"
-              />
-            </div>
-
-            {/* Password */}
-            <div className="flex flex-col gap-2">
-              <label className="font-bold text-slate-900">Password</label>
-              <input
-                type="password"
-                placeholder="Masukkan password kamu"
-                className="w-full border border-slate-200 rounded-xl p-4 text-slate-800 placeholder-slate-300 focus:outline-none focus:border-[#15803d] transition-colors"
-              />
-            </div>
-
-            {/* Action Submit */}
-            <button type="submit" className="w-full bg-[#15803d] text-white font-bold py-4 rounded-xl text-lg hover:bg-[#166534] transition-colors mt-4 shadow-sm">
-              Daftar
-            </button>
-          </form>
-
-          {/* Login Trigger */}
-          <p className="text-center text-slate-950 text-base font-medium mt-8">
-            Sudah punya akun?{" "}
-            <Link href="/login" className="text-[#15803d] font-bold hover:underline">
-              Masuk sekarang
-            </Link>
-          </p>
-        </div>
-
       </div>
     </div>
   );

@@ -1,13 +1,9 @@
 import { ARTICLES } from "@/data/ARTIKEL";
 import Image from "next/image";
-import {
-  FaUser,
-  FaHeart,
-  FaBookmark,
-} from "react-icons/fa";
+import { FaUser, FaHeart, FaBookmark } from "react-icons/fa";
 import { FaShareNodes } from "react-icons/fa6";
 
-export function Content({ article }: { article: typeof ARTICLES[number] }) {
+export function Content({ article }: { article: (typeof ARTICLES)[number] }) {
   return (
     <article>
       {/* Category */}
@@ -28,14 +24,18 @@ export function Content({ article }: { article: typeof ARTICLES[number] }) {
       {/* Author */}
       <div className="md:flex-row gap-y-4 flex flex-col items-start justify-between mt-10">
         <div className="flex items-center gap-4">
-          <div className="border-primary size-16 flex items-center justify-center border rounded-full">
-            <FaUser className="text-primary-foreground" size={22} />
+          <div className=" bg-[#E4F0E9] size-16 flex items-center justify-center  rounded-full">
+            <Image
+              src="/bakul.png" 
+              alt="Bakool"
+              width={60}
+              height={60}
+              className="object-contain"
+            />
           </div>
 
           <div>
-            <p className="text-3xl font-semibold">
-              {article.author}
-            </p>
+            <p className="text-3xl font-semibold">{article.author}</p>
 
             <p className="text-muted-foreground text-sm">
               {article.readTime} baca
