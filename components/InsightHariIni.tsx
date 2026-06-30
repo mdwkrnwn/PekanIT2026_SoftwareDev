@@ -55,10 +55,20 @@ const INSIGHTS = [
 export function InsightHariIni() {
   return (
     <div className="w-[80vw] mx-auto mt-24 text-center">
-      <h3 className="text-[#0B0F1F] text-4xl dark:text-white  font-semibold">
+      <h3
+        data-aos="fade-down"
+        data-aos-duration="800"
+        className="text-[#0B0F1F] text-4xl dark:text-white font-semibold"
+      >
         Insight UMKM Hari ini
       </h3>
-      <p className="text-slate-500 max-w-2xl mx-auto mt-2">
+
+      <p
+        data-aos="fade-up"
+        data-aos-delay="150"
+        data-aos-duration="800"
+        className="text-slate-500 max-w-2xl mx-auto mt-2"
+      >
         Data yang membantu Anda memahami tren dan peluang bisnis.
       </p>
 
@@ -66,6 +76,10 @@ export function InsightHariIni() {
         {INSIGHTS.map((item, index) => (
           <div
             key={index}
+            data-aos="zoom-in-up"
+            data-aos-delay={index * 150}
+            data-aos-duration="700"
+            data-aos-once="true"
             className={`rounded-2xl border bg-white p-5 ${item.border}`}
           >
             <div className="flex items-start justify-between">
@@ -79,14 +93,12 @@ export function InsightHariIni() {
                     {item.value}
                   </h3>
                 ) : (
-                  <>
-                    <p className="mt-2 text-[14px] font-medium text-[#0B0F1F]">
-                      {item.value}
-                    </p>
-                  </>
+                  <p className="mt-2 text-[14px] font-medium text-[#0B0F1F]">
+                    {item.value}
+                  </p>
                 )}
 
-                <h3 className=" mt-3 text-[20px] font-bold text-[#0B0F1F]">
+                <h3 className="mt-3 text-[20px] font-bold text-[#0B0F1F]">
                   {item.change}
                 </h3>
 
@@ -94,13 +106,19 @@ export function InsightHariIni() {
               </div>
 
               <div
+                data-aos="zoom-in"
+                data-aos-delay={index * 150 + 200}
                 className={`flex h-11 w-11 items-center justify-center rounded-full ${item.iconBg}`}
               >
                 <item.icon size={20} className={item.iconColor} />
               </div>
             </div>
 
-            <div className=" flex justify-end">
+            <div
+              className="flex justify-end"
+              data-aos="fade-left"
+              data-aos-delay={index * 150 + 300}
+            >
               <Image
                 src={item.chart}
                 alt=""

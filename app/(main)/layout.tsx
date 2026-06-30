@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import "../globals.css";
-import { Poppins } from 'next/font/google';
+import { Poppins } from "next/font/google";
 import Navbar from "../../components/Navbar";
 import ThemeProviders from "../../components/ThemeProviders";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/Footer";
 import ChatPopup from "@/components/Chat";
+import AosProvider from "@/lib/aos-provider";
 
 const poppins = Poppins({
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-  variable: '--font-poppins',
-  subsets: ['latin'],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-poppins",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -26,16 +27,23 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", poppins.variable, poppins.className)}
+      className={cn(
+        "h-full",
+        "antialiased",
+        poppins.variable,
+        poppins.className,
+      )}
       suppressHydrationWarning
     >
-      <body className="bg-background relative flex flex-col items-center min-h-screen overflow-x-hidden" >
+      <body className="bg-background relative flex flex-col items-center min-h-screen overflow-x-hidden">
         <ThemeProviders>
-          <Navbar />
-          <main className="flex flex-col items-center flex-1 mb-12">
-            {children}
-          </main>
-          <Footer />
+          <AosProvider>
+            <Navbar />
+            <main className="flex flex-col items-center flex-1 mb-12">
+              {children}
+            </main>
+            <Footer />
+          </AosProvider>
           <ChatPopup />
         </ThemeProviders>
       </body>

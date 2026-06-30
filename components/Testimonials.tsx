@@ -30,23 +30,40 @@ const USERS = [
 export function Testimonials() {
   return (
     <div className="w-[80vw] mx-auto mt-24 text-center pb-12">
-      <h3 className="text-foreground text-3xl font-semibold tracking-tight">
+      <h3
+        data-aos="fade-down"
+        data-aos-duration="800"
+        className="text-foreground text-3xl font-semibold tracking-tight"
+      >
         Kisah Sukses Mitra Bakool
       </h3>
-      <p className="text-slate-500 max-w-2xl mx-auto mt-2 text-sm">
+
+      <p
+        data-aos="fade-up"
+        data-aos-delay="150"
+        data-aos-duration="800"
+        className="text-slate-500 max-w-2xl mx-auto mt-2 text-sm"
+      >
         Mereka telah membuktikan transformasi digital bersama ekosistem data
         cerdas kami.
       </p>
 
-      {/* Grid Layout Configuration matching Home.jpg */}
       <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3">
         {USERS.map((user, index) => (
           <div
             key={index}
+            data-aos="fade-up"
+            data-aos-delay={index * 150}
+            data-aos-duration="800"
+            data-aos-once="true"
             className="flex overflow-hidden rounded-2xl border border-[#EEF0F2] bg-white"
           >
             {/* Image */}
-            <div className="relative h-[235px] w-[165px] shrink-0">
+            <div
+              className="relative h-[235px] w-[165px] shrink-0"
+              data-aos="zoom-in"
+              data-aos-delay={index * 150 + 150}
+            >
               <Image
                 src={user.img}
                 alt={user.name}
@@ -61,12 +78,14 @@ export function Testimonials() {
                 "{user.comment}"
               </p>
 
-              <div className="">
+              <div>
                 <h4 className="text-[17px] text-start font-bold text-[#0B0F1F]">
                   {user.name}
                 </h4>
 
-                <p className="mt-1 text-[13px] text-start text-[#98A2B3]">{user.role}</p>
+                <p className="mt-1 text-[13px] text-start text-[#98A2B3]">
+                  {user.role}
+                </p>
 
                 <div className="mt-3 flex items-center gap-1">
                   <span className="mr-2 text-[15px] font-bold">5.0</span>
@@ -81,7 +100,12 @@ export function Testimonials() {
         ))}
       </div>
 
-      <button className="border-[#0C7C61] hover:bg-[#0C7C61] hover:text-white inline-flex items-center gap-2 px-6 py-2 text-[#0C7C61] mt-10 font-bold transition-colors border rounded-lg shadow-xs">
+      <button
+        data-aos="fade-up"
+        data-aos-delay="500"
+        data-aos-duration="800"
+        className="border-[#0C7C61] hover:bg-[#0C7C61] hover:text-white inline-flex items-center gap-2 px-6 py-2 text-[#0C7C61] mt-10 font-bold transition-colors border rounded-lg shadow-xs"
+      >
         Lihat semua testimoni <BsArrowRight />
       </button>
     </div>
