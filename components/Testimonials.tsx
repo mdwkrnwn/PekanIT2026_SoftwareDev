@@ -5,50 +5,75 @@ import { BsArrowRight } from "react-icons/bs";
 
 const USERS = [
   {
-    name: "Om Shanti",
-    comment: "Sistem monitoring penjualan membantu UMKM memetakan area bisnis yang potensial serta efisiensi manajemen produk digital.",
-    img: "https://picsum.photos/176/205?random=1"
+    name: "Siti Aisyah",
+    role: "Pemilik Dapoer Nona",
+    comment:
+      "Setelah pakai Bakool, penjualan meningkat 30% dalam 2 bulan. Dashboardnya sangat membantu untuk memahami pelanggan.",
+    img: "/testi1.png",
   },
   {
-    name: "Budi Pratama",
-    comment: "Sistem keuangan otomatis sangat transparan membantu memangkas waktu manajemen pembukuan setiap bulan.",
-    img: "https://picsum.photos/176/205?random=2"
+    name: "Rizki Pratama",
+    role: "Pemilik Kopi Berkah",
+    comment:
+      "AI Assistant Bakool memberi banyak insight bisnis yang sebelumnya tidak terpikirkan oleh saya.",
+    img: "/testi2.png",
   },
   {
-    name: "Nasya Lestari",
-    comment: "Dashboard analitik mudah dipahami bahkan oleh pemula. Analisis performa sangat mendalam.",
-    img: "https://picsum.photos/176/205?random=3"
+    name: "Maya Lestari",
+    role: "Pemilik Jajanan",
+    comment:
+      "UMKM kami jadi lebih mudah ditemukan dan dipercaya pelanggan berkat review terverifikasi Bakool.",
+    img: "/testi3.png",
   },
 ];
 
 export function Testimonials() {
   return (
     <div className="w-[80vw] mx-auto mt-24 text-center pb-12">
-      <h3 className="text-foreground text-3xl font-bold tracking-tight">Kisah Sukses Mitra Bakool</h3>
-      <p className="text-slate-500 max-w-xl mx-auto mt-2 text-sm">
-        Mereka telah membuktikan transformasi digital bersama ekosistem data cerdas kami.
+      <h3 className="text-foreground text-3xl font-semibold tracking-tight">
+        Kisah Sukses Mitra Bakool
+      </h3>
+      <p className="text-slate-500 max-w-2xl mx-auto mt-2 text-sm">
+        Mereka telah membuktikan transformasi digital bersama ekosistem data
+        cerdas kami.
       </p>
 
       {/* Grid Layout Configuration matching Home.jpg */}
-      <div className="2xl:grid-cols-3 md:grid-cols-2 grid grid-cols-1 gap-6 mt-12 text-left">
-        {USERS.map((user, i) => (
-          <div key={i} className={cn("border-border max-w-screen rounded-2xl bg-accent flex items-start gap-4 p-4 border shadow-lg 2xl:last:col-span-1",
-            USERS.length % 2 == 1 && "last:col-span-2"
-          )}>
-            <div className="rounded-xl shrink-0 w-44 relative h-full overflow-hidden">
-              <Image src={user.img} fill className="object-cover h-full" alt={user.name} />
+      <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3">
+        {USERS.map((user, index) => (
+          <div
+            key={index}
+            className="flex overflow-hidden rounded-2xl border border-[#EEF0F2] bg-white"
+          >
+            {/* Image */}
+            <div className="relative h-[185px] w-[135px] shrink-0">
+              <Image
+                src={user.img}
+                alt={user.name}
+                fill
+                className="object-cover"
+              />
             </div>
 
-            <div className="flex flex-col h-full gap-2">
-              <p className="text-foreground/80 grow font-medium leading-relaxed">
-                &quot;{user.comment}&quot;
+            {/* Content */}
+            <div className="flex flex-1 flex-col justify-between p-5">
+              <p className="text-[14px] leading-6 text-[#374151]">
+                "{user.comment}"
               </p>
 
-              <div>
-                <h4 className="text-foreground/80 font-bold">{user.name}</h4>
-                <div className="flex text-amber-400 gap-0.5 mt-0.5 items-center">
-                  <span className="text-foreground/70 mr-1 font-bold">5.0</span>
-                  <AiFillStar size={12} /><AiFillStar size={12} /><AiFillStar size={12} /><AiFillStar size={12} /><AiFillStar size={12} />
+              <div className="mt-4">
+                <h4 className="text-[17px] font-bold text-[#0B0F1F]">
+                  {user.name}
+                </h4>
+
+                <p className="mt-1 text-[13px] text-[#98A2B3]">{user.role}</p>
+
+                <div className="mt-3 flex items-center gap-1">
+                  <span className="mr-2 text-[15px] font-bold">5.0</span>
+
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <AiFillStar key={i} size={15} className="text-[#FFB800]" />
+                  ))}
                 </div>
               </div>
             </div>

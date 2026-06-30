@@ -1,33 +1,113 @@
-import { LuTrendingUp, LuMapPin, LuClock } from "react-icons/lu";
-import { BiPieChart } from "react-icons/bi";
+import { LuMapPin, LuClock3 } from "react-icons/lu";
+import { FaStore, FaChartColumn } from "react-icons/fa6";
+import Image from "next/image";
 const INSIGHTS = [
-  { title: "Produk Paling Populer", value: "Kopi Susu Gula Aren", change: "38%", desc: "Dari total transaksi minggu ini", icon: LuTrendingUp, color: "bg-emerald-50 text-emerald-600" },
-  { title: "Kategori Terlaris", value: "F&B (Makanan & Minuman)", change: "+28%", desc: "Kenaikan dibanding bulan lalu", icon: BiPieChart, color: "bg-amber-50 text-amber-600" },
-  { title: "Daerah Berkembang", value: "Malang, Jawa Timur", change: "+25%", desc: "Kenaikan pendaftaran UMKM baru", icon: LuMapPin, color: "bg-blue-50 text-blue-600" },
-  { title: "Jam Paling Ramai", value: "18.00 - 21.00", change: "Malam hari", desc: "Waktu paling optimal operasional", icon: LuClock, color: "bg-indigo-50 text-indigo-600" },
+  {
+    title: "Produk Paling Populer",
+    value: "Makanan & Minuman",
+    change: "38%",
+    desc: "dari total penjualan",
+    icon: FaStore,
+    iconColor: "text-[#0C7C61]",
+    iconBg: "bg-[#E8F7F1]",
+    border: "border-[#EEF0F2]",
+    chart: "/te.png",
+    isTime: false,
+  },
+  {
+    title: "Kategori Terlaris",
+    value: "Jajanan Tradisional",
+    change: "+28%",
+    desc: "dibanding minggu lalu",
+    icon: FaChartColumn,
+    iconColor: "text-[#F59E0B]",
+    iconBg: "bg-[#FFF4DF]",
+    border: "border-[#EEF0F2]",
+    chart: "/te.png",
+    isTime: false,
+  },
+  {
+    title: "Daerah Berkembang",
+    value: "Malang Raya",
+    change: "+35%",
+    desc: "pertumbuhan UMKM aktif",
+    icon: LuMapPin,
+    iconColor: "text-[#0C7C61]",
+    iconBg: "bg-[#E8F7F1]",
+    border: "border-[#EEF0F2]",
+    chart: "/te.png",
+    isTime: false,
+  },
+  {
+    title: "Jam Paling Ramai",
+    value: "18.00 - 21.00",
+    change: "",
+    desc: "Waktu kunjungan tertinggi",
+    icon: LuClock3,
+    iconColor: "text-[#2563EB]",
+    iconBg: "bg-[#EAF2FF]",
+    border: "border-[#EEF0F2]",
+    chart: "/trend-chart.png",
+    isTime: true,
+  },
 ];
 
 export function InsightHariIni() {
   return (
     <div className="w-[80vw] mx-auto mt-24 text-center">
-      <h3 className="text-primary-foreground text-3xl font-bold">Insight UMKM Hari ini</h3>
-      <p className="text-slate-500 max-w-xl mx-auto mt-2">
-        Terus update wawasan bisnis kamu berdasarkan data riil pasar lokal terkini.
+      <h3 className="text-[#0B0F1F] text-4xl font-semibold">
+        Insight UMKM Hari ini
+      </h3>
+      <p className="text-slate-500 max-w-2xl mx-auto mt-2">
+        Data yang membantu Anda memahami tren dan peluang bisnis.
       </p>
 
-      <div className="md:grid-cols-2 lg:grid-cols-4 grid grid-cols-1 gap-6 mt-12 text-left">
-        {INSIGHTS.map((insight, idx) => (
-          <div key={idx} className="border-border rounded-2xl relative p-6 bg-accent border shadow-xs">
+      <div className="mt-12 grid grid-cols-1 gap-5 text-left md:grid-cols-2 lg:grid-cols-4">
+        {INSIGHTS.map((item, index) => (
+          <div
+            key={index}
+            className={`rounded-2xl border bg-white p-5 ${item.border}`}
+          >
             <div className="flex items-start justify-between">
-              <span className="text-foreground font-semibold">{insight.title}</span>
-              <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${insight.color}`}>
-                <insight.icon size={20} />
+              <div>
+                <h4 className="text-[15px] font-bold text-[#0B0F1F]">
+                  {item.title}
+                </h4>
+
+                {item.isTime ? (
+                  <h3 className="mt-3 text-[25px] font-bold text-[#0B0F1F]">
+                    {item.value}
+                  </h3>
+                ) : (
+                  <>
+                    <p className="mt-2 text-[14px] font-medium text-[#0B0F1F]">
+                      {item.value}
+                    </p>
+                  </>
+                )}
+
+                <h3 className=" mt-3 text-[20px] font-bold text-[#0B0F1F]">
+                  {item.change}
+                </h3>
+
+                <p className="mt-1 text-[12px] text-[#98A2B3]">{item.desc}</p>
+              </div>
+
+              <div
+                className={`flex h-11 w-11 items-center justify-center rounded-full ${item.iconBg}`}
+              >
+                <item.icon size={20} className={item.iconColor} />
               </div>
             </div>
-            <h4 className="text-foreground mt-4 text-xl font-bold leading-tight">{insight.value}</h4>
-            <div className="flex items-center gap-2 mt-2">
-              <span className="text-xs text-emerald-600 font-bold bg-primary/5 px-2 py-0.5 rounded-sm">{insight.change}</span>
-              <p className="text-foreground text-sm">{insight.desc}</p>
+
+            <div className=" flex justify-end">
+              <Image
+                src={item.chart}
+                alt=""
+                width={130}
+                height={55}
+                className="h-auto object-contain"
+              />
             </div>
           </div>
         ))}

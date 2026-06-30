@@ -6,16 +6,18 @@
 
 :root {
   --background: oklch(98.006% 0.00973 253.023);
-  --foreground: oklch(17.375% 0.03391 271.86);
+  --foreground: #0B0F1F;
 
-  --primary: #0C7C61;
+  --primary: #0c7c61;
   --primary-foreground: #159577;
 
-  --secondary: #DCFCE7;
+  --secondary: #dcfce7;
   --secondary-foreground: oklch(41.1% 0.14828 259.782);
 
   --muted: oklch(92.191% 0.0001 271.152);
   --muted-foreground: oklch(0.556 0 0);
+
+  --stroke: #eef0f2;
 
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(68.449% 0.01484 276.93);
@@ -25,9 +27,9 @@
   --ring: oklch(0.708 0 0);
   --radius: 0.625rem;
 
-  --hero-start: #2D7FFF;
-  --hero-middle: #0F5EDB;
-  --hero-end: #0B2D6B;
+  --hero-start: #2d7fff;
+  --hero-middle: #0f5edb;
+  --hero-end: #0b2d6b;
 }
 
 .dark {
@@ -37,27 +39,28 @@
   --primary: #0b5946;
   --primary-foreground: #19c19a;
 
-  --secondary: oklch(25.000% 0.05000 259.858);
-  --secondary-foreground: oklch(85.000% 0.14828 259.782);
+  --secondary: oklch(25% 0.05 259.858);
+  --secondary-foreground: oklch(85% 0.14828 259.782);
 
-  --muted: oklch(20.000% 0.01000 271.152);
-  --muted-foreground: oklch(65.556% 0.00010 271.152);
+  --muted: oklch(20% 0.01 271.152);
+  --muted-foreground: oklch(65.556% 0.0001 271.152);
 
-  --accent: oklch(25.000% 0.02000 276.93);
-  --accent-foreground: oklch(85.000% 0.01484 276.93);
+  --accent: oklch(25% 0.02 276.93);
+  --accent-foreground: oklch(85% 0.01484 276.93);
 
   --border: oklch(36.807% 0.00658 274.838);
-  --input: oklch(20.000% 0.00010 271.152);
-  --ring: oklch(65.000% 0.21518 260.702);
+  --input: oklch(20% 0.0001 271.152);
+  --ring: oklch(65% 0.21518 260.702);
 
-  --hero-start: #2D7FFF;
-  --hero-middle: #0F5EDB;
-  --hero-end: #0B2D6B;
+  --hero-start: #2d7fff;
+  --hero-middle: #0f5edb;
+  --hero-end: #0b2d6b;
 }
 
 @theme inline {
   --color-hero-start: var(--hero-start);
   --color-hero-middle: var(--hero-middle);
+   --color-stroke: var(--stroke);
   --color-hero-end: var(--hero-end);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -82,5 +85,5 @@
 }
 
 button {
-  @apply cursor-pointer
+  @apply cursor-pointer;
 }

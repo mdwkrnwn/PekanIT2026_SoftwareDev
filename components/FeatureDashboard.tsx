@@ -1,36 +1,74 @@
+import { ArrowRight, Check } from "lucide-react";
 import Image from "next/image";
+const FEATURES = [
+  "Pantau pengunjung dan performa toko",
+  "Kelola produk, stok, dan pesanan",
+  "Analisis produk favorit dan pelanggan",
+  "Tingkatkan rating dan kepercayaan",
+];
 
 export function FeatureDashboard() {
   return (
-    <div className="w-[80vw] mx-auto mt-24">
-      <div className="bg-[#046A4E] rounded-[2.5rem] p-8 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-12 text-white relative overflow-hidden">
-        <div className="z-10 max-w-md">
-          <span className="bg-emerald-500/20 text-emerald-300 px-3 py-1 text-xs font-bold tracking-wider uppercase rounded-full">Dashboard Aktif</span>
-          <h3 className="md:text-4xl mt-4 text-3xl font-bold leading-tight">Kelola Bisnis Lebih Mudah, Semua dalam Satu Tempat</h3>
-          <ul className="text-emerald-100/90 mt-6 space-y-3 text-sm list-disc list-inside">
-            <li>Pantau pengunjung dan performa toko</li>
-            <li>Kelola produk, stok, dan pesanan</li>
-            <li>Analisis produk favorit dan pelanggan</li>
-            <li>Tingkatkan rating dan kepercayaan</li>
-          </ul>
-          <button className="mt-8 bg-white text-[#046A4E] font-bold px-6 py-3 rounded-xl shadow-md hover:bg-emerald-50 transition-colors">
-            Coba Dashboard Sekarang
-          </button>
+    <section className="mx-auto mt-24 w-[80vw]">
+      <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-b from-[#05705E] to-[#026353] px-8 py-8 text-white lg:px-14 lg:py-12">
+        {/* Dekorasi kanan atas */}
+        <div className="absolute right-10 top-8 grid grid-cols-4 gap-4 opacity-30">
+          {Array.from({ length: 16 }).map((_, i) => (
+            <span key={i} className="h-[4px] w-[4px] rounded-full bg-white" />
+          ))}
         </div>
 
-        <div className="lg:w-1/2 aspect-4/3 rounded-2xl text-slate-800 relative flex flex-col w-full gap-4 p-6 bg-white shadow-2xl">
-          <div className="border-slate-100 flex items-center justify-between pb-4 border-b">
-            <div>
-              <p className="text-slate-400 text-xs font-medium">Pendapatan</p>
-              <h4 className="text-slate-900 text-xl font-bold">Rp 24.500.000 <span className="text-emerald-500 text-xs font-bold">+12.5%</span></h4>
+        {/* Dekorasi kiri bawah */}
+        <div className="absolute bottom-14 left-[42%] grid grid-cols-3 gap-4 opacity-30">
+          {Array.from({ length: 9 }).map((_, i) => (
+            <span key={i} className="h-[4px] w-[4px] rounded-full bg-white" />
+          ))}
+        </div>
+
+        <div className="grid items-center gap-16 lg:grid-cols-2">
+          {/* LEFT */}
+          <div className="relative z-10">
+            <span className="inline-flex rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-medium text-white">
+              Untuk pemilik UMKM
+            </span>
+
+            <h2 className="mt-6 max-w-lg text-[46px] font-bold leading-[1.15]">
+              Kelola Bisnis Lebih Mudah,
+              <br />
+              Semua dalam Satu Tempat
+            </h2>
+            <ul className="mt-8 space-y-5">
+              {FEATURES.map((item) => (
+                <li key={item} className="flex items-center gap-4">
+                  <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#42D7AE]">
+                    <Check size={18} strokeWidth={3} className="text-white" />
+                  </div>
+
+                  <span className="text-[20px] text-white/95">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <button className="mt-8 inline-flex items-center gap-3 rounded-xl bg-white px-8 py-4 text-lg font-semibold text-[#046A4E] transition hover:scale-[1.02]">
+              Coba Dashboard Sekarang
+              <ArrowRight size={20} />
+            </button>
+          </div>
+
+          {/* RIGHT */}
+          <div className="flex justify-center lg:justify-end">
+           
+              <Image
+                src="/chart.png"
+                alt="Dashboard Preview"
+                width={500}
+                height={320}
+                className="h-auto w-full rounded-2xl"
+                priority
+              />
             </div>
-            <div className="bg-slate-50 w-24 h-8 rounded-lg" />
-          </div>
-          <div className="relative flex-1">
-            <Image src="https://picsum.photos/600/400?random=10" fill className="object-cover rounded-lg" alt="Dashboard Preview" />
-          </div>
+         
         </div>
       </div>
-    </div>
+    </section>
   );
 }
