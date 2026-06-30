@@ -67,7 +67,7 @@ function Navbar() {
   const navItems = [
     { name: "Beranda", href: "/" },
     { name: "Explore", href: "/explore" },
-    { name: "Solusi", href: "/#solusi" },
+    { name: "Solusi", href: "/solusi" },
     { name: "Article", href: "/article" },
   ];
   useEffect(() => {
@@ -146,11 +146,10 @@ function Navbar() {
                         className={`relative inline-block pb-3
                       after:absolute after:bottom-0 after:left-0
                       after:rounded-full after:w-full after:h-1 after:transition-all
-                      ${
-                        isActive
-                          ? "after:bg-primary text-primary-foreground"
-                          : "after:bg-transparent hover:text-primary-foreground/50"
-                      }`}
+                      ${isActive
+                            ? "after:bg-primary text-primary-foreground"
+                            : "after:bg-transparent hover:text-primary-foreground/50"
+                          }`}
                       >
                         {item.name}
                       </Link>
@@ -207,9 +206,8 @@ function Navbar() {
                       <span className="font-semibold text-sm">{user.name}</span>
 
                       <IoChevronDown
-                        className={`text-gray-500 transition-transform ${
-                          isProfileOpen ? "rotate-180" : ""
-                        }`}
+                        className={`text-gray-500 transition-transform ${isProfileOpen ? "rotate-180" : ""
+                          }`}
                       />
                     </button>
 
@@ -307,7 +305,7 @@ function Navbar() {
                 <Link href="/explore">Explore</Link>
               </li>
               <li>
-                <Link href="/#solusi">Solusi</Link>
+                <Link href="/solusi">Solusi</Link>
               </li>
               <li>
                 <Link href="/article">Article</Link>
@@ -325,7 +323,7 @@ function Navbar() {
       {!path.startsWith("/login") && !path.startsWith("/register") && (
         <>
           {path == "/" ||
-          disAllowedBreadcrumb.some((item) => path.includes(item)) ? (
+            disAllowedBreadcrumb.some((item) => path.includes(item)) ? (
             ""
           ) : (
             <Breadcrumb className="w-[80vw] mt-5 mb-9">
