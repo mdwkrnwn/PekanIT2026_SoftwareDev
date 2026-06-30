@@ -206,6 +206,5 @@ export default function RegisterPage() {
           </div>
         </div>
       </div>
-    </div>
-  );
+      );
 }
