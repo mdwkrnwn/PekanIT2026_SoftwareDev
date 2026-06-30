@@ -1,6 +1,6 @@
 import { ARTICLES } from "@/data/ARTIKEL";
 import Image from "next/image";
-import { FaUser, FaHeart, FaBookmark } from "react-icons/fa";
+import { FaHeart, FaBookmark } from "react-icons/fa";
 import { FaShareNodes } from "react-icons/fa6";
 
 export function Content({ article }: { article: (typeof ARTICLES)[number] }) {

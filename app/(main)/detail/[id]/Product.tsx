@@ -97,73 +97,103 @@ export default function ProductPage({
 
   return (
     <>
-      <Breadcrumb className="w-[80vw] mt-5 mb-9">
-        <BreadcrumbList>
-          <BreadcrumbItem>
+      <div data-aos="fade-down" data-aos-duration="700" data-aos-once="true">
+        <Breadcrumb className="w-[80vw] mt-5 mb-9">
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link
+                  href="/"
+                  className="flex items-center gap-2 text-[1.375rem] font-semibold hover:text-primary transition"
+                >
+                  Home
+                </Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator>
+              <FaChevronLeft size={25} />
+            </BreadcrumbSeparator>
             <BreadcrumbLink asChild>
               <Link
-                href="/"
-                className="flex items-center gap-2 text-[1.375rem] font-semibold hover:text-primary transition"
+                href={`/` + (src ?? "explore")}
+                className="text-[1.375rem] font-semibold text-muted-foreground hover:text-primary transition"
               >
-                Home
+                {src ? src?.charAt(0).toUpperCase() + src?.slice(1) : "Explore"}
               </Link>
             </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator>
-            <FaChevronLeft size={25} />
-          </BreadcrumbSeparator>
-          <BreadcrumbLink asChild>
-            <Link
-              href={`/` + (src ?? "explore")}
-              className="text-[1.375rem] font-semibold text-muted-foreground hover:text-primary transition"
-            >
-              {src ? src?.charAt(0).toUpperCase() + src?.slice(1) : "Explore"}
-            </Link>
-          </BreadcrumbLink>
-          <BreadcrumbSeparator>
-            <FaChevronLeft size={25} />
-          </BreadcrumbSeparator>
-          <BreadcrumbPage className="text-[1.375rem] font-semibold text-foreground">
-            {product.name}
-          </BreadcrumbPage>
-        </BreadcrumbList>
-      </Breadcrumb>
+            <BreadcrumbSeparator>
+              <FaChevronLeft size={25} />
+            </BreadcrumbSeparator>
+            <BreadcrumbPage className="text-[1.375rem] font-semibold text-foreground">
+              {product.name}
+            </BreadcrumbPage>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
+
       <div className="w-[80vw]">
         {/* Grid Utama */}
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 pb-8">
-          <GallerySection
-            mainImage={mainImage}
-            setMainImage={setMainImage}
-            gallery={product.gallery}
-            productName={product.name}
-            description={product.about}
-          />
+          <div
+            data-aos="fade-right"
+            data-aos-duration="800"
+            data-aos-once="true"
+          >
+            <GallerySection
+              mainImage={mainImage}
+              setMainImage={setMainImage}
+              gallery={product.gallery}
+              productName={product.name}
+              description={product.about}
+            />
+          </div>
 
-          <InfoPanel
-            product={product}
-            isWish={isWish}
-            onToggleWishlist={toggleWishlist}
-            rating={rating}
-            reviewCount={review?.length || 0}
-          />
+          <div
+            data-aos="fade-left"
+            data-aos-delay="150"
+            data-aos-duration="800"
+            data-aos-once="true"
+          >
+            <InfoPanel
+              product={product}
+              isWish={isWish}
+              onToggleWishlist={toggleWishlist}
+              rating={rating}
+              reviewCount={review?.length || 0}
+            />
+          </div>
         </div>
 
         <hr className="border-border " />
-        {/* featured menu */}
+
+        {/* Promo + Menu */}
         {product.featuredMenus && product.featuredMenus.length > 0 && (
-          <section className="mt-5 ">
+          <section
+            className="mt-5"
+            data-aos="fade-up"
+            data-aos-duration="800"
+            data-aos-once="true"
+          >
+            {/* Promo Header */}
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-foreground text-xl font-bold">
                 Promo Spesial
               </h3>
+
               <button className="text-primary hover:underline text-sm font-bold">
                 Lihat Semua
               </button>
             </div>
+
+            {/* Promo Cards */}
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-              {PROMOS.map((promo) => (
+              {PROMOS.map((promo, index) => (
                 <div
                   key={promo.id}
+                  data-aos="zoom-in"
+                  data-aos-delay={index * 120}
+                  data-aos-duration="700"
+                  data-aos-once="true"
                   className="group relative overflow-hidden rounded-2xl shadow-sm"
                 >
                   <Image
@@ -177,27 +207,37 @@ export default function ProductPage({
                 </div>
               ))}
             </div>
-            <div className="mt-15 border-t mb-5 border-slate-200 "></div>
+
+            <div className="mt-15 mb-5 border-t border-slate-200"></div>
+
+            {/* Menu Header */}
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-foreground text-xl font-bold">
                 Menu Andalan
               </h3>
+
               <button className="text-primary hover:underline text-sm font-bold">
                 Lihat Semua
               </button>
             </div>
-            <div className="*:flex-1 grid lg:grid-cols-5 md:grid-cols-3 gap-4">
+
+            {/* Menu Cards */}
+            <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-5 *:flex-1">
               {product.featuredMenus.map((item, i) => (
                 <div
                   key={i}
-                  className="group rounded-xl hover:shadow-xl flex flex-col pb-4 transition-all shadow-md cursor-pointer"
+                  data-aos="fade-up"
+                  data-aos-delay={i * 100}
+                  data-aos-duration="700"
+                  data-aos-once="true"
+                  className="group flex cursor-pointer flex-col rounded-xl pb-4 shadow-md transition-all hover:shadow-xl"
                 >
-                  <div className="relative w-full h-32 mb-3 overflow-hidden">
+                  <div className="relative mb-3 h-32 w-full overflow-hidden">
                     <Image
                       src={item.image}
                       alt={item.name}
                       fill
-                      className="group-hover:scale-110 object-cover transition-transform duration-300 rounded-tl-lg rounded-tr-lg"
+                      className="rounded-tl-lg rounded-tr-lg object-cover transition-transform duration-300 group-hover:scale-110"
                     />
                   </div>
 
@@ -215,31 +255,44 @@ export default function ProductPage({
             </div>
           </section>
         )}
-        {/* reviews */}
-        <div className="mt-15 border-t border-slate-200 "></div>
-        <h2 className="mt-5 text-2xl font-semibold text-foreground">
+
+        {/* Reviews */}
+        <div className="mt-15 border-t border-slate-200"></div>
+
+        <h2
+          data-aos="fade-up"
+          className="mt-5 text-2xl font-semibold text-foreground"
+        >
           Ulasan Pelanggan
         </h2>
-        <section className="mt-5">
+
+        <section
+          className="mt-5"
+          data-aos="fade-up"
+          data-aos-delay="100"
+          data-aos-duration="800"
+          data-aos-once="true"
+        >
           <div className="flex flex-col gap-8">
-            {/* Summary + Form */}
-            <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-6 rounded-xl bg-card">
-              <RatingSummary reviews={reviews} />
-              <ReviewForm
-                onSubmit={(newReview) => {
-                  setReviews((prev) => [newReview, ...prev]);
-                }}
-              />
+            <div className="grid grid-cols-1 gap-6 rounded-xl bg-card lg:grid-cols-[320px_1fr]">
+              <div data-aos="fade-right">
+                <RatingSummary reviews={reviews} />
+              </div>
+
+              <div data-aos="fade-left" data-aos-delay="150">
+                <ReviewForm
+                  onSubmit={(newReview) => {
+                    setReviews((prev) => [newReview, ...prev]);
+                  }}
+                />
+              </div>
             </div>
 
-            {/* Review List */}
-            <div className="w-full">
+            <div data-aos="fade-up" data-aos-delay="250" className="w-full">
               <ReviewsSection reviews={reviews} />
             </div>
           </div>
         </section>
-
-        {/* Similar UMKM Section */}
       </div>
     </>
   );

@@ -43,9 +43,9 @@ export default function LoginPage() {
   };
   return (
     <div className="min-h-screen bg-[#F8FAFC] p-4 lg:p-6">
-      <div className="mx-auto grid min-h-[95vh] max-w-[2000px] grid-cols-[42%_58%] overflow-hidden rounded-[20px] bg-white shadow-sm">
+      <div className="mx-auto grid w-[1200px] grid-cols-[42%_58%] overflow-hidden rounded-[20px] bg-white shadow-sm">
         {/* LEFT */}
-        <div className="hidden w-[100%] bg-[#158A62] lg:flex flex-col justify-between p-10 relative overflow-hidden">
+        <div className="hidden w-full bg-[#158A62] lg:flex flex-col justify-between p-10 relative overflow-hidden">
           <div>
             <Image
               src="/bakol.png"
