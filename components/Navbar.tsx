@@ -3,10 +3,14 @@ import Image from "next/image";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { FaChevronLeft, FaSearch } from "react-icons/fa";
 import Link from "next/link";
-import { FaHeart, FaRegClock } from "react-icons/fa";
+import { useRef } from "react";
+import { FaHeart } from "react-icons/fa";
 import { IoChevronDown } from "react-icons/io5";
 import { useEffect, useState } from "react";
+import { useWishlist } from "@/hooks/useWishlist";
+import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
+import { User, BadgeCheck, MessageSquareText, LogOut } from "lucide-react";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -21,8 +25,36 @@ import { cn } from "@/lib/utils";
 import header from "./Navbar.module.css";
 
 function Navbar() {
-  const [user, setUser] = useState<any>(null);
+  const favorites = useWishlist();
 
+  // logout
+  const router = useRouter();
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setUser(null);
+    setIsProfileOpen(false);
+    router.push("/");
+  };
+
+  const [user, setUser] = useState<any>(null);
+  const profileRef = useRef<HTMLDivElement>(null);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        profileRef.current &&
+        !profileRef.current.contains(event.target as Node)
+      ) {
+        setIsProfileOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   useEffect(() => {
     const data = localStorage.getItem("user");
 
@@ -83,7 +115,7 @@ function Navbar() {
         <div className="sm:flex hidden bg-background justify-center shadow-[#A9A1A140] shadow-md">
           <nav className="grid grid-cols-[1fr_1fr_3fr] justify-center items-center w-[80vw] py-6">
             <section className="flex items-center">
-              <Link href = "/" className="flex items-center">
+              <Link href="/" className="flex items-center">
                 <Image
                   src="/Bakul.png"
                   alt="Bakool"
@@ -140,34 +172,99 @@ function Navbar() {
                   />
                 </div>
               </div>
-             <ThemeSwitcher className={user ? "mr-0" : "mr-5"} />
+              <ThemeSwitcher className={user ? "mr-0" : "mr-5"} />
 
               {user ? (
                 <div className="flex items-center gap-4">
                   {/* Favorite */}
-                  <Link href="/favorite" className="outline-1 outline-primary-foreground flex items-center justify-center p-2 transition-colors bg-transparent rounded-full cursor-pointer hover:bg-primary/10">
-                    <FaHeart className="text-primary-foreground h-6 w-6 text-lg" />
+                  <Link
+                    href="/favorit"
+                    className="relative outline-1 outline-primary-foreground flex items-center justify-center p-2 rounded-full transition-colors bg-transparent hover:bg-primary/10"
+                  >
+                    <FaHeart className="text-primary-foreground h-6 w-6" />
+
+                    {favorites.length > 0 && (
+                      <span className="absolute -top-1 -right-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-semibold text-white">
+                        {favorites.length}
+                      </span>
+                    )}
                   </Link>
 
                   {/* Profile */}
-                  <button className="flex items-center gap-3">
-                    <Image
-                      src="/avatar.png"
-                      alt={user.name}
-                      width={50}
-                      height={50}
-                      className="rounded-full object-cover"
-                    />
+                  <div ref={profileRef} className="relative">
+                    <button
+                      onClick={() => setIsProfileOpen((prev) => !prev)}
+                      className="flex items-center gap-3"
+                    >
+                      <Image
+                        src="/avatar.png"
+                        alt={user.name}
+                        width={50}
+                        height={50}
+                        className="rounded-full object-cover"
+                      />
 
-                    <span className="font-semibold text-sm">{user.name}</span>
+                      <span className="font-semibold text-sm">{user.name}</span>
 
-                    <IoChevronDown className="text-gray-500" />
-                  </button>
+                      <IoChevronDown
+                        className={`text-gray-500 transition-transform ${
+                          isProfileOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+
+                    {isProfileOpen && (
+                      <div className="absolute right-0 mt-4 w-60 rounded-3xl bg-white shadow-xl p-5 z-50">
+                        <Link
+                          href="/profile"
+                          className="flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-gray-50 transition"
+                        >
+                          <User size={26} className="text-slate-600" />
+                          <span className="font-medium">Profil Saya</span>
+                        </Link>
+
+                        <hr className="my-2 text-[#E8EAEE]" />
+
+                        <Link
+                          href="/achievement"
+                          className="flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-gray-50 transition"
+                        >
+                          <BadgeCheck size={26} className="text-slate-600" />
+                          <span className="font-medium">
+                            Achievement & Badge
+                          </span>
+                        </Link>
+
+                        <hr className="my-2 text-[#E8EAEE]" />
+
+                        <Link
+                          href="/review"
+                          className="flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-gray-50 transition"
+                        >
+                          <MessageSquareText
+                            size={26}
+                            className="text-slate-600"
+                          />
+                          <span className="font-medium">Ulasan Saya</span>
+                        </Link>
+
+                        <hr className="my-2 text-[#E8EAEE]" />
+
+                        <button
+                          onClick={handleLogout}
+                          className="flex w-full items-center gap-4 px-4 py-4 rounded-xl text-red-500 hover:bg-red-50 transition"
+                        >
+                          <LogOut size={26} />
+                          <span className="font-medium">Keluar</span>
+                        </button>
+                      </div>
+                    )}
+                  </div>
                 </div>
               ) : (
                 <Link
                   href="/login"
-                  className="flex items-center gap-3 rounded-lg border border-border px-5 py-3 bg-primary text-white font-semibold hover:opacity-90 transition"
+                  className="flex items-center gap-3 rounded-lg border border-border px-5 py-3 bg-primary text-white font-semibold"
                 >
                   Masuk / Daftar
                 </Link>
