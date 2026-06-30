@@ -5,11 +5,14 @@ import {
   LuHeart,
   LuPlus,
   LuTicket,
-  LuSparkles,
+  LuMessageCircle,
+  LuShare2,
   LuStar,
   LuMapPin,
   LuBadgePercent,
 } from "react-icons/lu";
+import { ArrowRight } from "lucide-react";
+import { HiChartBar } from "react-icons/hi";
 import {
   ResponsiveContainer,
   AreaChart,
@@ -87,7 +90,6 @@ export default function DashboardPage() {
       ],
     },
   ];
-
   const visitData = [
     { day: "20 Mei", viewed: 200, favorite: 70 },
     { day: "21 Mei", viewed: 250, favorite: 72 },
@@ -97,7 +99,64 @@ export default function DashboardPage() {
     { day: "25 Mei", viewed: 175, favorite: 55 },
     { day: "26 Mei", viewed: 260, favorite: 110 },
   ];
-
+  const reviews = [
+    {
+      name: "Siti Nurhaliza",
+      image: "/ava1.png",
+      comment:
+        "Makanannya enak banget, sambalnya nampol! Porsi pas dan harga terjangkau",
+      rating: 5.0,
+      time: "2 jam yang lalu",
+    },
+    {
+      name: "Rizky Pratama",
+      image: "/ava2.png",
+      comment: "Enak dan cocok buat makan siang. Ayamnya Juicy!",
+      rating: 5.0,
+      time: "2 jam yang lalu",
+    },
+    {
+      name: "Dewi Lestari",
+      image: "/ava3.png",
+      comment: "Langganan sejak lama, rasanya konsisten. Recommended!!",
+      rating: 5.0,
+      time: "2 jam yang lalu",
+    },
+    {
+      name: "Dewi Lestari",
+      image: "/ava3.png",
+      comment: "Langganan sejak lama, rasanya konsisten. Recommended!!",
+      rating: 5.0,
+      time: "2 jam yang lalu",
+    },
+  ];
+  const quickActions = [
+    {
+      title: "Tambah Menu",
+      icon: LuPlus,
+      color: "text-[#158A62]",
+    },
+    {
+      title: "Buat Promo",
+      icon: LuTicket,
+      color: "text-[#E11D48]",
+    },
+    {
+      title: "Balas Ulasan",
+      icon: LuMessageCircle,
+      color: "text-[#2563EB]",
+    },
+    {
+      title: "Lihat Analytics",
+      icon: HiChartBar,
+      color: "text-[#158A62]",
+    },
+    {
+      title: "Bagikan Toko",
+      icon: LuShare2,
+      color: "text-[#9333EA]",
+    },
+  ];
   return (
     <>
       <div className="flex items-start mt-5 justify-between">
@@ -308,9 +367,9 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-xs flex flex-col justify-between">
+          <div className="bg-white border-2 border-[#F3F4F7] rounded-2xl p-6 shadow-xs flex flex-col justify-between">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-bold text-slate-900">
+              <h3 className="text-xl font-semibold text-[#0B0F1F]">
                 Produk / Menu Terpopuler
               </h3>
               <button className="text-[#15803d] font-bold">Lihat semua</button>
@@ -322,6 +381,7 @@ export default function DashboardPage() {
                   name: "Nasi Ayam Geprek",
                   count: "324 dilihat",
                   tag: "Terlaris",
+                  image: "/assets/umkm/makanan/dapurnona/ayamgeprek.jpeg",
                   tagCol: "bg-emerald-50 text-emerald-700",
                 },
                 {
@@ -329,35 +389,48 @@ export default function DashboardPage() {
                   name: "Es Teh Manis",
                   count: "210 dilihat",
                   tag: "Populer",
+                  image: "/assets/umkm/makanan/dapurnona/esteh.jpeg",
                   tagCol: "bg-blue-50 text-blue-700",
                 },
                 {
                   rank: 3,
-                  name: "Ayam Penyet",
+                  name: "Sambal Cumi",
                   count: "145 dilihat",
                   tag: "Stabil",
+                  image: "/assets/umkm/makanan/dapurnona/sambalcumi.jpeg",
                   tagCol: "bg-slate-100 text-slate-700",
+                },
+                {
+                  rank: 4,
+                  name: "Nasi Telur Dadar",
+                  count: "120 dilihat",
+                  tag: "Baru",
+                  image: "/assets/umkm/makanan/dapurnona/nasitelurdadar.jpeg",
+                  tagCol: "bg-amber-50 text-amber-700",
                 },
               ].map((food, idx) => (
                 <div
                   key={idx}
                   className="flex items-center gap-4 p-2 hover:bg-slate-50 rounded-xl transition-colors"
                 >
-                  <span className="font-black text-slate-400 text-lg w-6">
+                  <span className="font-black text-[#0B0F1F] text-lg w-6">
                     {food.rank}
                   </span>
-                  <div className="w-14 h-14 relative rounded-xl overflow-hidden shrink-0">
+
+                  <div className="w-25 h-14 relative rounded-xl overflow-hidden shrink-0">
                     <Image
-                      src={`https://picsum.photos/100?random=${idx + 50}`}
+                      src={food.image}
                       fill
                       className="object-cover"
                       alt={food.name}
                     />
                   </div>
+
                   <div className="flex-1">
                     <h4 className="font-bold text-slate-900">{food.name}</h4>
                     <p className="text-slate-400 font-medium">{food.count}</p>
                   </div>
+
                   <span
                     className={`px-2 py-1 font-bold rounded-md ${food.tagCol}`}
                   >
@@ -371,97 +444,130 @@ export default function DashboardPage() {
 
         {/* Bottom Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 bg-white border border-slate-100 rounded-2xl p-6 shadow-xs">
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-bold text-slate-900">
+          <div className="lg:col-span-2 rounded-2xl border border-[#EAECF0] bg-white p-6">
+            <div className="mb-6 flex items-center justify-between">
+              <h3 className="text-[25px] font-semibold text-[#101828]">
                 Ulasan Terbaru
               </h3>
-              <button className="text-[#15803d] font-bold">Lihat semua</button>
+
+              <button className="font-semibold text-[#158A62] hover:underline">
+                Lihat semua
+              </button>
             </div>
-            <div className="flex flex-col gap-6">
-              {[
-                {
-                  name: "Siti Nurhaliza",
-                  comment:
-                    "Makanannya enak banget, sambalnya nampol! Porsi pas dan harga terjangkau",
-                  r: "2 jam yang lalu",
-                },
-                {
-                  name: "Rizky Pratama",
-                  comment: "Enak dan cocok buat makan siang. Ayamnya juicy!",
-                  r: "3 jam yang lalu",
-                },
-              ].map((review, idx) => (
+
+            <div className="space-y-6">
+              {reviews.map((review, idx) => (
                 <div
                   key={idx}
-                  className="flex gap-4 items-start border-b border-slate-50 pb-4 last:border-0 last:pb-0"
+                  className="flex items-start gap-5 border-b border-[#EAECF0] pb-6 last:border-none last:pb-0"
                 >
-                  <div className="w-12 h-12 relative rounded-full overflow-hidden shrink-0">
-                    <Image
-                      src={`https://picsum.photos/100?random=${idx + 60}`}
-                      fill
-                      className="object-cover"
-                      alt="User Profile"
-                    />
-                  </div>
+                  {/* Avatar */}
+                  <Image
+                    src={review.image}
+                    alt={review.name}
+                    width={70}
+                    height={70}
+                    className="rounded-full object-cover"
+                  />
+
+                  {/* Content */}
                   <div className="flex-1">
-                    <div className="flex items-center justify-between">
-                      <h4 className="font-bold text-slate-900">
-                        {review.name}
-                      </h4>
-                      <span className="text-slate-400 font-medium">
-                        {review.r}
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <div className="flex items-center gap-4">
+                          <h4 className="text-[20px] font-semibold text-[#101828]">
+                            {review.name}
+                          </h4>
+
+                          <div className="flex items-center gap-1">
+                            {[...Array(5)].map((_, i) => (
+                              <LuStar
+                                key={i}
+                                size={18}
+                                className="fill-[#F59E0B] text-[#F59E0B]"
+                              />
+                            ))}
+
+                            <span className="ml-2 rounded-full bg-[#E8F7EF] px-2 py-0.5 text-xs font-semibold text-[#158A62]">
+                              {review.rating.toFixed(1)}
+                            </span>
+                          </div>
+                        </div>
+
+                        <p className="mt-2 text-[17px] text-[#64748B]">
+                          {review.comment}
+                        </p>
+                      </div>
+
+                      <span className="text-sm text-[#64748B]">
+                        {review.time}
                       </span>
                     </div>
-                    <div className="flex text-amber-400 gap-0.5 my-1">
-                      {[...Array(5)].map((_, s) => (
-                        <LuStar
-                          key={s}
-                          className="fill-amber-400 text-amber-400"
-                          size={16}
-                        />
-                      ))}
-                    </div>
-                    <p className="text-slate-600 font-medium mt-1">
-                      {review.comment}
-                    </p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="bg-emerald-900 text-white rounded-2xl p-6 shadow-xs flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-emerald-800 rounded-xl flex items-center justify-center text-emerald-300">
-                  <LuSparkles size={22} />
-                </div>
-                <h3 className="text-xl font-bold">Insight AI Assistant</h3>
+          <div className="rounded-2xl border border-[#EAECF0] bg-white p-8">
+            <h3 className="text-[22px] font-semibold text-[#158A62]">
+              Insight dari AI Business Assistant
+            </h3>
+
+            <div className="mt-8 flex items-start gap-6">
+              {/* Robot */}
+              <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-[#E8F7EF]">
+                <Image
+                  src="/robot.png"
+                  alt="AI Assistant"
+                  width={80}
+                  height={80}
+                />
               </div>
-              <p className="text-emerald-100/90 leading-relaxed font-medium">
-                Kunjungan tokomu meningkat{" "}
-                <span className="text-emerald-300 font-bold">18.5%</span> minggu
-                ini. Produk Nasi Ayam Geprek paling banyak dilihat pada jam
-                17.00 - 21.00.
-              </p>
+
+              {/* Content */}
+              <div className="flex-1">
+                <p className="text-[16px] leading-9 text-[#101828]">
+                  <span className="font-semibold">
+                    Kunjungan tokomu meningkat <b>18.5%</b> minggu ini!
+                  </span>
+                  <br />
+                  Produk <b>Nasi Ayam Geprek</b> paling banyak dilihat pada jam
+                  <b> 17.00 – 21.00.</b>
+                  <br />
+                  Coba buat promo di jam tersebut untuk meningkatkan penjualan
+                  lebih banyak lagi!
+                </p>
+
+                <button className="mt-8 flex h-14 w-[300px] items-center justify-between rounded-2xl bg-[#158A62] px-6 font-semibold text-white transition hover:bg-[#127553]">
+                  <span>Lihat rekomendasi lengkap</span>
+
+                  <ArrowRight size={20} />
+                </button>
+              </div>
             </div>
-            <button className="w-full bg-white text-emerald-900 font-bold py-3 rounded-xl hover:bg-emerald-50 transition-colors mt-6 text-center">
-              Lihat Rekomendasi →
-            </button>
           </div>
         </div>
 
         {/* Quick Actions */}
-        <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-xs">
-          <h3 className="text-xl font-bold text-slate-900 mb-4">Aksi Cepat</h3>
-          <div className="flex flex-wrap gap-4">
-            <button className="flex items-center gap-2 border border-slate-200 rounded-xl px-5 py-3 font-bold text-slate-700 hover:bg-slate-50 transition-colors">
-              <LuPlus size={20} /> Tambah Menu
-            </button>
-            <button className="flex items-center gap-2 border border-slate-200 rounded-xl px-5 py-3 font-bold text-slate-700 hover:bg-slate-50 transition-colors">
-              <LuTicket size={20} /> Buat Promo
-            </button>
+        <div className="rounded-2xl border border-[#EAECF0] bg-white p-6">
+          <h3 className="mb-5 text-[22px] font-semibold text-[#101828]">
+            Aksi Cepat
+          </h3>
+
+          <div className="grid grid-cols-5 gap-4">
+            {quickActions.map((action) => (
+              <button
+                key={action.title}
+                className="flex h-12 items-center justify-center gap-3 rounded-xl border border-[#EAECF0] bg-white transition hover:bg-[#F9FAFB]"
+              >
+                <action.icon size={18} className={action.color} />
+
+                <span className="text-[14px] font-medium text-[#101828]">
+                  {action.title}
+                </span>
+              </button>
+            ))}
           </div>
         </div>
       </div>

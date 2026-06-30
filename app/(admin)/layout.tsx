@@ -28,7 +28,7 @@ export default function AdminLayout({
     >
       <body className="bg-white relative flex flex-row min-h-screen overflow-x-hidden" >
         <Sidebar />
-        <main className="flex-1 p-6">
+        <main className="flex-1 pt-6 pr-6">
           {children}
         </main>
       </body>
