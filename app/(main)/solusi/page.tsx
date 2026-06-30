@@ -10,7 +10,6 @@ import {
   LuTrendingUp,
   LuMapPin,
   LuHeart,
-  LuTrendingDown,
   LuUsers,
   LuZap,
   LuGlobe,
@@ -22,7 +21,7 @@ import { BarChart3Icon, Sliders, LineChart } from "lucide-react";
 export default function SolutionPage() {
   const features = [
     { title: "Analytics Dashboard", desc: "Pantau performa bisnis secara real-time dengan visualisasi data yang relevan dan mudah dipahami.", icon: BarChart3Icon, color: "bg-emerald-50 text-emerald-600 dark:bg-emerald-950/50 dark:text-emerald-400" },
-    { title: "AI Bussines Assistant", desc: "Dapatkan insight dan rekomendasi strategi bisnis dari AI Bakool yang siap membantu anda 24/7.", icon: LuSparkles, color: "bg-teal-50 text-teal-600 dark:bg-teal-950/50 dark:text-teal-400" },
+    { title: "AI Business Assistant", desc: "Dapatkan insight dan rekomendasi strategi bisnis dari AI Bakool yang siap membantu anda 24/7.", icon: LuSparkles, color: "bg-teal-50 text-teal-600 dark:bg-teal-950/50 dark:text-teal-400" },
     { title: "Produk & Menu", desc: "Kelola produk, stok, variasi, dan berbagai menu dalam satu sistem terintegrasi.", icon: LuUtensilsCrossed, color: "bg-blue-50 text-blue-600 dark:bg-blue-950/50 dark:text-blue-400" },
     { title: "Promo Management", desc: "Buat dan kelola promo menarik untuk meningkatkan penjualan dan loyalitas pelanggan.", icon: LuTicket, color: "bg-pink-50 text-pink-600 dark:bg-pink-950/50 dark:text-pink-400" },
     { title: "Review & Ulasan", desc: "Kelola ulasan pelanggan dan tingkatkan kepercayaan dengan respon yang cepat dan profesional.", icon: LuMessageSquare, color: "bg-amber-50 text-amber-600 dark:bg-amber-950/50 dark:text-amber-400" },
@@ -53,10 +52,10 @@ export default function SolutionPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors duration-300">
+    <div className="text-slate-800 dark:text-slate-100">
 
       {/* ================= SECTION 1: MAIN SOLUTIONS GRID ================= */}
-      <section className="w-[80vw] mx-auto pt-20 pb-16">
+      <section className="w-[80vw] mx-auto pb-16">
         <h2 className="text-3xl font-bold tracking-tight text-slate-950 dark:text-white">Solusi Bakool Untuk UMKM</h2>
         <p className="text-slate-500 dark:text-slate-400 mt-2 text-lg max-w-2xl">
           Berbagai fitur terintegrasi yang dirancang untuk membantu UMKM mengelola dan mengembangkan bisnis dengan lebih mudah dan efisien.
@@ -64,7 +63,7 @@ export default function SolutionPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
           {features.map((feat, idx) => (
-            <div key={idx} className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 rounded-2xl p-6 shadow-xs flex flex-col justify-between min-h-[220px]">
+            <div key={idx} className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 rounded-2xl p-6 shadow-xs flex flex-col justify-between min-h-55">
               <div>
                 <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${feat.color} mb-4`}>
                   <feat.icon size={24} />
@@ -112,7 +111,7 @@ export default function SolutionPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16 text-center relative">
           {steps.map((st, idx) => (
             <div key={idx} className="flex flex-col items-center relative z-10 group">
-              <div className="w-20 h-20 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-full flex items-center justify-center shadow-md mb-4 text-slate-400 dark:text-slate-500 group-hover:border-[#15803d] dark:group-hover:border-emerald-500 transition-colors duration-300">
+              <div className="w-20 h-20 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-full flex items-center justify-center shadow-md mb-4 text-slate-400 dark:text-slate-500 group-hover:border-[#15803d] dark:group-hover:border-emerald-500">
                 <st.icon size={32} />
               </div>
 
@@ -172,26 +171,18 @@ export default function SolutionPage() {
               Gabung sekarang dan nikmati semua solusi terbaik dari Bakool.
             </p>
             <div className="flex flex-wrap gap-4 mt-8">
-              <button className="bg-[#15803d] hover:bg-[#166534] text-white font-bold px-6 py-4 rounded-xl shadow-md transition-colors text-base">
+              <button className="bg-[#15803d] hover:bg-[#166534] text-white font-bold px-6 py-4 rounded-xl shadow-md text-base">
                 Mulai Gratis
               </button>
-              <button className="bg-white hover:bg-slate-50 text-slate-900 font-bold px-6 py-4 rounded-xl shadow-md transition-colors text-base inline-flex items-center gap-2">
+              <button className="bg-white hover:bg-slate-50 text-slate-900 font-bold px-6 py-4 rounded-xl shadow-md text-base inline-flex items-center gap-2">
                 Lihat Demo ➔
               </button>
             </div>
           </div>
 
-          <div className="w-full lg:w-[450px] relative aspect-[4/3] z-10 hidden lg:block">
-            <div className="w-full h-full border-4 border-emerald-800/40 rounded-2xl overflow-hidden bg-white shadow-2xl p-4">
-              {/* Abstract Platform Dashboard Visual Mimicry */}
-              <div className="w-full h-8 bg-slate-50 border-b border-slate-100 flex items-center px-2 gap-1.5 rounded-t-lg">
-                <span className="w-3 h-3 rounded-full bg-rose-400" />
-                <span className="w-3 h-3 rounded-full bg-amber-400" />
-                <span className="w-3 h-3 rounded-full bg-emerald-400" />
-              </div>
-              <div className="relative w-full h-[calc(100%-32px)] mt-2 rounded-b-lg overflow-hidden">
-                <Image src="https://picsum.photos/600/450?random=25" fill className="object-cover" alt="Platform Dashboard View" />
-              </div>
+          <div className="w-full relative z-10">
+            <div className="relative w-full h-73 mt-2">
+              <Image src="/solusi.png" fill className="object-cover" alt="Platform Dashboard View" />
             </div>
           </div>
         </div>
