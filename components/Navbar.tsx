@@ -212,7 +212,7 @@ function Navbar() {
                     </button>
 
                     {isProfileOpen && (
-                      <div className="absolute right-0 mt-4 w-60 rounded-3xl bg-white shadow-xl p-5 z-50">
+                      <div className="absolute right-0 mt-4 w-60 rounded-3xl bg-muted shadow-xl p-5 z-50">
                         <Link
                           href="/profile"
                           className="flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-gray-50 transition"
