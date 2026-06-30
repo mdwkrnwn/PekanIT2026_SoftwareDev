@@ -46,7 +46,7 @@ export function Testimonials() {
             className="flex overflow-hidden rounded-2xl border border-[#EEF0F2] bg-white"
           >
             {/* Image */}
-            <div className="relative h-[185px] w-[135px] shrink-0">
+            <div className="relative h-[235px] w-[165px] shrink-0">
               <Image
                 src={user.img}
                 alt={user.name}
@@ -57,16 +57,16 @@ export function Testimonials() {
 
             {/* Content */}
             <div className="flex flex-1 flex-col justify-between p-5">
-              <p className="text-[14px] leading-6 text-[#374151]">
+              <p className="text-[14px] text-start leading-6 text-[#374151]">
                 "{user.comment}"
               </p>
 
-              <div className="mt-4">
-                <h4 className="text-[17px] font-bold text-[#0B0F1F]">
+              <div className="">
+                <h4 className="text-[17px] text-start font-bold text-[#0B0F1F]">
                   {user.name}
                 </h4>
 
-                <p className="mt-1 text-[13px] text-[#98A2B3]">{user.role}</p>
+                <p className="mt-1 text-[13px] text-start text-[#98A2B3]">{user.role}</p>
 
                 <div className="mt-3 flex items-center gap-1">
                   <span className="mr-2 text-[15px] font-bold">5.0</span>
