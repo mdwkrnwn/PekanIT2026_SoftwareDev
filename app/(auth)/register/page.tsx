@@ -4,14 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Check } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function RegisterPage() {
   const [role, setRole] = useState<"user" | "owner">("owner");
+  const router = useRouter();
 
   return (
     <div className="min-h-screen bg-[#F7FAFC] py-8">
-      <div className="mx-auto w-full max-w-[2000px] rounded-[24px] bg-white px-14 py-10 shadow-sm">
-        <div className="-mt-10 w-full max-w-[1100px] px-16 py-12">
+      <div className="mx-auto w-full max-w-500 rounded-[24px] bg-white px-14 py-10 shadow-sm">
+        <div className="-mt-10 w-full max-w-275 px-16 py-12">
           {/* Logo */}
           <div className="flex justify-center">
             <div className="flex items-center gap-3">
@@ -42,25 +44,23 @@ export default function RegisterPage() {
           </div>
 
           {/* ROLE */}
-          <div className="mx-auto mt-10 grid max-w-[760px] grid-cols-2 gap-6">
+          <div className="mx-auto mt-10 grid max-w-190 grid-cols-2 gap-6">
             {/* Pengguna */}
             <div
               onClick={() => setRole("user")}
-              className={`relative h-[330px] cursor-pointer overflow-hidden rounded-xl border transition-all duration-200
-              ${
-                role === "user"
+              className={`relative h-82.5 cursor-pointer overflow-hidden rounded-xl border transition-all duration-200
+              ${role === "user"
                   ? "border-2 border-[#0C7C61] bg-[#F6FCFA]"
                   : "border border-[#E5E7EB] bg-[#F6FCFA]"
-              }`}
+                }`}
             >
               {/* Radio */}
               <div
                 className={`absolute left-5 top-5 flex h-6 w-6 items-center justify-center rounded-full border
-                ${
-                  role === "user"
+                ${role === "user"
                     ? "border-[#0C7C61] bg-[#0C7C61]"
                     : "border-[#D0D5DD] bg-white"
-                }`}
+                  }`}
               >
                 {role === "user" && (
                   <Check size={13} className="text-white" strokeWidth={3} />
@@ -71,13 +71,13 @@ export default function RegisterPage() {
                 Pengguna
               </h3>
 
-             <div className="mt-3 flex h-[240px] items-center justify-center">
+              <div className="mt-3 flex h-60 items-center justify-center">
                 <Image
                   src="/register1.png"
                   alt=""
                   width={240}
                   height={240}
-                  className="mt-6 h-auto w-[240px]"
+                  className="mt-6 h-auto w-60"
                   priority
                 />
               </div>
@@ -94,11 +94,10 @@ export default function RegisterPage() {
               <div
                 className={`absolute left-4 top-4 flex h-5 w-5 items-center justify-center rounded-full border
 
-              ${
-                role === "owner"
-                  ? "border-[#0C7C61] bg-[#0C7C61]"
-                  : "border-[#D0D5DD]"
-              }`}
+              ${role === "owner"
+                    ? "border-[#0C7C61] bg-[#0C7C61]"
+                    : "border-[#D0D5DD]"
+                  }`}
               >
                 {role === "owner" && (
                   <Check size={13} className="text-white" strokeWidth={3} />
@@ -109,13 +108,13 @@ export default function RegisterPage() {
                 Pemilik UMKM
               </h3>
 
-              <div className="mt-3 flex h-[240px] items-center justify-center">
+              <div className="mt-3 flex h-60 items-center justify-center">
                 <Image
                   src="/register2.png"
                   alt=""
                   width={240}
                   height={240}
-                  className="mt-6 h-auto w-[240px]"
+                  className="mt-6 h-auto w-60"
                   priority
                 />
               </div>
@@ -132,12 +131,20 @@ export default function RegisterPage() {
           </div>
 
           {/* Form */}
-          <div className="mx-auto mt-2 max-w-[760px]">
+          <div className="mx-auto mt-2 max-w-190">
             <h3 className="mb-6 text-[20px] font-semibold text-[#0B0F1F]">
               Buat Akun Baru
             </h3>
 
-            <form className="space-y-5">
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              console.log(role);
+              if (role == "owner") {
+                router.push("/admin/complete-profile")
+              }
+            }
+            }
+              className="space-y-5">
               {/* Nama */}
               <div>
                 <label className="mb-2 block text-[14px] font-semibold text-[#0B0F1F]">

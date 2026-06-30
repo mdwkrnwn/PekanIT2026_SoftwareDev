@@ -24,7 +24,7 @@ function Sidebar() {
     router.replace("/login");
   };
   return (
-    <aside className="w-[18vw] bg-white border-r border-[#F3F4F7] flex flex-col p-8 justify-between shrink-0 h-screen top-0 sticky">
+    <aside className="w-[18vw] bg-white border-r border-[#F3F4F7] flex flex-col p-8  justify-between shrink-0 h-screen top-0 sticky">
       <div className="flex flex-col gap-10">
         {/* Brand Logo */}
         <div className="mb-10 flex items-center gap-3">
@@ -34,7 +34,7 @@ function Sidebar() {
             width={60}
             height={60}
             priority
-            className="h-auto w-[120px] -ml-4"
+            className="h-auto w-30 -ml-4"
           />
 
           <div className="flex flex-col -ml-8">
@@ -104,11 +104,10 @@ function Sidebar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`flex items-center gap-4 rounded-xl px-6 py-3 transition-all duration-200 ${
-                  isActive
+                className={`flex items-center gap-4 rounded-xl px-6 py-3 transition-all duration-200 ${isActive
                     ? "bg-[#F2F9F5] text-[#279959]"
                     : "text-[#344054] hover:bg-[#F9FAFB]"
-                }`}
+                  }`}
               >
                 <div className="flex w-6 justify-center">
                   <item.icon
@@ -118,9 +117,8 @@ function Sidebar() {
                 </div>
 
                 <span
-                  className={`text-[18px] ${
-                    isActive ? "font-semibold" : "font-medium"
-                  }`}
+                  className={`text-[18px] ${isActive ? "font-semibold" : "font-medium"
+                    }`}
                 >
                   {item.name}
                 </span>
@@ -131,7 +129,7 @@ function Sidebar() {
       </div>
 
       {/* Logout Button */}
-      <button  onClick={handleLogout} className="flex items-center gap-4 px-5 py-4 rounded-xl font-bold text-slate-500 hover:bg-rose-50 hover:text-rose-600 transition-colors text-left">
+      <button onClick={handleLogout} className="flex items-center gap-4 px-5 py-4 rounded-xl font-bold text-slate-500 hover:bg-rose-50 hover:text-rose-600 transition-colors text-left">
         <LuLogOut size={24} />
         <span>Keluar</span>
       </button>
