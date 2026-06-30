@@ -12,10 +12,17 @@ import {
 import { FiBarChart2 } from "react-icons/fi";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 function Sidebar() {
   const activePath = usePathname();
+  const router = useRouter();
+  const handleLogout = () => {
+    localStorage.removeItem("user");
 
+
+    router.replace("/login");
+  };
   return (
     <aside className="w-[18vw] bg-white border-r border-[#F3F4F7] flex flex-col p-8 justify-between shrink-0 h-screen top-0 sticky">
       <div className="flex flex-col gap-10">
@@ -124,7 +131,7 @@ function Sidebar() {
       </div>
 
       {/* Logout Button */}
-      <button className="flex items-center gap-4 px-5 py-4 rounded-xl font-bold text-slate-500 hover:bg-rose-50 hover:text-rose-600 transition-colors text-left">
+      <button  onClick={handleLogout} className="flex items-center gap-4 px-5 py-4 rounded-xl font-bold text-slate-500 hover:bg-rose-50 hover:text-rose-600 transition-colors text-left">
         <LuLogOut size={24} />
         <span>Keluar</span>
       </button>
