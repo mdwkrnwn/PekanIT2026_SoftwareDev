@@ -25,7 +25,7 @@ export default function AuthLayout({
       className={cn("h-full", "antialiased", poppins.variable, poppins.className)}
       suppressHydrationWarning
     >
-      <body className="bg-background relative flex flex-col items-center min-h-screen overflow-x-hidden" >
+      <body className="bg-background relative flex flex-col items-center min-h-screen overflow-x-hidden w-screen" >
         <main className="flex flex-col items-center flex-1 mb-12">
           {children}
         </main>
