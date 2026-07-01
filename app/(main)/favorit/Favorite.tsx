@@ -193,7 +193,7 @@ export default function Favorite({
       {/* CTA */}
       <section
         data-aos="fade-up"
-        className="relative mt-20 rounded-lg bg-[#E6F5EF] text-white"
+        className="relative mt-20 rounded-lg bg-secondary text-white"
       >
         <div className="grid h-full grid-cols-1 items-center gap-6 px-10 md:grid-cols-2">
           <div
@@ -201,11 +201,11 @@ export default function Favorite({
             data-aos-delay="150"
             className="mt-5 space-y-10 md:my-5"
           >
-            <h2 className="text-2xl font-semibold text-[#125C4C] md:text-4xl">
+            <h2 className="text-2xl font-semibold text-primary-foreground md:text-4xl">
               Belum menemukan favorit lain?
             </h2>
 
-            <p className="text-lg font-semibold text-[#0B0F1F] md:text-xl">
+            <p className="text-lg font-semibold text-foreground md:text-xl">
               Jelajahi lebih banyak UMKM lokal dan
               temukan produk serta layanan terbaik di
               sekitarmu.

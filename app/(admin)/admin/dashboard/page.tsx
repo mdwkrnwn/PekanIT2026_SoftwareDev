@@ -159,41 +159,9 @@ export default function DashboardPage() {
   ];
   return (
     <>
-      <div className="flex items-start mt-5 justify-between">
-        <div>
-          <h1 className="text-[30px] font-semibold text-[#0B0F1F]">
-            Selamat pagi, Ryn
-          </h1>
-
-          <p className="mt-1 text-[#667085]">
-            Kelola usahamu dan tingkatkan performa bisnismu hari ini.
-          </p>
-        </div>
-
-        <div className="flex items-center gap-3 cursor-pointer">
-          <Image
-            src="/avatar.png"
-            alt="Ryn Askara"
-            width={56}
-            height={56}
-            className="rounded-full"
-          />
-
-          <div>
-            <h3 className="font-semibold text-[#101828]">Ryn Askara</h3>
-
-            <p className="text-sm text-[#667085]">Pemilik</p>
-          </div>
-
-          <IoChevronDown
-            size={20}
-            className="text-[#667085] transition-transform hover:text-[#101828]"
-          />
-        </div>
-      </div>
       <div className="flex flex-col gap-8">
         {/* Top Stats Cards */}
-        <div className="mt-8 grid grid-cols-5 gap-4">
+        <div className="grid grid-cols-5 gap-4">
           {stats.map((item, index) => {
             const chartData = item.data.map((value, i) => ({
               index: i,
@@ -233,7 +201,7 @@ export default function DashboardPage() {
                 </div>
 
                 {/* Mini Chart */}
-                <div className="mt-5 outline-none focus:outline-none">
+                <div className="focus:outline-none mt-5 outline-none">
                   <ResponsiveContainer width="100%" height={45}>
                     <AreaChart data={chartData}>
                       <defs>
@@ -274,7 +242,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Middle Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:grid-cols-3 grid grid-cols-1 gap-8">
           <div className="lg:col-span-2 rounded-2xl border border-[#EAECF0] bg-white p-6">
             {/* Header */}
             <div className="mb-6">
@@ -282,7 +250,7 @@ export default function DashboardPage() {
                 Performa Kunjungan
               </h3>
 
-              <div className="mt-3 flex items-center gap-6 text-sm font-medium">
+              <div className="flex items-center gap-6 mt-3 text-sm font-medium">
                 <div className="flex items-center gap-2">
                   <div className="h-[3px] w-5 rounded-full bg-[#16A34A]" />
                   <span className="text-[#344054]">Dilihat</span>
@@ -368,13 +336,13 @@ export default function DashboardPage() {
           </div>
 
           <div className="bg-white border-2 border-[#F3F4F7] rounded-2xl p-6 shadow-xs flex flex-col justify-between">
-            <div className="flex justify-between items-center mb-6">
+            <div className="flex items-center justify-between mb-6">
               <h3 className="text-xl font-semibold text-[#0B0F1F]">
                 Produk / Menu Terpopuler
               </h3>
               <button className="text-[#15803d] font-bold">Lihat semua</button>
             </div>
-            <div className="flex flex-col gap-4 flex-1">
+            <div className="flex flex-col flex-1 gap-4">
               {[
                 {
                   rank: 1,
@@ -411,13 +379,13 @@ export default function DashboardPage() {
               ].map((food, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center gap-4 p-2 hover:bg-slate-50 rounded-xl transition-colors"
+                  className="hover:bg-slate-50 rounded-xl flex items-center gap-4 p-2 transition-colors"
                 >
                   <span className="font-black text-[#0B0F1F] text-lg w-6">
                     {food.rank}
                   </span>
 
-                  <div className="w-25 h-14 relative rounded-xl overflow-hidden shrink-0">
+                  <div className="w-25 h-14 rounded-xl shrink-0 relative overflow-hidden">
                     <Image
                       src={food.image}
                       fill
@@ -427,7 +395,7 @@ export default function DashboardPage() {
                   </div>
 
                   <div className="flex-1">
-                    <h4 className="font-bold text-slate-900">{food.name}</h4>
+                    <h4 className="text-slate-900 font-bold">{food.name}</h4>
                     <p className="text-slate-400 font-medium">{food.count}</p>
                   </div>
 
@@ -443,9 +411,9 @@ export default function DashboardPage() {
         </div>
 
         {/* Bottom Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:grid-cols-3 grid grid-cols-1 gap-8">
           <div className="lg:col-span-2 rounded-2xl border border-[#EAECF0] bg-white p-6">
-            <div className="mb-6 flex items-center justify-between">
+            <div className="flex items-center justify-between mb-6">
               <h3 className="text-[25px] font-semibold text-[#101828]">
                 Ulasan Terbaru
               </h3>
@@ -467,7 +435,7 @@ export default function DashboardPage() {
                     alt={review.name}
                     width={70}
                     height={70}
-                    className="rounded-full object-cover"
+                    className="object-cover rounded-full"
                   />
 
                   {/* Content */}
@@ -514,7 +482,7 @@ export default function DashboardPage() {
               Insight dari AI Business Assistant
             </h3>
 
-            <div className="mt-8 flex items-start gap-6">
+            <div className="flex items-start gap-6 mt-8">
               {/* Robot */}
               <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-[#E8F7EF]">
                 <Image

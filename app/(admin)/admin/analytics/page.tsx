@@ -244,41 +244,9 @@ export default function AnalyticsPage() {
   ];
   return (
     <>
-      <div className="flex items-start mt-5 justify-between">
-        <div>
-          <h1 className="text-[30px] font-semibold text-[#0B0F1F]">
-            Analytics
-          </h1>
-
-          <p className="mt-1 text-[#667085]">
-            Pantau dan analisis performa toko kamu secara menyeluruh.
-          </p>
-        </div>
-
-        <div className="flex items-center gap-3 cursor-pointer">
-          <Image
-            src="/avatar.png"
-            alt="Ryn Askara"
-            width={56}
-            height={56}
-            className="rounded-full"
-          />
-
-          <div>
-            <h3 className="font-semibold text-[#101828]">Ryn Askara</h3>
-
-            <p className="text-sm text-[#667085]">Pemilik</p>
-          </div>
-
-          <IoChevronDown
-            size={20}
-            className="text-[#667085] transition-transform hover:text-[#101828]"
-          />
-        </div>
-      </div>
       <div className="flex flex-col gap-8">
         {/* Top Stats Cards */}
-        <div className="mt-8 grid grid-cols-5 gap-4">
+        <div className="grid grid-cols-5 gap-4">
           {stats.map((item, index) => {
             const chartData = item.data.map((value, i) => ({
               index: i,
@@ -318,7 +286,7 @@ export default function AnalyticsPage() {
                 </div>
 
                 {/* Mini Chart */}
-                <div className="mt-5 outline-none focus:outline-none">
+                <div className="focus:outline-none mt-5 outline-none">
                   <ResponsiveContainer width="100%" height={45}>
                     <AreaChart data={chartData}>
                       <defs>
@@ -359,7 +327,7 @@ export default function AnalyticsPage() {
         </div>
 
         {/* Middle Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:grid-cols-3 grid grid-cols-1 gap-8">
           <div className="lg:col-span-2 rounded-2xl border border-[#EAECF0] bg-white p-6">
             {/* Header */}
             <div className="mb-6">
@@ -367,7 +335,7 @@ export default function AnalyticsPage() {
                 Performa Kunjungan
               </h3>
 
-              <div className="mt-3 flex items-center gap-6 text-sm font-medium">
+              <div className="flex items-center gap-6 mt-3 text-sm font-medium">
                 <div className="flex items-center gap-2">
                   <div className="h-[3px] w-5 rounded-full bg-[#16A34A]" />
                   <span className="text-[#344054]">Dilihat</span>
@@ -454,7 +422,7 @@ export default function AnalyticsPage() {
 
           <div className="rounded-2xl border border-[#EAECF0] bg-white p-6">
             {/* Header */}
-            <div className="mb-6 flex items-center justify-between">
+            <div className="flex items-center justify-between mb-6">
               <h3 className="text-[18px] font-semibold text-[#101828]">
                 Produk / Menu Terpopuler
               </h3>
@@ -498,7 +466,7 @@ export default function AnalyticsPage() {
 
                     {/* Progress */}
                     <div className="w-[45%]">
-                      <div className="mb-2 flex justify-end">
+                      <div className="flex justify-end mb-2">
                         <span className="text-[14px] font-medium text-[#667085]">
                           {food.percent}%
                         </span>
@@ -521,7 +489,7 @@ export default function AnalyticsPage() {
         </div>
 
         {/* Bottom Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full">
+        <div className="lg:grid-cols-3 grid w-full grid-cols-1 gap-8">
           <div className="lg:col-span-2 rounded-2xl border border-[#EAECF0] bg-white p-6">
             <h3 className="mb-8 text-[22px] font-semibold text-[#101828]">
               Performa Kunjungan Berdasarkan Waktu
@@ -560,7 +528,7 @@ export default function AnalyticsPage() {
                   ))}
                 </div>
 
-                <div className="mt-5 flex justify-end items-center gap-2">
+                <div className="flex items-center justify-end gap-2 mt-5">
                   <span className="text-xs text-[#667085]">R</span>
 
                   <div className="h-5 w-5 rounded bg-[#EEF2F6]" />
@@ -580,7 +548,7 @@ export default function AnalyticsPage() {
               Sumber Trafik
             </h3>
 
-            <div className="mt-8 flex items-start gap-6">
+            <div className="flex items-start gap-6 mt-8">
               {/* Robot */}
               <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-[#E8F7EF]">
                 <Image

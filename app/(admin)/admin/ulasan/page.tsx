@@ -172,40 +172,9 @@ export default function UlasanPage() {
 
   return (
     <>
-      <div className="flex items-start mt-5 justify-between">
-        <div>
-          <h1 className="text-[30px] font-semibold text-[#0B0F1F]">Ulasan</h1>
-
-          <p className="mt-1 text-[#667085]">
-            Pantau dan kelola semua ulasan yang diberikan pelanggan.
-          </p>
-        </div>
-
-        <div className="flex items-center gap-3 cursor-pointer">
-          <Image
-            src="/avatar.png"
-            alt="Ryn Askara"
-            width={56}
-            height={56}
-            className="rounded-full"
-          />
-
-          <div>
-            <h3 className="font-semibold text-[#101828]">Ryn Askara</h3>
-
-            <p className="text-sm text-[#667085]">Pemilik</p>
-          </div>
-
-          <IoChevronDown
-            size={20}
-            className="text-[#667085] transition-transform hover:text-[#101828]"
-          />
-        </div>
-      </div>
-
       <div className="flex flex-col gap-8">
         {/* Top Stats Cards */}
-        <div className="mt-8 grid grid-cols-5 gap-4">
+        <div className="grid grid-cols-5 gap-4">
           {stats.map((item, index) => (
             <div
               key={index}
@@ -241,7 +210,7 @@ export default function UlasanPage() {
         </div>
       </div>
 
-      <div className="mt-8 flex items-center ">
+      <div className=" flex items-center mt-8">
         {/* Left */}
         <div className="flex items-center gap-10">
           <button className="relative pb-4 text-[15px] font-semibold text-[#158A62]">
@@ -263,7 +232,7 @@ export default function UlasanPage() {
         </div>
 
         {/* Right */}
-        <div className="flex ml-auto mr-95 items-center gap-4 pb-2 ml-20">
+        <div className="mr-95 flex items-center gap-4 pb-2 ml-20 ml-auto">
           <button className="flex h-11 items-center gap-2 rounded-xl border border-[#D0D5DD] bg-white px-5 text-[14px] font-medium text-[#344054] transition hover:bg-[#F9FAFB]">
             <LuSlidersHorizontal size={16} />
             Filter
@@ -301,7 +270,7 @@ export default function UlasanPage() {
                     alt={promo.title}
                     width={160}
                     height={90}
-                    className="h-full w-full object-cover"
+                    className="object-cover w-full h-full"
                   />
                 </div>
 
@@ -337,13 +306,12 @@ export default function UlasanPage() {
               {/* Status */}
               <div>
                 <span
-                  className={`rounded-full px-3 py-1 text-[12px] font-semibold ${
-                    promo.status === "Aktif"
-                      ? "bg-[#E8F7EF] text-[#158A62]"
-                      : promo.status === "Akan Datang"
-                        ? "bg-[#EEF4FF] text-[#2563EB]"
-                        : "bg-[#F2F4F7] text-[#667085]"
-                  }`}
+                  className={`rounded-full px-3 py-1 text-[12px] font-semibold ${promo.status === "Aktif"
+                    ? "bg-[#E8F7EF] text-[#158A62]"
+                    : promo.status === "Akan Datang"
+                      ? "bg-[#EEF4FF] text-[#2563EB]"
+                      : "bg-[#F2F4F7] text-[#667085]"
+                    }`}
                 >
                   {promo.status}
                 </span>
@@ -362,7 +330,7 @@ export default function UlasanPage() {
               </div>
             </div>
           ))}
-          <div className="mt-5 flex items-center justify-between">
+          <div className="flex items-center justify-between mt-5">
             <p className="text-[14px] text-[#667085]">
               Menampilkan{" "}
               <span className="font-medium">
@@ -395,11 +363,10 @@ export default function UlasanPage() {
                   <button
                     key={page}
                     onClick={() => setCurrentPage(page)}
-                    className={`flex h-10 w-10 items-center justify-center rounded-lg font-semibold transition ${
-                      currentPage === page
-                        ? "bg-[#158A62] text-white"
-                        : "border border-[#D0D5DD] text-[#344054] hover:bg-[#F9FAFB]"
-                    }`}
+                    className={`flex h-10 w-10 items-center justify-center rounded-lg font-semibold transition ${currentPage === page
+                      ? "bg-[#158A62] text-white"
+                      : "border border-[#D0D5DD] text-[#344054] hover:bg-[#F9FAFB]"
+                      }`}
                   >
                     {page}
                   </button>
@@ -448,7 +415,7 @@ export default function UlasanPage() {
                 alt="Performa Promo"
                 width={400}
                 height={220}
-                className="w-full object-contain"
+                className="object-contain w-full"
               />
             </div>
           </div>
@@ -464,7 +431,7 @@ export default function UlasanPage() {
               alt="Donut"
               width={400}
               height={180}
-              className="w-full object-contain"
+              className="object-contain w-full"
             />
           </div>
 
