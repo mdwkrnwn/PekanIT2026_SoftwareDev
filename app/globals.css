@@ -39,7 +39,7 @@
   --primary: #0b5946;
   --primary-foreground: #19c19a;
 
-  --secondary: oklch(25% 0.05 259.858);
+  --secondary: rgb(19, 57, 23);
   --secondary-foreground: oklch(85% 0.14828 259.782);
 
   --muted: oklch(20% 0.01 271.152);
