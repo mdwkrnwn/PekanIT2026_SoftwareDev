@@ -47,13 +47,27 @@ export default function RegisterPage() {
       password,
     });
 
-    // Simpan profil
+    console.log("SIGNUP DATA:", data);
+    console.log("SIGNUP ERROR:", error);
+
+    if (error) {
+      alert(error.message);
+      return;
+    }
+
+    if (!data.user) {
+      alert("User gagal dibuat");
+      return;
+    }
+
     const { error: profileError } = await supabase.from("profiles").insert({
-      id: data.user?.id,
+      id: data.user.id,
       full_name: formData.name.trim(),
       email,
       role: formData.role,
     });
+
+    console.log("PROFILE ERROR:", profileError);
 
     if (profileError) {
       alert(profileError.message);

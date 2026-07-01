@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
-import { dummyUsers } from "@/lib/dummyUser";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -21,31 +21,64 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // ambil user hasil register
-    const registeredUsers = JSON.parse(localStorage.getItem("users") || "[]");
+    const { error } = await supabase.auth.signInWithPassword({
+      email: email.trim(),
+      password,
+    });
 
-    // gabungkan dengan dummy user
-    const allUsers = [...dummyUsers, ...registeredUsers];
-
-    const user = allUsers.find(
-      (u) => u.email === email && u.password === password,
-    );
-
-    if (!user) {
+    if (error) {
       alert("Email atau password salah");
       return;
     }
 
-    // simpan sesi login
-    localStorage.setItem("user", JSON.stringify(user));
+    // Ambil user yang sedang login
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
 
-    // redirect sesuai role
-    if (user.role === "owner") {
-      router.push("/admin/dashboard");
+    if (!user) {
+      alert("User tidak ditemukan");
+      return;
+    }
+
+    // Ambil profile
+    const { data: profile, error: profileError } = await supabase
+      .from("profiles")
+      .select("*")
+      .eq("id", user.id)
+      .single();
+
+    if (profileError || !profile) {
+      alert("Profile tidak ditemukan");
+      return;
+    }
+
+    // Redirect berdasarkan role
+    if (profile.role === "owner") {
+      // Cek apakah owner sudah punya data UMKM
+      const { data: umkm, error: umkmError } = await supabase
+        .from("umkm")
+        .select("id")
+        .eq("owner_id", user.id)
+        .maybeSingle();
+
+      if (umkmError) {
+        alert("Terjadi kesalahan saat mengecek data UMKM");
+        return;
+      }
+
+      // Jika belum punya UMKM → Complete Profile
+      if (!umkm) {
+        router.push("/admin/complete-profile");
+      } else {
+        // Jika sudah punya UMKM → Dashboard
+        router.push("/admin/dashboard");
+      }
     } else {
+      // User biasa → Landing Page
       router.push("/");
     }
   };
