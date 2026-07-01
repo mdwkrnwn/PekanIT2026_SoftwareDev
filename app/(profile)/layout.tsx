@@ -34,12 +34,12 @@ export default function RootLayout({
       )}
       suppressHydrationWarning
     >
-      <body className={`bg-background relative grid justify-center grid-cols-[auto_auto] grid-rows-[auto_1fr] min-h-screen overflow-x-hidden`}>
+      <body className={`bg-background relative grid grid-cols-[auto_1fr] grid-rows-[auto_1fr] h-screen`}>
         <ThemeProviders>
           <AosProvider>
             <Navbar />
             <Sidebar />
-            <main className="flex flex-col items-center flex-1 mb-12">
+            <main className="min-h-0 overflow-y-auto">
               {children}
             </main>
           </AosProvider>

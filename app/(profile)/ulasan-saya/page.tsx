@@ -81,7 +81,7 @@ export default function MyReviewsPage() {
                 {[...Array(5)].map((_, s) => <LuStar key={s} className="fill-amber-400 text-amber-400" size={18} />)}
               </div>
 
-              <p className="text-slate-600 font-medium leading-relaxed max-w-3xl">
+              <p className="text-slate-600 font-medium leading-relaxed ">
                 {item.text}
               </p>
 

@@ -26,9 +26,8 @@ export default function Sidebar() {
 
   return (
     <>
-      <aside className="max-w-100 bg-white border-r border-slate-200 flex flex-col p-8 justify-between shrink-0 min-h-screen">
+      <aside className="max-w-100 border-r border-slate-200 flex flex-col pb-0 p-8 justify-between h-full top-[119.188px] sticky">
         <div className="flex flex-col gap-10">
-
           {/* User Card Profile Summary Block */}
           <div className="flex flex-col items-center text-center border-b border-slate-100 pb-8">
             <div className="w-24 h-24 relative rounded-full overflow-hidden border-2 border-slate-100 shadow-xs mb-4">
