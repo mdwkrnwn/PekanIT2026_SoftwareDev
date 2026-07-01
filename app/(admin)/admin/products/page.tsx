@@ -17,11 +17,128 @@ import {
   LuChevronLeft,
   LuChevronRight,
 } from "react-icons/lu";
+import { UploadCloudIcon } from "lucide-react";
+import { useMemo, useState, useEffect } from "react";
+import { supabase } from "@/lib/supabase";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
-import { useMemo, useState } from "react";
-import { IoChevronDown } from "react-icons/io5";
-
+import ProductModal from "./ProductModal";
 export default function ProductPage() {
+  const [menuData, setMenuData] = useState({
+    name: "",
+    description: "",
+    category: "",
+    price: "",
+  });
+
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+  const [sortBy, setSortBy] = useState("newest");
+
+  const [productImage, setProductImage] = useState<File | null>(null);
+
+  const handleProductImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+
+    if (!file) return;
+
+    const MAX_SIZE = 5 * 1024 * 1024;
+
+    if (!file.type.startsWith("image/")) {
+      alert("File harus berupa gambar.");
+      return;
+    }
+
+    if (file.size > MAX_SIZE) {
+      alert("Ukuran maksimal 5 MB.");
+      return;
+    }
+
+    setProductImage(file);
+  };
+
+  const handleSaveProduct = async () => {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      alert("Silakan login kembali.");
+      return;
+    }
+
+    if (
+      !menuData.name ||
+      !menuData.category ||
+      !menuData.price ||
+      !productImage
+    ) {
+      alert("Lengkapi semua data.");
+      return;
+    }
+
+    // Cari UMKM milik owner
+    const { data: umkm, error: umkmError } = await supabase
+      .from("umkm")
+      .select("id")
+      .eq("owner_id", user.id)
+      .single();
+
+    if (umkmError) {
+      alert("UMKM tidak ditemukan.");
+      return;
+    }
+
+    // Upload foto
+    const fileName = `${user.id}/${Date.now()}-${productImage.name}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from("menus")
+      .upload(fileName, productImage);
+
+    if (uploadError) {
+      alert(uploadError.message);
+      return;
+    }
+
+    const {
+      data: { publicUrl },
+    } = supabase.storage.from("menus").getPublicUrl(fileName);
+
+    // Simpan ke tabel menus
+    const { error } = await supabase.from("menus").insert({
+      umkm_id: umkm.id,
+      name: menuData.name.trim(),
+      description: menuData.description.trim(),
+      category: menuData.category,
+      price: Number(menuData.price),
+      image_url: publicUrl,
+    });
+
+    if (error) {
+      alert(error.message);
+      return;
+    }
+    await getProducts();
+    alert("Produk berhasil ditambahkan.");
+
+    setMenuData({
+      name: "",
+      description: "",
+      category: "",
+      price: "",
+    });
+
+    setProductImage(null);
+  };
   const stats = [
     {
       title: "Total Produk",
@@ -64,118 +181,68 @@ export default function ProductPage() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const itemsPerPage = 10;
-  const products = [
-    {
-      id: 1,
-      name: "Nasi Ayam Geprek",
-      description: "Ayam geprek dengan sambal bawang khas",
-      store: "Dapur Nona",
-      category: "Makanan",
-      price: 22000,
-      views: 324,
-      favorite: 124,
-      image: "/assets/umkm/makanan/dapurnona/ayamgeprek.jpeg",
-    },
-    {
-      id: 2,
-      name: "Es Teh Manis",
-      description: "Es teh segar untuk menemani makan",
-      store: "Dapur Nona",
-      category: "Minuman",
-      price: 10000,
-      views: 210,
-      favorite: 86,
-      image: "/assets/umkm/makanan/dapurnona/esteh.jpeg",
-    },
-    {
-      id: 3,
-      name: "Sambal Cumi",
-      description: "Sambal cumi pedas dengan cita rasa khas",
-      store: "Dapur Nona",
-      category: "Makanan",
-      price: 18000,
-      views: 145,
-      favorite: 58,
-      image: "/assets/umkm/makanan/dapurnona/sambalcumi.jpeg",
-    },
-    {
-      id: 4,
-      name: "Nasi Telur Dadar",
-      description: "Nasi hangat dengan telur dadar rumahan",
-      store: "Dapur Nona",
-      category: "Makanan",
-      price: 18000,
-      views: 132,
-      favorite: 47,
-      image: "/assets/umkm/makanan/dapurnona/nasitelurdadar.jpeg",
-    },
-    {
-      id: 5,
-      name: "Puding Cokelat",
-      description: "Dessert cokelat lembut dan manis",
-      store: "Dapur Nona",
-      category: "Dessert",
-      price: 18000,
-      views: 98,
-      favorite: 40,
-      image: "/assets/umkm/makanan/dapurnona/pudingcokelat.jpeg",
-    },
-    {
-      id: 6,
-      name: "Beras Premium",
-      description: "Beras premium kualitas terbaik",
-      store: "Toko Berkah",
-      category: "Sembako",
-      price: 65000,
-      views: 187,
-      favorite: 62,
-      image: "/assets/umkm/toko/tokoberkah/beras.jpg",
-    },
-    {
-      id: 7,
-      name: "Minyak Goreng",
-      description: "Minyak goreng kemasan 1 liter",
-      store: "Toko Berkah",
-      category: "Sembako",
-      price: 18000,
-      views: 165,
-      favorite: 55,
-      image: "/assets/umkm/toko/tokoberkah/minyak.jpg",
-    },
-    {
-      id: 8,
-      name: "Gula Pasir",
-      description: "Gula pasir putih berkualitas",
-      store: "Toko Berkah",
-      category: "Sembako",
-      price: 15000,
-      views: 143,
-      favorite: 44,
-      image: "/assets/umkm/toko/tokoberkah/gula.jpg",
-    },
-    {
-      id: 9,
-      name: "Kopi Sachet",
-      description: "Kopi sachet siap seduh",
-      store: "Toko Berkah",
-      category: "Minuman",
-      price: 12000,
-      views: 119,
-      favorite: 36,
-      image: "/assets/umkm/toko/tokoberkah/kopi.jpg",
-    },
-    {
-      id: 10,
-      name: "Mi Instan",
-      description: "Mi instan berbagai varian rasa",
-      store: "Toko Berkah",
-      category: "Makanan",
-      price: 3000,
-      views: 96,
-      favorite: 28,
-      image: "/assets/umkm/toko/tokoberkah/mie.jpg",
-    },
-  ];
+  const [products, setProducts] = useState<any[]>([]);
+  const getProducts = async () => {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) return;
+
+    // Ambil UMKM milik owner
+    const { data: umkm, error: umkmError } = await supabase
+      .from("umkm")
+      .select("id, name")
+      .eq("owner_id", user.id)
+      .single();
+
+    if (umkmError) {
+      console.error(umkmError);
+      return;
+    }
+
+    // Ambil semua menu
+    const { data, error } = await supabase
+      .from("menus")
+      .select("*")
+      .eq("umkm_id", umkm.id)
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      console.error(error);
+      return;
+    }
+
+    setProducts(
+      data.map((item) => ({
+        ...item,
+        store: umkm.name,
+        image: item.image_url,
+      })),
+    );
+  };
+
+  const handleDeleteProduct = async (id: number) => {
+    const confirmDelete = window.confirm("Yakin ingin menghapus produk ini?");
+
+    if (!confirmDelete) return;
+
+    const { error } = await supabase.from("menus").delete().eq("id", id);
+
+    if (error) {
+      alert(error.message);
+      return;
+    }
+
+    // Refresh data
+    getProducts();
+
+    alert("Produk berhasil dihapus.");
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   const categories = [
     {
@@ -191,7 +258,7 @@ export default function ProductPage() {
   ];
 
   const filteredProducts = useMemo(() => {
-    return products.filter((item) => {
+    let result = products.filter((item) => {
       const matchCategory =
         activeCategory === "Semua Produk" || item.category === activeCategory;
 
@@ -202,7 +269,34 @@ export default function ProductPage() {
 
       return matchCategory && matchSearch;
     });
-  }, [products, activeCategory, search]);
+
+    switch (sortBy) {
+      case "lowest":
+        result.sort((a, b) => a.price - b.price);
+        break;
+
+      case "highest":
+        result.sort((a, b) => b.price - a.price);
+        break;
+
+      case "az":
+        result.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+
+      case "za":
+        result.sort((a, b) => b.name.localeCompare(a.name));
+        break;
+
+      case "newest":
+        result.sort(
+          (a, b) =>
+            new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
+        );
+        break;
+    }
+
+    return result;
+  }, [products, activeCategory, search, sortBy]);
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
   const paginatedProducts = filteredProducts.slice(
     (currentPage - 1) * itemsPerPage,
@@ -254,6 +348,122 @@ export default function ProductPage() {
       image: "/assets/umkm/makanan/dapurnona/ayamgeprek.jpeg",
     },
   ];
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [isEditMode, setIsEditMode] = useState(false);
+  const resetForm = () => {
+    setMenuData({
+      name: "",
+      description: "",
+      category: "",
+      price: "",
+    });
+
+    setProductImage(null);
+    setEditingId(null);
+    setIsEditMode(false);
+  };
+  const [editingId, setEditingId] = useState<number | null>(null);
+
+  const handleEditProduct = (product: any) => {
+    setIsEditMode(true);
+
+    setEditingId(product.id);
+
+    setMenuData({
+      name: product.name,
+      description: product.description,
+      category: product.category,
+      price: String(product.price),
+    });
+
+    setProductImage(null);
+
+    setIsModalOpen(true);
+  };
+  const handleUpdateProduct = async () => {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      alert("Silakan login kembali.");
+      return;
+    }
+
+    if (!editingId) {
+      alert("Produk tidak ditemukan.");
+      return;
+    }
+
+    if (!menuData.name || !menuData.category || !menuData.price) {
+      alert("Lengkapi semua data.");
+      return;
+    }
+
+    let imageUrl: string | undefined;
+
+    // Kalau user upload gambar baru
+    if (productImage) {
+      const fileName = `${user.id}/${Date.now()}-${productImage.name}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from("menus")
+        .upload(fileName, productImage);
+
+      if (uploadError) {
+        alert(uploadError.message);
+        return;
+      }
+
+      const {
+        data: { publicUrl },
+      } = supabase.storage.from("menus").getPublicUrl(fileName);
+
+      imageUrl = publicUrl;
+    }
+
+    const payload: any = {
+      name: menuData.name.trim(),
+      description: menuData.description.trim(),
+      category: menuData.category,
+      price: Number(menuData.price),
+    };
+
+    // update image hanya jika upload baru
+    if (imageUrl) {
+      payload.image_url = imageUrl;
+    }
+
+    const { error } = await supabase
+      .from("menus")
+      .update(payload)
+      .eq("id", editingId);
+
+    if (error) {
+      alert(error.message);
+      return;
+    }
+
+    alert("Produk berhasil diperbarui.");
+
+    await getProducts();
+
+    setMenuData({
+      name: "",
+      description: "",
+      category: "",
+      price: "",
+    });
+
+    setProductImage(null);
+
+    setEditingId(null);
+    setIsEditMode(false);
+    setIsModalOpen(false);
+  };
+  const [openMenuId, setOpenMenuId] = useState<number | null>(null);
   return (
     <>
       <div className="flex flex-col gap-8">
@@ -301,10 +511,11 @@ export default function ProductPage() {
             <button
               key={category.name}
               onClick={() => setActiveCategory(category.name)}
-              className={`relative pb-3 text-[15px] transition ${activeCategory === category.name
-                ? "font-semibold text-[#158A62]"
-                : "font-medium text-[#667085] hover:text-[#101828]"
-                }`}
+              className={`relative pb-3 text-[15px] transition ${
+                activeCategory === category.name
+                  ? "font-semibold text-[#158A62]"
+                  : "font-medium text-[#667085] hover:text-[#101828]"
+              }`}
             >
               {category.name} ({category.count})
               {activeCategory === category.name && (
@@ -332,16 +543,105 @@ export default function ProductPage() {
           </div>
 
           {/* Filter */}
-          <button className="flex h-11 items-center gap-2 rounded-xl border border-[#D0D5DD] px-4 text-[14px] font-medium text-[#344054] transition hover:bg-[#F9FAFB]">
-            <LuFilter size={16} />
-            Filter
-          </button>
+          <div className="relative">
+            <button
+              onClick={() => setIsFilterOpen((prev) => !prev)}
+              className="flex h-11 items-center gap-2 rounded-xl border border-[#D0D5DD] px-4 text-[14px] font-medium text-[#344054] transition hover:bg-[#F9FAFB]"
+            >
+              <LuFilter size={16} />
+              Filter
+            </button>
 
-          {/* Add Product */}
-          <button className="flex h-11 items-center gap-2 rounded-xl bg-[#158A62] px-6 text-[14px] font-semibold text-white transition hover:bg-[#127553]">
+            {isFilterOpen && (
+              <div className="absolute right-0 top-14 z-50 w-64 rounded-2xl border border-[#EAECF0] bg-white p-5 shadow-xl">
+                <h3 className="mb-4 text-[15px] font-semibold">
+                  Urutkan Produk
+                </h3>
+
+                <div className="space-y-3">
+                  {[
+                    {
+                      label: "Produk Terbaru",
+                      value: "newest",
+                    },
+                    {
+                      label: "Harga Termurah",
+                      value: "lowest",
+                    },
+                    {
+                      label: "Harga Termahal",
+                      value: "highest",
+                    },
+                    {
+                      label: "Nama A-Z",
+                      value: "az",
+                    },
+                    {
+                      label: "Nama Z-A",
+                      value: "za",
+                    },
+                  ].map((item) => (
+                    <label
+                      key={item.value}
+                      className="flex cursor-pointer items-center gap-3"
+                    >
+                      <input
+                        type="radio"
+                        checked={sortBy === item.value}
+                        onChange={() => setSortBy(item.value)}
+                      />
+
+                      <span>{item.label}</span>
+                    </label>
+                  ))}
+                </div>
+
+                <div className="mt-6 flex justify-end gap-3">
+                  <button
+                    onClick={() => {
+                      setSortBy("newest");
+                      setIsFilterOpen(false);
+                    }}
+                    className="rounded-lg border px-4 py-2"
+                  >
+                    Reset
+                  </button>
+
+                  <button
+                    onClick={() => setIsFilterOpen(false)}
+                    className="rounded-lg bg-[#158A62] px-4 py-2 text-white"
+                  >
+                    Terapkan
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+          <button
+            onClick={() => {
+              setIsEditMode(false);
+              setIsModalOpen(true);
+            }}
+            className="flex h-11 items-center gap-2 rounded-xl bg-[#158A62] px-6 text-[14px] font-semibold text-white transition hover:bg-[#127553]"
+          >
             <LuPlus size={18} />
             Tambah Produk
           </button>
+
+          {/* Add Product */}
+          <ProductModal
+            open={isModalOpen}
+            onClose={() => {
+              resetForm();
+              setIsModalOpen(false);
+            }}
+            menuData={menuData}
+            setMenuData={setMenuData}
+            productImage={productImage}
+            handleProductImage={handleProductImage}
+            onSubmit={isEditMode ? handleUpdateProduct : handleSaveProduct}
+            isEdit={isEditMode}
+          />
         </div>
       </div>
 
@@ -370,9 +670,9 @@ export default function ProductPage() {
                   <Image
                     src={item.image}
                     alt={item.name}
-                    width={60}
-                    height={60}
-                    className="rounded-xl object-cover"
+                    width={70}
+                    height={70}
+                    className="rounded-sm object-cover"
                   />
 
                   <div>
@@ -396,7 +696,9 @@ export default function ProductPage() {
                 </div>
 
                 {/* Harga */}
-                <p className="text-[15px] text-[#344054]">{item.price}</p>
+                <p className="text-[15px] text-[#344054]">
+                  Rp {Number(item.price).toLocaleString("id-ID")}
+                </p>
 
                 {/* Dilihat */}
                 <p className="text-[15px] text-[#344054]">{item.views}</p>
@@ -406,17 +708,60 @@ export default function ProductPage() {
 
                 {/* Aksi */}
                 <div className="flex justify-center gap-2">
-                  <button className="flex h-8 w-8 items-center justify-center rounded-lg border border-[#EAECF0] hover:bg-[#F9FAFB]">
+                  <button
+                    onClick={() => handleEditProduct(item)}
+                    className="flex h-8 w-8 items-center justify-center rounded-lg border border-[#EAECF0] hover:bg-[#F9FAFB]"
+                  >
                     <LuPencil size={16} className="text-[#158A62]" />
                   </button>
 
-                  <button className="flex h-8 w-8 items-center justify-center rounded-lg border border-[#EAECF0] hover:bg-[#FEF2F2]">
+                  <button
+                    onClick={() => handleDeleteProduct(item.id)}
+                    className="flex h-8 w-8 items-center justify-center rounded-lg border border-[#EAECF0] hover:bg-[#FEF2F2]"
+                  >
                     <LuTrash2 size={16} className="text-[#DC2626]" />
                   </button>
 
-                  <button className="flex h-8 w-8 items-center justify-center rounded-lg border border-[#EAECF0] hover:bg-[#F9FAFB]">
-                    <LuEllipsisVertical size={16} className="text-[#667085]" />
-                  </button>
+                  <div className="relative">
+                    <button
+                      onClick={() =>
+                        setOpenMenuId(openMenuId === item.id ? null : item.id)
+                      }
+                      className="flex h-8 w-8 items-center justify-center rounded-lg border border-[#EAECF0] hover:bg-[#F9FAFB]"
+                    >
+                      <LuEllipsisVertical
+                        size={16}
+                        className="text-[#667085]"
+                      />
+                    </button>
+
+                    {openMenuId === item.id && (
+                      <div className="absolute right-0 top-10 z-50 w-44 rounded-xl border border-[#EAECF0] bg-white shadow-lg">
+                        <button
+                          className="w-full px-4 py-3 text-left hover:bg-[#F9FAFB]"
+                          onClick={() => {
+                            navigator.clipboard.writeText(String(item.id));
+                            alert("ID produk berhasil disalin.");
+                            setOpenMenuId(null);
+                          }}
+                        >
+                          Salin ID Produk
+                        </button>
+
+                        <button
+                          className="w-full px-4 py-3 text-left hover:bg-[#F9FAFB]"
+                          onClick={() => {
+                            alert(
+                              "🚧 Coming Soon!\n\nFitur Lihat Detail Produk sedang dalam pengembangan.",
+                            );
+                            setOpenMenuId(null);
+                          }}
+                        >
+                          Lihat Detail
+                        </button>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
@@ -455,10 +800,11 @@ export default function ProductPage() {
                   <button
                     key={page}
                     onClick={() => setCurrentPage(page)}
-                    className={`flex h-10 w-10 items-center justify-center rounded-lg font-semibold transition ${currentPage === page
-                      ? "bg-[#158A62] text-white"
-                      : "border border-[#D0D5DD] text-[#344054] hover:bg-[#F9FAFB]"
-                      }`}
+                    className={`flex h-10 w-10 items-center justify-center rounded-lg font-semibold transition ${
+                      currentPage === page
+                        ? "bg-[#158A62] text-white"
+                        : "border border-[#D0D5DD] text-[#344054] hover:bg-[#F9FAFB]"
+                    }`}
                   >
                     {page}
                   </button>
@@ -501,7 +847,7 @@ export default function ProductPage() {
                       alt={item.name}
                       width={70}
                       height={70}
-                      className="rounded-xl object-cover"
+                      className="rounded-sm object-cover"
                     />
 
                     <div className="flex-1">
