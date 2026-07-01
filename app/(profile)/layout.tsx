@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import "../globals.css";
+import "@/app/globals.css"
 import { Poppins } from "next/font/google";
-import Navbar from "../../components/Navbar";
-import ThemeProviders from "../../components/ThemeProviders";
+import Navbar from "@/components/Navbar";
+import ThemeProviders from "@/components/ThemeProviders";
 import { cn } from "@/lib/utils";
-import Footer from "@/components/Footer";
-import ChatPopup from "@/components/Chat";
 import AosProvider from "@/lib/aos-provider";
+import Sidebar from "./Sidebar";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -35,16 +34,15 @@ export default function RootLayout({
       )}
       suppressHydrationWarning
     >
-      <body className={`bg-background relative flex flex-col items-center min-h-screen overflow-x-hidden`}>
+      <body className={`bg-background relative grid justify-center grid-cols-[auto_auto] grid-rows-[auto_1fr] min-h-screen overflow-x-hidden`}>
         <ThemeProviders>
           <AosProvider>
             <Navbar />
+            <Sidebar />
             <main className="flex flex-col items-center flex-1 mb-12">
               {children}
             </main>
-            <Footer />
           </AosProvider>
-          <ChatPopup />
         </ThemeProviders>
       </body>
     </html>

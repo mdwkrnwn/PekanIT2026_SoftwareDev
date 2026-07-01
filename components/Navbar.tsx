@@ -80,7 +80,7 @@ function Navbar() {
       document.body.style.overflow = "";
     };
   }, [isSidebarOpen]);
-  const disAllowedBreadcrumb = ["detail", "/article/"];
+  const disAllowedBreadcrumb = ["detail", "/article/", "/profile", "/ulasan-saya", "/achievements"];
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsSidebarOpen(false);
@@ -110,7 +110,7 @@ function Navbar() {
   return (
     <>
       <header
-        className={`z-999 sticky top-0 w-full mb-1 transition-transform ${isVisible ? header.header_show : header.header_hide}`}
+        className={`z-999 sticky top-0 w-full mb-1 transition-transform col-span-2 ${isVisible ? header.header_show : header.header_hide}`}
       >
         <div className="sm:flex hidden bg-background justify-center shadow-[#A9A1A140] shadow-md">
           <nav className="grid grid-cols-[1fr_1fr_3fr] justify-center items-center w-[80vw] py-6">
@@ -236,7 +236,7 @@ function Navbar() {
                         <hr className="my-2 text-foreground" />
 
                         <Link
-                          href="/review"
+                          href="/ulasan-saya"
                           className="flex group items-center gap-4 px-4 py-4 rounded-xl  transition"
                         >
                           <MessageSquareText
@@ -326,7 +326,7 @@ function Navbar() {
             disAllowedBreadcrumb.some((item) => path.includes(item)) ? (
             ""
           ) : (
-            <Breadcrumb className="w-[80vw] mt-5 mb-9">
+            <Breadcrumb className="w-[80vw] mt-5 mb-9 col-span-2">
               <BreadcrumbList>
                 {/* Back Button */}
                 <BreadcrumbItem>
