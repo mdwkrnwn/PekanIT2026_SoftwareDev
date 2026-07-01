@@ -1,5 +1,5 @@
 "use client";
-
+import { supabase } from "@/lib/supabase";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -30,23 +30,38 @@ export default function RegisterPage() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    console.log({
+      name: JSON.stringify(formData.name),
+      email: JSON.stringify(formData.email),
+      password: JSON.stringify(formData.password),
+    });
+    // Register ke Supabase Auth
+    const email = formData.email.trim();
+    const password = formData.password.trim();
 
-    const emailExists = users.some(
-      (user: typeof formData) => user.email === formData.email,
-    );
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
 
-    if (emailExists) {
-      alert("Email sudah terdaftar");
+    // Simpan profil
+    const { error: profileError } = await supabase.from("profiles").insert({
+      id: data.user?.id,
+      full_name: formData.name.trim(),
+      email,
+      role: formData.role,
+    });
+
+    if (profileError) {
+      alert(profileError.message);
       return;
     }
 
-    users.push(formData);
+    alert("Registrasi berhasil!");
 
-    localStorage.setItem("users", JSON.stringify(users));
     router.push("/login");
   };
 
