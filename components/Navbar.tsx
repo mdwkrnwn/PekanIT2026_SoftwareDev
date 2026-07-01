@@ -224,7 +224,7 @@ function Navbar() {
                         <hr className="my-2 text-foreground" />
 
                         <Link
-                          href="/achievement"
+                          href="/achievements"
                           className="flex group items-center gap-4 px-4 py-4 rounded-xl  transition"
                         >
                           <BadgeCheck size={26} className="text-foreground group-hover:text-white" />
