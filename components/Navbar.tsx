@@ -212,41 +212,41 @@ function Navbar() {
                     </button>
 
                     {isProfileOpen && (
-                      <div className="absolute right-0 mt-4 w-60 rounded-3xl bg-muted shadow-xl p-5 z-50">
+                      <div className={cn("absolute right-0 mt-4 w-60 rounded-3xl bg-muted shadow-xl p-5 z-50", "*:hover:bg-muted-foreground *:hover:text-background")}>
                         <Link
                           href="/profile"
-                          className="flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-gray-50 transition"
+                          className="flex group items-center gap-4 px-4 py-4 rounded-xl  transition"
                         >
-                          <User size={26} className="text-slate-600" />
+                          <User size={26} className="text-foreground group-hover:text-white" />
                           <span className="font-medium">Profil Saya</span>
                         </Link>
 
-                        <hr className="my-2 text-[#E8EAEE]" />
+                        <hr className="my-2 text-foreground" />
 
                         <Link
                           href="/achievement"
-                          className="flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-gray-50 transition"
+                          className="flex group items-center gap-4 px-4 py-4 rounded-xl  transition"
                         >
-                          <BadgeCheck size={26} className="text-slate-600" />
+                          <BadgeCheck size={26} className="text-foreground group-hover:text-white" />
                           <span className="font-medium">
                             Achievement & Badge
                           </span>
                         </Link>
 
-                        <hr className="my-2 text-[#E8EAEE]" />
+                        <hr className="my-2 text-foreground" />
 
                         <Link
                           href="/review"
-                          className="flex items-center gap-4 px-4 py-4 rounded-xl hover:bg-gray-50 transition"
+                          className="flex group items-center gap-4 px-4 py-4 rounded-xl  transition"
                         >
                           <MessageSquareText
                             size={26}
-                            className="text-slate-600"
+                            className="text-foreground group-hover:text-white"
                           />
                           <span className="font-medium">Ulasan Saya</span>
                         </Link>
 
-                        <hr className="my-2 text-[#E8EAEE]" />
+                        <hr className="my-2 text-foreground" />
 
                         <button
                           onClick={handleLogout}
