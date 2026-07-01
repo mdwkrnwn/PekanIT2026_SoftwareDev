@@ -1,17 +1,13 @@
 "use client";
-
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import {
-  LuUser,
-  LuTrophy,
-  LuMessageSquare,
-  LuLogOut
-} from "react-icons/lu";
-
+import { usePathname, useRouter } from "next/navigation";
+import { LuUser, LuTrophy, LuMessageSquare, LuLogOut } from "react-icons/lu";
+import { supabase } from "@/lib/supabase";
 export default function Sidebar() {
   const pathname = usePathname();
+  const [profile, setProfile] = useState<any>(null);
 
   // Konfigurasi Navigasi Panel User Explorer
   const navItems = [
@@ -20,10 +16,52 @@ export default function Sidebar() {
     { name: "Ulasan Saya", href: "/ulasan-saya", icon: LuMessageSquare },
   ];
 
+  const router = useRouter();
+
   // Nilai Data Progres Level XP
   const currentXp = 1250;
   const maxXp = 2000;
+  useEffect(() => {
+    const getProfile = async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
 
+      if (!user) return;
+
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("full_name, avatar_url")
+        .eq("id", user.id)
+        .single();
+
+      if (error) {
+        console.error(error);
+        return;
+      }
+
+      setProfile(data);
+    };
+
+    getProfile();
+  }, []);
+
+  const avatar = profile?.avatar_url || "/ava.png";
+  const handleLogout = async () => {
+    const confirmLogout = window.confirm("Yakin ingin keluar?");
+
+    if (!confirmLogout) return;
+
+    const { error } = await supabase.auth.signOut();
+
+    if (error) {
+      alert(error.message);
+      return;
+    }
+
+    router.replace("/login");
+    router.refresh();
+  };
   return (
     <>
       <aside className="max-w-100 border-r border-slate-200 flex flex-col pb-0 p-8 justify-between h-full top-[119.188px] sticky">
@@ -32,16 +70,19 @@ export default function Sidebar() {
           <div className="flex flex-col items-center text-center border-b border-slate-100 pb-8">
             <div className="w-24 h-24 relative rounded-full overflow-hidden border-2 border-slate-100 shadow-xs mb-4">
               <Image
-                src="https://picsum.photos/150/150?random=81"
+                src={avatar}
                 fill
                 className="object-cover"
-                alt="Avatar Pengguna"
+                alt={profile?.full_name || "Avatar Pengguna"}
               />
             </div>
 
-            <h3 className="text-xl font-bold text-slate-900">Ryn Askara</h3>
+            <h3 className="text-xl font-bold text-[#0B0F1F]">
+              {profile?.full_name || "Pengguna"}
+            </h3>
             <p className="text-slate-500 font-semibold mt-1">
-              Explorer <span className="text-emerald-700 font-black">Level 3</span>
+              Explorer{" "}
+              <span className="text-emerald-700 font-black">Level 3</span>
             </p>
 
             {/* Penggunaan Elemen <meter> untuk Progres Level Batasan XP */}
@@ -53,9 +94,13 @@ export default function Sidebar() {
                 className="w-full h-3 block appearance-none [&::-webkit-meter-bar]:bg-slate-100 [&::-webkit-meter-bar]:rounded-full [&::-webkit-meter-bar]:border-0 [&::-webkit-meter-optimum-value]:bg-emerald-600 [&::-webkit-meter-optimum-value]:rounded-full"
               />
               <div className="flex justify-center items-center gap-1 font-bold text-slate-700 text-base">
-                <span className="text-[#15803d]">{currentXp.toLocaleString()}</span>
+                <span className="text-[#15803d]">
+                  {currentXp.toLocaleString()}
+                </span>
                 <span className="text-slate-300 font-medium">/</span>
-                <span className="text-slate-400 font-medium">{maxXp.toLocaleString()} XP</span>
+                <span className="text-slate-400 font-medium">
+                  {maxXp.toLocaleString()} XP
+                </span>
               </div>
             </div>
           </div>
@@ -68,10 +113,11 @@ export default function Sidebar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center gap-4 px-5 py-4 rounded-xl font-bold transition-all text-left text-base ${isActive
-                    ? "bg-emerald-50 text-[#15803d]"
-                    : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
-                    }`}
+                  className={`flex items-center gap-4 px-5 py-4 rounded-xl font-bold transition-all text-left text-base ${
+                    isActive
+                      ? "bg-emerald-50 text-[#15803d]"
+                      : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
+                  }`}
                 >
                   <item.icon
                     size={24}
@@ -87,6 +133,7 @@ export default function Sidebar() {
         {/* Action Trigger Keluar Bottom Area */}
         <button
           type="button"
+          onClick={handleLogout}
           className="flex items-center gap-4 px-5 py-4 rounded-xl font-bold text-slate-500 hover:bg-rose-50 hover:text-rose-600 transition-colors text-left text-base"
         >
           <LuLogOut size={24} />
@@ -94,6 +141,5 @@ export default function Sidebar() {
         </button>
       </aside>
     </>
-
   );
 }

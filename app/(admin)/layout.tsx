@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
 import "../globals.css";
-import { Poppins } from 'next/font/google';
+import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Sidebar from "./sidebar";
-import { Header } from "./header";
-import layout from "./layout.module.css"
-
+import AdminGuard from "@/components/AdminGuard";
 const poppins = Poppins({
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-  variable: '--font-poppins',
-  subsets: ['latin'],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-poppins",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -25,14 +23,18 @@ export default function AdminLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", poppins.variable, poppins.className)}
+      className={cn(
+        "h-full",
+        "antialiased",
+        poppins.variable,
+        poppins.className,
+      )}
       suppressHydrationWarning
     >
-      <body className={`relative grid min-h-screen overflow-x-hidden bg-background grid-cols-[auto_1fr] grid-rows-[auto_1fr]`} >
+      <body className="bg-white relative flex flex-row min-h-screen overflow-x-hidden">
         <Sidebar />
-        <Header />
-        <main className="px-8 pb-8">
-          {children}
+        <main className="flex-1 pt-6 pr-6">
+          <AdminGuard>{children}</AdminGuard>
         </main>
       </body>
     </html>

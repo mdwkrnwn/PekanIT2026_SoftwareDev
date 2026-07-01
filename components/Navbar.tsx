@@ -7,6 +7,7 @@ import { useRef } from "react";
 import { FaHeart } from "react-icons/fa";
 import { IoChevronDown } from "react-icons/io5";
 import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase";
 import { useWishlist } from "@/hooks/useWishlist";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
@@ -29,16 +30,24 @@ function Navbar() {
 
   // logout
   const router = useRouter();
-  const handleLogout = () => {
-    localStorage.removeItem("user");
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
+
+    if (error) {
+      alert(error.message);
+      return;
+    }
+
     setUser(null);
     setIsProfileOpen(false);
+
     router.push("/");
   };
 
   const [user, setUser] = useState<any>(null);
   const profileRef = useRef<HTMLDivElement>(null);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -55,13 +64,32 @@ function Navbar() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-  useEffect(() => {
-    const data = localStorage.getItem("user");
 
-    if (data) {
-      setUser(JSON.parse(data));
-    }
+  useEffect(() => {
+    const getUser = async () => {
+      const {
+        data: { user: authUser },
+      } = await supabase.auth.getUser();
+
+      if (!authUser) return;
+
+      const { data: profile, error } = await supabase
+        .from("profiles")
+        .select("*")
+        .eq("id", authUser.id)
+        .single();
+
+      if (error) {
+        console.error(error);
+        return;
+      }
+
+      setUser(profile);
+    };
+
+    getUser();
   }, []);
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const path = usePathname();
   const navItems = [
@@ -80,7 +108,13 @@ function Navbar() {
       document.body.style.overflow = "";
     };
   }, [isSidebarOpen]);
-  const disAllowedBreadcrumb = ["detail", "/article/", "/profile", "/ulasan-saya", "/achievements"];
+  const disAllowedBreadcrumb = [
+    "detail",
+    "/article/",
+    "/profile",
+    "/ulasan-saya",
+    "/achievements",
+  ];
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsSidebarOpen(false);
@@ -107,6 +141,12 @@ function Navbar() {
     };
   }, [lastScrollY]);
   if (path.startsWith("/admin")) return;
+
+  const avatar =
+    user?.avatar_url && user.avatar_url.startsWith("http")
+      ? user.avatar_url
+      : "/ava.png";
+
   return (
     <>
       <header
@@ -146,10 +186,11 @@ function Navbar() {
                         className={`relative inline-block pb-3
                       after:absolute after:bottom-0 after:left-0
                       after:rounded-full after:w-full after:h-1 after:transition-all
-                      ${isActive
-                            ? "after:bg-primary text-primary-foreground"
-                            : "after:bg-transparent hover:text-primary-foreground/50"
-                          }`}
+                      ${
+                        isActive
+                          ? "after:bg-primary text-primary-foreground"
+                          : "after:bg-transparent hover:text-primary-foreground/50"
+                      }`}
                       >
                         {item.name}
                       </Link>
@@ -174,7 +215,7 @@ function Navbar() {
               <ThemeSwitcher className={user ? "mr-0" : "mr-5"} />
 
               {user ? (
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 mr-2">
                   {/* Favorite */}
                   <Link
                     href="/favorit"
@@ -193,67 +234,84 @@ function Navbar() {
                   <div ref={profileRef} className="relative">
                     <button
                       onClick={() => setIsProfileOpen((prev) => !prev)}
-                      className="flex items-center gap-3"
+                      className="flex items-center gap-3 ml-2" 
                     >
-                      <Image
-                        src="/avatar.png"
-                        alt={user.name}
-                        width={50}
-                        height={50}
-                        className="rounded-full object-cover"
-                      />
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full outline-1 outline-primary-foreground  bg-[#EBF3F0]">
+                        <Image
+                          src={avatar}
+                          alt={user.full_name}
+                          width={38}
+                          height={38}
+                          className="rounded-full mt-2 mb-1 object-cover"
+                        />
+                      </div>
 
-                      <span className="font-semibold text-sm">{user.name}</span>
+                      <span className="font-semibold text-sm">
+                        {user.full_name}
+                      </span>
 
                       <IoChevronDown
-                        className={`text-gray-500 transition-transform ${isProfileOpen ? "rotate-180" : ""
-                          }`}
+                        className={`text-gray-500 transition-transform ${
+                          isProfileOpen ? "rotate-180" : ""
+                        }`}
                       />
                     </button>
 
                     {isProfileOpen && (
-                      <div className={cn("absolute right-0 mt-4 w-60 rounded-3xl bg-muted shadow-xl p-5 z-50", "*:hover:bg-muted-foreground *:hover:text-background")}>
+                      <div
+                        className={cn(
+                          "absolute right-0 mt-4 w-60 rounded-3xl bg-muted shadow-xl p-5 z-50",
+                          "*:hover:bg-muted-foreground *:hover:text-background",
+                        )}
+                      >
                         <Link
                           href="/profile"
                           className="flex group items-center gap-4 px-4 py-4 rounded-xl  transition"
                         >
-                          <User size={26} className="text-foreground group-hover:text-white" />
+                          <User
+                            size={26}
+                            className="text-[#] group-hover:text-white"
+                          />
                           <span className="font-medium">Profil Saya</span>
                         </Link>
 
-                        <hr className="my-2 text-foreground" />
-
+                        <hr className="my-2 border-0 border-t border-[#E8EAEE]" />
                         <Link
                           href="/achievements"
                           className="flex group items-center gap-4 px-4 py-4 rounded-xl  transition"
                         >
-                          <BadgeCheck size={26} className="text-foreground group-hover:text-white" />
-                          <span className="font-medium">
+                          <BadgeCheck
+                            size={26}
+                            className="text-[#] group-hover:text-white"
+                          />
+                          <span className="font-medium text-[#0B0F1F] group-hover:text-white">
                             Achievement & Badge
                           </span>
                         </Link>
 
-                        <hr className="my-2 text-foreground" />
-
+                        <hr className="my-2 border-0 border-t border-[#E8EAEE]" />
                         <Link
                           href="/ulasan-saya"
                           className="flex group items-center gap-4 px-4 py-4 rounded-xl  transition"
                         >
                           <MessageSquareText
                             size={26}
-                            className="text-foreground group-hover:text-white"
+                            className="text-[#] group-hover:text-white"
                           />
-                          <span className="font-medium">Ulasan Saya</span>
+                          <span className="font-medium text-[#0B0F1F] group-hover:text-white">
+                            Ulasan Saya
+                          </span>
                         </Link>
 
-                        <hr className="my-2 text-foreground" />
-
+                        <hr className="my-2 border-0 border-t border-[#E8EAEE]" />
                         <button
                           onClick={handleLogout}
                           className="flex w-full items-center gap-4 px-4 py-4 rounded-xl text-red-500 hover:bg-red-50 transition"
                         >
                           <LogOut size={26} />
-                          <span className="font-medium">Keluar</span>
+                          <span className="font-medium text-[#0B0F1F] group-hover:text-white">
+                            Keluar
+                          </span>
                         </button>
                       </div>
                     )}
@@ -323,7 +381,7 @@ function Navbar() {
       {!path.startsWith("/login") && !path.startsWith("/register") && (
         <>
           {path == "/" ||
-            disAllowedBreadcrumb.some((item) => path.includes(item)) ? (
+          disAllowedBreadcrumb.some((item) => path.includes(item)) ? (
             ""
           ) : (
             <Breadcrumb className="w-[80vw] mt-5 mb-9 col-span-2">

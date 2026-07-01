@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import {
   LuLayoutDashboard,
@@ -10,6 +11,7 @@ import {
   LuLogOut,
 } from "react-icons/lu";
 import { FiBarChart2 } from "react-icons/fi";
+import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
@@ -17,12 +19,52 @@ import { useRouter } from "next/navigation";
 function Sidebar() {
   const activePath = usePathname();
   const router = useRouter();
-  const handleLogout = () => {
-    localStorage.removeItem("user");
+  const [umkm, setUmkm] = useState<any>(null);
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
 
+    if (error) {
+      alert(error.message);
+      return;
+    }
 
     router.replace("/login");
+    router.refresh();
   };
+  useEffect(() => {
+    const getUMKM = async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (!user) return;
+
+      const { data, error } = await supabase
+        .from("umkm")
+        .select(
+          `
+        *,
+        categories (
+          name
+        )
+      `,
+        )
+        .eq("owner_id", user.id)
+        .single();
+
+      if (error) {
+        console.error(error);
+        return;
+      }
+
+      setUmkm(data);
+    };
+
+    getUMKM();
+  }, []);
+
+  const coverImage = umkm?.cover_image || "/placeholder-cover.jpg";
+
   return (
     <aside className="w-[18vw] bg-background border-r border-border flex flex-col p-8 row-span-2 justify-between shrink-0 h-screen top-0 sticky">
       <div className="flex flex-col gap-10">
@@ -49,15 +91,17 @@ function Sidebar() {
         <div className="border-2 border-[#F3F4F7] rounded-2xl p-4 -mt-15 bg-white flex items-center gap-4">
           <div className="w-14 h-14 shrink-0 relative overflow-hidden rounded-full">
             <Image
-              src="/assets/umkm/makanan/dapurnona/thumbnail.jpeg"
+              src={coverImage}
               fill
               className="object-cover"
-              alt="Store Avatar"
+              alt={umkm?.name || "UMKM"}
             />
           </div>
           <div>
-            <h4 className="text-slate-900 text-lg font-bold">Dapur Nona</h4>
-            <span className="text-slate-500 block font-medium">Makanan</span>
+            <h4 className="font-bold text-slate-900 text-lg">
+              {umkm?.name || "Nama UMKM"}
+            </h4>
+            <span className="text-slate-500 font-medium block"> {umkm?.categories?.name || "-"} </span>
             <span className="inline-block bg-emerald-100 text-emerald-700 text-base font-bold px-2 py-0.5 rounded-md mt-1">
               Terverifikasi
             </span>
@@ -104,10 +148,11 @@ function Sidebar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`flex items-center gap-4 rounded-xl px-6 py-3 transition-all duration-200 ${isActive
-                  ? "bg-[#F2F9F5] text-[#279959]"
-                  : "text-[#344054] hover:bg-[#F9FAFB]"
-                  }`}
+                className={`flex items-center gap-4 rounded-xl px-6 py-3 transition-all duration-200 ${
+                  isActive
+                    ? "bg-[#F2F9F5] text-[#279959]"
+                    : "text-[#344054] hover:bg-[#F9FAFB]"
+                }`}
               >
                 <div className="flex justify-center w-6">
                   <item.icon
@@ -117,8 +162,9 @@ function Sidebar() {
                 </div>
 
                 <span
-                  className={`text-[18px] ${isActive ? "font-semibold" : "font-medium"
-                    }`}
+                  className={`text-[18px] ${
+                    isActive ? "font-semibold" : "font-medium"
+                  }`}
                 >
                   {item.name}
                 </span>
@@ -129,7 +175,10 @@ function Sidebar() {
       </div>
 
       {/* Logout Button */}
-      <button onClick={handleLogout} className="rounded-xl text-slate-500 hover:bg-rose-50 hover:text-rose-600 flex items-center gap-4 px-5 py-4 font-bold text-left transition-colors">
+      <button
+        onClick={handleLogout}
+        className="flex items-center gap-4 px-5 py-4 rounded-xl font-bold text-slate-500 hover:bg-rose-50 hover:text-rose-600 transition-colors text-left"
+      >
         <LuLogOut size={24} />
         <span>Keluar</span>
       </button>
