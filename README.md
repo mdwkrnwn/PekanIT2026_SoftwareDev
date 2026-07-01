@@ -1,7 +1,7 @@
 # `Bakool` - Cari UMKM keren, dukung lokal bareng!
 
 <p align="center">
-  <img src="https://bakool.vercel.app/bakol.png" width="120" alt="Low Cortisol Logo" />
+  <img src="https://bakool.vercel.app/bakol.png" width="120" alt="Bakool Logo" />
 </p>
 
 <p align="center">
@@ -12,7 +12,7 @@
 
 ## 🌐 Live Demo
 
-* Website: [LOW CORTISOL Web App](https://Bakool-ten.vercel.app)
+* Website: [Bakool Web App](https://Bakool-ten.vercel.app)
 * Repository: [GitHub Repository](https://github.com/mdwkrnwn/PekanIT2026_SoftwareDev)
 
 

@@ -81,7 +81,7 @@ export function HeroBanner() {
             </Link>
 
             <Link
-              href="/login"
+              href="/explore"
               className="flex flex-row items-center gap-3 rounded-lg border px-6 py-3 text-sm border-primary text-primary-foreground font-semibold transition-all md:text-base hover:scale-105 hover:bg-primary/5"
             >
               <span>Jelajahi UMKM</span>
