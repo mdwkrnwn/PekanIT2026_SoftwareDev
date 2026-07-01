@@ -24,17 +24,17 @@ function Sidebar() {
     router.replace("/login");
   };
   return (
-    <aside className="w-[18vw] bg-white border-r border-[#F3F4F7] flex flex-col p-8  justify-between shrink-0 h-screen top-0 sticky">
+    <aside className="w-[18vw] bg-background border-r border-border flex flex-col p-8 row-span-2 justify-between shrink-0 h-screen top-0 sticky">
       <div className="flex flex-col gap-10">
         {/* Brand Logo */}
-        <div className="mb-10 flex items-center gap-3">
+        <div className="flex items-center gap-3 mb-10">
           <Image
             src="/Bakul.png"
             alt="Bakool Business"
             width={60}
             height={60}
             priority
-            className="h-auto w-30 -ml-4"
+            className="w-30 h-auto -ml-4"
           />
 
           <div className="flex flex-col -ml-8">
@@ -47,7 +47,7 @@ function Sidebar() {
 
         {/* Store Profile Card */}
         <div className="border-2 border-[#F3F4F7] rounded-2xl p-4 -mt-15 bg-white flex items-center gap-4">
-          <div className="w-14 h-14 relative rounded-full overflow-hidden shrink-0">
+          <div className="w-14 h-14 shrink-0 relative overflow-hidden rounded-full">
             <Image
               src="/assets/umkm/makanan/dapurnona/thumbnail.jpeg"
               fill
@@ -56,8 +56,8 @@ function Sidebar() {
             />
           </div>
           <div>
-            <h4 className="font-bold text-slate-900 text-lg">Dapur Nona</h4>
-            <span className="text-slate-500 font-medium block">Makanan</span>
+            <h4 className="text-slate-900 text-lg font-bold">Dapur Nona</h4>
+            <span className="text-slate-500 block font-medium">Makanan</span>
             <span className="inline-block bg-emerald-100 text-emerald-700 text-base font-bold px-2 py-0.5 rounded-md mt-1">
               Terverifikasi
             </span>
@@ -105,11 +105,11 @@ function Sidebar() {
                 key={item.name}
                 href={item.href}
                 className={`flex items-center gap-4 rounded-xl px-6 py-3 transition-all duration-200 ${isActive
-                    ? "bg-[#F2F9F5] text-[#279959]"
-                    : "text-[#344054] hover:bg-[#F9FAFB]"
+                  ? "bg-[#F2F9F5] text-[#279959]"
+                  : "text-[#344054] hover:bg-[#F9FAFB]"
                   }`}
               >
-                <div className="flex w-6 justify-center">
+                <div className="flex justify-center w-6">
                   <item.icon
                     size={22}
                     className={isActive ? "text-[#279959]" : "text-[#344054]"}
@@ -129,7 +129,7 @@ function Sidebar() {
       </div>
 
       {/* Logout Button */}
-      <button onClick={handleLogout} className="flex items-center gap-4 px-5 py-4 rounded-xl font-bold text-slate-500 hover:bg-rose-50 hover:text-rose-600 transition-colors text-left">
+      <button onClick={handleLogout} className="rounded-xl text-slate-500 hover:bg-rose-50 hover:text-rose-600 flex items-center gap-4 px-5 py-4 font-bold text-left transition-colors">
         <LuLogOut size={24} />
         <span>Keluar</span>
       </button>

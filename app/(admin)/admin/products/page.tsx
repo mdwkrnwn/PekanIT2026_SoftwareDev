@@ -256,42 +256,9 @@ export default function ProductPage() {
   ];
   return (
     <>
-      <div className="flex items-start mt-5 justify-between">
-        <div>
-          <h1 className="text-[30px] font-semibold text-[#0B0F1F]">
-            Produk & Menu
-          </h1>
-
-          <p className="mt-1 text-[#667085]">
-            Kelola semua produk dan menu yang tersedia di tokomu
-          </p>
-        </div>
-
-        <div className="flex items-center gap-3 cursor-pointer">
-          <Image
-            src="/avatar.png"
-            alt="Ryn Askara"
-            width={56}
-            height={56}
-            className="rounded-full"
-          />
-
-          <div>
-            <h3 className="font-semibold text-[#101828]">Ryn Askara</h3>
-
-            <p className="text-sm text-[#667085]">Pemilik</p>
-          </div>
-
-          <IoChevronDown
-            size={20}
-            className="text-[#667085] transition-transform hover:text-[#101828]"
-          />
-        </div>
-      </div>
-
       <div className="flex flex-col gap-8">
         {/* Top Stats Cards */}
-        <div className="mt-8 grid grid-cols-5 gap-4">
+        <div className="grid grid-cols-5 gap-4">
           {stats.map((item, index) => (
             <div
               key={index}
@@ -327,22 +294,21 @@ export default function ProductPage() {
         </div>
       </div>
 
-      <div className="mt-8 flex items-center justify-between">
+      <div className="flex items-center justify-between mt-8">
         {/* Left */}
         <div className="flex items-center gap-8">
           {categories.map((category) => (
             <button
               key={category.name}
               onClick={() => setActiveCategory(category.name)}
-              className={`relative pb-3 text-[15px] transition ${
-                activeCategory === category.name
-                  ? "font-semibold text-[#158A62]"
-                  : "font-medium text-[#667085] hover:text-[#101828]"
-              }`}
+              className={`relative pb-3 text-[15px] transition ${activeCategory === category.name
+                ? "font-semibold text-[#158A62]"
+                : "font-medium text-[#667085] hover:text-[#101828]"
+                }`}
             >
               {category.name} ({category.count})
               {activeCategory === category.name && (
-                <span className="absolute bottom-0 left-0 h-[2px] w-full rounded-full bg-[#158A62]" />
+                <span className="absolute bottom-0 left-0 h-0.5 w-full rounded-full bg-[#158A62]" />
               )}
             </button>
           ))}
@@ -455,7 +421,7 @@ export default function ProductPage() {
               </div>
             ))}
           </div>
-          <div className="mt-5 flex items-center justify-between">
+          <div className="flex items-center justify-between mt-5">
             <p className="text-[14px] text-[#667085]">
               Menampilkan{" "}
               <span className="font-medium">
@@ -489,11 +455,10 @@ export default function ProductPage() {
                   <button
                     key={page}
                     onClick={() => setCurrentPage(page)}
-                    className={`flex h-10 w-10 items-center justify-center rounded-lg font-semibold transition ${
-                      currentPage === page
-                        ? "bg-[#158A62] text-white"
-                        : "border border-[#D0D5DD] text-[#344054] hover:bg-[#F9FAFB]"
-                    }`}
+                    className={`flex h-10 w-10 items-center justify-center rounded-lg font-semibold transition ${currentPage === page
+                      ? "bg-[#158A62] text-white"
+                      : "border border-[#D0D5DD] text-[#344054] hover:bg-[#F9FAFB]"
+                      }`}
                   >
                     {page}
                   </button>
