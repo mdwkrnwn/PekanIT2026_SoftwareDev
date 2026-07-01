@@ -24,7 +24,13 @@ export default function LoginPage() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const user = dummyUsers.find(
+    // ambil user hasil register
+    const registeredUsers = JSON.parse(localStorage.getItem("users") || "[]");
+
+    // gabungkan dengan dummy user
+    const allUsers = [...dummyUsers, ...registeredUsers];
+
+    const user = allUsers.find(
       (u) => u.email === email && u.password === password,
     );
 
@@ -33,14 +39,17 @@ export default function LoginPage() {
       return;
     }
 
+    // simpan sesi login
     localStorage.setItem("user", JSON.stringify(user));
 
+    // redirect sesuai role
     if (user.role === "owner") {
       router.push("/admin/dashboard");
     } else {
       router.push("/");
     }
   };
+
   return (
     <div className="min-h-screen bg-[#F8FAFC] p-4 lg:p-6">
       <div className="mx-auto grid w-[1200px] grid-cols-[42%_58%] overflow-hidden rounded-[20px] bg-white shadow-sm">

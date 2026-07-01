@@ -7,8 +7,48 @@ import { Check } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export default function RegisterPage() {
-  const [role, setRole] = useState<"user" | "owner">("owner");
   const router = useRouter();
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    role: "user" as "user" | "owner",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleRoleChange = (role: "user" | "owner") => {
+    setFormData((prev) => ({
+      ...prev,
+      role,
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+
+    const emailExists = users.some(
+      (user: typeof formData) => user.email === formData.email,
+    );
+
+    if (emailExists) {
+      alert("Email sudah terdaftar");
+      return;
+    }
+
+    users.push(formData);
+
+    localStorage.setItem("users", JSON.stringify(users));
+    router.push("/login");
+  };
 
   return (
     <div className="min-h-screen bg-[#F7FAFC] py-8">
@@ -44,25 +84,24 @@ export default function RegisterPage() {
           </div>
 
           {/* ROLE */}
-          <div className="mx-auto mt-10 grid max-w-190 grid-cols-2 gap-6">
-            {/* Pengguna */}
+          <div className="mx-auto mt-10 grid max-w-[760px] grid-cols-2 gap-6">
+            {/* User */}
             <div
-              onClick={() => setRole("user")}
-              className={`relative h-82.5 cursor-pointer overflow-hidden rounded-xl border transition-all duration-200
-              ${role === "user"
+              onClick={() => handleRoleChange("user")}
+              className={`relative h-[330px] cursor-pointer overflow-hidden rounded-xl border transition-all duration-200 ${
+                formData.role === "user"
                   ? "border-2 border-[#0C7C61] bg-[#F6FCFA]"
                   : "border border-[#E5E7EB] bg-[#F6FCFA]"
-                }`}
+              }`}
             >
-              {/* Radio */}
               <div
-                className={`absolute left-5 top-5 flex h-6 w-6 items-center justify-center rounded-full border
-                ${role === "user"
+                className={`absolute left-5 top-5 flex h-6 w-6 items-center justify-center rounded-full border ${
+                  formData.role === "user"
                     ? "border-[#0C7C61] bg-[#0C7C61]"
                     : "border-[#D0D5DD] bg-white"
-                  }`}
+                }`}
               >
-                {role === "user" && (
+                {formData.role === "user" && (
                   <Check size={13} className="text-white" strokeWidth={3} />
                 )}
               </div>
@@ -83,23 +122,23 @@ export default function RegisterPage() {
               </div>
             </div>
 
-            {/* UMKM */}
+            {/* Owner */}
             <div
-              onClick={() => setRole("owner")}
-              className={`relative cursor-pointer rounded-2xl border p-4 transition-all
-
-            ${role === "owner" ? "border-[#0C7C61]" : "border-[#E4E7EC]"}`}
+              onClick={() => handleRoleChange("owner")}
+              className={`relative cursor-pointer rounded-2xl border p-4 transition-all ${
+                formData.role === "owner"
+                  ? "border-[#0C7C61]"
+                  : "border-[#E4E7EC]"
+              }`}
             >
-              {/* Radio */}
               <div
-                className={`absolute left-4 top-4 flex h-5 w-5 items-center justify-center rounded-full border
-
-              ${role === "owner"
+                className={`absolute left-4 top-4 flex h-5 w-5 items-center justify-center rounded-full border ${
+                  formData.role === "owner"
                     ? "border-[#0C7C61] bg-[#0C7C61]"
                     : "border-[#D0D5DD]"
-                  }`}
+                }`}
               >
-                {role === "owner" && (
+                {formData.role === "owner" && (
                   <Check size={13} className="text-white" strokeWidth={3} />
                 )}
               </div>
@@ -136,15 +175,7 @@ export default function RegisterPage() {
               Buat Akun Baru
             </h3>
 
-            <form onSubmit={(e) => {
-              e.preventDefault();
-              console.log(role);
-              if (role == "owner") {
-                router.push("/admin/complete-profile")
-              }
-            }
-            }
-              className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-5">
               {/* Nama */}
               <div>
                 <label className="mb-2 block text-[14px] font-semibold text-[#0B0F1F]">
@@ -153,6 +184,9 @@ export default function RegisterPage() {
 
                 <input
                   type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   placeholder="Masukkan nama lengkap"
                   className="h-12 w-full rounded-lg border border-[#DDE3EA] px-4 text-[15px] outline-none transition focus:border-[#0C7C61]"
                 />
@@ -166,6 +200,9 @@ export default function RegisterPage() {
 
                 <input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="Masukkan email kamu"
                   className="h-12 w-full rounded-lg border border-[#DDE3EA] px-4 text-[15px] outline-none transition focus:border-[#0C7C61]"
                 />
@@ -179,6 +216,9 @@ export default function RegisterPage() {
 
                 <input
                   type="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
                   placeholder="Masukkan password kamu"
                   className="h-12 w-full rounded-lg border border-[#DDE3EA] px-4 text-[15px] outline-none transition focus:border-[#0C7C61]"
                 />
