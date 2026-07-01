@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import Image from "next/image";
 import {
   LuMapPin,
@@ -23,12 +23,7 @@ import {
 import { Edit } from "lucide-react";
 
 export default function ProfilTokoView() {
-  const [gallery, setGallery] = useState<string[]>([
-    "https://picsum.photos/300/300?random=201",
-    "https://picsum.photos/300/300?random=202",
-    "https://picsum.photos/300/300?random=203",
-    "https://picsum.photos/300/300?random=204",
-  ]);
+  const [gallery, setGallery] = useState<string[]>([]);
 
   const stats = [
     { label: "Total Dilihat", value: "25", change: "22.1% dari minggu lalu", icon: LuTrendingDown, color: "text-rose-600 bg-rose-50" },
@@ -46,6 +41,18 @@ export default function ProfilTokoView() {
     { day: "Sabtu", hours: "08.00 - 20.00", isClosed: false },
     { day: "Minggu", hours: "Tutup", isClosed: true },
   ];
+
+  const addPhoto = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files == null) {
+      alert('File Error!')
+      return;
+    }
+    const file = e.target.files[0];
+    const urlImage = URL.createObjectURL(file);
+    setGallery((prev) => [...prev, urlImage])
+    e.target.value = "";
+
+  }
 
   return (
     <div className="flex flex-col gap-8 text-base">
@@ -130,10 +137,11 @@ export default function ProfilTokoView() {
                 <Image src={imgUrl} fill className="object-cover" alt={`Galeri ${idx + 1}`} />
               </div>
             ))}
-            <button className="border-primary-foreground text-primary-foreground hover:text-background hover:bg-primary-foreground rounded-2xl aspect-square flex flex-col items-center justify-center gap-2 p-4 text-center transition-colors border-2 border-dashed">
+            <label htmlFor="photo" className="border-primary-foreground text-primary-foreground hover:text-background hover:bg-primary-foreground hover:border-white rounded-2xl aspect-square flex flex-col items-center justify-center gap-2 p-4 text-center transition-colors border-2 border-dashed cursor-pointer">
               <LuPlus size={24} />
               <span className="font-bold">Tambah Foto</span>
-            </button>
+            </label>
+            <input type="file" onChange={addPhoto} className="hidden" accept="image/*" name="photo" id="photo" />
           </div>
         </div>
 
