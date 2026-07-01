@@ -33,7 +33,7 @@ export function Header() {
     message.desc = "Kelola informasi toko dan akun bisnismu.";
   }
   return (
-    <header className="bg-background border-border z-999 sticky top-0 flex items-start justify-between p-8 mb-8 border-b">
+    <header className="bg-background border-border z-999 sticky top-0 flex items-start justify-between p-8 border-b">
       <div>
         <h1 className="text-[30px] font-semibold text-[#0B0F1F]">{message.head}</h1>
 

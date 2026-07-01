@@ -148,11 +148,10 @@ function Sidebar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`flex items-center gap-4 rounded-xl px-6 py-3 transition-all duration-200 ${
-                  isActive
+                className={`flex items-center gap-4 rounded-xl px-6 py-3 transition-all duration-200 ${isActive
                     ? "bg-[#F2F9F5] text-[#279959]"
                     : "text-[#344054] hover:bg-[#F9FAFB]"
-                }`}
+                  }`}
               >
                 <div className="flex justify-center w-6">
                   <item.icon
@@ -162,9 +161,8 @@ function Sidebar() {
                 </div>
 
                 <span
-                  className={`text-[18px] ${
-                    isActive ? "font-semibold" : "font-medium"
-                  }`}
+                  className={`text-[18px] ${isActive ? "font-semibold" : "font-medium"
+                    }`}
                 >
                   {item.name}
                 </span>

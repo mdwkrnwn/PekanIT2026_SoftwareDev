@@ -32,10 +32,10 @@ export default function AdminLayout({
       )}
       suppressHydrationWarning
     >
-      <body className="relative grid min-h-screen overflow-x-hidden bg-background grid-cols-[auto_1fr] grid-rows-[auto_1fr]">
+      <body className="relative grid h-screen overflow-hidden bg-background grid-cols-[auto_1fr] gap-y-8 grid-rows-[auto_1fr]">
         <Sidebar />
         <Header />
-        <main className="px-8 pb-8">
+        <main className="px-8 overflow-y-auto">
           <AdminGuard>{children}</AdminGuard>
         </main>
       </body>
