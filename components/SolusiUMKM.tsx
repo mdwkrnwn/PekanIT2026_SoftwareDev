@@ -78,7 +78,7 @@ export function SolusiUMKM() {
             data-aos="fade-up"
             data-aos-delay={index * 100}
             data-aos-duration="800"
-            className="group flex min-h-[280px] flex-col rounded-2xl border border-[#EEF0F2] bg-[#FEFEFE] p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+            className="group flex min-h-70 flex-col rounded-2xl border border-border bg-muted p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
           >
             {/* Icon */}
             <div
@@ -91,7 +91,7 @@ export function SolusiUMKM() {
             </div>
 
             {/* Title */}
-            <h3 className="text-[20px] font-semibold leading-snug text-[#161C2D] transition-colors duration-300 group-hover:text-primary">
+            <h3 className="text-[20px] font-semibold leading-snug text-foreground transition-colors duration-300 group-hover:text-primary">
               {item.title}
             </h3>
 

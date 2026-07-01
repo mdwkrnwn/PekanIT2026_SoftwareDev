@@ -58,7 +58,7 @@ export function InsightHariIni() {
       <h3
         data-aos="fade-down"
         data-aos-duration="800"
-        className="text-[#0B0F1F] text-4xl dark:text-white font-semibold"
+        className="text-foreground text-4xl font-semibold"
       >
         Insight UMKM Hari ini
       </h3>
@@ -67,7 +67,7 @@ export function InsightHariIni() {
         data-aos="fade-up"
         data-aos-delay="150"
         data-aos-duration="800"
-        className="text-slate-500 max-w-2xl mx-auto mt-2"
+        className="text-muted-foreground max-w-2xl mx-auto mt-2"
       >
         Data yang membantu Anda memahami tren dan peluang bisnis.
       </p>
@@ -80,29 +80,29 @@ export function InsightHariIni() {
             data-aos-delay={index * 150}
             data-aos-duration="700"
             data-aos-once="true"
-            className={`rounded-2xl border bg-white p-5 ${item.border}`}
+            className={`rounded-2xl border bg-muted p-5 border-border`}
           >
             <div className="flex items-start justify-between">
               <div>
-                <h4 className="text-[15px] font-bold text-[#0B0F1F]">
+                <h4 className="text-[15px] font-bold text-foreground">
                   {item.title}
                 </h4>
 
                 {item.isTime ? (
-                  <h3 className="mt-3 text-[25px] font-bold text-[#0B0F1F]">
+                  <h3 className="mt-3 text-[25px] font-bold text-foreground">
                     {item.value}
                   </h3>
                 ) : (
-                  <p className="mt-2 text-[14px] font-medium text-[#0B0F1F]">
+                  <p className="mt-2 text-[14px] font-medium text-foreground">
                     {item.value}
                   </p>
                 )}
 
-                <h3 className="mt-3 text-[20px] font-bold text-[#0B0F1F]">
+                <h3 className="mt-3 text-[20px] font-bold text-foreground">
                   {item.change}
                 </h3>
 
-                <p className="mt-1 text-[12px] text-[#98A2B3]">{item.desc}</p>
+                <p className="mt-1 text-[12px] text-muted-foreground">{item.desc}</p>
               </div>
 
               <div

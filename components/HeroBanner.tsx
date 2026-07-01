@@ -130,16 +130,16 @@ export function HeroBanner() {
       <div
         data-aos="fade-up"
         data-aos-delay="200"
-        className="mx-auto mt-20 grid grid-cols-1 gap-6 rounded-[2rem] bg-background p-8 outline-2 outline-[#EEF0F2] md:grid-cols-2 lg:grid-cols-4"
+        className="mx-auto mt-20 grid grid-cols-1 gap-6 rounded-[2rem] bg-background p-8 outline-2 outline-border md:grid-cols-2 lg:grid-cols-4"
       >
         {stats.map((item, index) => (
           <div
             key={index}
             data-aos="fade-up"
             data-aos-delay={index * 100}
-            className="flex items-center gap-5 pr-8 lg:border-r lg:border-[#EEF0F2] last:lg:border-r-0"
+            className="flex items-center gap-5 pr-8 lg:border-r border-border last:lg:border-r-0"
           >
-            <div className="flex size-20 items-center justify-center rounded-full bg-[#EEFBF5] text-primary-foreground transition-transform duration-300 hover:scale-110">
+            <div className="flex size-20 items-center justify-center rounded-full bg-primary/10 dark:bg-primary/50 text-primary-foreground transition-transform duration-300 hover:scale-110">
               {item.icon}
             </div>
 

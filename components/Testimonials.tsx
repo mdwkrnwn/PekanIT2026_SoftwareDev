@@ -42,7 +42,7 @@ export function Testimonials() {
         data-aos="fade-up"
         data-aos-delay="150"
         data-aos-duration="800"
-        className="text-slate-500 max-w-2xl mx-auto mt-2 text-sm"
+        className="text-muted-foreground max-w-2xl mx-auto mt-2 text-sm"
       >
         Mereka telah membuktikan transformasi digital bersama ekosistem data
         cerdas kami.
@@ -56,11 +56,11 @@ export function Testimonials() {
             data-aos-delay={index * 150}
             data-aos-duration="800"
             data-aos-once="true"
-            className="flex overflow-hidden rounded-2xl border border-[#EEF0F2] bg-white"
+            className="flex overflow-hidden rounded-2xl border border-border bg-muted"
           >
             {/* Image */}
             <div
-              className="relative h-[235px] w-[165px] shrink-0"
+              className="relative h-58.75 w-41.25 shrink-0"
               data-aos="zoom-in"
               data-aos-delay={index * 150 + 150}
             >
@@ -74,12 +74,12 @@ export function Testimonials() {
 
             {/* Content */}
             <div className="flex flex-1 flex-col justify-between p-5">
-              <p className="text-[14px] text-start leading-6 text-[#374151]">
-                "{user.comment}"
+              <p className="text-[14px] text-start leading-6 text-foreground">
+                &quot;{user.comment}&quot;
               </p>
 
               <div>
-                <h4 className="text-[17px] text-start font-bold text-[#0B0F1F]">
+                <h4 className="text-[17px] text-start font-bold text-foreground">
                   {user.name}
                 </h4>
 
