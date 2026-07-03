@@ -224,7 +224,7 @@ export default function CompleteProfilePage() {
   return (
     <>
       {/* ================= HEADER SECTION ================= */}
-      <div className="flex flex-col md:flex-row items-start md:items-center  pb-8 gap-6">
+      <div className="flex flex-col md:flex-row items-start md:items-center pt-6 pb-8 gap-6">
         <div className="flex items-center gap-4">
           <div className="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center text-[#15803d]">
             <LuStore size={36} />

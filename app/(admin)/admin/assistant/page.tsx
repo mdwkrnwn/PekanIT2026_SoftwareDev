@@ -1,10 +1,8 @@
 "use client";
-
+import { LucideBarChart3, LucideLineChart } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-import { LucideBarChart3, LucideLineChart } from "lucide-react";
 import { IconType } from "react-icons";
-
 import {
   LuSend,
   LuSparkles,
@@ -21,7 +19,7 @@ import {
   LuUsers,
   LuHeart,
   LuPackage,
-  LuUser,
+  LuPersonStanding,
 } from "react-icons/lu";
 
 export default function AiAssistantPage() {
@@ -34,13 +32,13 @@ export default function AiAssistantPage() {
     { icon: LuThumbsUp, text: "Bagaimana cara meningkatkan rating?" },
   ];
 
-  // export interface ProductStat {
-  //   title: string;
-  //   value: string;
-  //   growth: string;
-  //   icon: IconType;
-  //   color: string;
-  // }
+  interface ProductStat {
+    title: string;
+    value: string;
+    growth: string;
+    icon: IconType;
+    color: string;
+  }
 
   const productStats = [
     {
@@ -54,7 +52,7 @@ export default function AiAssistantPage() {
       title: "Total Pengunjung",
       value: "12",
       growth: "+0.2%",
-      icon: LuUser,
+      icon: LuPersonStanding,
       color: "bg-[#FFF0F3] text-[#E11D48]",
     },
     {
@@ -73,9 +71,21 @@ export default function AiAssistantPage() {
   ];
 
   const produkTerlaris = [
-    { name: "Nasi Ayam Geprek", views: "324 dilihat", img: "/menu1.png" },
-    { name: "Es Teh Manis", views: "210 dilihat", img: "/menu2.png" },
-    { name: "Ayam Penyet", views: "210 dilihat", img: "/menu3.png" },
+    {
+      name: "Nasi Ayam Geprek",
+      views: "324 dilihat",
+      img: "/assets/umkm/makanan/dapurnona/ayamgeprek.jpeg",
+    },
+    {
+      name: "Es Teh Manis",
+      views: "210 dilihat",
+      img: "/assets/umkm/makanan/dapurnona/esteh.jpeg",
+    },
+    {
+      name: "Sambal Cumi",
+      views: "210 dilihat",
+      img: "/assets/umkm/makanan/dapurnona/sambalcumi.jpeg",
+    },
   ];
 
   const sumberKunjungan = [
@@ -86,7 +96,7 @@ export default function AiAssistantPage() {
   ];
 
   return (
-    <div className="grid grid-cols-[2.4fr_1fr] gap-6">
+    <div className="grid grid-cols-[2fr_1fr] gap-6">
       {/* LEFT: Chat area */}
       <div className="flex flex-col gap-6">
         {/* Pertanyaan Populer */}
@@ -298,7 +308,7 @@ export default function AiAssistantPage() {
           {/* Placeholder chart */}
           <div className="mt-3">
             <Image
-              src="/chart-kunjungan-placeholder.png"
+              src="/chart-kunjungan.png"
               alt="Grafik Kunjungan Toko"
               width={400}
               height={160}
@@ -306,103 +316,96 @@ export default function AiAssistantPage() {
             />
           </div>
         </div>
-
-        {/* Produk Terlaris */}
-        <div className="rounded-2xl border border-[#EAECF0] bg-white p-5">
-          <div className="flex items-center justify-between">
-            <h3 className="text-[15px] font-semibold text-[#101828]">
-              Produk Terlaris
-            </h3>
-            <button className="text-[12px] font-medium text-[#158A62]">
-              Lihat Semua
-            </button>
-          </div>
-          <div className="mt-4 space-y-3">
-            {produkTerlaris.map((p, i) => (
-              <div key={p.name} className="flex items-center gap-3">
-                <span className="text-[12px] font-medium text-[#98A2B3]">
-                  {i + 1}
-                </span>
-                <Image
-                  src={p.img}
-                  alt={p.name}
-                  width={36}
-                  height={36}
-                  className="h-9 w-9 rounded-lg object-cover"
-                />
-                <div>
-                  <p className="text-[13px] font-medium text-[#101828]">
-                    {p.name}
-                  </p>
-                  <p className="text-[11px] text-[#667085]">{p.views}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Jam Paling Ramai */}
-        <div className="rounded-2xl border border-[#EAECF0] bg-white p-5">
-          <h3 className="text-[15px] font-semibold text-[#101828]">
-            Jam Paling Ramai
-          </h3>
-          <p className="mt-2 text-[16px] font-bold text-[#101828]">
-            17.00 - 20.00
-          </p>
-          <p className="text-[11px] text-[#667085]">312 kunjungan</p>
-          <div className="mt-3">
-            <Image
-              src="/chart-jam-ramai-placeholder.png"
-              alt="Grafik Jam Paling Ramai"
-              width={400}
-              height={100}
-              className="w-full object-contain"
-            />
-          </div>
-        </div>
-
-        {/* Sumber Kunjungan */}
-        <div className="rounded-2xl border border-[#EAECF0] bg-white p-5">
-          <h3 className="text-[15px] font-semibold text-[#101828]">
-            Sumber Kunjungan
-          </h3>
-          <div className="mt-4 flex items-center gap-4">
-            <Image
-              src="/donut-sumber-kunjungan-placeholder.png"
-              alt="Donut Sumber Kunjungan"
-              width={90}
-              height={90}
-              className="h-[90px] w-[90px] object-contain"
-            />
-            <div className="space-y-2">
-              {sumberKunjungan.map((s) => (
-                <div
-                  key={s.label}
-                  className="flex items-center gap-2 text-[12px] text-[#344054]"
-                >
-                  <span className={`h-2.5 w-2.5 rounded-full ${s.color}`} />
-                  {s.label}
-                  <span className="font-semibold">{s.value}</span>
+        {/* Produk Terlaris + Jam Paling Ramai */}
+        <div className="grid grid-cols-2 gap-4">
+          {/* Produk Terlaris */}
+          <div className="rounded-2xl border border-[#EAECF0] bg-white p-5">
+            <div className="flex items-center justify-between">
+              <h3 className="text-[15px] font-semibold text-[#101828]">
+                Produk Terlaris
+              </h3>
+              <button className="text-[12px] font-medium text-[#158A62]">
+                Lihat Semua
+              </button>
+            </div>
+            <div className="mt-4 space-y-3">
+              {produkTerlaris.map((p, i) => (
+                <div key={p.name} className="flex items-center gap-3">
+                  <span className="text-[12px] font-medium text-[#98A2B3]">
+                    {i + 1}
+                  </span>
+                  <Image
+                    src={p.img}
+                    alt={p.name}
+                    width={36}
+                    height={36}
+                    className="h-9 w-9 shrink-0 rounded-lg object-cover"
+                  />
+                  <div className="min-w-0">
+                    <p className="truncate text-[13px] font-medium text-[#101828]">
+                      {p.name}
+                    </p>
+                    <p className="text-[11px] text-[#667085]">{p.views}</p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
+
+          {/* Jam Paling Ramai */}
+          <div className="rounded-2xl border border-[#EAECF0] bg-white p-5">
+            <h3 className="text-[15px] font-semibold text-[#101828]">
+              Jam Paling Ramai
+            </h3>
+            <p className="mt-2 text-[16px] font-bold text-[#101828]">
+              17.00 - 20.00
+            </p>
+            <p className="text-[11px] text-[#667085]">312 kunjungan</p>
+            <div className="mt-3">
+              <Image
+                src="/chart-jam-kunjungan.png"
+                alt="Grafik Jam Paling Ramai"
+                width={400}
+                height={100}
+                className="w-full object-contain"
+              />
+            </div>
+          </div>
         </div>
 
-        {/* Rekomendasi AI untukmu */}
-        <div className="rounded-2xl border border-[#F5C563] bg-[#FFFBEB] p-5">
-          <h3 className="flex items-center gap-2 text-[14px] font-semibold text-[#101828]">
-            <LuSparkles className="text-[#F59E0B]" size={16} />
-            Rekomendasi AI untukmu
-          </h3>
-          <p className="mt-2 text-[13px] leading-6 text-[#344054]">
-            Buat promo &quot;Paket Hemat Siang&quot; pada jam 11.00 - 13.00
-            untuk meningkatkan kunjungan hingga 15 - 20%.
-          </p>
-          <button className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl border border-[#F59E0B] bg-white py-2.5 text-[13px] font-semibold text-[#B45309] transition hover:bg-[#FFFBEB]">
-            Buat Promo Sekarang
-            <LuArrowRight size={15} />
-          </button>
+        {/* Sumber Kunjungan + Rekomendasi AI untukmu */}
+        <div className="grid grid-cols-2 gap-4">
+          {/* Sumber Kunjungan */}
+          <div className="rounded-2xl border border-[#EAECF0] bg-white p-5">
+            <h3 className="text-[15px] font-semibold text-[#101828]">
+              Sumber Kunjungan
+            </h3>
+            <div className="mt-4">
+              <Image
+                src="/chart-sumber-kunjungan.png"
+                alt="Donut Sumber Kunjungan"
+                width={90}
+                height={90}
+                className="w-full object-contain"
+              />
+            </div>
+          </div>
+
+          {/* Rekomendasi AI untukmu */}
+          <div className="rounded-2xl border border-[#F5C563] bg-[#FFFBEB] p-5">
+            <h3 className="flex items-center gap-2 text-[14px] font-semibold text-[#101828]">
+              <LuSparkles className="text-[#F59E0B]" size={16} />
+              Rekomendasi AI untukmu
+            </h3>
+            <p className="mt-2 text-[13px] leading-6 text-[#344054]">
+              Buat promo &quot;Paket Hemat Siang&quot; pada jam 11.00 - 13.00
+              untuk meningkatkan kunjungan hingga 15 - 20%.
+            </p>
+            <button className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl border border-[#F59E0B] bg-white py-2.5 text-[13px] font-semibold text-[#B45309] transition hover:bg-[#FFFBEB]">
+              Buat Promo Sekarang
+              <LuArrowRight size={15} />
+            </button>
+          </div>
         </div>
 
         {/* Lihat Analisis Lengkap */}
