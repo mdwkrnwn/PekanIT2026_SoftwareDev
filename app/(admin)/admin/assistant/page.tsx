@@ -1,7 +1,10 @@
 "use client";
-import { LucideBarChart3, LucideLineChart } from "lucide-react";
+
 import Image from "next/image";
 import { useState } from "react";
+import { LucideBarChart3, LucideLineChart } from "lucide-react";
+import { IconType } from "react-icons";
+
 import {
   LuSend,
   LuSparkles,
@@ -17,6 +20,8 @@ import {
   LuEye,
   LuUsers,
   LuHeart,
+  LuPackage,
+  LuUser,
 } from "react-icons/lu";
 
 export default function AiAssistantPage() {
@@ -29,23 +34,14 @@ export default function AiAssistantPage() {
     { icon: LuThumbsUp, text: "Bagaimana cara meningkatkan rating?" },
   ];
 
-  import { IconType } from "react-icons";
-  import {
-    LuUtensilsCrossed,
-    LuEye,
-    LuHeart,
-    LuPackage,
-    LuStar,
-  } from "react-icons/lu";
-  
-  export interface ProductStat {
-    title: string;
-    value: string;
-    growth: string;
-    icon: IconType;
-    color: string;
-  }
-  
+  // export interface ProductStat {
+  //   title: string;
+  //   value: string;
+  //   growth: string;
+  //   icon: IconType;
+  //   color: string;
+  // }
+
   const productStats = [
     {
       title: "Total Dilihat",
@@ -58,7 +54,7 @@ export default function AiAssistantPage() {
       title: "Total Pengunjung",
       value: "12",
       growth: "+0.2%",
-      icon: Lu,
+      icon: LuUser,
       color: "bg-[#FFF0F3] text-[#E11D48]",
     },
     {
@@ -67,7 +63,7 @@ export default function AiAssistantPage() {
       growth: "+0.2%",
       icon: LuPackage,
       color: "bg-[#EAF2FF] text-[#2563EB]",
-    }
+    },
   ];
 
   const summaryStats = [
@@ -105,10 +101,7 @@ export default function AiAssistantPage() {
                 onClick={() => setMessage(q.text)}
                 className="flex items-center gap-2 rounded-xl border border-[#EAECF0] bg-white px-3 py-3 text-left text-[12px] font-medium text-[#344054] transition hover:border-[#158A62] hover:bg-[#F6FCF9]"
               >
-                <q.icon
-                  size={16}
-                  className="shrink-0 text-[#158A62]"
-                />
+                <q.icon size={16} className="shrink-0 text-[#158A62]" />
                 {q.text}
               </button>
             ))}
@@ -116,12 +109,17 @@ export default function AiAssistantPage() {
         </div>
 
         {/* Chat box */}
-        <div className="flex h-[640px] flex-col rounded-2xl border border-[#EAECF0] bg-white p-5">
+        <div className="flex h-[840px] flex-col rounded-2xl border border-[#EAECF0] bg-white p-5">
           {/* Header */}
           <div className="flex items-center justify-between border-b border-[#EAECF0] pb-4">
             <div className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#158A62] text-white">
-                <LuBot size={22} />
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-transparent text-white">
+                <Image
+                  src="/ai.png"
+                  alt="AI Assistant"
+                  width={22}
+                  height={22}
+                />
               </div>
               <div>
                 <div className="flex items-center gap-2">
@@ -171,9 +169,8 @@ export default function AiAssistantPage() {
                 <li className="flex gap-2">
                   <span>👁️</span>
                   <span>
-                    Produk paling banyak dilihat adalah Nasi Ayam Geprek,
-                    tetapi konversinya (dari dilihat ke pesan/rekomendasi)
-                    rendah (8%).
+                    Produk paling banyak dilihat adalah Nasi Ayam Geprek, tetapi
+                    konversinya (dari dilihat ke pesan/rekomendasi) rendah (8%).
                   </span>
                 </li>
                 <li className="flex gap-2">

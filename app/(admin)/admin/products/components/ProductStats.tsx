@@ -1,9 +1,35 @@
-import { productStats } from "../productStats";
+import { useProductStats } from "../hooks/useProductStats";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function ProductStats() {
+  const { stats, loading } = useProductStats();
+
+  if (loading) {
+    return (
+      <div className="grid grid-cols-5 gap-4">
+        {Array.from({ length: 5 }).map((_, index) => (
+          <div
+            key={index}
+            className="rounded-2xl border border-[#EAECF0] bg-white p-5"
+          >
+            <div className="flex items-start gap-4">
+              <Skeleton className="h-15 w-15 rounded-xl" />
+
+              <div className="flex-1 space-y-3">
+                <Skeleton className="h-4 w-24" />
+                <Skeleton className="h-8 w-20" />
+                <Skeleton className="h-3 w-32" />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div className="grid grid-cols-5 gap-4">
-      {productStats.map((item) => (
+      {stats.map((item) => (
         <div
           key={item.title}
           className="rounded-2xl border border-[#EAECF0] bg-white p-5"
@@ -26,7 +52,7 @@ export default function ProductStats() {
 
               <div className="mt-2 flex items-center gap-1 text-[12px]">
                 <span className="font-semibold text-[#16A34A]">
-                  ▲ {item.growth}
+                  ▲ {item.growth}%
                 </span>
 
                 <span className="text-[#667085]">dari minggu lalu</span>

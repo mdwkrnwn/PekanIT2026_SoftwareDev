@@ -29,7 +29,7 @@ export default function ProductPage() {
 
     search,
     setSearch,
-
+    loading,
     currentPage,
     setCurrentPage,
 
@@ -43,7 +43,7 @@ export default function ProductPage() {
 
     openMenuId,
     setOpenMenuId,
-
+    submitting,
     handleProductImage,
     resetForm,
     getProducts,
@@ -150,6 +150,7 @@ export default function ProductPage() {
           setIsModalOpen(false);
         }}
         menuData={menuData}
+        submitting={submitting}
         setMenuData={setMenuData}
         productImage={productImage}
         handleProductImage={handleProductImage}
@@ -163,6 +164,7 @@ export default function ProductPage() {
           <ProductTable
             products={paginatedProducts}
             openMenuId={openMenuId}
+            loading={loading}
             setOpenMenuId={setOpenMenuId}
             onEdit={handleEditProduct}
             onDelete={handleDeleteProduct}

@@ -1,11 +1,9 @@
 import { IconType } from "react-icons";
-import {
-  LuTag,
-  LuEye,
-  LuMessageSquareMore,
-  LuMapPin,
-} from "react-icons/lu";
+import { LuTag, LuEye, LuMapPin, LuCheckCheck } from "react-icons/lu";
 
+interface PromoStatsProps {
+  refreshKey: number;
+}
 export interface PromoStat {
   title: string;
   value: string;
@@ -13,41 +11,51 @@ export interface PromoStat {
   icon: IconType;
   color: string;
 }
-
-export const promoStats: PromoStat[] = [
-  {
-    title: "Total Promo",
-    value: "1.240",
-    growth: "+12.3%",
-    icon: LuTag,
-    color: "bg-[#E8F7EF] text-[#158A62]",
-  },
-  {
-    title: "Total Dilihat",
-    value: "187",
-    growth: "+12.3%",
-    icon: LuEye,
-    color: "bg-[#FFF0F3] text-[#E11D48]",
-  },
-  {
-    title: "Total Interaksi",
-    value: "112",
-    growth: "+12.3%",
-    icon: LuMessageSquareMore,
-    color: "bg-[#FFF4E5] text-[#F97316]",
-  },
-  {
-    title: "Klik ke Maps dari Promo",
-    value: "45",
-    growth: "+12.3%",
-    icon: LuMapPin,
-    color: "bg-[#EAF2FF] text-[#2563EB]",
-  },
-  {
-    title: "Promo Aktif",
-    value: "312",
-    growth: "+12.3%",
-    icon: LuTag,
-    color: "bg-[#EAF2FF] text-[#2563EB]",
-  },
-];
+function getRandomGrowth() {
+  return (Math.random() * 15 + 5).toFixed(1); // 5.0 - 20.0%
+}
+export function getPromoStats(stats: {
+  totalPromo: number;
+  totalDilihat: number;
+  totalKlik: number;
+  promoAktif: number;
+  promoSelesai: number;
+}): PromoStat[] {
+  return [
+    {
+      title: "Total Promo",
+      value: stats.totalPromo.toString(),
+      growth: getRandomGrowth(),
+      icon: LuTag,
+      color: "bg-[#E8F7EF] text-[#158A62]",
+    },
+    {
+      title: "Total Dilihat",
+      value: stats.totalDilihat.toLocaleString(),
+      growth: getRandomGrowth(),
+      icon: LuEye,
+      color: "bg-[#FFF0F3] text-[#E11D48]",
+    },
+    {
+      title: "Klik ke Maps",
+      value: stats.totalKlik.toString(),
+      growth: getRandomGrowth(),
+      icon: LuMapPin,
+      color: "bg-[#EAF2FF] text-[#2563EB]",
+    },
+    {
+      title: "Promo Aktif",
+      value: stats.promoAktif.toString(),
+      growth: getRandomGrowth(),
+      icon: LuTag,
+      color: "bg-[#EAF2FF] text-[#2563EB]",
+    },
+    {
+      title: "Promo Selesai",
+      value: stats.promoSelesai.toString(),
+      growth: getRandomGrowth(),
+      icon: LuCheckCheck,
+      color: "bg-[#F3F4F6] text-[#6B7280]",
+    },
+  ];
+}

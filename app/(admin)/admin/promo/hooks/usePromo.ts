@@ -9,6 +9,8 @@ import {
 } from "../services/promo.service";
 export default function usePromo() {
   const [promos, setPromos] = useState<Promo[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
 
   const [activeCategory, setActiveCategory] = useState("Semua Promo");
 
@@ -94,7 +96,7 @@ export default function usePromo() {
   ];
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [refreshStats, setRefreshStats] = useState(0);
   const [editingId, setEditingId] = useState<number | null>(null);
 
   const [isEditMode, setIsEditMode] = useState(false);
@@ -179,13 +181,21 @@ export default function usePromo() {
       data: { user },
     } = await supabase.auth.getUser();
 
-    if (!user) return;
+    if (!user) {
+      setLoading(false);
+      return;
+    }
 
     try {
+      setLoading(true);
+
       const data = await fetchPromos(user.id);
+
       setPromos(data);
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -214,6 +224,8 @@ export default function usePromo() {
     }
 
     try {
+      setSubmitting(true);
+
       await createPromo({
         userId: user.id,
         promoData,
@@ -221,7 +233,7 @@ export default function usePromo() {
       });
 
       await getPromos();
-
+      setRefreshStats((prev) => prev + 1);
       alert("Promo berhasil ditambahkan.");
 
       resetPromoForm();
@@ -229,6 +241,8 @@ export default function usePromo() {
       setIsModalOpen(false);
     } catch (error: any) {
       alert(error.message);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -242,6 +256,7 @@ export default function usePromo() {
     if (!user) return;
 
     try {
+      setSubmitting(true);
       await updatePromo({
         editingId,
         userId: user.id,
@@ -250,7 +265,7 @@ export default function usePromo() {
       });
 
       await getPromos();
-
+      setRefreshStats((prev) => prev + 1);
       alert("Promo berhasil diperbarui.");
 
       resetPromoForm();
@@ -258,6 +273,8 @@ export default function usePromo() {
       setIsModalOpen(false);
     } catch (error: any) {
       alert(error.message);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -270,7 +287,7 @@ export default function usePromo() {
       await deletePromo(id);
 
       await getPromos();
-
+      setRefreshStats((prev) => prev + 1);
       setOpenMenuId(null);
 
       alert("Promo berhasil dihapus.");
@@ -282,16 +299,16 @@ export default function usePromo() {
   return {
     promos,
     setPromos,
-
+    loading,
     activeCategory,
     setActiveCategory,
-
+    submitting,
     search,
     setSearch,
 
     sortBy,
     setSortBy,
-
+    refreshStats,
     currentPage,
     setCurrentPage,
 

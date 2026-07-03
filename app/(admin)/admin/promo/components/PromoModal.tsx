@@ -9,7 +9,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-import { UploadCloudIcon } from "lucide-react";
+import { Loader2, UploadCloudIcon } from "lucide-react";
 
 interface PromoModalProps {
   open: boolean;
@@ -47,6 +47,8 @@ interface PromoModalProps {
 
   onSubmit: () => void;
 
+  submitting: boolean;
+
   isEdit?: boolean;
 }
 
@@ -58,6 +60,7 @@ export default function PromoModal({
   promoImage,
   handlePromoImage,
   onSubmit,
+  submitting,
   isEdit = false,
 }: PromoModalProps) {
   return (
@@ -101,8 +104,6 @@ export default function PromoModal({
               </label>
             </div>
 
-            
-
             {/* Form */}
             <div className="space-y-5">
               <div>
@@ -116,6 +117,7 @@ export default function PromoModal({
                       title: e.target.value,
                     })
                   }
+                  placeholder="Diskon 20% Menu Pilihan"
                   className="mt-2 h-12 w-full rounded-xl border border-slate-200 px-4"
                 />
               </div>
@@ -131,6 +133,7 @@ export default function PromoModal({
                       promo_type: e.target.value,
                     })
                   }
+                  placeholder="Diskon"
                   className="mt-2 h-12 w-full rounded-xl border border-slate-200 px-4"
                 />
               </div>
@@ -163,6 +166,7 @@ export default function PromoModal({
                       target: e.target.value,
                     })
                   }
+                  placeholder="Semua Pelanggan"
                   className="mt-2 h-12 w-full rounded-xl border border-slate-200 px-4"
                 />
               </div>
@@ -223,6 +227,7 @@ export default function PromoModal({
                 <textarea
                   rows={4}
                   value={promoData.description}
+                  placeholder="Diskon 20% untuk semua paket makan siang"
                   onChange={(e) =>
                     setPromoData({
                       ...promoData,
@@ -239,16 +244,27 @@ export default function PromoModal({
         <DialogFooter className="border-t mb-3 border-slate-100 px-8 py-5">
           <button
             onClick={onClose}
-            className="rounded-xl border border-slate-200 px-6 py-3 font-semibold"
+            disabled={submitting}
+            className="rounded-xl border border-slate-200 px-6 py-3 font-semibold disabled:cursor-not-allowed disabled:opacity-50"
           >
             Batal
           </button>
 
           <button
             onClick={onSubmit}
-            className="rounded-xl bg-[#158A62] px-6 py-3 font-semibold text-white"
+            disabled={submitting}
+            className="flex min-w-[170px] items-center justify-center gap-2 rounded-xl bg-[#158A62] px-6 py-3 font-semibold text-white transition disabled:cursor-not-allowed disabled:opacity-70"
           >
-            {isEdit ? "Update Promo" : "Simpan Promo"}
+            {submitting ? (
+              <>
+                <Loader2 className="h-4 w-4 animate-spin" />
+                {isEdit ? "Memperbarui..." : "Menyimpan..."}
+              </>
+            ) : isEdit ? (
+              "Update Promo"
+            ) : (
+              "Simpan Promo"
+            )}
           </button>
         </DialogFooter>
       </DialogContent>

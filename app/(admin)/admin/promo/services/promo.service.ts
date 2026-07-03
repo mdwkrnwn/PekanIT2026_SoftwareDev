@@ -1,5 +1,5 @@
 import { supabase } from "@/lib/supabase";
-
+import { getPromoStatus } from "../utils/promo";
 interface PromoData {
   title: string;
   description: string;
@@ -77,7 +77,7 @@ export async function createPromo({
   const {
     data: { publicUrl },
   } = supabase.storage.from("promos").getPublicUrl(fileName);
-
+  const status = getPromoStatus(promoData.start_date, promoData.end_date);
   const { error } = await supabase.from("promos").insert({
     umkm_id: umkm.id,
 
@@ -93,7 +93,7 @@ export async function createPromo({
     start_date: promoData.start_date,
     end_date: promoData.end_date,
 
-    status: promoData.status,
+    status: status,
 
     image_url: publicUrl,
   });
@@ -129,6 +129,8 @@ export async function updatePromo({
     imageUrl = publicUrl;
   }
 
+  const status = getPromoStatus(promoData.start_date, promoData.end_date);
+
   const updateData: any = {
     title: promoData.title.trim(),
     description: promoData.description.trim(),
@@ -142,7 +144,7 @@ export async function updatePromo({
     start_date: promoData.start_date,
     end_date: promoData.end_date,
 
-    status: promoData.status,
+    status: status,
   };
 
   if (imageUrl) {
@@ -165,4 +167,68 @@ export async function deletePromo(id: number) {
   if (error) {
     throw new Error(error.message);
   }
+}
+
+export async function fetchPromoStats(userId: string) {
+  const { data: umkm, error: umkmError } = await supabase
+    .from("umkm")
+    .select("id")
+    .eq("owner_id", userId)
+    .single();
+
+  if (umkmError || !umkm) {
+    throw new Error("UMKM tidak ditemukan.");
+  }
+
+  const { data: promos, error } = await supabase
+    .from("promos")
+    .select("views, clicks, status")
+    .eq("umkm_id", umkm.id);
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return {
+    totalPromo: promos.length,
+    totalDilihat: promos.reduce(
+      (total, promo) => total + (promo.views ?? 0),
+      0,
+    ),
+    totalKlik: promos.reduce((total, promo) => total + (promo.clicks ?? 0), 0),
+    promoAktif: promos.filter((promo) => promo.status === "Aktif").length,
+
+    promoSelesai: promos.filter((promo) => promo.status === "Selesai").length,
+  };
+}
+
+export async function fetchPromoPerformance(userId: string) {
+  const { data: umkm, error: umkmError } = await supabase
+    .from("umkm")
+    .select("id")
+    .eq("owner_id", userId)
+    .single();
+
+  if (umkmError || !umkm) {
+    throw new Error("UMKM tidak ditemukan.");
+  }
+
+  const { data: promos, error } = await supabase
+    .from("promos")
+    .select("views")
+    .eq("umkm_id", umkm.id);
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  const totalViews = promos.reduce(
+    (total, promo) => total + (promo.views ?? 0),
+    0,
+  );
+
+  return {
+    totalViews,
+    growth: (Math.random() * 15 + 5).toFixed(1), // random 5.0 - 20.0
+  };
 }

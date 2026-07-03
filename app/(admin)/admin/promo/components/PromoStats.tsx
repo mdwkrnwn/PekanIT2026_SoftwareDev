@@ -1,9 +1,38 @@
-import { promoStats } from "../promoStats";
+import { usePromoStats } from "../hooks/usePromoStats";
+import { Skeleton } from "@/components/ui/skeleton";
 
-export default function PromoStats() {
+interface PromoStatsProps {
+  refreshKey: number;
+}
+export default function PromoStats({ refreshKey }: PromoStatsProps) {
+  const { stats, loading } = usePromoStats(refreshKey);
+
+  if (loading) {
+    return (
+      <div className="grid grid-cols-5 gap-4">
+        {Array.from({ length: 5 }).map((_, index) => (
+          <div
+            key={index}
+            className="rounded-2xl border border-[#EAECF0] bg-white p-5"
+          >
+            <div className="flex items-start gap-4">
+              <Skeleton className="h-15 w-15 rounded-xl" />
+
+              <div className="flex-1 space-y-3">
+                <Skeleton className="h-4 w-24" />
+                <Skeleton className="h-8 w-20" />
+                <Skeleton className="h-3 w-32" />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div className="grid grid-cols-5 gap-4">
-      {promoStats.map((item, index) => (
+      {stats.map((item, index) => (
         <div
           key={index}
           className="rounded-2xl border border-[#EAECF0] bg-white p-5"
@@ -29,9 +58,7 @@ export default function PromoStats() {
                   ▲ {item.growth}
                 </span>
 
-                <span className="text-[#667085]">
-                  dari minggu lalu
-                </span>
+                <span className="text-[#667085]">dari minggu lalu</span>
               </div>
             </div>
           </div>

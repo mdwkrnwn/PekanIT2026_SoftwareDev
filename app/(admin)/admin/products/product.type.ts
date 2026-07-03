@@ -10,3 +10,11 @@ export interface Product {
   favorite: number;
   created_at: string;
 }
+
+export interface PopularProduct {
+  rank: number;
+  name: string;
+  image: string;
+  views: number;
+  percent: number;
+}

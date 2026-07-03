@@ -9,7 +9,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-import { UploadCloudIcon } from "lucide-react";
+import { Loader2, UploadCloudIcon } from "lucide-react";
 
 interface ProductModalProps {
   open: boolean;
@@ -35,11 +35,12 @@ interface ProductModalProps {
   handleProductImage: (e: React.ChangeEvent<HTMLInputElement>) => void;
 
   onSubmit: () => void;
-
+  submitting: boolean;
   isEdit?: boolean;
 }
 
 export default function ProductModal({
+  
   open,
   onClose,
   menuData,
@@ -47,8 +48,10 @@ export default function ProductModal({
   productImage,
   handleProductImage,
   onSubmit,
+  submitting,
   isEdit = false,
 }: ProductModalProps) {
+  console.log("submitting:", submitting);
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[900px] rounded-3xl overflow-hidden p-0">
@@ -102,6 +105,7 @@ export default function ProductModal({
                     name: e.target.value,
                   })
                 }
+                placeholder="Ayam Geprek"
                 className="mt-2 h-12 w-full rounded-xl border border-slate-200 px-4"
               />
             </div>
@@ -117,6 +121,7 @@ export default function ProductModal({
                     category: e.target.value,
                   })
                 }
+                placeholder="Makanan"
                 className="mt-2 h-12 w-full rounded-xl border border-slate-200 px-4"
               />
             </div>
@@ -133,6 +138,7 @@ export default function ProductModal({
                     price: e.target.value,
                   })
                 }
+                placeholder="10.000"
                 className="mt-2 h-12 w-full rounded-xl border border-slate-200 px-4"
               />
             </div>
@@ -143,6 +149,7 @@ export default function ProductModal({
               <textarea
                 rows={5}
                 value={menuData.description}
+                placeholder="Ayam Geprek Enak"
                 onChange={(e) =>
                   setMenuData({
                     ...menuData,
@@ -158,6 +165,7 @@ export default function ProductModal({
         <DialogFooter className="border-t mb-3 border-slate-100 px-8 py-5">
           <button
             onClick={onClose}
+            disabled={submitting}
             className="rounded-xl border border-slate-200 px-6 py-3 font-semibold"
           >
             Batal
@@ -165,9 +173,18 @@ export default function ProductModal({
 
           <button
             onClick={onSubmit}
-            className="rounded-xl bg-[#158A62] px-6 py-3 font-semibold text-white"
+            disabled={submitting}
+            className="flex min-w-[170px] items-center justify-center gap-2 rounded-xl bg-[#158A62] px-6 py-3 font-semibold text-white transition hover:bg-[#12744F] disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {isEdit ? "Update Produk" : "Simpan Produk"}
+            {submitting ? (
+              <>
+                <Loader2 className="h-4 w-4 animate-spin" />
+                {isEdit ? "Mengupdate..." : "Menyimpan..."}
+              </>
+            ) : (
+              <>{isEdit ? "Update Produk" : "Simpan Produk"}</>
+            )}
+            
           </button>
         </DialogFooter>
       </DialogContent>

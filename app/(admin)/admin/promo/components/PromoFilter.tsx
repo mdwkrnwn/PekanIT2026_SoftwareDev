@@ -1,7 +1,7 @@
 "use client";
 
 import { LuFilter, LuPlus, LuSearch } from "react-icons/lu";
-import PromoModal from "../PromoModal";
+import PromoModal from "./PromoModal";
 import { PromoFormData } from "../promo.type";
 interface Category {
   name: string;
@@ -35,7 +35,7 @@ interface PromoFilterProps {
 
   promoImage: File | null;
   setPromoImage: React.Dispatch<React.SetStateAction<File | null>>;
-
+  submitting: boolean;
   handlePromoImage: (e: React.ChangeEvent<HTMLInputElement>) => void;
 
   handleSavePromo: () => void;
@@ -70,7 +70,7 @@ export default function PromoFilter({
   setPromoImage,
 
   handlePromoImage,
-
+  submitting,
   handleSavePromo,
   handleUpdatePromo,
 }: PromoFilterProps) {
@@ -223,6 +223,7 @@ export default function PromoFilter({
           open={isModalOpen}
           onClose={() => setIsModalOpen(false)}
           promoData={promoData}
+          submitting={submitting}
           setPromoData={setPromoData}
           promoImage={promoImage}
           handlePromoImage={handlePromoImage}

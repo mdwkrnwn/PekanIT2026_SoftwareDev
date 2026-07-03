@@ -21,7 +21,7 @@ export function useProduct() {
   const [sortBy, setSortBy] = useState("newest");
 
   const [productImage, setProductImage] = useState<File | null>(null);
-
+  const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState("Semua Produk");
 
   const [search, setSearch] = useState("");
@@ -29,7 +29,7 @@ export function useProduct() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const [products, setProducts] = useState<any[]>([]);
-
+  const [submitting, setSubmitting] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [isEditMode, setIsEditMode] = useState(false);
@@ -71,6 +71,8 @@ export function useProduct() {
     }
 
     try {
+      setSubmitting(true);
+
       await updateProduct({
         editingId,
         userId: user.id,
@@ -87,6 +89,8 @@ export function useProduct() {
       setIsModalOpen(false);
     } catch (error: any) {
       alert(error.message);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -137,18 +141,22 @@ export function useProduct() {
   };
 
   const getProducts = async () => {
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-
-    if (!user) return;
-
     try {
+      setLoading(true);
+
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (!user) return;
+
       const data = await fetchProducts(user.id);
 
       setProducts(data);
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -173,6 +181,8 @@ export function useProduct() {
     }
 
     try {
+      setSubmitting(true);
+
       await createProduct({
         userId: user.id,
         menuData,
@@ -188,6 +198,8 @@ export function useProduct() {
       setIsModalOpen(false);
     } catch (error: any) {
       alert(error.message);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -199,6 +211,7 @@ export function useProduct() {
     setIsFilterOpen,
 
     sortBy,
+    loading,
     setSortBy,
 
     productImage,
@@ -218,7 +231,7 @@ export function useProduct() {
 
     isModalOpen,
     setIsModalOpen,
-
+    submitting,
     isEditMode,
     setIsEditMode,
 
@@ -235,6 +248,6 @@ export function useProduct() {
 
     handleDeleteProduct,
     handleUpdateProduct,
-    handleEditProduct
+    handleEditProduct,
   };
 }

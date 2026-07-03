@@ -145,7 +145,7 @@ export default function ProductFilter({
 
         <button
           onClick={onAddProduct}
-          className="flex h-11 items-center gap-2 rounded-xl bg-[#158A62] px-6 text-white"
+          className="flex h-11 items-center font-semibold gap-2 rounded-xl bg-[#158A62] px-6 text-white"
         >
           <LuPlus size={18} />
           Tambah Produk
