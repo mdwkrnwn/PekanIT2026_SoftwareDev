@@ -24,7 +24,7 @@ export default function UlasanPage() {
     {
       id: 1,
       name: "Siti Nurhaliza",
-      avatar: "/avatar1.png",
+      avatar: "/ava1.png",
       verified: true,
       rating: 5,
       review:
@@ -39,7 +39,7 @@ export default function UlasanPage() {
     {
       id: 2,
       name: "Budi Santoso",
-      avatar: "/avatar2.png",
+      avatar: "/ava2.png",
       verified: true,
       rating: 5,
       review:
@@ -54,7 +54,7 @@ export default function UlasanPage() {
     {
       id: 3,
       name: "Dimas Drajat",
-      avatar: "/avatar3.png",
+      avatar: "/ava.png",
       verified: true,
       rating: 5,
       review:
@@ -66,7 +66,7 @@ export default function UlasanPage() {
     {
       id: 4,
       name: "Rina Febriani",
-      avatar: "/avatar4.png",
+      avatar: "/ava3.png",
       verified: true,
       rating: 5,
       review:
@@ -78,7 +78,7 @@ export default function UlasanPage() {
     {
       id: 5,
       name: "Siti Aisyah",
-      avatar: "/avatar5.png",
+      avatar: "/ava1.png",
       verified: true,
       rating: 5,
       review:
@@ -169,10 +169,10 @@ export default function UlasanPage() {
   const totalRatingCount = 20;
 
   const topProducts = [
-    { name: "Nasi Ayam Geprek", rating: 4.8, count: 124, img: "/menu1.png" },
-    { name: "Ayam Penyet", rating: 4.7, count: 89, img: "/menu2.png" },
-    { name: "Paket Hemat Siang", rating: 4.6, count: 56, img: "/menu3.png" },
-    { name: "Paket Cashback", rating: 4.6, count: 46, img: "/menu4.png" },
+    { name: "Nasi Ayam Geprek", rating: 4.8, count: 124, img: "/assets/umkm/makanan/dapurnona/ayamgeprek.jpeg" },
+    { name: "Sambal Cumi", rating: 4.7, count: 89, img: "/assets/umkm/makanan/dapurnona/sambalcumi.jpeg" },
+    { name: "Nasi Telur Dadar", rating: 4.6, count: 56, img: "/assets/umkm/makanan/dapurnona/nasitelurdadar.jpeg" },
+    { name: "Es Ten Manis", rating: 4.6, count: 46, img: "/assets/umkm/makanan/dapurnona/esteh.jpeg" },
   ];
 
   return (
