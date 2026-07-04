@@ -337,14 +337,15 @@ Bakool dikembangkan untuk:
 
 Beberapa fitur yang direncanakan pada pengembangan berikutnya:
 
-- Edit Profil Toko
-- Dashboard Analytics Dinamis
-- Statistik Real-time
-- Notifikasi
-- Analitik Real-time
-- Payment Gateway
-- Rekomendasi AI berbasis data toko
-
+- ✏️ Implementasi Edit Profil Toko
+- 📊 Dashboard Analytics Real-time
+- 🔔 Notifikasi Promosi & Aktivitas
+- 💬 Chat antara Pengguna dan Pemilik UMKM
+- 💳 Integrasi Payment Gateway
+- 📦 Manajemen Pesanan (Order Management)
+- 📱 Optimasi Responsive Design
+- 🌍 Dukungan Multi Kota & Multi Wilayah
+- 🧠 Insight AI berbasis histori performa toko
 ---
 
 # 👨‍💻 Developer
