@@ -211,12 +211,20 @@ AI membantu pemilik UMKM dengan memberikan rekomendasi bisnis seperti:
 - Leaflet
 - OpenStreetMap
 
-### Library
+### Libraries
 
-- SweetAlert2
+- AOS
+- Embla Carousel
+- Google Gen AI (Gemini)
+- Leaflet
 - Lucide React
+- next-themes
 - React Icons
-
+- React Loading Skeleton
+- Shadcn UI
+- Sonner
+- Supabase
+- SweetAlert2
 ---
 
 # 🚀 Instalasi
