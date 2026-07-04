@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-
+import { supabase } from "@/lib/supabase";
 import { FaHeart } from "react-icons/fa6";
 
 import Swal from "sweetalert2";
@@ -20,10 +20,7 @@ interface WishlistCardProps {
 
 const EMPTY: number[] = [];
 
-export default function WishlistCard({
-  id,
-  name,
-}: WishlistCardProps) {
+export default function WishlistCard({ id, name }: WishlistCardProps) {
   const wishlist = useSyncExternalStore(
     subscribeWishlist,
     getWishlistSnapshot,
@@ -32,49 +29,66 @@ export default function WishlistCard({
 
   const isWishlisted = wishlist.includes(id);
 
-  const toggleWishlist = (
-    e: React.MouseEvent,
-  ) => {
+  const toggleWishlist = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
 
+    // Cek login
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      Swal.fire({
+        icon: "warning",
+        title: "Login Diperlukan",
+        text: "Silakan login terlebih dahulu untuk menambahkan UMKM ke favorit.",
+        confirmButtonText: "Mengerti",
+        confirmButtonColor: "#158A62",
+      });
+
+      return;
+    }
+
+    // Sudah login
     if (isWishlisted) {
       removeFromWishlist(id);
 
       Swal.fire({
-        icon: "error",
-        title: "Dihapus!",
-        text: `${name} dihapus dari wishlist 💔`,
+        icon: "success",
+        title: "Dihapus",
+        text: `${name} dihapus dari favorit 💔`,
         timer: 1500,
         showConfirmButton: false,
         position: "top-end",
         toast: true,
-        background: "#fef2f2",
-        color: "#991b1b",
+        background: "#FEF2F2",
+        color: "#991B1B",
       });
     } else {
       addToWishlist(id);
 
       Swal.fire({
         icon: "success",
-        title: "Ditambahkan!",
-        text: `${name} berhasil ditambahkan ke wishlist ❤️`,
+        title: "Ditambahkan",
+        text: `${name} berhasil ditambahkan ke favorit ❤️`,
         timer: 1500,
         showConfirmButton: false,
         position: "top-end",
         toast: true,
-        background: "#f0fdf4",
-        color: "#065f46",
+        background: "#F0FDF4",
+        color: "#065F46",
       });
     }
   };
 
   return (
     <button
-      className={`absolute top-3 right-3 p-2 rounded-full transition z-10 ${isWishlisted
-        ? "bg-blue-100 text-primary"
-        : "bg-white text-gray-600 hover:bg-gray-100"
-        }`}
+      className={`absolute top-3 right-3 p-2 rounded-full transition z-10 ${
+        isWishlisted
+          ? "bg-blue-100 text-primary"
+          : "bg-white text-gray-600 hover:bg-gray-100"
+      }`}
       onClick={toggleWishlist}
     >
       <FaHeart />

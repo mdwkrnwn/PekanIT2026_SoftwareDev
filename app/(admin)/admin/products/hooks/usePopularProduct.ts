@@ -3,7 +3,7 @@ import { supabase } from "@/lib/supabase";
 import { fetchPopularProducts } from "../services/product.service";
 import { PopularProduct } from "../product.type";
 
-export function usePopularProducts() {
+export function usePopularProducts(refreshKey:number){
   const [products, setProducts] = useState<PopularProduct[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -27,7 +27,7 @@ export function usePopularProducts() {
     }
 
     loadProducts();
-  }, []);
+  }, [refreshKey]);
 
   return {
     products,

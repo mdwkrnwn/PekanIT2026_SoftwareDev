@@ -1,9 +1,17 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import { PackageSearch } from "lucide-react";
 import { useProductInsight } from "../hooks/useProductInsight";
+interface ProductInsightProps {
+    refreshKey:number;
+}
 
-export default function ProductInsight() {
-  const { insights, loading } = useProductInsight();
+export default function ProductInsight({
+    refreshKey,
+}:ProductInsightProps){
+
+    const { insights, loading } =
+        useProductInsight(refreshKey);
+
 
   if (loading) {
     return (

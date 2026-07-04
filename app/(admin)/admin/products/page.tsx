@@ -40,6 +40,7 @@ export default function ProductPage() {
 
     isEditMode,
     setIsEditMode,
+    refreshKey,
 
     openMenuId,
     setOpenMenuId,
@@ -124,7 +125,7 @@ export default function ProductPage() {
     <>
       <div className="flex flex-col gap-8">
         {/* Top Stats Cards */}
-        <ProductStats />
+        <ProductStats refreshKey={refreshKey} />
       </div>
 
       <ProductFilter
@@ -180,8 +181,8 @@ export default function ProductPage() {
 
         {/* Right */}
         <div className="space-y-5">
-          <ProductPopular />
-          <ProductInsight />
+          <ProductPopular refreshKey={refreshKey} />
+          <ProductInsight refreshKey={refreshKey} />
           <ProductTips />
         </div>
       </div>

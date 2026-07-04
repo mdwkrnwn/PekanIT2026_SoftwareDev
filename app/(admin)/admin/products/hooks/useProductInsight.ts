@@ -3,7 +3,8 @@ import { supabase } from "@/lib/supabase";
 import { fetchProductInsight } from "../services/product.service";
 import { getProductInsights, ProductInsightItem } from "../insight";
 
-export function useProductInsight() {
+export function useProductInsight(refreshKey:number){
+
   const [insights, setInsights] = useState<ProductInsightItem[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -27,7 +28,7 @@ export function useProductInsight() {
     }
 
     loadInsight();
-  }, []);
+  }, [refreshKey]);
 
   return {
     insights,

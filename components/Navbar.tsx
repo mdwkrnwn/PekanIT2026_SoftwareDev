@@ -27,7 +27,12 @@ import header from "./Navbar.module.css";
 
 function Navbar() {
   const favorites = useWishlist();
+  const pathname = usePathname();
 
+  const isProfilePage =
+    pathname === "/profile" ||
+    pathname === "/achievements" ||
+    pathname === "/ulasan-saya";
   // logout
   const router = useRouter();
   const handleLogout = async () => {
@@ -161,7 +166,9 @@ function Navbar() {
                   alt="Bakool"
                   width={100}
                   height={100}
-                  className="h-auto w-[100px] -ml-8"
+                  className={`h-auto w-[100px] ${
+                    isProfilePage ? "-ml-25" : "-ml-6"
+                  }`}
                   priority
                 />
 
@@ -171,7 +178,11 @@ function Navbar() {
               </Link>
             </section>
             <section>
-              <ul className=" flex gap-6 text-lg font-medium">
+              <ul
+                className={`flex gap-6 text-lg font-medium ${
+                  isProfilePage ? "-ml-25" : ""
+                }`}
+              >
                 {navItems.map((item) => {
                   const isActive =
                     item.href === "/explore"
@@ -199,7 +210,11 @@ function Navbar() {
                 })}
               </ul>
             </section>
-            <section className="place-self-end flex items-center self-center gap-3">
+            <section
+              className={`place-self-end flex items-center self-center gap-3 ${
+                isProfilePage ? "-mr-30" : ""
+              }`}
+            >
               <div className="flex items-center mr-10">
                 <div className="relative w-full">
                   <FaSearch className="left-4 top-1/2 text-foreground/40 absolute -translate-y-1/2" />
@@ -234,7 +249,7 @@ function Navbar() {
                   <div ref={profileRef} className="relative">
                     <button
                       onClick={() => setIsProfileOpen((prev) => !prev)}
-                      className="flex items-center gap-3 ml-2" 
+                      className="flex items-center gap-3 ml-2"
                     >
                       <div className="flex h-12 w-12 items-center justify-center rounded-full outline-1 outline-primary-foreground  bg-[#EBF3F0]">
                         <Image
@@ -260,7 +275,7 @@ function Navbar() {
                     {isProfileOpen && (
                       <div
                         className={cn(
-                          "absolute right-0 mt-4 w-60 rounded-3xl bg-muted shadow-xl p-5 z-50",
+                          "absolute right-0 mt-4 w-60 rounded-3xl bg-white shadow-xl p-5 z-50",
                           "*:hover:bg-muted-foreground *:hover:text-background",
                         )}
                       >
@@ -270,9 +285,11 @@ function Navbar() {
                         >
                           <User
                             size={26}
-                            className="text-[#] group-hover:text-white"
+                            className="text-[#0B0F1F] group-hover:text-white"
                           />
-                          <span className="font-medium">Profil Saya</span>
+                          <span className="font-medium text-[#0B0F1F] group-hover:text-white">
+                            Profil Saya
+                          </span>
                         </Link>
 
                         <hr className="my-2 border-0 border-t border-[#E8EAEE]" />
@@ -282,7 +299,7 @@ function Navbar() {
                         >
                           <BadgeCheck
                             size={26}
-                            className="text-[#] group-hover:text-white"
+                            className="text-[#0B0F1F] group-hover:text-white"
                           />
                           <span className="font-medium text-[#0B0F1F] group-hover:text-white">
                             Achievement & Badge
@@ -296,7 +313,7 @@ function Navbar() {
                         >
                           <MessageSquareText
                             size={26}
-                            className="text-[#] group-hover:text-white"
+                            className="text-[#0B0F1F] group-hover:text-white"
                           />
                           <span className="font-medium text-[#0B0F1F] group-hover:text-white">
                             Ulasan Saya

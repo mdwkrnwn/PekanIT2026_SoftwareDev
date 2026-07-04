@@ -64,11 +64,11 @@ export default function Sidebar() {
   };
   return (
     <>
-      <aside className="max-w-100 border-r border-slate-200 flex flex-col pb-0 p-8 justify-between h-full top-[119.188px] sticky">
+      <aside className="sticky top-[118px] h-full w-[280px] border-r border-[#EAECF0] dark:border-slate-800 bg-white dark:bg-slate-900 px-7 py-8 transition-colors">
         <div className="flex flex-col gap-10">
-          {/* User Card Profile Summary Block */}
-          <div className="flex flex-col items-center text-center border-b border-slate-100 pb-8">
-            <div className="w-24 h-24 relative rounded-full overflow-hidden border-2 border-slate-100 shadow-xs mb-4">
+          {/* User Card */}
+          <div className="flex flex-col items-center border-b border-[#EAECF0] dark:border-slate-800 pb-8 text-center">
+            <div className="relative mb-4 h-20 w-20 overflow-hidden rounded-full border-2 border-slate-100 dark:border-slate-700">
               <Image
                 src={avatar}
                 fill
@@ -77,52 +77,65 @@ export default function Sidebar() {
               />
             </div>
 
-            <h3 className="text-xl font-bold text-[#0B0F1F]">
+            <h3 className="text-[18px] font-bold text-[#0B0F1F] dark:text-white">
               {profile?.full_name || "Pengguna"}
             </h3>
-            <p className="text-slate-500 font-semibold mt-1">
+
+            <p className="mt-1 text-[15px] font-medium text-[#344054] dark:text-slate-400">
               Explorer{" "}
-              <span className="text-emerald-700 font-black">Level 3</span>
+              <span className="font-bold text-[#158A62] dark:text-emerald-400">
+                Level 3
+              </span>
             </p>
 
-            {/* Penggunaan Elemen <meter> untuk Progres Level Batasan XP */}
-            <div className="w-full mt-4 flex flex-col gap-2">
-              <meter
-                min="0"
-                max={maxXp}
-                value={currentXp}
-                className="w-full h-3 block appearance-none [&::-webkit-meter-bar]:bg-slate-100 [&::-webkit-meter-bar]:rounded-full [&::-webkit-meter-bar]:border-0 [&::-webkit-meter-optimum-value]:bg-emerald-600 [&::-webkit-meter-optimum-value]:rounded-full"
-              />
-              <div className="flex justify-center items-center gap-1 font-bold text-slate-700 text-base">
-                <span className="text-[#15803d]">
+            {/* Progress */}
+            <div className="mt-4 w-full">
+              <div className="h-[16px] overflow-hidden rounded-full bg-[#D9D9D9] dark:bg-slate-700">
+                <div
+                  className="h-full rounded-full bg-[#158A62] dark:bg-emerald-400"
+                  style={{
+                    width: `${(currentXp / maxXp) * 100}%`,
+                  }}
+                />
+              </div>
+
+              <p className="mt-4 text-center text-[13px] font-semibold">
+                <span className="text-[#158A62] dark:text-emerald-400">
                   {currentXp.toLocaleString()}
                 </span>
-                <span className="text-slate-300 font-medium">/</span>
-                <span className="text-slate-400 font-medium">
-                  {maxXp.toLocaleString()} XP
+
+                <span className="text-[#101828] dark:text-slate-300">
+                  {" "}
+                  / {maxXp.toLocaleString()} XP
                 </span>
-              </div>
+              </p>
             </div>
           </div>
 
-          {/* Navigation Link Menu Bars */}
+          {/* Navigation */}
           <nav className="flex flex-col gap-2">
             {navItems.map((item) => {
               const isActive = pathname === item.href;
+
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center gap-4 px-5 py-4 rounded-xl font-bold transition-all text-left text-base ${
+                  className={`flex items-center gap-4 rounded-xl px-5 py-4 text-left text-base transition-all ${
                     isActive
-                      ? "bg-emerald-50 text-[#15803d]"
-                      : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
+                      ? "bg-emerald-50 dark:bg-emerald-900/30 text-[#15803d] dark:text-emerald-400 font-bold"
+                      : "text-[#344054] dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-[#0B0F1F] dark:hover:text-white font-semibold"
                   }`}
                 >
                   <item.icon
                     size={24}
-                    className={isActive ? "text-[#15803d]" : "text-slate-400"}
+                    className={
+                      isActive
+                        ? "text-[#15803d] dark:text-emerald-400"
+                        : "text-[#344054] dark:text-slate-400"
+                    }
                   />
+
                   <span>{item.name}</span>
                 </Link>
               );
@@ -130,11 +143,11 @@ export default function Sidebar() {
           </nav>
         </div>
 
-        {/* Action Trigger Keluar Bottom Area */}
+        {/* Logout */}
         <button
           type="button"
           onClick={handleLogout}
-          className="flex items-center gap-4 px-5 py-4 rounded-xl font-bold text-slate-500 hover:bg-rose-50 hover:text-rose-600 transition-colors text-left text-base"
+          className="mt-2 flex w-full items-center gap-4 rounded-xl px-5 py-4 text-left text-base font-bold text-slate-500 dark:text-slate-400 transition-colors hover:bg-rose-50 dark:hover:bg-rose-900/20 hover:text-rose-600 dark:hover:text-rose-400"
         >
           <LuLogOut size={24} />
           <span>Keluar</span>

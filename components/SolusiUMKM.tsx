@@ -13,37 +13,40 @@ const SOLUSI = [
     title: "Analytic Dashboard",
     desc: "Pantau performa bisnis Anda secara real-time dengan data yang akurat.",
     icon: FiBarChart2,
-    color: "bg-emerald-100 text-emerald-600",
+    color:
+      "bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400",
   },
   {
-    title: "AI Bussines Assistant",
+    title: "AI Business Assistant",
     desc: "Dapatkan insight dan rekomendasi strategi bisnis dari AI Bakool.",
     icon: FaRobot,
-    color: "bg-blue-100 text-blue-600",
+    color: "bg-sky-100 text-sky-600 dark:bg-sky-950 dark:text-sky-400",
   },
   {
     title: "Review Terverifikasi",
     desc: "Tingkatkan kepercayaan pelanggan dengan review yang terverifikasi.",
     icon: FaShieldAlt,
-    color: "bg-amber-100 text-amber-600",
+    color: "bg-amber-100 text-amber-600 dark:bg-amber-950 dark:text-amber-400",
   },
   {
     title: "Smart Recommendation",
     desc: "Jangkau pelanggan baru dengan rekomendasi UMKM yang tepat.",
     icon: FaMapMarkerAlt,
-    color: "bg-purple-100 text-purple-600",
+    color:
+      "bg-violet-100 text-violet-600 dark:bg-violet-950 dark:text-violet-400",
   },
   {
     title: "Promo Management",
     desc: "Kelola promo dan diskon dengan mudah untuk meningkatkan penjualan.",
     icon: FaTags,
-    color: "bg-pink-100 text-pink-600",
+    color: "bg-pink-100 text-pink-600 dark:bg-pink-950 dark:text-pink-400",
   },
   {
     title: "Loyalty Program",
     desc: "Bangun pelanggan setia dengan sistem poin dan reward menarik.",
     icon: FaTrophy,
-    color: "bg-orange-100 text-orange-600",
+    color:
+      "bg-orange-100 text-orange-600 dark:bg-orange-950 dark:text-orange-400",
   },
 ];
 
@@ -71,16 +74,33 @@ export function SolusiUMKM() {
       </div>
 
       {/* Cards */}
-      <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-6">
+      <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-6 ">
         {SOLUSI.map((item, index) => (
           <div
             key={index}
             data-aos="fade-up"
             data-aos-delay={index * 100}
             data-aos-duration="800"
-            className="group flex min-h-70 flex-col rounded-2xl border border-border bg-muted p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+            className="
+              group
+              flex
+              min-h-70
+              flex-col
+              rounded-2xl
+              border-2
+              border-[#EEF0F2]
+              dark:border-slate-800
+              bg-[#FEFEFE]
+              dark:bg-slate-900
+              p-6
+              transition-all
+              duration-300
+              hover:-translate-y-2
+              hover:shadow-xl
+              dark:hover:border-[#158A62]/40
+              dark:hover:bg-slate-800
+              "
           >
-            {/* Icon */}
             <div
               className={`mb-6 flex h-14 w-14 items-center justify-center rounded-full ${item.color} transition-all duration-300 group-hover:scale-110 group-hover:rotate-6`}
             >

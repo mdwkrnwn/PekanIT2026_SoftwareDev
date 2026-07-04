@@ -24,7 +24,7 @@ export default function ProductPagination({
   const endItem = Math.min(currentPage * itemsPerPage, totalItems);
 
   return (
-    <div className="mt-5 flex items-center justify-between">
+    <div className="mt-5 mb-5 flex items-center justify-between">
       <p className="text-[14px] text-[#667085]">
         Menampilkan{" "}
         <span className="font-medium">{startItem}</span> –

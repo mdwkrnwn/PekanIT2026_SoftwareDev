@@ -2,7 +2,7 @@ import { useState,useEffect } from "react";
 import { supabase } from "@/lib/supabase";
 import { fetchProductStats } from "../services/product.service";
 import { getProductStats, ProductStat } from "../productStats";
-export function useProductStats() {
+export function useProductStats(refreshKey: number) {
   const [stats, setStats] = useState<ProductStat[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -24,7 +24,7 @@ export function useProductStats() {
     }
 
     loadStats();
-  }, []);
+  }, [refreshKey]);
 
   return { stats, loading };
 }

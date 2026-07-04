@@ -13,75 +13,125 @@ import {
   BreadcrumbSeparator,
   BreadcrumbPage,
 } from "@/components/ui/breadcrumb";
+import { LoaderCircle } from "lucide-react";
 import { FaChevronLeft } from "react-icons/fa";
+import SplashScreen from "@/components/SplashScreen";
 
 export default function LoginPage() {
   const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [loading, setLoading] = useState(false);
+  const [showSplash, setShowSplash] = useState(false);
+  const [splashMessage, setSplashMessage] = useState("");
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email: email.trim(),
-      password,
-    });
-
-    if (error) {
-      alert("Email atau password salah");
+    if (!email.trim()) {
+      alert("Email wajib diisi.");
       return;
     }
 
-    // Ambil user yang sedang login
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-
-    if (!user) {
-      alert("User tidak ditemukan");
+    if (!password.trim()) {
+      alert("Password wajib diisi.");
       return;
     }
 
-    // Ambil profile
-    const { data: profile, error: profileError } = await supabase
-      .from("profiles")
-      .select("*")
-      .eq("id", user.id)
-      .single();
+    setLoading(true);
 
-    if (profileError || !profile) {
-      alert("Profile tidak ditemukan");
-      return;
-    }
+    try {
+      // Login
+      const { error } = await supabase.auth.signInWithPassword({
+        email: email.trim(),
+        password,
+      });
 
-    // Redirect berdasarkan role
-    if (profile.role === "owner") {
-      // Cek apakah owner sudah punya data UMKM
-      const { data: umkm, error: umkmError } = await supabase
-        .from("umkm")
-        .select("id")
-        .eq("owner_id", user.id)
-        .maybeSingle();
-
-      if (umkmError) {
-        alert("Terjadi kesalahan saat mengecek data UMKM");
+      if (error) {
+        alert("Email atau password salah");
+        setLoading(false);
         return;
       }
 
-      // Jika belum punya UMKM → Complete Profile
-      if (!umkm) {
-        router.push("/admin/complete-profile");
-      } else {
-        // Jika sudah punya UMKM → Dashboard
-        router.push("/admin/dashboard");
+      // Ambil user
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (!user) {
+        alert("User tidak ditemukan");
+        setLoading(false);
+        return;
       }
-    } else {
-      // User biasa → Landing Page
-      router.push("/");
+
+      // Ambil profile
+      const { data: profile, error: profileError } = await supabase
+        .from("profiles")
+        .select("*")
+        .eq("id", user.id)
+        .single();
+
+      if (profileError || !profile) {
+        alert("Profile tidak ditemukan");
+        setLoading(false);
+        return;
+      }
+
+      // Login berhasil
+      setLoading(false);
+      setShowSplash(true);
+
+      // Owner
+      if (profile.role === "owner") {
+        const { data: umkm, error: umkmError } = await supabase
+          .from("umkm")
+          .select("id")
+          .eq("owner_id", user.id)
+          .maybeSingle();
+
+        if (umkmError) {
+          setLoading(false);
+          alert("Terjadi kesalahan saat mengecek data UMKM");
+          return;
+        }
+
+        if (umkm) {
+          setSplashMessage("Membuka Dashboard...");
+        } else {
+          setSplashMessage("Menyiapkan profil toko...");
+        }
+
+        setShowSplash(true);
+
+        setTimeout(() => {
+          if (umkm) {
+            router.replace("/admin/dashboard");
+          } else {
+            router.replace("/admin/complete-profile");
+          }
+        }, 700);
+
+        return;
+      }
+
+      // User biasa
+      setSplashMessage("Masuk ke Bakool...");
+      setShowSplash(true);
+
+      setTimeout(() => {
+        router.replace("/");
+      }, 700);
+    } catch (err) {
+      console.error(err);
+      setLoading(false);
+      setShowSplash(false);
+      alert("Terjadi kesalahan. Silakan coba lagi.");
     }
   };
+
+  if (showSplash) {
+    return <SplashScreen message={splashMessage} />;
+  }
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] p-4 lg:p-6">
@@ -222,8 +272,19 @@ export default function LoginPage() {
                 </div>
 
                 {/* Button */}
-                <button className="h-14 w-full rounded-xl bg-[#158A62] text-[17px] font-semibold text-white transition hover:bg-[#127553]">
-                  Masuk
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="flex h-14 w-full items-center justify-center gap-3 rounded-xl bg-[#158A62] text-[17px] font-semibold text-white transition hover:bg-[#127553] disabled:cursor-not-allowed disabled:opacity-80"
+                >
+                  {loading ? (
+                    <>
+                      <LoaderCircle size={20} className="animate-spin" />
+                      Sedang masuk...
+                    </>
+                  ) : (
+                    "Masuk"
+                  )}
                 </button>
               </form>
 

@@ -7,8 +7,14 @@ import Link from "next/link";
 import { FaHeart, FaMapMarkerAlt, FaRegClock, FaStar } from "react-icons/fa";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { LuMapPin } from "react-icons/lu";
+import Swal from "sweetalert2";
+import { LoaderCircle } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { supabase } from "@/lib/supabase";
+
 interface InfoPanelProps {
-  product: typeof UMKM[number];
+  product: (typeof UMKM)[number];
   isWish: boolean;
   onToggleWishlist: (id: number, name: string) => void;
   rating: string;
@@ -20,10 +26,12 @@ export default function InfoPanel({
   isWish,
   onToggleWishlist,
   rating,
-  reviewCount
+  reviewCount,
 }: InfoPanelProps) {
-  const tagIds = product.tagIds
-  const tags = TAGS.filter((item) => tagIds.includes(item.id))
+  const tagIds = product.tagIds;
+  const router = useRouter();
+  const [loadingFavorite, setLoadingFavorite] = useState(false);
+  const tags = TAGS.filter((item) => tagIds.includes(item.id));
   return (
     <aside className="rounded-3xl flex flex-col justify-between gap-8">
       {/* Title */}
@@ -64,17 +72,59 @@ export default function InfoPanel({
         {/* Action Buttons */}
         <div className="md:flex-row flex flex-col gap-3 mt-8">
           <button
-            onClick={() => onToggleWishlist(product.id, product.name)}
-            className={`flex-1 py-3 rounded-2xl font-medium transition-all duration-200 flex text-white items-center justify-center gap-2 border ${isWish
-              ? "bg-primary border-primary/20"
-              : "bg-primary  border-primary hover:bg-primary/90"
-              }`}
-          >
-            <FaHeart
-              className={`text-sm fill-white`}
-            />
+            disabled={loadingFavorite}
+            onClick={async () => {
+              setLoadingFavorite(true);
 
-            <span>{isWish ? "Tersimpan" : "Tambah Favorit"}</span>
+              try {
+                const {
+                  data: { user },
+                } = await supabase.auth.getUser();
+
+                if (!user) {
+                  setLoadingFavorite(false);
+
+                  const result = await Swal.fire({
+                    icon: "warning",
+                    title: "Login Diperlukan",
+                    text: "Silakan login terlebih dahulu untuk menambahkan UMKM ke favorit.",
+                    showCancelButton: true,
+                    confirmButtonText: "Login",
+                    cancelButtonText: "Batal",
+                    confirmButtonColor: "#158A62",
+                  });
+
+                  if (result.isConfirmed) {
+                    router.push("/login");
+                  }
+
+                  return;
+                }
+
+                onToggleWishlist(product.id, product.name);
+              } finally {
+                setLoadingFavorite(false);
+              }
+            }}
+            className={`flex flex-1 items-center justify-center gap-2 rounded-2xl border py-3 font-medium text-white transition-all duration-200 ${
+              loadingFavorite
+                ? "cursor-not-allowed opacity-70"
+                : isWish
+                  ? "border-primary/20 bg-primary"
+                  : "border-primary bg-primary hover:bg-primary/90"
+            }`}
+          >
+            {loadingFavorite ? (
+              <>
+                <LoaderCircle className="h-5 w-5 animate-spin" />
+                <span>Memproses...</span>
+              </>
+            ) : (
+              <>
+                <FaHeart className="fill-white text-sm" />
+                <span>{isWish ? "Tersimpan" : "Tambah Favorit"}</span>
+              </>
+            )}
           </button>
           <Link
             href={"/maps"}
@@ -89,8 +139,13 @@ export default function InfoPanel({
       {/* Tags Cards */}
       <div className="outline-border rounded-xl outline-1 grid grid-cols-2">
         {tags.map((item) => (
-          <div key={item.id} className={cn(`rounded-2xl flex  md:flex-row flex-col items-center gap-2 p-4 `, tags.length % 2 != 0 && "last:col-span-2 last:justify-center"
-          )}>
+          <div
+            key={item.id}
+            className={cn(
+              `rounded-2xl flex  md:flex-row flex-col items-center gap-2 p-4 `,
+              tags.length % 2 != 0 && "last:col-span-2 last:justify-center",
+            )}
+          >
             <div className="border-primary border-2 text-primary-foreground p-3 rounded-full">
               <item.icon size={22} />
             </div>
@@ -109,13 +164,21 @@ export default function InfoPanel({
         {product.address}
         <div className="flex">
           <span className="border border-primary rounded-2xl flex items-center w-full gap-2 p-4">
-            <HiOutlineLocationMarker size={25} className="stroke-primary-foreground" />
+            <HiOutlineLocationMarker
+              size={25}
+              className="stroke-primary-foreground"
+            />
             Jarak
           </span>
         </div>
         {product.distance} Dari Lokasimu
         <Link
-          href={"https://www.google.com/maps/place/" + product?.lat + "," + product.lng}
+          href={
+            "https://www.google.com/maps/place/" +
+            product?.lat +
+            "," +
+            product.lng
+          }
           target="_blank"
           className="border-primary text-primary-foreground hover:bg-primary hover:text-white rounded-xl flex items-center justify-center flex-1 col-span-2 gap-2 py-3 font-semibold transition-all border"
         >

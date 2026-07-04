@@ -21,134 +21,132 @@ interface MapProps {
   onVisibleChange?: (visible: Product[]) => void;
 }
 
-const LeafletMap = forwardRef(({
-  products,
-  userLocation,
-  radius,
-  onVisibleChange,
-}: MapProps, ref) => {
-  const [visibleCount, setVisibleCount] = useState(0);
-  const [mapInstance, setMapInstance] = useState<L.Map | null>(null);
-  const [markers, setMarkers] = useState<{ [key: number]: L.Marker }>({});
+const LeafletMap = forwardRef(
+  ({ products, userLocation, radius, onVisibleChange }: MapProps, ref) => {
+    const [visibleCount, setVisibleCount] = useState(0);
+    const [mapInstance, setMapInstance] = useState<L.Map | null>(null);
+    const [markers, setMarkers] = useState<{ [key: number]: L.Marker }>({});
 
-  // Fungsi menghitung jarak (Haversine formula)
-  const getDistance = (
-    lat1: number,
-    lon1: number,
-    lat2: number,
-    lon2: number
-  ) => {
-    const R = 6371; // km
-    const dLat = ((lat2 - lat1) * Math.PI) / 180;
-    const dLon = ((lon2 - lon1) * Math.PI) / 180;
-    const a =
-      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.cos((lat1 * Math.PI) / 180) *
-      Math.cos((lat2 * Math.PI) / 180) *
-      Math.sin(dLon / 2) *
-      Math.sin(dLon / 2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    return R * c;
-  };
+    // Fungsi menghitung jarak (Haversine formula)
+    const getDistance = (
+      lat1: number,
+      lon1: number,
+      lat2: number,
+      lon2: number,
+    ) => {
+      const R = 6371; // km
+      const dLat = ((lat2 - lat1) * Math.PI) / 180;
+      const dLon = ((lon2 - lon1) * Math.PI) / 180;
+      const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos((lat1 * Math.PI) / 180) *
+          Math.cos((lat2 * Math.PI) / 180) *
+          Math.sin(dLon / 2) *
+          Math.sin(dLon / 2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      return R * c;
+    };
 
-  // Expose method untuk fokus ke marker tertentu
-  useImperativeHandle(ref, () => ({
-    focusMarker: (productId: number) => {
-      const marker = markers[productId];
-      if (marker && mapInstance) {
-        mapInstance.setView(marker.getLatLng(), 15, {
-          animate: true,
-          duration: 0.5
-        });
-        marker.openPopup();
-      }
-    }
-  }));
+    // Expose method untuk fokus ke marker tertentu
+    useImperativeHandle(ref, () => ({
+      focusMarker: (productId: number) => {
+        const marker = markers[productId];
+        if (marker && mapInstance) {
+          mapInstance.setView(marker.getLatLng(), 15, {
+            animate: true,
+            duration: 0.5,
+          });
+          marker.openPopup();
+        }
+      },
+    }));
 
-  useEffect(() => {
-    if (!userLocation) return;
+    useEffect(() => {
+      if (!userLocation) return;
 
-    const map = L.map("map", {
-      zoomControl: false,
-      scrollWheelZoom: true,
-    }).setView([userLocation.lat, userLocation.lng], 13);
+      const map = L.map("map", {
+        zoomControl: false,
+        scrollWheelZoom: true,
+      }).setView([userLocation.lat, userLocation.lng], 13);
 
-    setMapInstance(map);
+      setMapInstance(map);
 
-    L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
-      attribution: "© OpenStreetMap contributors",
-    }).addTo(map);
+      L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap contributors",
+      }).addTo(map);
 
-    // Icon user
-    const userIcon = L.divIcon({
-      html: `
+      // Icon user
+      const userIcon = L.divIcon({
+        html: `
         <div style="
-          background: linear-gradient(135deg, #044BC5, #12A1F3);
+        background: linear-gradient(135deg, #158A62, #22C55E);
           width: 18px; height: 18px;
           border-radius: 50%;
           box-shadow: 0 0 12px rgba(16,185,129,0.7);
           border: 2px solid white;
         "></div>
       `,
-      className: "",
-      iconSize: [18, 18],
-      iconAnchor: [9, 9],
-    });
+        className: "",
+        iconSize: [18, 18],
+        iconAnchor: [9, 9],
+      });
 
-    L.marker([userLocation.lat, userLocation.lng], { icon: userIcon })
-      .addTo(map)
-      .bindPopup(`<b>Lokasi Kamu</b>`);
+      L.marker([userLocation.lat, userLocation.lng], { icon: userIcon })
+        .addTo(map)
+        .bindPopup(`<b>Lokasi Kamu</b>`);
 
-    // Radius visual
-    L.circle([userLocation.lat, userLocation.lng], {
-      radius: radius * 1000,
-      color: "#044BC5",
-      fillColor: "#044BC5",
-      fillOpacity: 0.08,
-      weight: 2,
-      dashArray: "4 6",
-    }).addTo(map);
+      // Radius visual
+      L.circle([userLocation.lat, userLocation.lng], {
+        radius: radius * 1000,
+        color: "#158A62",
+        fillColor: "#158A62",
+        fillOpacity: 0.12,
+        weight: 2,
+        dashArray: "4 6",
+      }).addTo(map);
 
-    // Icon UMKM
-    const umkmIcon = L.divIcon({
-      html: `
+      // Icon UMKM
+      const umkmIcon = L.divIcon({
+        html: `
         <div style="
           background: white;
-          border: 3px solid #0ea5e9;
+         border: 3px solid #158A62;
           border-radius: 50%;
           width: 24px; height: 24px;
           display: flex; align-items: center; justify-content: center;
           box-shadow: 0 3px 8px rgba(0,0,0,0.15);
         ">
-          <div style="background: #0ea5e9; width: 10px; height: 10px; border-radius: 50%;"></div>
+         <div style="background:#158A62;width:10px;height:10px;border-radius:50%;"></div>
         </div>
       `,
-      className: "",
-      iconSize: [24, 24],
-      iconAnchor: [12, 12],
-    });
+        className: "",
+        iconSize: [24, 24],
+        iconAnchor: [12, 12],
+      });
 
-    // --- Filter produk berdasarkan jarak ---
-    const nearbyProducts = products.filter((p) => {
-      if (!p.lat || !p.lng) return false;
-      const distance = getDistance(
-        userLocation.lat,
-        userLocation.lng,
-        p.lat,
-        p.lng
-      );
-      return distance <= radius;
-    });
+      // --- Filter produk berdasarkan jarak ---
+      const nearbyProducts = products.filter((p) => {
+        if (!p.lat || !p.lng) return false;
+        const distance = getDistance(
+          userLocation.lat,
+          userLocation.lng,
+          p.lat,
+          p.lng,
+        );
+        return distance <= radius;
+      });
 
-    onVisibleChange?.(nearbyProducts);
-    setVisibleCount(nearbyProducts.length);
+      onVisibleChange?.(nearbyProducts);
+      setVisibleCount(nearbyProducts.length);
 
-    // --- Tampilkan marker hanya yang dalam radius ---
-    const newMarkers: { [key: number]: L.Marker } = {};
+      // --- Tampilkan marker hanya yang dalam radius ---
+      const newMarkers: { [key: number]: L.Marker } = {};
 
-    nearbyProducts.forEach((p) => {
-      const marker = L.marker([p.lat!, p.lng!], { icon: umkmIcon }).addTo(map);
-      const popupHTML = `
+      nearbyProducts.forEach((p) => {
+        const marker = L.marker([p.lat!, p.lng!], { icon: umkmIcon }).addTo(
+          map,
+        );
+        const popupHTML = `
   <div style="
     background: white;
     border-radius: 14px;
@@ -185,47 +183,48 @@ const LeafletMap = forwardRef(({
           text-align: center;
           font-size: 13px;
           font-weight: 600;
-          background: #044BC5;
+        background: #158A62;
           color: white;
           padding: 6px 0;
           border-radius: 8px;
           text-decoration: none;
           transition: background 0.2s ease;
         "
-        onmouseover="this.style.background='#12A1F3'"
-        onmouseout="this.style.background='#044BC5'"
+      onmouseover="this.style.background='#22C55E'"
+      onmouseout="this.style.background='#158A62'"
       >
         Lihat Detail
       </a>
     </div>
   </div>
 `;
-      marker.bindPopup(popupHTML);
-      newMarkers[p.id] = marker;
-    });
+        marker.bindPopup(popupHTML);
+        newMarkers[p.id] = marker;
+      });
 
-    setMarkers(newMarkers);
+      setMarkers(newMarkers);
 
-    L.control.zoom({ position: "bottomright" }).addTo(map);
+      L.control.zoom({ position: "bottomright" }).addTo(map);
 
-    return () => {
-      map.remove();
-    };
-  }, [products, userLocation, radius, onVisibleChange]);
+      return () => {
+        map.remove();
+      };
+    }, [products, userLocation, radius, onVisibleChange]);
 
-  return (
-    <div className="relative z-0">
-      <div
-        id="map"
-        className="h-[75dvh] rounded-2xl shadow-lg border border-gray-200"
-      />
-      <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-md text-sm font-medium text-gray-700 flex items-center gap-2 z-999 pointer-events-auto">
-        <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full"></span>
-        Radius: {radius} km | <b>{visibleCount}</b> UMKM ditemukan
+    return (
+      <div className="relative z-0">
+        <div
+          id="map"
+          className="h-[75dvh] rounded-2xl shadow-lg border border-gray-200"
+        />
+        <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-md text-sm font-medium text-gray-700 flex items-center gap-2 z-999 pointer-events-auto">
+          <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full"></span>
+          Radius: {radius} km | <b>{visibleCount}</b> UMKM ditemukan
+        </div>
       </div>
-    </div>
-  );
-});
+    );
+  },
+);
 
 LeafletMap.displayName = "LeafletMap";
 

@@ -3,10 +3,11 @@ import { supabase } from "@/lib/supabase";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Check } from "lucide-react";
 import { useRouter } from "next/navigation";
-
+import { LoaderCircle, Check } from "lucide-react";
 export default function RegisterPage() {
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
   const router = useRouter();
 
   const [formData, setFormData] = useState({
@@ -33,50 +34,74 @@ export default function RegisterPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log({
-      name: JSON.stringify(formData.name),
-      email: JSON.stringify(formData.email),
-      password: JSON.stringify(formData.password),
-    });
-    // Register ke Supabase Auth
+    const name = formData.name.trim();
     const email = formData.email.trim();
     const password = formData.password.trim();
 
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-    });
-
-    console.log("SIGNUP DATA:", data);
-    console.log("SIGNUP ERROR:", error);
-
-    if (error) {
-      alert(error.message);
+    if (!name) {
+      alert("Nama lengkap wajib diisi.");
       return;
     }
 
-    if (!data.user) {
-      alert("User gagal dibuat");
+    if (!email) {
+      alert("Email wajib diisi.");
       return;
     }
 
-    const { error: profileError } = await supabase.from("profiles").insert({
-      id: data.user.id,
-      full_name: formData.name.trim(),
-      email,
-      role: formData.role,
-    });
-
-    console.log("PROFILE ERROR:", profileError);
-
-    if (profileError) {
-      alert(profileError.message);
+    if (!password) {
+      alert("Password wajib diisi.");
       return;
     }
 
-    alert("Registrasi berhasil!");
+    setLoading(true);
 
-    router.push("/login");
+    try {
+      // Register ke Supabase Auth
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+      });
+
+      if (error) {
+        alert(error.message);
+        setLoading(false);
+        return;
+      }
+
+      if (!data.user) {
+        alert("User gagal dibuat");
+        setLoading(false);
+        return;
+      }
+
+      const { error: profileError } = await supabase.from("profiles").insert({
+        id: data.user.id,
+        full_name: name,
+        email,
+        role: formData.role,
+      });
+
+      if (profileError) {
+        alert(profileError.message);
+        setLoading(false);
+        return;
+      }
+
+      // Animasi berhasil
+      setLoading(false);
+      setSuccess(true);
+
+      // Redirect ke Login
+      setTimeout(() => {
+        router.replace("/login");
+      }, 800);
+    } catch (err) {
+      console.error(err);
+
+      setLoading(false);
+
+      alert("Terjadi kesalahan. Silakan coba lagi.");
+    }
   };
 
   return (
@@ -256,9 +281,22 @@ export default function RegisterPage() {
               {/* Button */}
               <button
                 type="submit"
-                className="mt-3 h-12 w-full rounded-lg bg-[#158A62] text-[16px] font-semibold text-white transition hover:bg-[#09624D]"
+                disabled={loading}
+                className="flex h-14 w-full items-center justify-center gap-3 rounded-xl bg-[#158A62] text-[17px] font-semibold text-white transition hover:bg-[#127553] disabled:cursor-not-allowed disabled:opacity-80"
               >
-                Daftar
+                {loading ? (
+                  <>
+                    <LoaderCircle size={20} className="animate-spin" />
+                    Sedang mendaftar...
+                  </>
+                ) : success ? (
+                  <>
+                    <Check size={20} />
+                    Berhasil
+                  </>
+                ) : (
+                  "Daftar"
+                )}
               </button>
             </form>
 

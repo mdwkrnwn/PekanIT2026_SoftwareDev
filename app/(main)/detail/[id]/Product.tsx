@@ -11,6 +11,7 @@ import InfoPanel from "./components/InfoPanel";
 import ReviewsSection from "./components/ReviewsSection";
 import RatingSummary from "./components/RatingSummary";
 import ReviewForm from "./components/ReviewForm";
+import { Review } from "./review.type";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -42,7 +43,7 @@ export default function ProductPage({
   const [mainImage, setMainImage] = useState(product?.gallery?.[0]);
   const wishes = useWishlist().map((item) => item.id);
   const [wishlist, setWishlist] = useState(wishes);
-  const [reviews, setReviews] = useState(review);
+const [reviews, setReviews] = useState<Review[]>(review);
 
   const toggleWishlist = (id: number, name: string) => {
     const isInWishlist = wishlist.includes(id);

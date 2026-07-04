@@ -45,18 +45,18 @@ export function Sidebar({
         </div>{" "}
       </div>
 
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#0C7C61] to-[#7FA59A] p-6 text-white">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#0C7C61] to-[#7FA59A] p-6 text-white dark:from-[#064E3B] dark:to-[#134E4A]">
         {/* Konten */}
         <div className="relative z-10 max-w-[250px]">
           <h3 className="text-[26px] font-bold leading-tight">
             Dukung UMKM Dukung Indonesia
           </h3>
 
-          <p className="mt-5 text-[15px] leading-8 text-white/90">
+          <p className="mt-5 text-[15px] leading-8 text-white/90 dark:text-slate-200">
             Setiap transaksi kecil darimu berarti besar untuk mereka.
           </p>
 
-          <button className="mt-7 rounded-xl bg-white px-6 py-3 font-semibold text-[#0C7C61]">
+          <button className="mt-7 rounded-xl bg-white px-6 py-3 font-semibold text-[#0C7C61] transition hover:bg-slate-100 dark:bg-slate-900 dark:text-emerald-400 dark:hover:bg-slate-800">
             Jelajahi UMKM
           </button>
         </div>
@@ -68,7 +68,7 @@ export function Sidebar({
           width={220}
           height={220}
           priority
-          className="absolute bottom-0 mt-50 right-4 z-0 w-[220px]"
+          className="absolute bottom-0 right-4 z-0 w-[220px]"
         />
       </div>
 
@@ -104,8 +104,8 @@ export function Sidebar({
       </div>
 
       {/* Popular Articles */}
-      <div className="rounded-2xl border border-[#E9EDF2] bg-white p-6">
-        <h3 className="mb-5 text-[20px] font-bold text-[#101828]">
+      <div className="rounded-2xl border border-[#E9EDF2] bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+        <h3 className="mb-5 text-[20px] font-bold text-[#101828] dark:text-white">
           Artikel Populer
         </h3>
 
@@ -114,23 +114,23 @@ export function Sidebar({
             <Link
               key={article.id}
               href={`/article/${article.id}`}
-              className="flex gap-3"
+              className="flex gap-3 group"
             >
               <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl">
                 <Image
                   src={article.image}
                   alt={article.title}
                   fill
-                  className="object-cover"
+                  className="object-cover transition duration-300 group-hover:scale-105"
                 />
               </div>
 
               <div className="flex-1">
-                <h4 className="line-clamp-2 text-[15px] font-semibold text-[#101828]">
+                <h4 className="line-clamp-2 text-[15px] font-semibold text-[#101828] transition group-hover:text-[#158A62] dark:text-white dark:group-hover:text-emerald-400">
                   {article.title}
                 </h4>
 
-                <p className="mt-2 text-xs text-[#98A2B3]">
+                <p className="mt-2 text-xs text-[#98A2B3] dark:text-slate-500">
                   {article.readTime}
                 </p>
               </div>
@@ -139,18 +139,20 @@ export function Sidebar({
         </div>
       </div>
 
-      <div className="rounded-2xl border border-[#E9EDF2] bg-[#F2F8F6] p-6">
-        <h3 className="text-[20px] font-semibold leading-7 text-[#156E52]">
-          Dapatkan tips & info UMKM <br /> langsung ke email kamu
+      <div className="rounded-2xl border border-[#E9EDF2] bg-[#F2F8F6] p-6 dark:border-slate-800 dark:bg-slate-900">
+        <h3 className="text-[20px] font-semibold leading-7 text-[#156E52] dark:text-emerald-400">
+          Dapatkan tips & info UMKM
+          <br />
+          langsung ke email kamu
         </h3>
 
         <input
           type="email"
           placeholder="Masukkan email kamu"
-          className="mt-5 h-11 w-full rounded-lg border border-[#E5E7EB] bg-white px-4 text-sm outline-none"
+          className="mt-5 h-11 w-full rounded-lg border border-[#E5E7EB] bg-white px-4 text-sm text-[#101828] outline-none transition focus:border-[#158A62] dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder:text-slate-500 dark:focus:border-emerald-400"
         />
 
-        <button className="mt-4 h-11 w-full rounded-lg bg-[#156E52] font-semibold text-white hover:bg-[#09624D]">
+        <button className="mt-4 h-11 w-full rounded-lg bg-[#156E52] font-semibold text-white transition hover:bg-[#09624D] dark:bg-emerald-600 dark:hover:bg-emerald-700">
           Langganan
         </button>
       </div>

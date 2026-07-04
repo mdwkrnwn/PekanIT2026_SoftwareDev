@@ -15,11 +15,13 @@ import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { Skeleton } from "@/components/ui/skeleton";
 
 function Sidebar() {
   const activePath = usePathname();
   const router = useRouter();
   const [umkm, setUmkm] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
   const handleLogout = async () => {
     const { error } = await supabase.auth.signOut();
 
@@ -33,36 +35,41 @@ function Sidebar() {
   };
   useEffect(() => {
     const getUMKM = async () => {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
+      try {
+        setLoading(true);
 
-      if (!user) return;
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
 
-      const { data, error } = await supabase
-        .from("umkm")
-        .select(
-          `
-        *,
-        categories (
-          name
-        )
-      `,
-        )
-        .eq("owner_id", user.id)
-        .single();
+        if (!user) return;
 
-      if (error) {
-        console.error(error);
-        return;
+        const { data, error } = await supabase
+          .from("umkm")
+          .select(
+            `
+          *,
+          categories (
+            name
+          )
+        `,
+          )
+          .eq("owner_id", user.id)
+          .single();
+
+        if (error) {
+          console.error(error);
+          return;
+        }
+
+        setUmkm(data);
+      } finally {
+        setLoading(false);
       }
-
-      setUmkm(data);
     };
 
     getUMKM();
   }, []);
-
   const coverImage = umkm?.cover_image || "/placeholder-cover.jpg";
 
   return (
@@ -88,24 +95,43 @@ function Sidebar() {
         </div>
 
         {/* Store Profile Card */}
-        <div className="border-2 border-[#F3F4F7] rounded-2xl p-4 -mt-15 bg-white flex items-center gap-4">
-          <div className="w-14 h-14 shrink-0 relative overflow-hidden rounded-full">
-            <Image
-              src={coverImage}
-              fill
-              className="object-cover"
-              alt={umkm?.name || "UMKM"}
-            />
-          </div>
-          <div>
-            <h4 className="font-bold text-slate-900 text-lg">
-              {umkm?.name || "Nama UMKM"}
-            </h4>
-            <span className="text-slate-500 font-medium block"> {umkm?.categories?.name || "-"} </span>
-            <span className="inline-block bg-emerald-100 text-emerald-700 text-base font-bold px-2 py-0.5 rounded-md mt-1">
-              Terverifikasi
-            </span>
-          </div>
+        <div className="rounded-2xl border-2 border-[#F3F4F7] bg-white p-4 -mt-15">
+          {loading ? (
+            <div className="flex items-center gap-4">
+              <Skeleton className="h-14 w-14 rounded-full" />
+
+              <div className="flex-1 space-y-2">
+                <Skeleton className="h-5 w-32" />
+                <Skeleton className="h-4 w-20" />
+                <Skeleton className="h-6 w-24 rounded-md" />
+              </div>
+            </div>
+          ) : (
+            <div className="flex items-center gap-4">
+              <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full">
+                <Image
+                  src={coverImage}
+                  fill
+                  className="object-cover"
+                  alt={umkm?.name || "UMKM"}
+                />
+              </div>
+
+              <div>
+                <h4 className="text-lg font-bold text-slate-900">
+                  {umkm?.name || "Nama UMKM"}
+                </h4>
+
+                <span className="block font-medium text-slate-500">
+                  {umkm?.categories?.name || "-"}
+                </span>
+
+                <span className="mt-1 inline-block rounded-md bg-emerald-100 px-2 py-0.5 text-base font-bold text-emerald-700">
+                  Terverifikasi
+                </span>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Navigation Links */}
@@ -148,10 +174,11 @@ function Sidebar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`flex items-center gap-4 rounded-xl px-6 py-3 transition-all duration-200 ${isActive
+                className={`flex items-center gap-4 rounded-xl px-6 py-3 transition-all duration-200 ${
+                  isActive
                     ? "bg-[#F2F9F5] text-[#279959]"
                     : "text-[#344054] hover:bg-[#F9FAFB]"
-                  }`}
+                }`}
               >
                 <div className="flex justify-center w-6">
                   <item.icon
@@ -161,8 +188,9 @@ function Sidebar() {
                 </div>
 
                 <span
-                  className={`text-[18px] ${isActive ? "font-semibold" : "font-medium"
-                    }`}
+                  className={`text-[18px] ${
+                    isActive ? "font-semibold" : "font-medium"
+                  }`}
                 >
                   {item.name}
                 </span>

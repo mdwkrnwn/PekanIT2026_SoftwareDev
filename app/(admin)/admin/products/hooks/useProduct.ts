@@ -23,7 +23,7 @@ export function useProduct() {
   const [productImage, setProductImage] = useState<File | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState("Semua Produk");
-
+  const [refreshKey, setRefreshKey] = useState(0);
   const [search, setSearch] = useState("");
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -81,7 +81,7 @@ export function useProduct() {
       });
 
       await getProducts();
-
+      setRefreshKey((prev) => prev + 1);
       alert("Produk berhasil diperbarui.");
 
       resetForm();
@@ -120,7 +120,7 @@ export function useProduct() {
       await removeProduct(id);
 
       await getProducts();
-
+      setRefreshKey((prev) => prev + 1);
       alert("Produk berhasil dihapus.");
     } catch (error: any) {
       alert(error.message);
@@ -190,7 +190,7 @@ export function useProduct() {
       });
 
       await getProducts();
-
+      setRefreshKey((prev) => prev + 1);
       alert("Produk berhasil ditambahkan.");
 
       resetForm();
@@ -213,7 +213,7 @@ export function useProduct() {
     sortBy,
     loading,
     setSortBy,
-
+    refreshKey,
     productImage,
     setProductImage,
 

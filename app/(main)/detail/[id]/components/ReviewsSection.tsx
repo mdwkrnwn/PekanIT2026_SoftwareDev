@@ -3,30 +3,15 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useState, useMemo } from "react";
-import {
-  FaStar,
-  FaThumbsUp,
-  FaCheckCircle,
-} from "react-icons/fa";
-
-interface Review {
-  id: number;
-  name: string;
-  comment: string;
-  rating: number;
-  verified?: boolean;
-  images?: string[];
-  timeago?: string;
-  likes?: number;
-}
+import { FaStar, FaThumbsUp, FaCheckCircle } from "react-icons/fa";
+import { Review } from "../review.type";
+import { CircleUserRound } from "lucide-react";
 
 interface ReviewsSectionProps {
   reviews: Review[];
 }
 
-export default function ReviewsSection({
-  reviews,
-}: ReviewsSectionProps) {
+export default function ReviewsSection({ reviews }: ReviewsSectionProps) {
   const [filter, setFilter] = useState("all");
   const [userLikes, setUserLikes] = useState<Record<number, boolean>>({});
 
@@ -76,10 +61,11 @@ export default function ReviewsSection({
           <button
             key={tab.id}
             onClick={() => setFilter(tab.id)}
-            className={`px-4 py-2 whitespace-nowrap text-sm font-medium transition-all ${filter === tab.id
-              ? "text-primary-foreground border-b-2 border-primary"
-              : "text-foreground/80 hover:text-foreground"
-              }`}
+            className={`px-4 py-2 whitespace-nowrap text-sm font-medium transition-all ${
+              filter === tab.id
+                ? "text-primary-foreground border-b-2 border-primary"
+                : "text-foreground/80 hover:text-foreground"
+            }`}
           >
             {tab.label}
           </button>
@@ -93,7 +79,9 @@ export default function ReviewsSection({
           <p className="text-foreground font-semibold">
             {recommendationPercentage}% pengunjung merekomendasikan
           </p>
-          <p className="text-foreground/80 text-xs">Berdasarkan rating 4-5 bintang</p>
+          <p className="text-foreground/80 text-xs">
+            Berdasarkan rating 4-5 bintang
+          </p>
         </div>
       </div>
 
@@ -113,19 +101,30 @@ export default function ReviewsSection({
           filteredReviews.map((review) => (
             <div
               key={review.id}
-              className={cn("rounded-2xl p-5 bg-background border border-border hover:shadow-md transition-shadow",
-                filteredReviews.length % 2 != 0 && "md:last:col-span-2 last:justify-center"
+              className={cn(
+                "rounded-2xl p-5 bg-background border border-border hover:shadow-md transition-shadow",
+                filteredReviews.length % 2 != 0 &&
+                  "md:last:col-span-2 last:justify-center",
               )}
             >
               {/* Header */}
               <div className="flex items-start gap-3 mb-3">
-                <Image
-                  width={40}
-                  height={40}
-                  src="/products/user.jpg"
-                  alt={review.name}
-                  className="object-cover w-10 h-10 rounded-full"
-                />
+                <div className="h-10 w-10 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+                  {review.avatar ? (
+                    <Image
+                      width={40}
+                      height={40}
+                      src={review.avatar}
+                      alt={review.name}
+                      className="h-10 w-10 object-cover"
+                    />
+                  ) : (
+                    <CircleUserRound
+                      size={24}
+                      className="text-slate-400 dark:text-slate-500"
+                    />
+                  )}
+                </div>
 
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
@@ -179,13 +178,16 @@ export default function ReviewsSection({
               {/* Likes */}
               <button
                 onClick={() => toggleLike(review.id)}
-                className={`flex items-center gap-2 text-sm font-medium transition-colors ${userLikes[review.id]
-                  ? "text-primary/90"
-                  : "text-foreground hover:text-primary/90"
-                  }`}
+                className={`flex items-center gap-2 text-sm font-medium transition-colors ${
+                  userLikes[review.id]
+                    ? "text-primary/90"
+                    : "text-foreground hover:text-primary/90"
+                }`}
               >
                 <FaThumbsUp size={14} />
-                <span>{(review.likes || 0) + (userLikes[review.id] ? 1 : 0)}</span>
+                <span>
+                  {(review.likes || 0) + (userLikes[review.id] ? 1 : 0)}
+                </span>
               </button>
             </div>
           ))

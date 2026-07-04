@@ -6,7 +6,7 @@ import { IoChevronDown } from "react-icons/io5";
 import { LuHeadphones } from "react-icons/lu";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
-
+import { Skeleton } from "@/components/ui/skeleton";
 export function Header() {
   const [profile, setProfile] = useState<{
     full_name: string;
@@ -46,32 +46,40 @@ export function Header() {
   if (isCompleteProfile) {
     return (
       <header className="bg-white border-border z-20 sticky top-0 flex items-center justify-between px-8 py-5 border-b">
-        <Link href="/" className="flex items-center gap-2">
-          <Image loading='eager' height={1000} width={1000} className="max-w-24 max-h-24" src={'/Bakul.png'} alt="logo" />
-          <span className="text-primary-foreground text-[1.375rem] font-bold">
+        <Link href="/" className="flex items-center gap-2 ml-10">
+          <Image
+            loading="eager"
+            height={1000}
+            width={1000}
+            className="max-w-24 max-h-24"
+            src={"/Bakul.png"}
+            alt="logo"
+          />
+          <span className="text-primary-foreground -ml-5 text-[24px] font-bold">
             Bakool
           </span>
         </Link>
 
-        <div className="flex items-center gap-6">
+        <div className="flex items-center mr-20 gap-6">
           <div className="flex items-center gap-2">
-            <LuHeadphones size={22} className="text-[#158A62]" />
+            <LuHeadphones size={30} className="text-[#158A62]" />
             <div className="leading-tight">
               <p className="text-[13px] font-semibold text-[#101828]">
                 Butuh bantuan?
               </p>
-              <Link
-                href="/contact"
+              <button
+                onClick={() => alert("Coming Soon 🚀")}
                 className="text-[12px] font-medium text-[#158A62] hover:underline"
               >
                 Hubungi kami
-              </Link>
+              </button>
             </div>
           </div>
 
-          <Link
-            href="/admin/profile"
-            className="flex items-center gap-1.5 cursor-pointer"
+          <button
+            type="button"
+            onClick={() => alert("Coming Soon 🚀")}
+            className="flex cursor-pointer items-center gap-1.5"
           >
             <Image
               src={profile?.avatar_url || "/ava.png"}
@@ -84,7 +92,7 @@ export function Header() {
               size={18}
               className="text-[#667085] transition-transform hover:text-[#101828]"
             />
-          </Link>
+          </button>
         </div>
       </header>
     );
@@ -126,32 +134,44 @@ export function Header() {
         <p className="mt-1 text-[#667085]">{message.desc}</p>
       </div>
 
-      <Link
-        href={"/admin/profile"}
-        className="flex items-center gap-3 cursor-pointer"
-      >
-        <Image
-          src={profile?.avatar_url || "/ava.png"}
-          alt={profile?.full_name || "User"}
-          width={56}
-          height={56}
-          className="rounded-full object-cover"
-        />
+      {profile ? (
+        <Link
+          href="/admin/profile"
+          className="flex items-center gap-3 cursor-pointer"
+        >
+          <Image
+            src={profile.avatar_url || "/ava.png"}
+            alt={profile.full_name}
+            width={56}
+            height={56}
+            className="rounded-full object-cover"
+          />
 
-        <div>
-          <h3 className="font-semibold text-[#101828]">
-            {profile?.full_name || "Loading..."}
-          </h3>
-          <p className="text-sm text-[#667085] capitalize">
-            {profile?.role || "-"}
-          </p>
+          <div>
+            <h3 className="font-semibold text-[#101828]">
+              {profile.full_name}
+            </h3>
+
+            <p className="text-sm capitalize text-[#667085]">{profile.role}</p>
+          </div>
+
+          <IoChevronDown
+            size={20}
+            className="text-[#667085] transition-transform hover:text-[#101828]"
+          />
+        </Link>
+      ) : (
+        <div className="flex items-center gap-3">
+          <Skeleton className="h-14 w-14 rounded-full" />
+
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-28" />
+            <Skeleton className="h-3 w-16" />
+          </div>
+
+          <Skeleton className="h-5 w-5 rounded-full" />
         </div>
-
-        <IoChevronDown
-          size={20}
-          className="text-[#667085] transition-transform hover:text-[#101828]"
-        />
-      </Link>
+      )}
     </header>
   );
 }

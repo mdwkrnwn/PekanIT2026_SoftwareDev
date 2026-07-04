@@ -19,7 +19,7 @@ import {
   BookOpen,
   Flower2,
   Printer,
-  Package
+  Package,
 } from "lucide-react";
 
 export const categoryIcons = {
@@ -43,5 +43,5 @@ export const categoryIcons = {
   BookOpen,
   Flower2,
   Printer,
-  Package
+  Package,
 };

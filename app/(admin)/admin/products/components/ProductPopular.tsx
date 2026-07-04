@@ -2,9 +2,11 @@ import Image from "next/image";
 import { Skeleton } from "@/components/ui/skeleton";
 import { PackageOpen } from "lucide-react";
 import { usePopularProducts } from "../hooks/usePopularProduct";
-
-export default function ProductPopular() {
-  const { products, loading } = usePopularProducts();
+interface ProductPopularProps {
+  refreshKey: number;
+}
+export default function ProductPopular({ refreshKey }: ProductPopularProps) {
+  const { products, loading } = usePopularProducts(refreshKey);
 
   if (loading) {
     return (

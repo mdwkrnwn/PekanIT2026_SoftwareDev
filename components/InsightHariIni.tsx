@@ -8,9 +8,8 @@ const INSIGHTS = [
     change: "38%",
     desc: "dari total penjualan",
     icon: FaStore,
-    iconColor: "text-[#0C7C61]",
-    iconBg: "bg-[#E8F7F1]",
-    border: "border-[#EEF0F2]",
+    iconColor: "text-[#0C7C61] dark:text-emerald-400",
+    iconBg: "bg-[#E8F7F1] dark:bg-emerald-950",
     chart: "/te.png",
     isTime: false,
   },
@@ -20,9 +19,8 @@ const INSIGHTS = [
     change: "+28%",
     desc: "dibanding minggu lalu",
     icon: FaChartColumn,
-    iconColor: "text-[#F59E0B]",
-    iconBg: "bg-[#FFF4DF]",
-    border: "border-[#EEF0F2]",
+    iconColor: "text-[#F59E0B] dark:text-amber-400",
+    iconBg: "bg-[#FFF4DF] dark:bg-amber-950",
     chart: "/te.png",
     isTime: false,
   },
@@ -32,9 +30,8 @@ const INSIGHTS = [
     change: "+35%",
     desc: "pertumbuhan UMKM aktif",
     icon: LuMapPin,
-    iconColor: "text-[#0C7C61]",
-    iconBg: "bg-[#E8F7F1]",
-    border: "border-[#EEF0F2]",
+    iconColor: "text-[#0C7C61] dark:text-emerald-400",
+    iconBg: "bg-[#E8F7F1] dark:bg-emerald-950",
     chart: "/te.png",
     isTime: false,
   },
@@ -44,9 +41,8 @@ const INSIGHTS = [
     change: "",
     desc: "Waktu kunjungan tertinggi",
     icon: LuClock3,
-    iconColor: "text-[#2563EB]",
-    iconBg: "bg-[#EAF2FF]",
-    border: "border-[#EEF0F2]",
+    iconColor: "text-[#2563EB] dark:text-sky-400",
+    iconBg: "bg-[#EAF2FF] dark:bg-sky-950",
     chart: "/trend-chart.png",
     isTime: true,
   },
@@ -80,7 +76,21 @@ export function InsightHariIni() {
             data-aos-delay={index * 150}
             data-aos-duration="700"
             data-aos-once="true"
-            className={`rounded-2xl border bg-muted p-5 border-border`}
+            className="
+            rounded-2xl
+            border-2
+            border-[#EEF0F2]
+            dark:border-slate-800
+            bg-[#FEFEFE]
+            dark:bg-slate-900
+            p-5
+            transition-all
+            duration-300
+            hover:-translate-y-1
+            hover:shadow-xl
+            dark:hover:border-[#158A62]/40
+            dark:hover:bg-slate-800
+            "
           >
             <div className="flex items-start justify-between">
               <div>
@@ -102,13 +112,15 @@ export function InsightHariIni() {
                   {item.change}
                 </h3>
 
-                <p className="mt-1 text-[12px] text-muted-foreground">{item.desc}</p>
+                <p className="mt-1 text-[12px] text-muted-foreground">
+                  {item.desc}
+                </p>
               </div>
 
               <div
                 data-aos="zoom-in"
                 data-aos-delay={index * 150 + 200}
-                className={`flex h-11 w-11 items-center justify-center rounded-full ${item.iconBg}`}
+                className={`flex h-11 w-11 items-center justify-center rounded-full transition-all duration-300 ${item.iconBg}`}
               >
                 <item.icon size={20} className={item.iconColor} />
               </div>

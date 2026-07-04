@@ -14,7 +14,7 @@ import {
   LuZap,
   LuGlobe,
   LuStar,
-  LuUserPlus,
+  LuCirclePlay,
 } from "react-icons/lu";
 import { BarChart3Icon, Sliders, LineChart } from "lucide-react";
 
@@ -105,25 +105,25 @@ export default function SolutionPage() {
       step: 1,
       title: "Daftar & Lengkapi Profil",
       desc: "Daftarkan bisnis Anda dan lengkapi informasi untuk mulai menggunakan Bakool.",
-      icon: LuUserPlus,
+      image: "/step/register.png",
     },
     {
       step: 2,
       title: "Kelola Bisnis",
       desc: "Atur produk, promo, dan layanan menggunakan fitur yang tersedia sesuai kebutuhan.",
-      icon: Sliders,
+      image: "/step/store.png",
     },
     {
       step: 3,
       title: "Dapatkan Insight",
       desc: "Pantau performa bisnis melalui dashboard dan laporan lengkap dari data yang akurat.",
-      icon: BarChart3Icon,
+      image: "/step/chart.png",
     },
     {
       step: 4,
       title: "Kembangkan & Tumbuh",
-      desc: "Gunakan insight untuk strategi lebih baik dan tingkatkan penjualan secara keberlanjutan.",
-      icon: LuTrendingUp,
+      desc: "Gunakan insight untuk strategi lebih baik dan tingkatkan penjualan secara berkelanjutan.",
+      image: "/step/growth.png",
     },
   ];
 
@@ -133,71 +133,80 @@ export default function SolutionPage() {
         "Dashboard Bakool membantu saya memahami pelanggan dan meningkatkan penjualan hingga 40% setiap bulan.",
       name: "Rizky Pratama",
       role: "Pemilik Kopi Amin",
+      image: "/image1.png",
     },
     {
       quote:
-        "AI Assistant Bakool selalu memberi rekomendasi yang relevan, strategi promo jadi lebih efektif.",
+        "AI Assistant Bakool selalu memberi rekomendasi yang relevan. Strategi promo jadi lebih efektif.",
       name: "Karen Riena",
       role: "Pemilik Dapoer Rona",
+      image: "/image2.png",
     },
     {
       quote:
-        "Semua fitur yang saya butuhkan ada di Bakool, mengelola bisnis jadi jauh lebih mudah.",
+        "AI Assistant Bakool selalu memberi rekomendasi yang relevan. Strategi promo jadi lebih efektif.",
       name: "Budi Santoso",
       role: "Pemilik Toko Sembako Berkah",
+      image: "/image3.png",
     },
     {
       quote:
         "Dashboard Bakool membantu saya memahami pelanggan dan meningkatkan penjualan hingga 40% setiap bulan.",
       name: "Rina Kartika",
       role: "Pemilik Kopi Kita",
+      image: "/image4.png",
     },
   ];
 
   return (
     <div className="text-slate-800 dark:text-slate-100">
       {/* ================= SECTION 1: MAIN SOLUTIONS GRID ================= */}
-      <section className="w-[80vw] mx-auto pb-16" data-aos="fade-up">
+      <section className="mx-auto w-[80vw] pb-16" data-aos="fade-up">
+        {/* Heading */}
         <div data-aos="fade-up">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-950 dark:text-white">
+          <h2 className="text-[38px] font-bold text-[#0B0F1F] dark:text-white">
             Solusi Bakool Untuk UMKM
           </h2>
 
-          <p className="text-slate-500 dark:text-slate-400 mt-2 text-lg max-w-2xl">
+          <p className="mt-2 max-w-xl text-[17px] leading-7 text-[#667085] dark:text-slate-400">
             Berbagai fitur terintegrasi yang dirancang untuk membantu UMKM
             mengelola dan mengembangkan bisnis dengan lebih mudah dan efisien.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+        {/* Cards */}
+        <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           {features.map((feat, idx) => (
             <div
               key={idx}
               data-aos="fade-up"
-              data-aos-delay={120}
-              className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between min-h-55"
+              data-aos-delay={idx * 80}
+              className="group rounded-2xl border border-[#EAECF0] bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#158A62]/30 hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-emerald-500/40 dark:hover:bg-slate-800"
             >
-              <div>
-                <div
-                  className={`w-12 h-12 rounded-xl flex items-center justify-center ${feat.color} mb-4 transition-transform duration-300 hover:scale-110`}
-                >
-                  <feat.icon size={24} />
-                </div>
-
-                <h3 className="font-bold text-slate-900 dark:text-white text-lg">
-                  {feat.title}
-                </h3>
-
-                <p className="text-slate-500 dark:text-slate-400 mt-2 text-base leading-relaxed line-clamp-3">
-                  {feat.desc}
-                </p>
+              {/* Icon */}
+              <div
+                className={`mb-5 flex h-13 w-13 items-center justify-center rounded-xl ${feat.color}`}
+              >
+                <feat.icon size={24} />
               </div>
 
+              {/* Title */}
+              <h3 className="text-[22px] font-semibold text-[#0B0F1F] dark:text-white">
+                {feat.title}
+              </h3>
+
+              {/* Description */}
+              <p className="mt-2 line-clamp-3 text-[14px] leading-6 text-[#667085] dark:text-slate-400">
+                {feat.desc}
+              </p>
+
+              {/* Link */}
               <Link
                 href="/explore"
-                className="text-[#15803d] dark:text-emerald-400 font-bold mt-4 inline-flex items-center gap-1 hover:underline"
+                className="mt-6 inline-flex items-center gap-2 text-[13px] font-semibold text-[#158A62] transition-all group-hover:gap-3 dark:text-emerald-400"
               >
-                Pelajari lebih lanjut ➔
+                Pelajari lebih lanjut
+                <span>→</span>
               </Link>
             </div>
           ))}
@@ -205,130 +214,164 @@ export default function SolutionPage() {
       </section>
 
       {/* ================= SECTION 2: REAL IMPACT BUSINESS METRICS ================= */}
-      <section className="w-[80vw] mx-auto py-16 text-center border-t border-slate-200/60 dark:border-slate-800">
-        <div data-aos="fade-up">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-950 dark:text-white">
+      <section className="mx-auto w-[80vw] border-t border-[#EAECF0] py-16 dark:border-slate-800">
+        {/* Heading */}
+        <div data-aos="fade-up" className="mx-auto max-w-2xl text-center">
+          <h2 className="text-[37px] font-bold text-[#0B0F1F] dark:text-white">
             Dampak Nyata untuk Bisnis Anda
           </h2>
 
-          <p className="text-slate-500 dark:text-slate-400 mt-2 text-lg max-w-xl mx-auto">
+          <p className="mt-2 text-[17px] text-[#667085] dark:text-slate-400">
             Bergabung dengan ribuan UMKM yang telah merasakan manfaat Bakool.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 text-left">
-          {impacts.map((imp, idx) => (
-            <div
-              key={idx}
-              data-aos="zoom-in"
-              data-aos-delay={idx * 100}
-              className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex items-center gap-5"
-            >
-              <div
-                className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 ${imp.color}`}
-              >
-                <imp.icon size={26} />
-              </div>
+        {/* Card */}
+        <div
+          className="mt-10 overflow-hidden rounded-3xl border border-[#EAECF0] bg-white dark:border-slate-800 dark:bg-slate-900"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <div className="grid grid-cols-1 divide-y divide-[#EAECF0] dark:divide-slate-800 md:grid-cols-2 md:divide-x md:divide-y-0 lg:grid-cols-4">
+            {impacts.map((imp, idx) => (
+              <div key={idx} className="flex items-center gap-5 px-8 py-7">
+                {/* Icon */}
+                <div
+                  className={`flex h-14 w-14 items-center justify-center rounded-full ${imp.color}`}
+                >
+                  <imp.icon size={28} />
+                </div>
 
-              <div>
-                <h3 className="text-3xl font-black text-slate-950 dark:text-white">
-                  {imp.metric}
-                </h3>
+                {/* Content */}
+                <div>
+                  <h3 className="text-[34px] font-bold leading-none text-[#158A62] dark:text-emerald-400">
+                    {imp.metric}
+                  </h3>
 
-                <p className="text-slate-500 dark:text-slate-400 font-medium mt-0.5">
-                  {imp.text}
-                </p>
+                  <p className="mt-2 text-[14px] leading-6 text-[#344054] dark:text-slate-400">
+                    {imp.text}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ================= SECTION 3: HOW IT WORKS STEPPER ================= */}
-      <section className="w-[80vw] mx-auto py-16 text-center border-t border-slate-200/60 dark:border-slate-800">
-        <div data-aos="fade-up">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-950 dark:text-white">
+      <section className="mx-auto w-[80vw] border-t border-[#EAECF0] py-20 dark:border-slate-800">
+        {/* Heading */}
+        <div data-aos="fade-up" className="mx-auto max-w-2xl text-center">
+          <h2 className="text-[35px] font-bold text-[#0B0F1F] dark:text-white">
             Bagaimana Bakool Bekerja?
           </h2>
 
-          <p className="text-slate-500 dark:text-slate-400 mt-2 text-lg max-w-xl mx-auto">
-            Empat langkah mudah untuk mengembangkan bisnis anda
+          <p className="mt-2 text-[17px] text-[#667085] dark:text-slate-400">
+            Empat langkah mudah untuk mengembangkan bisnis Anda
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16 text-center relative">
-          {steps.map((st, idx) => (
-            <div
-              key={idx}
-              data-aos="zoom-in-up"
-              data-aos-delay={idx * 150}
-              className="flex flex-col items-center relative z-10 group"
-            >
-              <div className="w-20 h-20 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 rounded-full flex items-center justify-center shadow-md mb-4 text-slate-400 dark:text-slate-500 transition-all duration-300 group-hover:scale-110 group-hover:border-[#15803d] dark:group-hover:border-emerald-500">
-                <st.icon size={32} />
+        {/* Steps */}
+        <div className="relative mt-20">
+          {/* Garis Penghubung */}
+          <div className="absolute left-[12%] right-[12%] top-[42px] hidden h-[2px] bg-[#EAECF0] dark:bg-slate-800 lg:block" />
+
+          <div className="grid grid-cols-1 gap-14 md:grid-cols-2 lg:grid-cols-4">
+            {steps.map((step, index) => (
+              <div
+                key={index}
+                data-aos="fade-up"
+                data-aos-delay={index * 120}
+                className="relative z-10 flex flex-col items-center text-center"
+              >
+                <div className="flex flex-col items-center">
+                  {/* Circle */}
+                  <div className="flex h-[86px] w-[86px] items-center justify-center rounded-full border border-[#EAECF0] bg-white transition-all duration-300 hover:-translate-y-1 dark:border-slate-700 dark:bg-slate-900">
+                    <Image
+                      src={step.image}
+                      alt={step.title}
+                      width={42}
+                      height={42}
+                    />
+                  </div>
+
+                  {/* Garis Vertikal */}
+                  <div className="h-10 w-px bg-[#EAECF0] dark:bg-slate-700" />
+
+                  {/* Step Number */}
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#158A62] text-lg font-bold text-white">
+                    {step.step}
+                  </div>
+                </div>
+
+                {/* Title */}
+                <h3 className="mt-10 text-[24px] font-semibold text-[#0B0F1F] dark:text-white">
+                  {step.title}
+                </h3>
+
+                {/* Description */}
+                <p className="mt-4 max-w-[260px] text-[15px] leading-8 text-[#667085] dark:text-slate-400">
+                  {step.desc}
+                </p>
               </div>
-
-              <div className="w-8 h-8 bg-[#15803d] text-white font-bold rounded-full flex items-center justify-center shadow-sm border-2 border-white dark:border-slate-950 -mt-8 mb-4 relative z-20">
-                {st.step}
-              </div>
-
-              <h3 className="font-bold text-slate-950 dark:text-white text-lg mt-2">
-                {st.title}
-              </h3>
-
-              <p className="text-slate-500 dark:text-slate-400 mt-2 text-base max-w-xs leading-relaxed">
-                {st.desc}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ================= SECTION 4: REVIEWS & TRUST BANNER ================= */}
-      <section className="w-[80vw] mx-auto py-16 text-center border-t border-slate-200/60 dark:border-slate-800">
-        <div data-aos="fade-up">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-950 dark:text-white">
+      <section className="mx-auto w-[80vw] py-20">
+        {/* Heading */}
+        <div data-aos="fade-up" className="text-center">
+          <h2 className="text-[35px] font-bold text-[#0B0F1F] dark:text-white">
             Dipercaya oleh UMKM di Seluruh Indonesia
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 text-left">
-          {testimonials.map((test, idx) => (
+        {/* Cards */}
+        <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+          {testimonials.map((item, index) => (
             <div
-              key={idx}
+              key={index}
               data-aos="fade-up"
-              data-aos-delay={idx * 120}
-              className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between"
+              data-aos-delay={index * 100}
+              className="rounded-2xl border border-[#EAECF0] bg-white p-6 transition hover:border-[#158A62]/20 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-emerald-500/40"
             >
-              <p className="text-slate-600 dark:text-slate-300 font-medium leading-relaxed italic">
-                &quot;{test.quote}&quot;
+              {/* Quote */}
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#158A62">
+                <path d="M7.17 6A5.001 5.001 0 0 0 2 11v7h7v-7H6.09A3.002 3.002 0 0 1 9 8V6H7.17zm10 0A5.001 5.001 0 0 0 12 11v7h7v-7h-2.91A3.002 3.002 0 0 1 19 8V6h-1.83z" />
+              </svg>
+
+              {/* Quote */}
+              <p className="mt-3 line-clamp-3 text-[13px] leading-6 text-[#667085] dark:text-slate-400">
+                {item.quote}
               </p>
 
-              <div className="flex items-center gap-4 mt-6 border-t border-slate-50 dark:border-slate-800/50 pt-4">
-                <div className="w-12 h-12 relative rounded-full overflow-hidden shrink-0 bg-slate-200">
-                  <Image
-                    src={`https://picsum.photos/100?random=${idx + 20}`}
-                    fill
-                    className="object-cover"
-                    alt={test.name}
-                  />
-                </div>
+              {/* Footer */}
+              <div className="mt-6 flex items-center gap-3">
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  width={42}
+                  height={42}
+                  className="rounded-full object-cover"
+                />
 
                 <div>
-                  <h4 className="font-bold text-slate-950 dark:text-white text-base">
-                    {test.name}
+                  <h4 className="text-[14px] font-semibold text-[#0B0F1F] dark:text-white">
+                    {item.name}
                   </h4>
 
-                  <span className="text-slate-400 dark:text-slate-500 font-medium block">
-                    {test.role}
-                  </span>
+                  <p className="text-[11px] text-[#98A2B3] dark:text-slate-500">
+                    {item.role}
+                  </p>
 
-                  <div className="flex text-amber-400 gap-0.5 mt-1">
-                    {[...Array(5)].map((_, s) => (
+                  <div className="mt-1 flex gap-0.5">
+                    {[...Array(5)].map((_, i) => (
                       <LuStar
-                        key={s}
-                        className="fill-amber-400 text-amber-400"
-                        size={14}
+                        key={i}
+                        size={12}
+                        className="fill-[#FBBF24] text-[#FBBF24]"
                       />
                     ))}
                   </div>
@@ -337,42 +380,52 @@ export default function SolutionPage() {
             </div>
           ))}
         </div>
+
+        {/* Pagination */}
+        <div className="mt-8 flex justify-center gap-2">
+          <span className="h-2.5 w-6 rounded-full bg-[#158A62]" />
+          <span className="h-2.5 w-2.5 rounded-full bg-[#D0D5DD] dark:bg-slate-600" />
+          <span className="h-2.5 w-2.5 rounded-full bg-[#D0D5DD] dark:bg-slate-600" />
+        </div>
       </section>
 
       {/* ================= SECTION 5: FINAL CTA COMPONENT ================= */}
-      <section className="w-[80vw] mx-auto py-12 mb-20" data-aos="fade-up">
-        <div className="bg-[#054E3A] dark:bg-emerald-950/40 rounded-[2rem] p-8 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-12 text-white relative overflow-hidden shadow-xl border border-transparent dark:border-slate-800">
-          <div className="max-w-xl text-left z-10" data-aos="fade-right">
-            <h2 className="text-3xl md:text-4xl font-bold leading-tight">
-              Siap membawa bisnis Anda ke level berikutnya?
-            </h2>
+      <section className="mx-auto w-[80vw] py-10" data-aos="fade-up">
+        <div className="overflow-hidden rounded-2xl border border-[#E6F0EC] bg-[#F2FAF6] px-10 py-8 dark:border-slate-800 dark:bg-slate-900">
+          <div className="flex flex-col items-center justify-between gap-10 lg:flex-row">
+            {/* Left */}
+            <div className="max-w-md">
+              <h2 className="text-[30px] font-bold leading-tight text-[#0B0F1F] dark:text-white">
+                Siap membawa bisnis Anda
+                <br />
+                ke level berikutnya?
+              </h2>
 
-            <p className="text-emerald-100/80 mt-3 text-lg">
-              Gabung sekarang dan nikmati semua solusi terbaik dari Bakool.
-            </p>
+              <p className="mt-3 text-[15px] text-[#475467] dark:text-slate-400">
+                Gabung sekarang dan nikmati semua solusi terbaik dari Bakool.
+              </p>
+            </div>
 
-            <div className="flex flex-wrap gap-4 mt-8">
-              <button className="bg-[#15803d] hover:bg-[#166534] text-white font-bold px-6 py-4 rounded-xl shadow-md text-base transition-all duration-300 hover:scale-105">
+            {/* Center Button */}
+            <div className="flex shrink-0 items-center gap-4">
+              <button className="rounded-xl bg-[#158A62] px-8 py-3 text-[15px] font-semibold text-white transition hover:bg-[#12704F] dark:bg-emerald-600 dark:hover:bg-emerald-700">
                 Mulai Gratis
               </button>
 
-              <button className="bg-white hover:bg-slate-50 text-slate-900 font-bold px-6 py-4 rounded-xl shadow-md text-base inline-flex items-center gap-2 transition-all duration-300 hover:scale-105">
-                Lihat Demo ➔
+              <button className="flex items-center gap-2 rounded-xl border border-[#158A62] bg-white px-8 py-3 text-[15px] font-semibold text-[#158A62] transition hover:bg-[#F6FCF9] dark:border-emerald-500 dark:bg-slate-800 dark:text-emerald-400 dark:hover:bg-slate-700">
+                Lihat Demo
+                <LuCirclePlay size={17} />
               </button>
             </div>
-          </div>
 
-          <div
-            className="w-full relative z-10"
-            data-aos="fade-left"
-            data-aos-delay="200"
-          >
-            <div className="relative w-full h-73 mt-2">
+            {/* Right Illustration */}
+            <div className="relative h-[140px] w-[330px] shrink-0">
               <Image
                 src="/solusi.png"
+                alt="Bakool Illustration"
                 fill
-                className="object-cover"
-                alt="Platform Dashboard View"
+                className="object-contain"
+                priority
               />
             </div>
           </div>

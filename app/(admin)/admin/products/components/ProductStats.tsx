@@ -1,8 +1,13 @@
 import { useProductStats } from "../hooks/useProductStats";
 import { Skeleton } from "@/components/ui/skeleton";
+interface ProductStatsProps {
+    refreshKey: number;
+}
+export default function ProductStats({
+    refreshKey,
+}: ProductStatsProps) {
+    const { stats, loading } = useProductStats(refreshKey);
 
-export default function ProductStats() {
-  const { stats, loading } = useProductStats();
 
   if (loading) {
     return (

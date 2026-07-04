@@ -29,11 +29,11 @@ const USERS = [
 
 export function Testimonials() {
   return (
-    <div className="w-[80vw] mx-auto mt-24 text-center pb-12">
+    <div className="w-[80vw] mx-auto mt-24 pb-12 text-center">
       <h3
         data-aos="fade-down"
         data-aos-duration="800"
-        className="text-foreground text-3xl font-semibold tracking-tight"
+        className="text-3xl font-semibold tracking-tight text-[#0B0F1F] dark:text-white"
       >
         Kisah Sukses Mitra Bakool
       </h3>
@@ -42,7 +42,7 @@ export function Testimonials() {
         data-aos="fade-up"
         data-aos-delay="150"
         data-aos-duration="800"
-        className="text-muted-foreground max-w-2xl mx-auto mt-2 text-sm"
+        className="mx-auto mt-2 max-w-2xl text-sm text-slate-500 dark:text-slate-400"
       >
         Mereka telah membuktikan transformasi digital bersama ekosistem data
         cerdas kami.
@@ -56,11 +56,27 @@ export function Testimonials() {
             data-aos-delay={index * 150}
             data-aos-duration="800"
             data-aos-once="true"
-            className="flex overflow-hidden rounded-2xl border border-border bg-muted"
+            className="
+          group
+          flex
+          overflow-hidden
+          rounded-2xl
+          border-2
+          border-[#EEF0F2]
+          dark:border-slate-800
+          bg-[#FEFEFE]
+          dark:bg-slate-900
+          transition-all
+          duration-300
+          hover:-translate-y-1
+          hover:shadow-xl
+          dark:hover:border-[#158A62]/40
+          dark:hover:bg-slate-800
+        "
           >
             {/* Image */}
             <div
-              className="relative h-58.75 w-41.25 shrink-0"
+              className="relative h-58.75 w-41.25 shrink-0 overflow-hidden"
               data-aos="zoom-in"
               data-aos-delay={index * 150 + 150}
             >
@@ -68,27 +84,29 @@ export function Testimonials() {
                 src={user.img}
                 alt={user.name}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
             </div>
 
             {/* Content */}
             <div className="flex flex-1 flex-col justify-between p-5">
-              <p className="text-[14px] text-start leading-6 text-foreground">
+              <p className="text-start text-[14px] leading-6 text-slate-700 dark:text-slate-300">
                 &quot;{user.comment}&quot;
               </p>
 
               <div>
-                <h4 className="text-[17px] text-start font-bold text-foreground">
+                <h4 className="text-start text-[17px] font-bold text-[#0B0F1F] dark:text-white">
                   {user.name}
                 </h4>
 
-                <p className="mt-1 text-[13px] text-start text-[#98A2B3]">
+                <p className="mt-1 text-start text-[13px] text-slate-500 dark:text-slate-400">
                   {user.role}
                 </p>
 
                 <div className="mt-3 flex items-center gap-1">
-                  <span className="mr-2 text-[15px] font-bold">5.0</span>
+                  <span className="mr-2 text-[15px] font-bold text-[#0B0F1F] dark:text-white">
+                    5.0
+                  </span>
 
                   {Array.from({ length: 5 }).map((_, i) => (
                     <AiFillStar key={i} size={15} className="text-[#FFB800]" />
@@ -104,9 +122,31 @@ export function Testimonials() {
         data-aos="fade-up"
         data-aos-delay="500"
         data-aos-duration="800"
-        className="border-[#0C7C61] hover:bg-[#0C7C61] hover:text-white inline-flex items-center gap-2 px-6 py-2 text-[#0C7C61] mt-10 font-bold transition-colors border rounded-lg shadow-xs"
+        className="
+      mt-10
+      inline-flex
+      items-center
+      gap-2
+      rounded-lg
+      border
+      border-[#158A62]
+      px-6
+      py-2
+      font-bold
+      text-[#158A62]
+      transition-all
+      duration-300
+      hover:bg-[#158A62]
+      hover:text-white
+      dark:border-[#158A62]
+      dark:bg-transparent
+      dark:text-emerald-400
+      dark:hover:bg-[#158A62]
+      dark:hover:text-white
+    "
       >
-        Lihat semua testimoni <BsArrowRight />
+        Lihat semua testimoni
+        <BsArrowRight />
       </button>
     </div>
   );
