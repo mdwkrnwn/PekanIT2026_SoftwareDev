@@ -46,3 +46,8 @@ export interface ReviewTab {
 export interface ReviewTabWithCount extends ReviewTab {
   label: string;
 }
+
+export interface RatingBreakdownItem {
+  star: number;
+  count: number;
+}
