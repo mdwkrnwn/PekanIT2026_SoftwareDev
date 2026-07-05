@@ -5,10 +5,14 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { LoaderCircle, Check } from "lucide-react";
+import SplashScreen from "@/components/SplashScreen";
+import Swal from "sweetalert2";
 export default function RegisterPage() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const router = useRouter();
+  const [showSplash, setShowSplash] = useState(false);
+  const [splashMessage, setSplashMessage] = useState("");
 
   const [formData, setFormData] = useState({
     name: "",
@@ -91,10 +95,19 @@ export default function RegisterPage() {
       setLoading(false);
       setSuccess(true);
 
-      // Redirect ke Login
-      setTimeout(() => {
-        router.replace("/login");
-      }, 800);
+      await Swal.fire({
+        toast: true,
+        position: "top-end",
+        icon: "success",
+        title: "Akun berhasil dibuat 🎉",
+        timer: 2200,
+        showConfirmButton: false,
+        background: "#ECFDF3",
+        color: "#065F46",
+      });
+
+      await supabase.auth.signOut();
+      router.replace("/login");
     } catch (err) {
       console.error(err);
 
@@ -104,6 +117,9 @@ export default function RegisterPage() {
     }
   };
 
+  if (showSplash) {
+    return <SplashScreen message={splashMessage} />;
+  }
   return (
     <div className="min-h-screen bg-[#F7FAFC] py-8">
       <div className="mx-auto w-full max-w-500 rounded-[24px] bg-white px-14 py-10 shadow-sm">
@@ -303,12 +319,20 @@ export default function RegisterPage() {
             {/* Login */}
             <p className="mt-7 text-center text-[14px] text-[#0B0F1F]">
               Sudah punya akun?{" "}
-              <Link
-                href="/login"
+              <button
+                type="button"
+                onClick={async () => {
+                  setShowSplash(true);
+                  setSplashMessage("Membuka halaman login...");
+
+                  await new Promise((resolve) => setTimeout(resolve, 600));
+
+                  router.push("/login");
+                }}
                 className="font-semibold text-[#0C7C61] hover:underline"
               >
                 Masuk sekarang
-              </Link>
+              </button>
             </p>
           </div>
         </div>

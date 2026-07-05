@@ -129,6 +129,15 @@ export default function LoginPage() {
     }
   };
 
+  const handleNavigate = async (path: string, message: string) => {
+    setSplashMessage(message);
+    setShowSplash(true);
+
+    await new Promise((resolve) => setTimeout(resolve, 600));
+
+    router.push(path);
+  };
+
   if (showSplash) {
     return <SplashScreen message={splashMessage} />;
   }
@@ -179,9 +188,14 @@ export default function LoginPage() {
               <BreadcrumbList>
                 <BreadcrumbItem>
                   <BreadcrumbLink asChild>
-                    <Link href="/" className="text-xl">
+                    <button
+                      onClick={() =>
+                        handleNavigate("/", "Kembali ke Beranda...")
+                      }
+                      className="cursor-pointer text-xl hover:text-[#158A62] transition"
+                    >
                       Beranda
-                    </Link>
+                    </button>
                   </BreadcrumbLink>
                 </BreadcrumbItem>
 
@@ -300,9 +314,18 @@ export default function LoginPage() {
               {/* Register */}
               <p className="text-center text-[15px] text-[#101828]">
                 Belum punya akun?{" "}
-                <Link href="/register" className="font-semibold text-[#158A62]">
+                <button
+                  type="button"
+                  onClick={() =>
+                    handleNavigate(
+                      "/register",
+                      "Membuka halaman pendaftaran...",
+                    )
+                  }
+                  className="font-semibold text-[#158A62] hover:underline"
+                >
                   Daftar sekarang
-                </Link>
+                </button>
               </p>
             </div>
           </div>

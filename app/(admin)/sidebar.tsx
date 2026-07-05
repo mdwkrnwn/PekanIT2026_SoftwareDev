@@ -16,22 +16,42 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { Skeleton } from "@/components/ui/skeleton";
+import Swal from "sweetalert2";
+import SplashScreen from "@/components/SplashScreen";
 
 function Sidebar() {
   const activePath = usePathname();
   const router = useRouter();
+  const [showSplash, setShowSplash] = useState(false);
+  const [splashMessage, setSplashMessage] = useState("");
   const [umkm, setUmkm] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const handleLogout = async () => {
-    const { error } = await supabase.auth.signOut();
+    const result = await Swal.fire({
+      title: "Keluar dari Dashboard?",
+      text: "Kamu harus login kembali untuk mengakses Dashboard Bakool.",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Ya, Keluar",
+      cancelButtonText: "Batal",
+      confirmButtonColor: "#15803d",
+      cancelButtonColor: "#D0D5DD",
+      reverseButtons: true,
+      background: "#ffffff",
+      color: "#101828",
+    });
 
-    if (error) {
-      alert(error.message);
-      return;
-    }
+    if (!result.isConfirmed) return;
 
-    router.replace("/login");
-    router.refresh();
+    setSplashMessage("Keluar dari Dashboard...");
+    setShowSplash(true);
+
+    await supabase.auth.signOut();
+
+    setTimeout(() => {
+      router.replace("/login");
+      router.refresh();
+    }, 700);
   };
   useEffect(() => {
     const getUMKM = async () => {
@@ -71,6 +91,9 @@ function Sidebar() {
     getUMKM();
   }, []);
   const coverImage = umkm?.cover_image || "/placeholder-cover.jpg";
+  if (showSplash) {
+    return <SplashScreen message={splashMessage} />;
+  }
 
   return (
     <aside className="w-[18vw] bg-background border-r border-border flex flex-col p-8 row-span-2 justify-between shrink-0 h-screen top-0 sticky">

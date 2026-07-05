@@ -5,8 +5,11 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { LuUser, LuTrophy, LuMessageSquare, LuLogOut } from "react-icons/lu";
 import { supabase } from "@/lib/supabase";
+import SplashScreen from "@/components/SplashScreen";
 export default function Sidebar() {
   const pathname = usePathname();
+  const [showSplash, setShowSplash] = useState(false);
+  const [splashMessage, setSplashMessage] = useState("");
   const [profile, setProfile] = useState<any>(null);
 
   // Konfigurasi Navigasi Panel User Explorer
@@ -59,9 +62,19 @@ export default function Sidebar() {
       return;
     }
 
-    router.replace("/login");
-    router.refresh();
+    setSplashMessage("Keluar dari akun...");
+    setShowSplash(true);
+
+    setTimeout(() => {
+      router.replace("/login");
+      router.refresh();
+    }, 500);
   };
+
+  if (showSplash) {
+    return <SplashScreen message={splashMessage} />;
+  }
+  
   return (
     <>
       <aside className="sticky top-[118px] h-full w-[280px] border-r border-[#EAECF0] dark:border-slate-800 bg-white dark:bg-slate-900 px-7 py-8 transition-colors">
