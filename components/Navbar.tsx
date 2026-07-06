@@ -59,6 +59,8 @@ function Navbar() {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [loadingPage, setLoadingPage] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState("");
+  const [search, setSearch] = useState("");
+
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -170,6 +172,11 @@ function Navbar() {
   if (loadingPage) {
     return <SplashScreen message={loadingMessage} />;
   }
+  function handleSearchChange(value: string) {
+    setSearch(value);
+  }
+
+
   return (
     <>
       <header
@@ -224,19 +231,23 @@ function Navbar() {
               </ul>
             </section>
             <section
-              className={`col-span-2 xl:col-span-1 xl:place-self-end lg:justify-between flex items-center self-center gap-3`}
+              className={`col-span-2 xl:col-span-1 xl:place-self-end justify-between flex items-center self-center gap-3`}
             >
               <div className="flex items-center">
-                <div className="relative w-full">
+                <form onSubmit={e => {
+                  e.preventDefault();
+                  router.push(`/explore?search=${search}`)
+                }} className="relative w-full">
                   <FaSearch className="left-4 top-1/2 text-foreground/40 absolute -translate-y-1/2" />
                   <input
                     type="search"
-                    // value={}
-                    // onChange={(e) => handleSearchChange(e.target.value)}
+                    value={search}
+                    onChange={(e) => handleSearchChange(e.target.value)}
                     placeholder="Cari UMKM, produk atau lokasi..."
                     className="pl-11 focus:border-primary focus:ring-2 focus:ring-primary/20 disabled:opacity-50 border-border w-full py-3 pr-4 border rounded-lg outline-none"
                   />
-                </div>
+                  <button type="submit" className="hidden"></button>
+                </form>
               </div>
               <div className="flex items-center">
                 <ThemeSwitcher className={`${user ? "mr-2" : "mr-5"} w-fit h-fit`} />
