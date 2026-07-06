@@ -106,17 +106,16 @@ export default function InfoPanel({
                 setLoadingFavorite(false);
               }
             }}
-            className={`flex flex-1 items-center justify-center gap-2 rounded-2xl border py-3 font-medium text-white transition-all duration-200 ${
-              loadingFavorite
-                ? "cursor-not-allowed opacity-70"
-                : isWish
-                  ? "border-primary/20 bg-primary"
-                  : "border-primary bg-primary hover:bg-primary/90"
-            }`}
+            className={`flex flex-1 items-center justify-center gap-2 rounded-2xl border py-3 font-medium text-white transition-all duration-200 ${loadingFavorite
+              ? "cursor-not-allowed opacity-70"
+              : isWish
+                ? "border-primary/20 bg-primary"
+                : "border-primary bg-primary hover:bg-primary/90"
+              }`}
           >
             {loadingFavorite ? (
               <>
-                <LoaderCircle className="h-5 w-5 animate-spin" />
+                <LoaderCircle className="animate-spin w-5 h-5" />
                 <span>Memproses...</span>
               </>
             ) : (
@@ -146,7 +145,7 @@ export default function InfoPanel({
               tags.length % 2 != 0 && "last:col-span-2 last:justify-center",
             )}
           >
-            <div className="border-primary border-2 text-primary-foreground p-3 rounded-full">
+            <div className="border-primary text-primary-foreground p-3 border-2 rounded-full">
               <item.icon size={22} />
             </div>
             <span className="text-sm font-medium text-center">{item.name}</span>
@@ -155,15 +154,15 @@ export default function InfoPanel({
       </div>
       {/* Location Info */}
       <div className="md:grid gap-4 flex flex-col md:grid-cols-[auto_1fr] outline-border items-center rounded-xl outline-1 p-4">
-        <div className="flex">
-          <span className="border border-primary rounded-2xl flex items-center w-full gap-2 p-4">
+        <div className="flex w-full">
+          <span className="border-primary rounded-2xl flex items-center w-full gap-2 p-4 border">
             <FaMapMarkerAlt size={25} className="fill-primary-foreground" />
             Alamat
           </span>
         </div>
         {product.address}
-        <div className="flex">
-          <span className="border border-primary rounded-2xl flex items-center w-full gap-2 p-4">
+        <div className="flex w-full">
+          <span className="border-primary rounded-2xl flex items-center w-full gap-2 p-4 border">
             <HiOutlineLocationMarker
               size={25}
               className="stroke-primary-foreground"
@@ -180,7 +179,7 @@ export default function InfoPanel({
             product.lng
           }
           target="_blank"
-          className="border-primary text-primary-foreground hover:bg-primary hover:text-white rounded-xl flex items-center justify-center flex-1 col-span-2 gap-2 py-3 font-semibold transition-all border"
+          className="border-primary text-primary-foreground hover:bg-primary hover:text-white rounded-xl flex items-center justify-center flex-1 w-full col-span-2 gap-2 py-3 font-semibold transition-all border"
         >
           <LuMapPin size={18} />
           Buka DI Google Maps
