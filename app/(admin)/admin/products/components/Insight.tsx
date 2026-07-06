@@ -2,15 +2,15 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { PackageSearch } from "lucide-react";
 import { useProductInsight } from "../hooks/useProductInsight";
 interface ProductInsightProps {
-    refreshKey:number;
+  refreshKey: number;
 }
 
 export default function ProductInsight({
-    refreshKey,
-}:ProductInsightProps){
+  refreshKey,
+}: ProductInsightProps) {
 
-    const { insights, loading } =
-        useProductInsight(refreshKey);
+  const { insights, loading } =
+    useProductInsight(refreshKey);
 
 
   if (loading) {
@@ -67,34 +67,33 @@ export default function ProductInsight({
 
       <div className="grid grid-cols-3 gap-3">
         {insights.map((item) => (
-          <div key={item.title} className="flex flex-col">
+          <div key={item.title} className="grid grid-rows-[48px_30px_40px_58px]">
             <div
               className={`flex h-12 w-12 items-center justify-center rounded-xl ${item.iconBg}`}
             >
               <item.icon className={item.iconColor} />
             </div>
 
-            <p className="mt-2 text-[11px] text-[#667085]">{item.title}</p>
+            <p className="mt-2 text-[11px] text-start text-[#667085]">{item.title}</p>
             <p
-              className={`mt-2 min-h-[40px] text-[13px] font-medium ${
-                item.title === "Rating Tertinggi" ? "mt-6" : ""
-              }`}
+              className={`mt-2 min-h-[40px] text-[13px] font-medium`}
             >
               {item.subtitle}
             </p>
+            <div>
+              <h4 className="mt-2 text-[20px] font-bold">
+                {item.title === "Rating Tertinggi" ? (
+                  <>
+                    {item.value}
+                    <span className="text-[15px]"> /5</span>
+                  </>
+                ) : (
+                  item.value
+                )}
+              </h4>
 
-            <h4 className="mt-2 text-[20px] font-bold">
-              {item.title === "Rating Tertinggi" ? (
-                <>
-                  {item.value}
-                  <span className="text-[15px]"> /5</span>
-                </>
-              ) : (
-                item.value
-              )}
-            </h4>
-
-            <p className="text-[13px] text-[#667085]">{item.suffix}</p>
+              <p className="text-[13px] text-[#667085]">{item.suffix}</p>
+            </div>
           </div>
         ))}
       </div>

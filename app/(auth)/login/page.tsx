@@ -181,10 +181,10 @@ export default function LoginPage() {
         </div>
 
         {/* RIGHT */}
-        <div className="lex md:px-14 flex-col justify-center flex-1 gap-4 p-8 bg-white">
+        <div className="flex md:px-14 flex-col justify-start flex-1 gap-4 p-8 bg-white">
           <div className="max-w-170 w-full">
             {/* Logo */}
-            <Breadcrumb className="mb-45">
+            <Breadcrumb className="mb-4">
               <BreadcrumbList>
                 <BreadcrumbItem>
                   <BreadcrumbLink asChild>

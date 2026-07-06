@@ -38,7 +38,7 @@ export default function ProductFilter({
   onAddProduct,
 }: ProductFilterProps) {
   return (
-    <div className="flex flex-wrap items-center justify-between gap-6 mt-8">
+    <div className="md:flex grid grid-cols-1 flex-wrap items-center justify-between gap-6 mt-8">
       {/* Left */}
       <div className="scrollbar-hide flex-1 overflow-x-auto">
         <div className="w-max flex items-center gap-8">
@@ -60,8 +60,6 @@ export default function ProductFilter({
           ))}
         </div>
       </div>
-
-      <div className="shrink-0 w-5" />
 
       {/* Right */}
       <div className="shrink-0 md:flex-row flex flex-col items-start gap-3">
