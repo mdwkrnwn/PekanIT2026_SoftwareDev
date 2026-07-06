@@ -29,23 +29,43 @@ type UmkmData = {
     name?: string | null;
   } | null;
 };
+import Swal from "sweetalert2";
+import SplashScreen from "@/components/SplashScreen";
 
 function Sidebar({ isOpen, onClose }: SidebarProps) {
   const activePath = usePathname();
   const router = useRouter();
+  const [showSplash, setShowSplash] = useState(false);
+  const [splashMessage, setSplashMessage] = useState("");
   const [umkm, setUmkm] = useState<UmkmData | null>(null);
   const [loading, setLoading] = useState(true);
 
   const handleLogout = async () => {
-    const { error } = await supabase.auth.signOut();
+    const result = await Swal.fire({
+      title: "Keluar dari Dashboard?",
+      text: "Kamu harus login kembali untuk mengakses Dashboard Bakool.",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Ya, Keluar",
+      cancelButtonText: "Batal",
+      confirmButtonColor: "#15803d",
+      cancelButtonColor: "#D0D5DD",
+      reverseButtons: true,
+      background: "#ffffff",
+      color: "#101828",
+    });
 
-    if (error) {
-      alert(error.message);
-      return;
-    }
+    if (!result.isConfirmed) return;
 
-    router.replace("/login");
-    router.refresh();
+    setSplashMessage("Keluar dari Dashboard...");
+    setShowSplash(true);
+
+    await supabase.auth.signOut();
+
+    setTimeout(() => {
+      router.replace("/login");
+      router.refresh();
+    }, 700);
   };
 
   useEffect(() => {
@@ -87,6 +107,9 @@ function Sidebar({ isOpen, onClose }: SidebarProps) {
   }, []);
 
   const coverImage = umkm?.cover_image || "/placeholder-cover.jpg";
+  if (showSplash) {
+    return <SplashScreen message={splashMessage} />;
+  }
 
   return (
     <aside
@@ -96,7 +119,7 @@ function Sidebar({ isOpen, onClose }: SidebarProps) {
       )}
     >
       <div className="flex flex-col gap-6">
-        <div className="mb-2 flex items-center justify-between gap-3">
+        <div className="flex items-center justify-between gap-3 mb-2">
           <Link href="/admin/dashboard" className="flex items-center gap-3">
             <Image
               src="/Bakul.png"
@@ -104,7 +127,7 @@ function Sidebar({ isOpen, onClose }: SidebarProps) {
               width={60}
               height={60}
               priority
-              className="h-auto w-20 sm:w-24"
+              className="sm:w-24 w-20 h-auto"
             />
 
             <div className="flex flex-col">
@@ -119,7 +142,7 @@ function Sidebar({ isOpen, onClose }: SidebarProps) {
             type="button"
             aria-label="Tutup menu"
             onClick={onClose}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-white text-slate-700 lg:hidden"
+            className="border-border text-slate-700 lg:hidden inline-flex items-center justify-center w-10 h-10 bg-white border rounded-full"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -127,7 +150,7 @@ function Sidebar({ isOpen, onClose }: SidebarProps) {
               viewBox="0 0 24 24"
               strokeWidth={1.8}
               stroke="currentColor"
-              className="h-5 w-5"
+              className="w-5 h-5"
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
@@ -140,14 +163,14 @@ function Sidebar({ isOpen, onClose }: SidebarProps) {
               <Skeleton className="h-14 w-14 rounded-full" />
 
               <div className="flex-1 space-y-2">
-                <Skeleton className="h-5 w-32" />
-                <Skeleton className="h-4 w-20" />
-                <Skeleton className="h-6 w-24 rounded-md" />
+                <Skeleton className="w-32 h-5" />
+                <Skeleton className="w-20 h-4" />
+                <Skeleton className="w-24 h-6 rounded-md" />
               </div>
             </div>
           ) : (
             <div className="flex items-center gap-4">
-              <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full">
+              <div className="h-14 w-14 shrink-0 relative overflow-hidden rounded-full">
                 <Image
                   src={coverImage}
                   fill
@@ -157,11 +180,11 @@ function Sidebar({ isOpen, onClose }: SidebarProps) {
               </div>
 
               <div>
-                <h4 className="text-base font-bold text-slate-900">
+                <h4 className="text-slate-900 text-base font-bold">
                   {umkm?.name || "Nama UMKM"}
                 </h4>
 
-                <span className="block font-medium text-slate-500">
+                <span className="text-slate-500 block font-medium">
                   {umkm?.categories?.name || "-"}
                 </span>
 
@@ -214,11 +237,11 @@ function Sidebar({ isOpen, onClose }: SidebarProps) {
                 href={item.href}
                 onClick={onClose}
                 className={`flex items-center gap-4 rounded-xl px-4 py-3 transition-all duration-200 sm:px-6 ${isActive
-                    ? "bg-[#F2F9F5] text-[#279959]"
-                    : "text-[#344054] hover:bg-[#F9FAFB]"
+                  ? "bg-[#F2F9F5] text-[#279959]"
+                  : "text-[#344054] hover:bg-[#F9FAFB]"
                   }`}
               >
-                <div className="flex w-6 justify-center">
+                <div className="flex justify-center w-6">
                   <item.icon
                     size={22}
                     className={isActive ? "text-[#279959]" : "text-[#344054]"}
@@ -239,7 +262,7 @@ function Sidebar({ isOpen, onClose }: SidebarProps) {
 
       <button
         onClick={handleLogout}
-        className="flex items-center gap-4 rounded-xl px-4 py-4 text-left font-bold text-slate-500 transition-colors hover:bg-rose-50 hover:text-rose-600 sm:px-5"
+        className="rounded-xl text-slate-500 hover:bg-rose-50 hover:text-rose-600 sm:px-5 flex items-center gap-4 px-4 py-4 font-bold text-left transition-colors"
       >
         <LuLogOut size={24} />
         <span>Keluar</span>

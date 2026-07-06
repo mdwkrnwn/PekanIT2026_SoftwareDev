@@ -12,6 +12,7 @@ import { useWishlist } from "@/hooks/useWishlist";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { User, BadgeCheck, MessageSquareText, LogOut } from "lucide-react";
+import SplashScreen from "./SplashScreen";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -36,9 +37,13 @@ function Navbar() {
   // logout
   const router = useRouter();
   const handleLogout = async () => {
+    setLoadingMessage("Keluar dari akun...");
+    setLoadingPage(true);
+
     const { error } = await supabase.auth.signOut();
 
     if (error) {
+      setLoadingPage(false);
       alert(error.message);
       return;
     }
@@ -52,6 +57,8 @@ function Navbar() {
   const [user, setUser] = useState<any>(null);
   const profileRef = useRef<HTMLDivElement>(null);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [loadingPage, setLoadingPage] = useState(false);
+  const [loadingMessage, setLoadingMessage] = useState("");
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -151,7 +158,18 @@ function Navbar() {
     user?.avatar_url && user.avatar_url.startsWith("http")
       ? user.avatar_url
       : "/ava.png";
+  const handleNavigate = async (path: string, message: string) => {
+    setLoadingMessage(message);
+    setLoadingPage(true);
 
+    await new Promise((resolve) => setTimeout(resolve, 300));
+
+    router.push(path);
+  };
+
+  if (loadingPage) {
+    return <SplashScreen message={loadingMessage} />;
+  }
   return (
     <>
       <header
@@ -279,9 +297,11 @@ function Navbar() {
                           "*:hover:bg-muted-foreground *:hover:text-background",
                         )}
                       >
-                        <Link
-                          href="/profile"
-                          className="flex group items-center gap-4 px-4 py-4 rounded-xl  transition"
+                        <button
+                          onClick={() =>
+                            handleNavigate("/profile", "Membuka profil...")
+                          }
+                          className="group flex w-full items-center gap-4 rounded-xl px-4 py-4 text-left transition hover:bg-muted-foreground hover:text-background"
                         >
                           <User
                             size={26}
@@ -290,12 +310,17 @@ function Navbar() {
                           <span className="font-medium text-[#0B0F1F] group-hover:text-white">
                             Profil Saya
                           </span>
-                        </Link>
+                        </button>
 
                         <hr className="my-2 border-0 border-t border-[#E8EAEE]" />
-                        <Link
-                          href="/achievements"
-                          className="flex group items-center gap-4 px-4 py-4 rounded-xl  transition"
+                        <button
+                          onClick={() =>
+                            handleNavigate(
+                              "/achievements",
+                              "Membuka achievements...",
+                            )
+                          }
+                          className="group flex w-full items-center gap-4 rounded-xl px-4 py-4 text-left transition hover:bg-muted-foreground hover:text-background"
                         >
                           <BadgeCheck
                             size={26}
@@ -304,12 +329,14 @@ function Navbar() {
                           <span className="font-medium text-[#0B0F1F] group-hover:text-white">
                             Achievement & Badge
                           </span>
-                        </Link>
+                        </button>
 
                         <hr className="my-2 border-0 border-t border-[#E8EAEE]" />
-                        <Link
-                          href="/ulasan-saya"
-                          className="flex group items-center gap-4 px-4 py-4 rounded-xl  transition"
+                        <button
+                          onClick={() =>
+                            handleNavigate("/ulasan-saya", "Membuka ulasan...")
+                          }
+                          className="group flex w-full items-center gap-4 rounded-xl px-4 py-4 text-left transition hover:bg-muted-foreground hover:text-background"
                         >
                           <MessageSquareText
                             size={26}
@@ -318,7 +345,7 @@ function Navbar() {
                           <span className="font-medium text-[#0B0F1F] group-hover:text-white">
                             Ulasan Saya
                           </span>
-                        </Link>
+                        </button>
 
                         <hr className="my-2 border-0 border-t border-[#E8EAEE]" />
                         <button
@@ -335,12 +362,14 @@ function Navbar() {
                   </div>
                 </div>
               ) : (
-                <Link
-                  href="/login"
-                  className="flex items-center gap-3 rounded-lg border border-border px-5 py-3 bg-primary text-white font-semibold"
+                <button
+                  onClick={() =>
+                    handleNavigate("/login", "Membuka halaman login...")
+                  }
+                  className="flex items-center gap-3 rounded-lg border border-border bg-primary px-5 py-3 font-semibold text-white transition hover:bg-primary/90"
                 >
                   Masuk / Daftar
-                </Link>
+                </button>
               )}
             </section>
           </nav>
