@@ -1,5 +1,5 @@
 import { Promo } from "../promo.type";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import {
   fetchPromos,
@@ -82,18 +82,19 @@ export default function usePromo() {
     currentPage * itemsPerPage,
   );
 
-  const categories = [
-    {
-      name: "Semua Promo",
-      count: promos.length,
-    },
-    ...Array.from(new Set(promos.map((promo) => promo.status))).map(
-      (status) => ({
+  const categories = useMemo(
+    () => [
+      {
+        name: "Semua Promo",
+        count: promos.length,
+      },
+      ...Array.from(new Set(promos.map((p) => p.status))).map((status) => ({
         name: status,
-        count: promos.filter((promo) => promo.status === status).length,
-      }),
-    ),
-  ];
+        count: promos.filter((p) => p.status === status).length,
+      })),
+    ],
+    [promos],
+  );
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [refreshStats, setRefreshStats] = useState(0);
@@ -176,7 +177,8 @@ export default function usePromo() {
 
     setIsModalOpen(true);
   };
-  const getPromos = async () => {
+  const getPromos = useCallback(async () => {
+    console.count("usePromo");
     const {
       data: { user },
     } = await supabase.auth.getUser();
@@ -197,7 +199,7 @@ export default function usePromo() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   const handleSavePromo = async () => {
     const {

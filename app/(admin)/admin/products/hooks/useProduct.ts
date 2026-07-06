@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback,  useState } from "react";
 import { supabase } from "@/lib/supabase";
 import {
   getProducts as fetchProducts,
@@ -140,7 +140,7 @@ export function useProduct() {
     setIsEditMode(false);
   };
 
-  const getProducts = async () => {
+  const getProducts = useCallback(async () => {
     try {
       setLoading(true);
 
@@ -158,7 +158,7 @@ export function useProduct() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   const handleSaveProduct = async () => {
     const {

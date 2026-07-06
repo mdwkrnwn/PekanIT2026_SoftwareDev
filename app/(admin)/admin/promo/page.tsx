@@ -56,8 +56,9 @@ export default function PromoPage() {
 
     handleDeletePromo,
   } = usePromo();
-
+console.count("PromoPage");
   useEffect(() => {
+    console.log("GET PROMOS");
     getPromos();
   }, [getPromos]);
   return (

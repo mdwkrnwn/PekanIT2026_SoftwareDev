@@ -22,6 +22,7 @@ export function formatDate(date: string) {
   });
 }
 
+console.count("PromoTable");;
 export default function PromoTable({
   promos,
   loading,
