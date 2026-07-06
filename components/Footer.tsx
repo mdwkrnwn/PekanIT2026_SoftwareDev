@@ -43,7 +43,7 @@ function Footer() {
       )}>
         <div>
           <p className='self-center text-xl font-semibold'>Menu</p>
-          <ul className='*:text-lg *:text-accent-foreground *:mb-2'>
+          <ul className='wrap-break-word *:text-lg *:text-accent-foreground *:mb-2'>
             <li>Beranda</li>
             <li>Explore</li>
             <li>Favorit</li>
@@ -52,7 +52,7 @@ function Footer() {
         </div>
         <div>
           <p className='self-center text-xl font-semibold'>Bantuan</p>
-          <ul className='*:text-lg *:text-accent-foreground *:mb-2'>
+          <ul className='wrap-break-word *:text-lg *:text-accent-foreground *:mb-2'>
             <li>FAQ</li>
             <li>Pusat Bantuan</li>
             <li>Syarat & Ketentuan</li>
@@ -61,7 +61,7 @@ function Footer() {
         </div>
         <div>
           <p className='self-center text-xl font-semibold'>Untuk UMKM</p>
-          <ul className='*:text-lg *:text-accent-foreground *:mb-2'>
+          <ul className='wrap-break-word *:text-lg *:text-accent-foreground *:mb-2'>
             <li>Daftarkan Usahamu</li>
             <li>Panduan UMKM</li>
             <li>Tips & Edukasi</li>
@@ -69,7 +69,7 @@ function Footer() {
         </div>
         <div>
           <p className='self-center text-xl font-semibold'>Hubungi Kami</p>
-          <ul className='*:text-lg *:text-accent-foreground *:mb-2'>
+          <ul className='wrap-break-word *:text-lg *:text-accent-foreground *:mb-2'>
             <li>Bakool@gmail.com</li>
             <li>000-0000-000</li>
             <li>Indonesia</li>
