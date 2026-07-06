@@ -26,74 +26,74 @@ export default function StoreInfo({
 }: StoreInfoProps) {
   if (loading) {
     return (
-      <div className="row-span-2 flex min-h-[720px] flex-col justify-between rounded-3xl border border-[#EAECF0] bg-white p-8 shadow-sm">
+      <div className="md:row-span-2 flex min-h-180 flex-col justify-between rounded-3xl border border-[#EAECF0] bg-white p-8 shadow-sm">
         <div>
-          <Skeleton className="mb-8 h-6 w-40" />
+          <Skeleton className="w-40 h-6 mb-8" />
 
           {/* Header */}
           <div className="flex gap-6">
-            <Skeleton className="h-[120px] w-[140px] rounded-3xl" />
+            <Skeleton className="h-30 w-35 rounded-3xl" />
 
             <div className="flex-1">
-              <Skeleton className="h-4 w-24" />
+              <Skeleton className="w-24 h-4" />
 
-              <div className="mt-3 flex items-center gap-3">
+              <div className="flex items-center gap-3 mt-3">
                 <Skeleton className="h-7 w-40" />
-                <Skeleton className="h-6 w-24 rounded-full" />
+                <Skeleton className="w-24 h-6 rounded-full" />
               </div>
 
               <div className="mt-5">
-                <Skeleton className="h-4 w-20" />
+                <Skeleton className="w-20 h-4" />
 
-                <div className="mt-3 flex items-center gap-3">
-                  <Skeleton className="h-5 w-5 rounded-full" />
-                  <Skeleton className="h-5 w-28" />
+                <div className="flex items-center gap-3 mt-3">
+                  <Skeleton className="w-5 h-5 rounded-full" />
+                  <Skeleton className="w-28 h-5" />
                 </div>
               </div>
             </div>
           </div>
 
           {/* Detail */}
-          <div className="mt-10 space-y-7">
+          <div className="space-y-7 mt-10">
             {Array.from({ length: 6 }).map((_, index) => (
               <div key={index} className="flex items-start gap-4">
-                <Skeleton className="h-6 w-6 rounded-md" />
+                <Skeleton className="w-6 h-6 rounded-md" />
 
                 <div className="flex-1">
-                  <Skeleton className="h-4 w-24" />
-                  <Skeleton className="mt-2 h-5 w-52" />
+                  <Skeleton className="w-24 h-4" />
+                  <Skeleton className="w-52 h-5 mt-2" />
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <Skeleton className="mt-10 h-14 w-full rounded-xl" />
+        <Skeleton className="h-14 rounded-xl w-full mt-10" />
       </div>
     );
   }
   return (
-    <div className="row-span-2 flex min-h-[720px] flex-col justify-between rounded-3xl border border-[#EAECF0] bg-white p-8 shadow-sm">
+    <div className="md:row-span-2 flex flex-col justify-between rounded-3xl border border-[#EAECF0] bg-white p-8 shadow-sm">
       <div>
         <h3 className="mb-8 text-[18px] font-semibold text-[#0B0F1F]">
           Informasi Toko
         </h3>
 
         {/* Header */}
-        <div className="flex gap-6">
-          <div className="relative h-[120px] w-[140px] shrink-0 overflow-hidden rounded-3xl">
+        <div className="flex flex-wrap gap-6">
+          <div className="size-35 shrink-0 rounded-3xl relative overflow-hidden">
             <Image
               src={umkm?.cover_image || "/placeholder-cover.jpg"}
               alt={umkm?.name || "UMKM"}
               fill
-              className="object-cover"
+              className=" object-cover"
             />
           </div>
 
           <div className="flex-1">
             <p className="text-[15px] font-medium text-[#98A2B3]">Nama Toko</p>
 
-            <div className="mt-2 flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3 mt-2">
               <h4 className="text-[20px] font-semibold leading-none text-[#0B0F1F]">
                 {umkm?.name}
               </h4>
@@ -103,7 +103,7 @@ export default function StoreInfo({
               </span>
             </div>
 
-            <div className="mt-2 flex items-start gap-3">
+            <div className="flex items-start gap-3 mt-2">
               <LuLayoutGrid size={18} className="mt-1 text-[#98A2B3]" />
 
               <div>
@@ -111,7 +111,7 @@ export default function StoreInfo({
                   Kategori
                 </p>
 
-                <div className="mt-2 flex items-center gap-3">
+                <div className="flex items-center gap-3 mt-2">
                   <CategoryIcon size={16} className="-ml-7 text-[#667085]" />
 
                   <p className="font-semibold text-[#344054]">
@@ -124,7 +124,7 @@ export default function StoreInfo({
         </div>
 
         {/* Detail */}
-        <div className="mt-10 space-y-7">
+        <div className="space-y-7 mt-10">
           <InfoItem
             icon={<LuMapPin size={24} className="mt-1 text-[#475467]" />}
             title="Alamat"
@@ -188,7 +188,7 @@ function InfoItem({ icon, title, value }: InfoItemProps) {
       <div>
         <p className="text-[15px] font-medium text-[#667085]">{title}</p>
 
-        <p className="mt-1 text-[17px] font-semibold text-[#0B0F1F]">{value}</p>
+        <p className="mt-1 text-[17px] font-semibold break-all text-[#0B0F1F]">{value}</p>
       </div>
     </div>
   );

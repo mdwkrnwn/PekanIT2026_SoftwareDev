@@ -19,11 +19,11 @@ export default function StoreSummary({
         Ringkasan Toko
       </h3>
 
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-4">
+      <div className="flex flex-wrap gap-5">
         {stats.map((stat) => (
           <div
             key={stat.label}
-            className="flex items-center gap-4 rounded-2xl border border-[#EAECF0] bg-white p-5"
+            className="flex flex-1 items-center gap-4 rounded-2xl border border-[#EAECF0] bg-white p-5"
           >
             <div
               className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl ${stat.color}`}

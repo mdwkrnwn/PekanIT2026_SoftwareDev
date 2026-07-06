@@ -131,7 +131,7 @@ export default function ProfilTokoView() {
   return (
     <div className="flex flex-col gap-8 text-base">
       {/* ================= ATAS: TIGA KARTU INFORMASI UTAMA ================= */}
-      <section className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3 *:h-full *:w-full md:items-start">
+      <section className="md:grid-cols-2 grid grid-cols-1 gap-6">
         {/* Kartu 1: Informasi Toko */}
         <StoreInfo loading={loading} umkm={umkm} CategoryIcon={CategoryIcon} />
 

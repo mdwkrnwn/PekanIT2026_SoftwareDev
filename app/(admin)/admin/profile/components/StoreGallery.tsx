@@ -22,10 +22,10 @@ export default function StoreGallery({
 }: StoreGalleryProps) {
   if (loading) {
     return (
-      <div className="col-span-2 rounded-3xl border border-[#EAECF0] bg-white p-6 shadow-xs">
-        <Skeleton className="mb-4 h-6 w-40" />
+      <div className="md:col-span-2 rounded-3xl border border-[#EAECF0] bg-white p-6 shadow-xs">
+        <Skeleton className="w-40 h-6 mb-4" />
 
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-5">
+        <div className="md:grid-cols-5 grid grid-cols-2 gap-4">
           {Array.from({ length: 5 }).map((_, index) => (
             <Skeleton
               key={index}
@@ -38,16 +38,16 @@ export default function StoreGallery({
   }
 
   return (
-    <div className="col-span-2 rounded-3xl border border-[#EAECF0] bg-white p-6 shadow-xs">
-      <h3 className="mb-4 text-xl font-bold text-slate-900">
+    <div className="md:col-span-2 rounded-3xl border border-[#EAECF0] bg-white p-6 shadow-xs">
+      <h3 className="text-slate-900 mb-4 text-xl font-bold">
         Galeri Toko
       </h3>
 
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-5">
+      <div className="md:grid-cols-5 grid grid-cols-2 gap-4">
         {gallery?.map((photo) => (
           <div
             key={photo.id}
-            className="relative aspect-square overflow-hidden rounded-2xl"
+            className="aspect-square rounded-2xl relative overflow-hidden"
           >
             <Image
               src={photo.image_url}
