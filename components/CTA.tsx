@@ -9,7 +9,7 @@ export function CTA() {
       data-aos-once="true"
       className="w-[80vw] mx-auto bg-primary text-white rounded-[2rem] flex flex-row items-center px-8 py-8 md:py-16 mt-20 relative overflow-hidden shadow-lg justify-between"
     >
-      <div className="w-1/3">
+      <div className="lg:w-1/3 w-full">
         <h2
           data-aos="fade-right"
           data-aos-delay="100"
@@ -41,6 +41,7 @@ export function CTA() {
         data-aos="fade-left"
         data-aos-delay="300"
         data-aos-duration="1000"
+        className="lg:block hidden"
       >
         <Image
           src="/UMKMnaik.png"
