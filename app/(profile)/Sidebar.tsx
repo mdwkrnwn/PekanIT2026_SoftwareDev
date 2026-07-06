@@ -6,11 +6,18 @@ import { usePathname, useRouter } from "next/navigation";
 import { LuUser, LuTrophy, LuMessageSquare, LuLogOut } from "react-icons/lu";
 import { supabase } from "@/lib/supabase";
 import SplashScreen from "@/components/SplashScreen";
-export default function Sidebar() {
+import { cn } from "@/lib/utils";
+
+type SidebarProps = {
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   const pathname = usePathname();
   const [showSplash, setShowSplash] = useState(false);
   const [splashMessage, setSplashMessage] = useState("");
-  const [profile, setProfile] = useState<any>(null);
+  const [profile, setProfile] = useState<{ full_name?: string; avatar_url?: string } | null>(null);
 
   // Konfigurasi Navigasi Panel User Explorer
   const navItems = [
@@ -74,10 +81,37 @@ export default function Sidebar() {
   if (showSplash) {
     return <SplashScreen message={splashMessage} />;
   }
-  
+
   return (
     <>
-      <aside className="sticky top-[118px] h-full w-[280px] border-r border-[#EAECF0] dark:border-slate-800 bg-white dark:bg-slate-900 px-7 py-8 transition-colors">
+      <aside
+        className={cn(
+          "fixed inset-y-0 left-0 z-1000 w-[18rem] max-w-[85vw] overflow-y-auto border-r border-[#EAECF0] bg-white dark:border-slate-800 dark:bg-slate-900 px-7 py-8 shadow-xl transition-transform duration-300 lg:static lg:translate-x-0 lg:w-70 lg:max-w-none lg:shadow-none",
+          isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0",
+        )}
+      >
+        <div className="flex items-center justify-between gap-4 lg:hidden mb-6">
+          <div />
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Tutup sidebar"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-5 w-5"
+            >
+              <path d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
         <div className="flex flex-col gap-10">
           {/* User Card */}
           <div className="flex flex-col items-center border-b border-[#EAECF0] dark:border-slate-800 pb-8 text-center">
@@ -103,7 +137,7 @@ export default function Sidebar() {
 
             {/* Progress */}
             <div className="mt-4 w-full">
-              <div className="h-[16px] overflow-hidden rounded-full bg-[#D9D9D9] dark:bg-slate-700">
+              <div className="h-4 overflow-hidden rounded-full bg-[#D9D9D9] dark:bg-slate-700">
                 <div
                   className="h-full rounded-full bg-[#158A62] dark:bg-emerald-400"
                   style={{
@@ -134,11 +168,10 @@ export default function Sidebar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center gap-4 rounded-xl px-5 py-4 text-left text-base transition-all ${
-                    isActive
-                      ? "bg-emerald-50 dark:bg-emerald-900/30 text-[#15803d] dark:text-emerald-400 font-bold"
-                      : "text-[#344054] dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-[#0B0F1F] dark:hover:text-white font-semibold"
-                  }`}
+                  className={`flex items-center gap-4 rounded-xl px-5 py-4 text-left text-base transition-all ${isActive
+                    ? "bg-emerald-50 dark:bg-emerald-900/30 text-[#15803d] dark:text-emerald-400 font-bold"
+                    : "text-[#344054] dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-[#0B0F1F] dark:hover:text-white font-semibold"
+                    }`}
                 >
                   <item.icon
                     size={24}

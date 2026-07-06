@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import "@/app/globals.css"
 import { Poppins } from "next/font/google";
-import Navbar from "@/components/Navbar";
-import ThemeProviders from "@/components/ThemeProviders";
 import { cn } from "@/lib/utils";
-import AosProvider from "@/lib/aos-provider";
-import Sidebar from "./Sidebar";
+import RootLayoutClient from "./RootLayoutClient";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -23,6 +20,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html
       lang="en"
@@ -34,16 +32,10 @@ export default function RootLayout({
       )}
       suppressHydrationWarning
     >
-      <body className={`bg-background relative grid grid-cols-[auto_1fr] grid-rows-[auto_1fr] h-screen`}>
-        <ThemeProviders>
-          <AosProvider>
-            <Navbar />
-            <Sidebar />
-            <main className="min-h-0 overflow-y-auto">
-              {children}
-            </main>
-          </AosProvider>
-        </ThemeProviders>
+      <body className="bg-background relative grid grid-cols-1 md:grid-cols-[auto_1fr] grid-rows-[auto_1fr] h-screen ">
+        <RootLayoutClient>
+          {children}
+        </RootLayoutClient>
       </body>
     </html>
   );

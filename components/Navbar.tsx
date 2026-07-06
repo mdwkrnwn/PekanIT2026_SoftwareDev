@@ -176,7 +176,7 @@ function Navbar() {
         className={`z-999 sticky top-0 w-full mb-1 transition-transform col-span-2 ${isVisible ? header.header_show : header.header_hide}`}
       >
         <div className="sm:flex hidden bg-background justify-center shadow-[#A9A1A140] shadow-md">
-          <nav className="grid grid-cols-[1fr_1fr_3fr] justify-center items-center w-[80vw] py-6">
+          <nav className="grid grid-cols-2 xl:grid-cols-3 grid-rows-2 xl:w-[80vw] w-[90vw] xl:grid-rows-1 py-6">
             <section className="flex items-center">
               <Link href="/" className="flex items-center">
                 <Image
@@ -184,20 +184,18 @@ function Navbar() {
                   alt="Bakool"
                   width={100}
                   height={100}
-                  className={`h-auto w-[100px] ${isProfilePage ? "-ml-25" : "-ml-6"
-                    }`}
+                  className={`h-auto w-25 `}
                   priority
                 />
 
-                <h2 className="text-[25px] font-semibold -ml-3 text-[#0B0F1F] dark:text-white ">
+                <h2 className="text-[25px] font-semibold text-[#0B0F1F] dark:text-white ">
                   Bakool
                 </h2>
               </Link>
             </section>
-            <section>
+            <section className="lg:items-end place-self-end flex items-center">
               <ul
-                className={`flex gap-6 text-lg font-medium ${isProfilePage ? "-ml-25" : ""
-                  }`}
+                className={`flex gap-6 text-lg font-medium`}
               >
                 {navItems.map((item) => {
                   const isActive =
@@ -226,10 +224,9 @@ function Navbar() {
               </ul>
             </section>
             <section
-              className={`place-self-end flex items-center self-center gap-3 ${isProfilePage ? "-mr-30" : ""
-                }`}
+              className={`col-span-2 xl:col-span-1 xl:place-self-end lg:justify-between flex items-center self-center gap-3`}
             >
-              <div className="flex items-center mr-10">
+              <div className="flex items-center">
                 <div className="relative w-full">
                   <FaSearch className="left-4 top-1/2 text-foreground/40 absolute -translate-y-1/2" />
                   <input
@@ -241,131 +238,133 @@ function Navbar() {
                   />
                 </div>
               </div>
-              <ThemeSwitcher className={user ? "mr-0" : "mr-5"} />
-
-              {user ? (
-                <div className="flex items-center gap-4 mr-2">
-                  {/* Favorite */}
-                  <Link
-                    href="/favorit"
-                    className="relative outline-1 outline-primary-foreground flex items-center justify-center p-2 rounded-full transition-colors bg-transparent hover:bg-primary/10"
-                  >
-                    <FaHeart className="text-primary-foreground h-6 w-6" />
-
-                    {favorites.length > 0 && (
-                      <span className="absolute -top-1 -right-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-semibold text-white">
-                        {favorites.length}
-                      </span>
-                    )}
-                  </Link>
-
-                  {/* Profile */}
-                  <div ref={profileRef} className="relative">
-                    <button
-                      onClick={() => setIsProfileOpen((prev) => !prev)}
-                      className="flex items-center gap-3 ml-2"
+              <div className="flex items-center">
+                <ThemeSwitcher className={`${user ? "mr-2" : "mr-5"} w-fit h-fit`} />
+                {user ? (
+                  <div className="flex items-center gap-4 mr-2">
+                    {/* Favorite */}
+                    <Link
+                      href="/favorit"
+                      className="outline-1 outline-primary-foreground hover:bg-primary/10 relative flex items-center justify-center p-2 transition-colors bg-transparent rounded-full"
                     >
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full outline-1 outline-primary-foreground  bg-[#EBF3F0]">
-                        <Image
-                          src={avatar}
-                          alt={user.full_name}
-                          width={38}
-                          height={38}
-                          className="rounded-full mt-2 mb-1 object-cover"
-                        />
-                      </div>
+                      <FaHeart className="text-primary-foreground w-6 h-6" />
 
-                      <span className="font-semibold text-sm">
-                        {user.full_name}
-                      </span>
+                      {favorites.length > 0 && (
+                        <span className="absolute -top-1 -right-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-semibold text-white">
+                          {favorites.length}
+                        </span>
+                      )}
+                    </Link>
 
-                      <IoChevronDown
-                        className={`text-gray-500 transition-transform ${isProfileOpen ? "rotate-180" : ""
-                          }`}
-                      />
-                    </button>
-
-                    {isProfileOpen && (
-                      <div
-                        className={cn(
-                          "absolute right-0 mt-4 w-60 rounded-3xl bg-white shadow-xl p-5 z-50",
-                          "*:hover:bg-muted-foreground *:hover:text-background",
-                        )}
+                    {/* Profile */}
+                    <div ref={profileRef} className="relative">
+                      <button
+                        onClick={() => setIsProfileOpen((prev) => !prev)}
+                        className="flex items-center gap-3 ml-2"
                       >
-                        <button
-                          onClick={() =>
-                            handleNavigate("/profile", "Membuka profil...")
-                          }
-                          className="group flex w-full items-center gap-4 rounded-xl px-4 py-4 text-left transition hover:bg-muted-foreground hover:text-background"
-                        >
-                          <User
-                            size={26}
-                            className="text-[#0B0F1F] group-hover:text-white"
+                        <div className="flex h-12 w-12 items-center justify-center rounded-full outline-1 outline-primary-foreground  bg-[#EBF3F0]">
+                          <Image
+                            src={avatar}
+                            alt={user.full_name}
+                            width={38}
+                            height={38}
+                            className="object-cover mt-2 mb-1 rounded-full"
                           />
-                          <span className="font-medium text-[#0B0F1F] group-hover:text-white">
-                            Profil Saya
-                          </span>
-                        </button>
+                        </div>
 
-                        <hr className="my-2 border-0 border-t border-[#E8EAEE]" />
-                        <button
-                          onClick={() =>
-                            handleNavigate(
-                              "/achievements",
-                              "Membuka achievements...",
-                            )
-                          }
-                          className="group flex w-full items-center gap-4 rounded-xl px-4 py-4 text-left transition hover:bg-muted-foreground hover:text-background"
-                        >
-                          <BadgeCheck
-                            size={26}
-                            className="text-[#0B0F1F] group-hover:text-white"
-                          />
-                          <span className="font-medium text-[#0B0F1F] group-hover:text-white">
-                            Achievement & Badge
-                          </span>
-                        </button>
+                        <span className="text-sm font-semibold">
+                          {user.full_name}
+                        </span>
 
-                        <hr className="my-2 border-0 border-t border-[#E8EAEE]" />
-                        <button
-                          onClick={() =>
-                            handleNavigate("/ulasan-saya", "Membuka ulasan...")
-                          }
-                          className="group flex w-full items-center gap-4 rounded-xl px-4 py-4 text-left transition hover:bg-muted-foreground hover:text-background"
-                        >
-                          <MessageSquareText
-                            size={26}
-                            className="text-[#0B0F1F] group-hover:text-white"
-                          />
-                          <span className="font-medium text-[#0B0F1F] group-hover:text-white">
-                            Ulasan Saya
-                          </span>
-                        </button>
+                        <IoChevronDown
+                          className={`text-gray-500 transition-transform ${isProfileOpen ? "rotate-180" : ""
+                            }`}
+                        />
+                      </button>
 
-                        <hr className="my-2 border-0 border-t border-[#E8EAEE]" />
-                        <button
-                          onClick={handleLogout}
-                          className="flex w-full items-center gap-4 px-4 py-4 rounded-xl text-red-500 hover:bg-red-50 transition"
+                      {isProfileOpen && (
+                        <div
+                          className={cn(
+                            "absolute right-0 mt-4 w-60 rounded-3xl bg-white shadow-xl p-5 z-50",
+                            "*:hover:bg-muted-foreground *:hover:text-background",
+                          )}
                         >
-                          <LogOut size={26} />
-                          <span className="font-medium text-[#0B0F1F] group-hover:text-white">
-                            Keluar
-                          </span>
-                        </button>
-                      </div>
-                    )}
+                          <button
+                            onClick={() =>
+                              handleNavigate("/profile", "Membuka profil...")
+                            }
+                            className="group rounded-xl hover:bg-muted-foreground hover:text-background flex items-center w-full gap-4 px-4 py-4 text-left transition"
+                          >
+                            <User
+                              size={26}
+                              className="text-[#0B0F1F] group-hover:text-white"
+                            />
+                            <span className="font-medium text-[#0B0F1F] group-hover:text-white">
+                              Profil Saya
+                            </span>
+                          </button>
+
+                          <hr className="my-2 border-0 border-t border-[#E8EAEE]" />
+                          <button
+                            onClick={() =>
+                              handleNavigate(
+                                "/achievements",
+                                "Membuka achievements...",
+                              )
+                            }
+                            className="group rounded-xl hover:bg-muted-foreground hover:text-background flex items-center w-full gap-4 px-4 py-4 text-left transition"
+                          >
+                            <BadgeCheck
+                              size={26}
+                              className="text-[#0B0F1F] group-hover:text-white"
+                            />
+                            <span className="font-medium text-[#0B0F1F] group-hover:text-white">
+                              Achievement & Badge
+                            </span>
+                          </button>
+
+                          <hr className="my-2 border-0 border-t border-[#E8EAEE]" />
+                          <button
+                            onClick={() =>
+                              handleNavigate("/ulasan-saya", "Membuka ulasan...")
+                            }
+                            className="group rounded-xl hover:bg-muted-foreground hover:text-background flex items-center w-full gap-4 px-4 py-4 text-left transition"
+                          >
+                            <MessageSquareText
+                              size={26}
+                              className="text-[#0B0F1F] group-hover:text-white"
+                            />
+                            <span className="font-medium text-[#0B0F1F] group-hover:text-white">
+                              Ulasan Saya
+                            </span>
+                          </button>
+
+                          <hr className="my-2 border-0 border-t border-[#E8EAEE]" />
+                          <button
+                            onClick={handleLogout}
+                            className="rounded-xl hover:bg-red-50 flex items-center w-full gap-4 px-4 py-4 text-red-500 transition"
+                          >
+                            <LogOut size={26} />
+                            <span className="font-medium text-[#0B0F1F] group-hover:text-white">
+                              Keluar
+                            </span>
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ) : (
-                <button
-                  onClick={() =>
-                    handleNavigate("/login", "Membuka halaman login...")
-                  }
-                  className="flex items-center gap-3 rounded-lg border border-border bg-primary px-5 py-3 font-semibold text-white transition hover:bg-primary/90"
-                >
-                  Masuk / Daftar
-                </button>
-              )}
+                ) : (
+                  <button
+                    onClick={() =>
+                      handleNavigate("/login", "Membuka halaman login...")
+                    }
+                    className="border-border bg-primary hover:bg-primary/90 flex items-center gap-3 px-5 py-3 font-semibold text-white transition border rounded-lg"
+                  >
+                    Masuk / Daftar
+                  </button>
+                )}
+              </div>
+
             </section>
           </nav>
           {/* Chat */}
@@ -414,7 +413,7 @@ function Navbar() {
                   onClick={() =>
                     handleNavigate("/profile", "Membuka profil...")
                   }
-                  className="group flex w-full items-center gap-4 rounded-xl  text-left transition hover:bg-muted-foreground hover:text-background"
+                  className="group rounded-xl hover:bg-muted-foreground hover:text-background flex items-center w-full gap-4 text-left transition"
                 >
                   <span className="font-medium text-[#0B0F1F] group-hover:text-white">
                     Profil Saya
