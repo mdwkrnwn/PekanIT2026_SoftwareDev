@@ -108,23 +108,25 @@ export default function MyReviewsPage() {
   ];
 
   return (
-    <div className="p-12 bg-slate-50 dark:bg-slate-950 text-base transition-colors">
+    <div className="bg-slate-50 dark:bg-slate-950 md:px-12 px-6 py-12 text-base transition-colors">
       {/* Header */}
       <div className="mb-10">
         <h1 className="text-3xl font-bold dark:text-white text-[#0B0F1F]">
           Ulasan Saya
         </h1>
-        <p className="mt-1 text-lg text-slate-500 dark:text-slate-400">
+        <p className="text-slate-500 dark:text-slate-400 mt-1 text-lg">
           Lihat semua ulasan yang telah kamu berikan kepada UMKM di Bakool.
         </p>
       </div>
 
       {/* Top Aggregation Row Blocks */}
-      <div className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-5">
+      <div className="md:grid-cols-2 lg:grid-cols-5 grid grid-cols-1 gap-4 mb-10">
         {reviewStats.map((item) => (
           <div
             key={item.title}
             className="
+            last:col-span-2
+            lg:last:col-span-1
               rounded-2xl
               border border-[#EAECF0]
               dark:border-slate-800
@@ -172,18 +174,17 @@ export default function MyReviewsPage() {
       </div>
 
       {/* Category Filter Controls */}
-      <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
         {/* Filter */}
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           {["Semua", "5 ★", "4 ★", "3 ★", "2 ★"].map((filter, index) => (
             <button
               key={filter}
               onClick={() => alert("Coming Soon 🚀")}
-              className={`flex h-10 items-center rounded-lg border px-5 text-[14px] font-semibold transition ${
-                index === 0
-                  ? "border-transparent bg-[#EAF7F1] text-[#158A62] dark:bg-emerald-900/30 dark:text-emerald-400"
-                  : "border-[#EAECF0] dark:border-slate-700 bg-white dark:bg-slate-900 text-[#344054] dark:text-slate-300 hover:bg-[#F9FAFB] dark:hover:bg-slate-800"
-              }`}
+              className={`flex h-10 items-center rounded-lg border px-5 text-[14px] font-semibold transition ${index === 0
+                ? "border-transparent bg-[#EAF7F1] text-[#158A62] dark:bg-emerald-900/30 dark:text-emerald-400"
+                : "border-[#EAECF0] dark:border-slate-700 bg-white dark:bg-slate-900 text-[#344054] dark:text-slate-300 hover:bg-[#F9FAFB] dark:hover:bg-slate-800"
+                }`}
             >
               {filter}
             </button>
@@ -220,7 +221,7 @@ export default function MyReviewsPage() {
         {reviews.map((item) => (
           <div
             key={item.id}
-            className="relative flex rounded-2xl border border-[#EAECF0] dark:border-slate-800 bg-white dark:bg-slate-900 p-5 transition-colors"
+            className="relative flex rounded-2xl border border-[#EAECF0] dark:border-slate-800 bg-white dark:bg-slate-900 p-5 transition-colors flex-wrap"
           >
             {/* Menu */}
             <button className="absolute right-5 top-5 text-[#98A2B3] dark:text-slate-500 hover:text-[#667085] dark:hover:text-slate-300 transition-colors">
@@ -228,7 +229,7 @@ export default function MyReviewsPage() {
             </button>
 
             {/* Image */}
-            <div className="relative h-[100px] w-[130px] shrink-0 overflow-hidden rounded-xl">
+            <div className="relative h-25 w-32.5 shrink-0 overflow-hidden rounded-xl">
               <Image
                 src={item.image}
                 alt={item.target}
@@ -238,7 +239,7 @@ export default function MyReviewsPage() {
             </div>
 
             {/* Content */}
-            <div className="ml-6 flex flex-1 flex-col">
+            <div className="md:ml-6 md:mt-0 flex flex-col flex-1 mt-3">
               {/* Header */}
               <div className="flex items-center gap-3">
                 <h3 className="text-[18px] font-semibold text-[#101828] dark:text-white">
@@ -262,42 +263,46 @@ export default function MyReviewsPage() {
               </div>
 
               {/* Review */}
-              <p className="mt-2 max-w-[520px] text-[14px] leading-6 text-[#101828] dark:text-slate-300">
+              <p className="mt-2 max-w-130 text-[14px] leading-6 text-[#101828] dark:text-slate-300">
                 {item.text}
               </p>
 
               {/* Footer */}
-              <div className="mt-3 flex items-center gap-5 text-[13px] text-[#98A2B3] dark:text-slate-500">
-                <div className="flex items-center gap-1.5">
-                  <LuCalendar size={16} />
-                  {item.date}
+              <div className="mt-3 flex flex-wrap justify-between text-[13px] text-[#98A2B3] dark:text-slate-500">
+                <div className="flex items-center flex-1 gap-5">
+                  <div className="flex items-center gap-1.5">
+                    <LuCalendar size={16} />
+                    {item.date}
+                  </div>
+
+                  <div className="flex items-center gap-1.5">
+                    <LuImage size={16} />
+                    {item.photos} Foto
+                  </div>
                 </div>
 
-                <div className="flex items-center gap-1.5">
-                  <LuImage size={16} />
-                  {item.photos} Foto
+                {/* Action */}
+                <div className="flex flex-1 gap-3">
+                  <button
+                    onClick={() => alert("Coming Soon 🚀")}
+                    className="flex h-8 items-center gap-1 rounded-lg border border-[#D0D5DD] dark:border-slate-700 bg-white dark:bg-slate-800 px-4 text-[12px] font-medium text-[#158A62] dark:text-emerald-400 transition hover:bg-[#F6FCF9] dark:hover:bg-slate-700"
+                  >
+                    <Edit size={14} />
+                    Edit
+                  </button>
+
+                  <button
+                    onClick={() => alert("Coming Soon 🚀")}
+                    className="flex h-8 items-center gap-1 rounded-lg border border-[#FECACA] dark:border-red-900 bg-white dark:bg-slate-800 px-4 text-[12px] font-medium text-[#EF4444] dark:text-red-400 transition hover:bg-[#FEF2F2] dark:hover:bg-red-950/30"
+                  >
+                    <LuTrash2 size={14} />
+                    Hapus
+                  </button>
                 </div>
               </div>
             </div>
 
-            {/* Action */}
-            <div className="absolute bottom-5 right-5 flex gap-3">
-              <button
-                onClick={() => alert("Coming Soon 🚀")}
-                className="flex h-8 items-center gap-1 rounded-lg border border-[#D0D5DD] dark:border-slate-700 bg-white dark:bg-slate-800 px-4 text-[12px] font-medium text-[#158A62] dark:text-emerald-400 transition hover:bg-[#F6FCF9] dark:hover:bg-slate-700"
-              >
-                <Edit size={14} />
-                Edit
-              </button>
 
-              <button
-                onClick={() => alert("Coming Soon 🚀")}
-                className="flex h-8 items-center gap-1 rounded-lg border border-[#FECACA] dark:border-red-900 bg-white dark:bg-slate-800 px-4 text-[12px] font-medium text-[#EF4444] dark:text-red-400 transition hover:bg-[#FEF2F2] dark:hover:bg-red-950/30"
-              >
-                <LuTrash2 size={14} />
-                Hapus
-              </button>
-            </div>
           </div>
         ))}
       </div>

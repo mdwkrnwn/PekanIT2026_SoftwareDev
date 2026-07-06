@@ -27,11 +27,11 @@ function RootLayoutClient({ children }: { children: React.ReactNode }) {
         />
         <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
         <main className="min-h-0 overflow-y-auto">
-          <div className="lg:hidden border-b border-slate-200 bg-background/90 px-4 py-4 backdrop-blur-sm">
+          <div className="lg:hidden border-slate-200 bg-background/90 backdrop-blur-sm sticky top-0 px-4 py-4 border-b">
             <button
               type="button"
               onClick={() => setIsSidebarOpen(true)}
-              className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50"
+              className="rounded-xl border-slate-200 text-slate-900 hover:bg-slate-50 inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold transition bg-white border shadow-sm"
             >
               <RxHamburgerMenu size={18} />
               Menu Profil
