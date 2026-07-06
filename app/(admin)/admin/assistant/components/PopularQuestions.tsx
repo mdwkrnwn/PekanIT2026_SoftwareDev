@@ -17,7 +17,7 @@ export default function PopularQuestions({
         Pertanyaan Populer
       </h3>
 
-      <div className="mt-4 grid grid-cols-4 gap-3">
+      <div className="flex flex-wrap gap-3 mt-4">
         {questions.map((question) => (
           <button
             key={question.text}

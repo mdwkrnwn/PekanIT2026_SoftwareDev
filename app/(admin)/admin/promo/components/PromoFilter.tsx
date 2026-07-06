@@ -75,29 +75,28 @@ export default function PromoFilter({
   handleUpdatePromo,
 }: PromoFilterProps) {
   return (
-    <div className="mt-8 flex items-center justify-between">
+    <div className="flex flex-wrap items-center justify-between gap-6 mt-8">
       {/* Left */}
       <div className="flex items-center gap-8">
         {categories.map((category) => (
           <button
             key={category.name}
             onClick={() => setActiveCategory(category.name)}
-            className={`relative pb-3 text-[15px] transition ${
-              activeCategory === category.name
-                ? "font-semibold text-[#158A62]"
-                : "font-medium text-[#667085] hover:text-[#101828]"
-            }`}
+            className={`relative pb-3 text-[15px] transition ${activeCategory === category.name
+              ? "font-semibold text-[#158A62]"
+              : "font-medium text-[#667085] hover:text-[#101828]"
+              }`}
           >
             {category.name} ({category.count})
             {activeCategory === category.name && (
-              <span className="absolute bottom-0 left-0 h-[2px] w-full rounded-full bg-[#158A62]" />
+              <span className="absolute bottom-0 left-0 h-0.5 w-full rounded-full bg-[#158A62]" />
             )}
           </button>
         ))}
       </div>
 
       {/* Right */}
-      <div className="flex items-center gap-3">
+      <div className="md:flex-row flex flex-col items-start gap-3">
         {/* Search */}
         <div className="relative">
           <LuSearch
@@ -157,7 +156,7 @@ export default function PromoFilter({
                 ].map((item) => (
                   <label
                     key={item.value}
-                    className="flex cursor-pointer items-center gap-3"
+                    className="flex items-center gap-3 cursor-pointer"
                   >
                     <input
                       type="radio"
@@ -170,13 +169,13 @@ export default function PromoFilter({
                 ))}
               </div>
 
-              <div className="mt-6 flex justify-end gap-3">
+              <div className="flex justify-end gap-3 mt-6">
                 <button
                   onClick={() => {
                     setSortBy("newest");
                     setIsFilterOpen(false);
                   }}
-                  className="rounded-lg border px-4 py-2"
+                  className="px-4 py-2 border rounded-lg"
                 >
                   Reset
                 </button>

@@ -9,7 +9,7 @@ export default function PromoStats({ refreshKey }: PromoStatsProps) {
 
   if (loading) {
     return (
-      <div className="grid grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5">
         {Array.from({ length: 5 }).map((_, index) => (
           <div
             key={index}
@@ -31,7 +31,7 @@ export default function PromoStats({ refreshKey }: PromoStatsProps) {
   }
 
   return (
-    <div className="grid grid-cols-5 gap-4">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5">
       {stats.map((item, index) => (
         <div
           key={index}

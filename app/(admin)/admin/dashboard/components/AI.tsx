@@ -15,9 +15,9 @@ export default function AI({ insight }: AIInsightProps) {
         {insight.title}
       </h3>
 
-      <div className="mt-8 flex items-start gap-6">
+      <div className="flex items-start gap-6 mt-8">
         {/* Robot */}
-        <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-[#E8F7EF]">
+        <div className="flex lg:size-24 size-12 shrink-0 items-center justify-center rounded-full bg-[#E8F7EF]">
           <Image
             src={insight.image}
             alt="AI Assistant"
@@ -34,11 +34,10 @@ export default function AI({ insight }: AIInsightProps) {
 
           <button
             onClick={() => alert("🚀 Coming Soon!")}
-            className="mt-8 flex h-14 w-[300px] items-center justify-between rounded-2xl bg-[#158A62] px-6 font-semibold text-white transition hover:bg-[#127553]"
+            className="mt-8 flex items-center justify-between rounded-2xl bg-[#158A62] lg:px-6 px-4 py-4 font-semibold text-white transition hover:bg-[#127553]"
           >
             <span>Lihat rekomendasi lengkap</span>
-
-            <ArrowRight size={20} />
+            <ArrowRight size={20} className="shrink-0" />
           </button>
         </div>
       </div>

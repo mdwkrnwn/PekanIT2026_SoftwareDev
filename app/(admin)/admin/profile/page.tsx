@@ -18,8 +18,22 @@ import {
 import { Package } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 
+type GalleryPhoto = {
+  id: number;
+  image_url: string;
+};
+
+type UmkmData = {
+  description?: string | null;
+  gallery?: GalleryPhoto[];
+  categories?: {
+    icon?: string | null;
+  } | null;
+  [key: string]: unknown;
+};
+
 export default function ProfilTokoView() {
-  const [umkm, setUmkm] = useState<any>(null);
+  const [umkm, setUmkm] = useState<UmkmData | null>(null);
   const [loading, setLoading] = useState(true);
   const CategoryIcon =
     categoryIcons[umkm?.categories?.icon as keyof typeof categoryIcons] ||
@@ -117,13 +131,13 @@ export default function ProfilTokoView() {
   return (
     <div className="flex flex-col gap-8 text-base">
       {/* ================= ATAS: TIGA KARTU INFORMASI UTAMA ================= */}
-      <section className="grid grid-rows-[1fr_auto] grid-cols-3 gap-6 *:w-full *:h-full items-center">
+      <section className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3 *:h-full *:w-full md:items-start">
         {/* Kartu 1: Informasi Toko */}
         <StoreInfo loading={loading} umkm={umkm} CategoryIcon={CategoryIcon} />
 
         <StoreDescription loading={loading} description={umkm?.description} />
 
-        <OperatingHours  operationalHours={operationalHours} />
+        <OperatingHours operationalHours={operationalHours} />
 
         <StoreGallery
           loading={loading}

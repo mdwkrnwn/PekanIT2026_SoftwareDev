@@ -1,17 +1,17 @@
 import { useProductStats } from "../hooks/useProductStats";
 import { Skeleton } from "@/components/ui/skeleton";
 interface ProductStatsProps {
-    refreshKey: number;
+  refreshKey: number;
 }
 export default function ProductStats({
-    refreshKey,
+  refreshKey,
 }: ProductStatsProps) {
-    const { stats, loading } = useProductStats(refreshKey);
+  const { stats, loading } = useProductStats(refreshKey);
 
 
   if (loading) {
     return (
-      <div className="grid grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5">
         {Array.from({ length: 5 }).map((_, index) => (
           <div
             key={index}
@@ -33,7 +33,7 @@ export default function ProductStats({
   }
 
   return (
-    <div className="grid grid-cols-5 gap-4">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5">
       {stats.map((item) => (
         <div
           key={item.title}

@@ -7,6 +7,7 @@ import Sidebar from "./sidebar";
 import AdminGuard from "@/components/AdminGuard";
 import { Header } from "./header";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -21,6 +22,7 @@ export default function AdminLayout({
 }>) {
   const pathname = usePathname();
   const isCompleteProfile = pathname === "/admin/complete-profile";
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <html
@@ -33,24 +35,37 @@ export default function AdminLayout({
       )}
       suppressHydrationWarning
     >
-      <body
-        className={cn(
-          "relative grid h-screen overflow-hidden bg-background",
-          isCompleteProfile
-            ? "grid-cols-1 grid-rows-[1fr]"
-            : "grid-cols-[auto_1fr] gap-y-8 grid-rows-[auto_1fr]",
+      <body className={cn("min-h-screen bg-background", isCompleteProfile ? "flex flex-col" : "flex flex-col lg:flex-row")}>
+        {!isCompleteProfile && (
+          <>
+            <div
+              aria-hidden="true"
+              className={cn(
+                "fixed inset-0 z-30 bg-black/40 transition-opacity duration-200 lg:hidden",
+                isSidebarOpen
+                  ? "pointer-events-auto opacity-100"
+                  : "pointer-events-none opacity-0",
+              )}
+              onClick={() => setIsSidebarOpen(false)}
+            />
+            <Sidebar
+              isOpen={isSidebarOpen}
+              onClose={() => setIsSidebarOpen(false)}
+            />
+          </>
         )}
-      >
-        {!isCompleteProfile && <Sidebar />}
-        <Header />
-        <main
-          className={cn(
-            "overflow-y-auto",
-            isCompleteProfile ? "px-24" : "px-8",
-          )}
-        >
-          <AdminGuard>{children}</AdminGuard>
-        </main>
+
+        <div className="flex flex-col flex-1 min-h-screen">
+          <Header onMenuClick={() => setIsSidebarOpen(true)} />
+          <main
+            className={cn(
+              "flex-1 overflow-y-auto",
+              isCompleteProfile ? "px-4 py-6 sm:px-8 lg:px-24" : "px-4 py-4 sm:px-6 lg:px-8",
+            )}
+          >
+            <AdminGuard>{children}</AdminGuard>
+          </main>
+        </div>
       </body>
     </html>
   );

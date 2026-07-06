@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import {
   LuLayoutDashboard,
   LuUtensilsCrossed,
@@ -12,16 +14,28 @@ import {
 } from "react-icons/lu";
 import { FiBarChart2 } from "react-icons/fi";
 import { supabase } from "@/lib/supabase";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
 import { Skeleton } from "@/components/ui/skeleton";
+import { cn } from "@/lib/utils";
 
-function Sidebar() {
+type SidebarProps = {
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+type UmkmData = {
+  cover_image?: string | null;
+  name?: string | null;
+  categories?: {
+    name?: string | null;
+  } | null;
+};
+
+function Sidebar({ isOpen, onClose }: SidebarProps) {
   const activePath = usePathname();
   const router = useRouter();
-  const [umkm, setUmkm] = useState<any>(null);
+  const [umkm, setUmkm] = useState<UmkmData | null>(null);
   const [loading, setLoading] = useState(true);
+
   const handleLogout = async () => {
     const { error } = await supabase.auth.signOut();
 
@@ -33,6 +47,7 @@ function Sidebar() {
     router.replace("/login");
     router.refresh();
   };
+
   useEffect(() => {
     const getUMKM = async () => {
       try {
@@ -70,32 +85,56 @@ function Sidebar() {
 
     getUMKM();
   }, []);
+
   const coverImage = umkm?.cover_image || "/placeholder-cover.jpg";
 
   return (
-    <aside className="w-[18vw] bg-background border-r border-border flex flex-col p-8 row-span-2 justify-between shrink-0 h-screen top-0 sticky">
-      <div className="flex flex-col gap-10">
-        {/* Brand Logo */}
-        <div className="flex items-center gap-3 mb-10">
-          <Image
-            src="/Bakul.png"
-            alt="Bakool Business"
-            width={60}
-            height={60}
-            priority
-            className="w-30 h-auto -ml-4"
-          />
+    <aside
+      className={cn(
+        "fixed inset-y-0 left-0 z-40 flex h-screen w-72 max-w-[85vw] flex-col justify-between border-r border-border bg-background p-4 shadow-xl transition-transform duration-300 lg:sticky lg:w-72 lg:max-w-none lg:translate-x-0 lg:border-r lg:shadow-none",
+        isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0",
+      )}
+    >
+      <div className="flex flex-col gap-6">
+        <div className="mb-2 flex items-center justify-between gap-3">
+          <Link href="/admin/dashboard" className="flex items-center gap-3">
+            <Image
+              src="/Bakul.png"
+              alt="Bakool Business"
+              width={60}
+              height={60}
+              priority
+              className="h-auto w-20 sm:w-24"
+            />
 
-          <div className="flex flex-col -ml-8">
-            <h1 className="text-3xl mt-2 font-bold leading-none text-[#06C179]">
-              Bakool
-            </h1>
-            <p className="text-[15px]  font-medium text-[#7A7F8B]">Business</p>
-          </div>
+            <div className="flex flex-col">
+              <h1 className="mt-1 text-[24px] font-bold leading-none text-[#06C179]">
+                Bakool
+              </h1>
+              <p className="text-[13px] font-medium text-[#7A7F8B]">Business</p>
+            </div>
+          </Link>
+
+          <button
+            type="button"
+            aria-label="Tutup menu"
+            onClick={onClose}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-white text-slate-700 lg:hidden"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.8}
+              stroke="currentColor"
+              className="h-5 w-5"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
 
-        {/* Store Profile Card */}
-        <div className="rounded-2xl border-2 border-[#F3F4F7] bg-white p-4 -mt-15">
+        <div className="rounded-2xl border border-[#F3F4F7] bg-white p-4">
           {loading ? (
             <div className="flex items-center gap-4">
               <Skeleton className="h-14 w-14 rounded-full" />
@@ -118,7 +157,7 @@ function Sidebar() {
               </div>
 
               <div>
-                <h4 className="text-lg font-bold text-slate-900">
+                <h4 className="text-base font-bold text-slate-900">
                   {umkm?.name || "Nama UMKM"}
                 </h4>
 
@@ -126,7 +165,7 @@ function Sidebar() {
                   {umkm?.categories?.name || "-"}
                 </span>
 
-                <span className="mt-1 inline-block rounded-md bg-emerald-100 px-2 py-0.5 text-base font-bold text-emerald-700">
+                <span className="mt-1 inline-block rounded-md bg-emerald-100 px-2 py-0.5 text-sm font-bold text-emerald-700">
                   Terverifikasi
                 </span>
               </div>
@@ -134,7 +173,6 @@ function Sidebar() {
           )}
         </div>
 
-        {/* Navigation Links */}
         <nav className="flex flex-col gap-2">
           {[
             {
@@ -174,13 +212,13 @@ function Sidebar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`flex items-center gap-4 rounded-xl px-6 py-3 transition-all duration-200 ${
-                  isActive
+                onClick={onClose}
+                className={`flex items-center gap-4 rounded-xl px-4 py-3 transition-all duration-200 sm:px-6 ${isActive
                     ? "bg-[#F2F9F5] text-[#279959]"
                     : "text-[#344054] hover:bg-[#F9FAFB]"
-                }`}
+                  }`}
               >
-                <div className="flex justify-center w-6">
+                <div className="flex w-6 justify-center">
                   <item.icon
                     size={22}
                     className={isActive ? "text-[#279959]" : "text-[#344054]"}
@@ -188,9 +226,8 @@ function Sidebar() {
                 </div>
 
                 <span
-                  className={`text-[18px] ${
-                    isActive ? "font-semibold" : "font-medium"
-                  }`}
+                  className={`text-[16px] sm:text-[18px] ${isActive ? "font-semibold" : "font-medium"
+                    }`}
                 >
                   {item.name}
                 </span>
@@ -200,10 +237,9 @@ function Sidebar() {
         </nav>
       </div>
 
-      {/* Logout Button */}
       <button
         onClick={handleLogout}
-        className="flex items-center gap-4 px-5 py-4 rounded-xl font-bold text-slate-500 hover:bg-rose-50 hover:text-rose-600 transition-colors text-left"
+        className="flex items-center gap-4 rounded-xl px-4 py-4 text-left font-bold text-slate-500 transition-colors hover:bg-rose-50 hover:text-rose-600 sm:px-5"
       >
         <LuLogOut size={24} />
         <span>Keluar</span>

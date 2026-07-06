@@ -31,7 +31,7 @@ export default function ReviewList({
                 alt={review.name}
                 width={48}
                 height={48}
-                className="h-12 w-12 shrink-0 rounded-full object-cover"
+                className="shrink-0 object-cover w-12 h-12 rounded-full"
               />
 
               <div>
@@ -47,7 +47,7 @@ export default function ReviewList({
                   )}
                 </div>
 
-                <div className="mt-1 flex items-center gap-2">
+                <div className="flex items-center gap-2 mt-1">
                   <div className="flex gap-0.5">
                     {Array.from({ length: review.rating }).map((_, index) => (
                       <LuStar
@@ -63,11 +63,11 @@ export default function ReviewList({
                   </span>
                 </div>
 
-                <p className="mt-2 max-w-[520px] text-[14px] leading-6 text-[#344054]">
+                <p className="mt-2 max-w-130 text-[14px] leading-6 text-[#344054]">
                   {review.review}
                 </p>
 
-                <div className="mt-3 flex flex-wrap items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2 mt-3">
                   {review.menu.map((item) => (
                     <span
                       key={item}
@@ -88,7 +88,7 @@ export default function ReviewList({
                       Balasan Anda:
                     </p>
 
-                    <div className="mt-2 flex items-start justify-between gap-6">
+                    <div className="md:flex-row flex flex-col items-start justify-between gap-6 mt-2">
                       <p className="text-[13px] text-[#667085]">
                         {review.reply}
                       </p>
@@ -111,14 +111,13 @@ export default function ReviewList({
             </div>
 
             {/* RIGHT */}
-            <div className="flex shrink-0 flex-col items-end gap-3">
+            <div className=" shrink-0 md:flex flex-col items-end hidden gap-3">
               <div className="flex items-center gap-2">
                 <span
-                  className={`rounded-lg px-3 py-1.5 text-[12px] font-medium ${
-                    review.replied
-                      ? "bg-[#E8F7EF] text-[#158A62]"
-                      : "bg-[#FFF4E5] text-[#F59E0B]"
-                  }`}
+                  className={`rounded-lg px-3 py-1.5 text-[12px] font-medium ${review.replied
+                    ? "bg-[#E8F7EF] text-[#158A62]"
+                    : "bg-[#FFF4E5] text-[#F59E0B]"
+                    }`}
                 >
                   {review.replied ? "Dibalas" : "Belum Dibalas"}
                 </span>

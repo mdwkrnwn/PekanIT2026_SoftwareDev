@@ -14,7 +14,7 @@ export default function RecentReviews({
   return (
     <div className="rounded-2xl border border-[#EAECF0] bg-white p-6 lg:col-span-2">
       {/* Header */}
-      <div className="mb-6 flex items-center justify-between">
+      <div className="flex items-center justify-between mb-6">
         <h3 className="text-[25px] font-semibold text-[#101828]">
           Ulasan Terbaru
         </h3>
@@ -39,13 +39,13 @@ export default function RecentReviews({
               alt={review.name}
               width={70}
               height={70}
-              className="rounded-full object-cover"
+              className="object-cover rounded-full"
             />
 
             <div className="flex-1">
-              <div className="flex items-start justify-between">
+              <div className="md:flex-row flex flex-col items-start justify-between">
                 <div>
-                  <div className="flex items-center gap-4">
+                  <div className="md:flex-row flex flex-col items-center gap-4">
                     <h4 className="text-[20px] font-semibold text-[#101828]">
                       {review.name}
                     </h4>
@@ -65,7 +65,7 @@ export default function RecentReviews({
                     </div>
                   </div>
 
-                  <p className="mt-2 text-[17px] text-[#64748B]">
+                  <p className="mt-2 text-[17px] wrap-break-word text-[#64748B]">
                     {review.comment}
                   </p>
                 </div>

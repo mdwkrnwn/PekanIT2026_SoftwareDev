@@ -1,22 +1,4 @@
 "use client";
-import Image from "next/image";
-import {
-  LuSlidersHorizontal,
-  LuChevronDown,
-  LuStar,
-  LuMessageSquare,
-  LuSmile,
-  LuFrown,
-  LuMessageSquareOff,
-  LuChevronLeft,
-  LuChevronRight,
-  LuEllipsisVertical,
-  LuMessageSquareReply,
-  LuPencil,
-  LuSparkles,
-  LuThumbsUp,
-  LuLightbulb,
-} from "react-icons/lu";
 import { useState } from "react";
 import {
   reviews,
@@ -38,7 +20,7 @@ import ReviewInsight from "./components/ReviewInsight";
 export default function UlasanPage() {
   const itemsPerPage = 6;
   const [currentPage, setCurrentPage] = useState(1);
-  const [search, setSearch] = useState("");
+  const [search] = useState("");
   const [activeTab, setActiveTab] = useState("Semua Ulasan");
 
   const filteredReviews = reviews.filter((review) => {
@@ -101,7 +83,7 @@ export default function UlasanPage() {
       />
 
       {/* Main content: reviews (left) + sidebar (right) */}
-      <div className="mt-6 grid grid-cols-[2.6fr_1fr] gap-6">
+      <div className="mt-6 grid grid-cols-1 gap-6 xl:grid-cols-[2.6fr_1fr]">
         {/* LEFT: review list + pagination */}
         <div>
           <ReviewList reviews={paginatedReviews} />

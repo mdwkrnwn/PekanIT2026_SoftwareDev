@@ -13,7 +13,7 @@ export default function PopularProducts({
   return (
     <div className="flex flex-col justify-between rounded-2xl border-2 border-[#F3F4F7] bg-white p-6 shadow-xs">
       {/* Header */}
-      <div className="mb-6 flex items-center justify-between">
+      <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-semibold text-[#0B0F1F]">
           Produk / Menu Terpopuler
         </h3>
@@ -27,17 +27,17 @@ export default function PopularProducts({
       </div>
 
       {/* List */}
-      <div className="flex flex-1 flex-col gap-4">
+      <div className="flex flex-col flex-1 gap-4">
         {products.map((product) => (
           <div
             key={product.rank}
-            className="flex items-center gap-4 rounded-xl p-2 transition-colors hover:bg-slate-50"
+            className="rounded-xl hover:bg-slate-50 flex flex-wrap items-center gap-4 p-2 transition-colors"
           >
             <span className="w-6 text-lg font-black text-[#0B0F1F]">
               {product.rank}
             </span>
 
-            <div className="relative h-14 w-25 shrink-0 overflow-hidden rounded-xl">
+            <div className="h-14 w-25 shrink-0 rounded-xl relative overflow-hidden">
               <Image
                 src={product.image}
                 fill
@@ -47,11 +47,11 @@ export default function PopularProducts({
             </div>
 
             <div className="flex-1">
-              <h4 className="font-bold text-slate-900">
+              <h4 className="text-slate-900 font-bold">
                 {product.name}
               </h4>
 
-              <p className="font-medium text-slate-400">
+              <p className="text-slate-400 font-medium">
                 {product.count}
               </p>
             </div>

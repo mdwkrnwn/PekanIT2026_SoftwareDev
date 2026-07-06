@@ -40,7 +40,7 @@ interface ProductModalProps {
 }
 
 export default function ProductModal({
-  
+
   open,
   onClose,
   menuData,
@@ -54,8 +54,8 @@ export default function ProductModal({
   console.log("submitting:", submitting);
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[900px] rounded-3xl overflow-hidden p-0">
-        <DialogHeader className="border-b border-slate-100 px-8 py-6">
+      <DialogContent className="sm:max-w-[900px] rounded-3xl p-0">
+        <DialogHeader className="border-slate-100 px-8 py-6 border-b">
           <DialogTitle className="text-3xl font-bold">
             {isEdit ? "Edit Produk" : "Tambah Produk"}
           </DialogTitle>
@@ -79,7 +79,7 @@ export default function ProductModal({
                 {productImage ? productImage.name : "Upload Foto"}
               </span>
 
-              <span className="text-sm text-slate-400">
+              <span className="text-slate-400 text-sm">
                 JPG / PNG maksimal 5 MB
               </span>
 
@@ -106,7 +106,7 @@ export default function ProductModal({
                   })
                 }
                 placeholder="Ayam Geprek"
-                className="mt-2 h-12 w-full rounded-xl border border-slate-200 px-4"
+                className="rounded-xl border-slate-200 w-full h-12 px-4 mt-2 border"
               />
             </div>
 
@@ -122,7 +122,7 @@ export default function ProductModal({
                   })
                 }
                 placeholder="Makanan"
-                className="mt-2 h-12 w-full rounded-xl border border-slate-200 px-4"
+                className="rounded-xl border-slate-200 w-full h-12 px-4 mt-2 border"
               />
             </div>
 
@@ -139,7 +139,7 @@ export default function ProductModal({
                   })
                 }
                 placeholder="10.000"
-                className="mt-2 h-12 w-full rounded-xl border border-slate-200 px-4"
+                className="rounded-xl border-slate-200 w-full h-12 px-4 mt-2 border"
               />
             </div>
 
@@ -156,17 +156,17 @@ export default function ProductModal({
                     description: e.target.value,
                   })
                 }
-                className="mt-2 w-full rounded-xl border border-slate-200 p-4"
+                className="rounded-xl border-slate-200 w-full p-4 mt-2 border"
               />
             </div>
           </div>
         </div>
 
-        <DialogFooter className="border-t mb-3 border-slate-100 px-8 py-5">
+        <DialogFooter className="border-slate-100 px-8 py-5 mb-3 border-t">
           <button
             onClick={onClose}
             disabled={submitting}
-            className="rounded-xl border border-slate-200 px-6 py-3 font-semibold"
+            className="rounded-xl border-slate-200 px-6 py-3 font-semibold border"
           >
             Batal
           </button>
@@ -178,13 +178,13 @@ export default function ProductModal({
           >
             {submitting ? (
               <>
-                <Loader2 className="h-4 w-4 animate-spin" />
+                <Loader2 className="animate-spin w-4 h-4" />
                 {isEdit ? "Mengupdate..." : "Menyimpan..."}
               </>
             ) : (
               <>{isEdit ? "Update Produk" : "Simpan Produk"}</>
             )}
-            
+
           </button>
         </DialogFooter>
       </DialogContent>

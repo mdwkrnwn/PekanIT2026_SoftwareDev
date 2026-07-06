@@ -59,7 +59,7 @@ export default function ProductPage() {
 
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [getProducts]);
 
   const categories = [
     {
@@ -75,7 +75,7 @@ export default function ProductPage() {
   ];
 
   const filteredProducts = useMemo(() => {
-    let result = products.filter((item) => {
+    const result = products.filter((item) => {
       const matchCategory =
         activeCategory === "Semua Produk" || item.category === activeCategory;
 
@@ -159,17 +159,19 @@ export default function ProductPage() {
         isEdit={isEditMode}
       />
 
-      <div className="mt-8 grid grid-cols-[2.8fr_1fr] gap-6">
+      <div className="mt-8 grid grid-cols-1 gap-6 xl:grid-cols-[2.8fr_1fr]">
         {/* Left */}
         <div>
-          <ProductTable
-            products={paginatedProducts}
-            openMenuId={openMenuId}
-            loading={loading}
-            setOpenMenuId={setOpenMenuId}
-            onEdit={handleEditProduct}
-            onDelete={handleDeleteProduct}
-          />
+          <div className="overflow-x-auto">
+            <ProductTable
+              products={paginatedProducts}
+              openMenuId={openMenuId}
+              loading={loading}
+              setOpenMenuId={setOpenMenuId}
+              onEdit={handleEditProduct}
+              onDelete={handleDeleteProduct}
+            />
+          </div>
           <ProductPagination
             currentPage={currentPage}
             totalPages={totalPages}

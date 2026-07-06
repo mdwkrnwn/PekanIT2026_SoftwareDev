@@ -39,7 +39,7 @@ export default function AiAssistantPage() {
       }),
     },
   ]);
-  
+
   const handleSend = async (text?: string) => {
     const input = text || message;
 
@@ -108,7 +108,7 @@ export default function AiAssistantPage() {
     }
   };
   return (
-    <div className="grid grid-cols-[2fr_1fr] gap-6">
+    <div className="grid grid-cols-1 gap-6 xl:grid-cols-[2fr_1fr]">
       {/* LEFT: Chat area */}
       <div className="flex flex-col gap-6">
         {/* Pertanyaan Populer */}
@@ -139,7 +139,7 @@ export default function AiAssistantPage() {
         {/* Kunjungan Toko */}
         <StoreVisits visit={storeVisit} />
         {/* Produk Terlaris + Jam Paling Ramai */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <TopProducts products={topProducts} />
 
           <BusyHours busyHour={busyHour} />

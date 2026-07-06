@@ -19,7 +19,7 @@ import TrafficInsight from "./components/TrafficInsight";
 import VisitHeatmap from "./components/VisitHeatmap";
 
 export default function AnalyticsPage() {
-  
+
   return (
     <>
       <div className="flex flex-col gap-8">
@@ -27,14 +27,14 @@ export default function AnalyticsPage() {
         <StatsCards stats={stats} />
 
         {/* Middle Grid */}
-        <div className="lg:grid-cols-3 grid grid-cols-1 gap-8">
+        <div className="sm:gap-8 xl:grid-cols-3 grid grid-cols-1 gap-6">
           <VisitPerformance data={visitData} />
 
           <PopularMenus menus={popularMenus} />
         </div>
 
         {/* Bottom Grid */}
-        <div className="lg:grid-cols-3 grid w-full grid-cols-1 gap-8">
+        <div className="sm:gap-8 xl:grid-cols-3 grid w-full grid-cols-1 gap-6">
           <VisitHeatmap
             days={days}
             hours={hours}

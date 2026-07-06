@@ -1,23 +1,5 @@
 "use client";
-import Image from "next/image";
-import {
-  LuEye,
-  LuPlus,
-  LuTag,
-  LuSearch,
-  LuFilter,
-  LuMessageSquareMore,
-  LuMapPin,
-  LuChevronLeft,
-  LuSparkles,
-  LuLightbulb,
-  LuPencil,
-  LuTrash2,
-  LuChevronRight,
-  LuEllipsisVertical,
-} from "react-icons/lu";
 import usePromo from "./hooks/usePromo";
-import { useState } from "react";
 import { useEffect } from "react";
 import PromoStats from "./components/PromoStats";
 import PromoFilter from "./components/PromoFilter";
@@ -77,7 +59,7 @@ export default function PromoPage() {
 
   useEffect(() => {
     getPromos();
-  }, []);
+  }, [getPromos]);
   return (
     <>
       <div className="flex flex-col gap-8">
@@ -109,16 +91,18 @@ export default function PromoPage() {
         handleUpdatePromo={handleUpdatePromo}
       />
 
-      <div className="mt-8 grid grid-cols-[2.8fr_1fr] gap-6">
+      <div className="mt-8 grid grid-cols-1 gap-6 xl:grid-cols-[2.8fr_1fr]">
         <div>
-          <PromoTable
-            promos={paginatedPromos}
-            loading={loading}
-            openMenuId={openMenuId}
-            setOpenMenuId={setOpenMenuId}
-            onEdit={handleEditPromo}
-            onDelete={handleDeletePromo}
-          />
+          <div className="overflow-x-auto">
+            <PromoTable
+              promos={paginatedPromos}
+              loading={loading}
+              openMenuId={openMenuId}
+              setOpenMenuId={setOpenMenuId}
+              onEdit={handleEditPromo}
+              onDelete={handleDeletePromo}
+            />
+          </div>
 
           <PromoPagination
             currentPage={currentPage}

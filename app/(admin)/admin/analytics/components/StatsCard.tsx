@@ -16,7 +16,7 @@ export default function StatsCards({
   stats,
 }: StatsCardsProps) {
   return (
-    <div className="grid grid-cols-5 gap-4">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5">
       {stats.map((item, index) => {
         const chartData = item.data.map((value, i) => ({
           index: i,

@@ -21,14 +21,14 @@ export default function DashboardPage() {
         <DashboardStats stats={stats} />
 
         {/* Middle Grid */}
-        <div className="lg:grid-cols-3 grid grid-cols-1 gap-8">
+        <div className="grid grid-cols-1 gap-6 sm:gap-8 xl:grid-cols-3">
           <VisitPerformance visitData={visitData} />
 
           <PopularProducts products={popularProducts} />
         </div>
 
         {/* Bottom Grid */}
-        <div className="lg:grid-cols-3 grid grid-cols-1 gap-8">
+        <div className="grid grid-cols-1 gap-6 sm:gap-8 xl:grid-cols-3">
           <RecentReviews reviews={reviews} />
           <AIInsight insight={aiInsight} />
         </div>
