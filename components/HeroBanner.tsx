@@ -31,7 +31,7 @@ export function HeroBanner() {
   ];
 
   return (
-    <section className="relative w-[80vw] mt-15">
+    <section className="relative w-[80vw] mt-8 lg:mt-15">
       <div className="gap-14 lg:flex-row flex flex-col items-center justify-between w-full">
         {/* LEFT */}
         <div className="z-10 flex-1">

@@ -184,9 +184,8 @@ function Navbar() {
                   alt="Bakool"
                   width={100}
                   height={100}
-                  className={`h-auto w-[100px] ${
-                    isProfilePage ? "-ml-25" : "-ml-6"
-                  }`}
+                  className={`h-auto w-[100px] ${isProfilePage ? "-ml-25" : "-ml-6"
+                    }`}
                   priority
                 />
 
@@ -197,9 +196,8 @@ function Navbar() {
             </section>
             <section>
               <ul
-                className={`flex gap-6 text-lg font-medium ${
-                  isProfilePage ? "-ml-25" : ""
-                }`}
+                className={`flex gap-6 text-lg font-medium ${isProfilePage ? "-ml-25" : ""
+                  }`}
               >
                 {navItems.map((item) => {
                   const isActive =
@@ -215,11 +213,10 @@ function Navbar() {
                         className={`relative inline-block pb-3
                       after:absolute after:bottom-0 after:left-0
                       after:rounded-full after:w-full after:h-1 after:transition-all
-                      ${
-                        isActive
-                          ? "after:bg-primary text-primary-foreground"
-                          : "after:bg-transparent hover:text-primary-foreground/50"
-                      }`}
+                      ${isActive
+                            ? "after:bg-primary text-primary-foreground"
+                            : "after:bg-transparent hover:text-primary-foreground/50"
+                          }`}
                       >
                         {item.name}
                       </Link>
@@ -229,9 +226,8 @@ function Navbar() {
               </ul>
             </section>
             <section
-              className={`place-self-end flex items-center self-center gap-3 ${
-                isProfilePage ? "-mr-30" : ""
-              }`}
+              className={`place-self-end flex items-center self-center gap-3 ${isProfilePage ? "-mr-30" : ""
+                }`}
             >
               <div className="flex items-center mr-10">
                 <div className="relative w-full">
@@ -284,9 +280,8 @@ function Navbar() {
                       </span>
 
                       <IoChevronDown
-                        className={`text-gray-500 transition-transform ${
-                          isProfileOpen ? "rotate-180" : ""
-                        }`}
+                        className={`text-gray-500 transition-transform ${isProfileOpen ? "rotate-180" : ""
+                          }`}
                       />
                     </button>
 
@@ -375,14 +370,14 @@ function Navbar() {
           </nav>
           {/* Chat */}
         </div>
-        <div className="flex w-full z-50 pr-5 sm:hidden justify-between items-center shadow-[#A9A1A140] shadow-md bg-background">
+        <div className="flex w-full z-50 pr-5 py-5 sm:hidden justify-between items-center shadow-[#A9A1A140] shadow-md bg-background">
           <section>
             <Image
               loading="eager"
               height={1000}
               width={1000}
               className="max-w-24 max-h-24"
-              src={"/UFLogo.png"}
+              src="/Bakul.png"
               alt="logo"
               title="Bakool."
             />
@@ -414,6 +409,18 @@ function Navbar() {
               <li>
                 <Link href="/article">Article</Link>
               </li>
+              <li>
+                <button
+                  onClick={() =>
+                    handleNavigate("/profile", "Membuka profil...")
+                  }
+                  className="group flex w-full items-center gap-4 rounded-xl  text-left transition hover:bg-muted-foreground hover:text-background"
+                >
+                  <span className="font-medium text-[#0B0F1F] group-hover:text-white">
+                    Profil Saya
+                  </span>
+                </button>
+              </li>
             </ul>
           </section>
           <section className="flex flex-row items-center self-center justify-between w-full">
@@ -427,7 +434,7 @@ function Navbar() {
       {!path.startsWith("/login") && !path.startsWith("/register") && (
         <>
           {path == "/" ||
-          disAllowedBreadcrumb.some((item) => path.includes(item)) ? (
+            disAllowedBreadcrumb.some((item) => path.includes(item)) ? (
             ""
           ) : (
             <Breadcrumb className="w-[80vw] mt-5 mb-9 col-span-2">
