@@ -216,11 +216,10 @@ function Navbar() {
                         className={`relative inline-block pb-3
                 after:absolute after:bottom-0 after:left-0
                 after:h-1 after:w-full after:rounded-full after:transition-all
-                ${
-                  isActive
-                    ? "text-primary-foreground after:bg-primary"
-                    : "after:bg-transparent hover:text-primary-foreground/50"
-                }`}
+                ${isActive
+                            ? "text-primary-foreground after:bg-primary"
+                            : "after:bg-transparent hover:text-primary-foreground/50"
+                          }`}
                       >
                         {item.name}
                       </Link>
@@ -293,16 +292,15 @@ function Navbar() {
                         </span>
 
                         <IoChevronDown
-                          className={`text-gray-500 transition-transform ${
-                            isProfileOpen ? "rotate-180" : ""
-                          }`}
+                          className={`text-gray-500 transition-transform ${isProfileOpen ? "rotate-180" : ""
+                            }`}
                         />
                       </button>
 
                       {isProfileOpen && (
                         <div
                           className={cn(
-                            "absolute right-0 mt-4 w-60 rounded-3xl bg-white shadow-xl p-5 z-50",
+                            "absolute right-0 mt-4 w-60 rounded-3xl bg-muted shadow-xl p-5 z-50",
                             "*:hover:bg-muted-foreground *:hover:text-background",
                           )}
                         >
@@ -314,14 +312,14 @@ function Navbar() {
                           >
                             <User
                               size={26}
-                              className="text-[#0B0F1F] group-hover:text-white"
+                              className="text-foreground group-hover:text-white"
                             />
-                            <span className="font-medium text-[#0B0F1F] group-hover:text-white">
+                            <span className="font-medium text-foreground group-hover:text-white">
                               Profil Saya
                             </span>
                           </button>
 
-                          <hr className="my-2 border-0 border-t border-[#E8EAEE]" />
+                          <hr className="my-2 border-0 border-t border-border" />
                           <button
                             onClick={() =>
                               handleNavigate(
@@ -333,14 +331,14 @@ function Navbar() {
                           >
                             <BadgeCheck
                               size={26}
-                              className="text-[#0B0F1F] group-hover:text-white"
+                              className="text-foreground group-hover:text-white"
                             />
-                            <span className="font-medium text-[#0B0F1F] group-hover:text-white">
+                            <span className="font-medium text-foreground group-hover:text-white">
                               Achievement & Badge
                             </span>
                           </button>
 
-                          <hr className="my-2 border-0 border-t border-[#E8EAEE]" />
+                          <hr className="my-2 border-0 border-t border-border" />
                           <button
                             onClick={() =>
                               handleNavigate(
@@ -352,20 +350,20 @@ function Navbar() {
                           >
                             <MessageSquareText
                               size={26}
-                              className="text-[#0B0F1F] group-hover:text-white"
+                              className="text-foreground group-hover:text-white"
                             />
-                            <span className="font-medium text-[#0B0F1F] group-hover:text-white">
+                            <span className="font-medium text-foreground group-hover:text-white">
                               Ulasan Saya
                             </span>
                           </button>
 
-                          <hr className="my-2 border-0 border-t border-[#E8EAEE]" />
+                          <hr className="my-2 border-0 border-t border-border" />
                           <button
                             onClick={handleLogout}
-                            className="rounded-xl hover:bg-red-50 flex items-center w-full gap-4 px-4 py-4 text-red-500 transition"
+                            className="rounded-xl group hover:bg-red-50 flex items-center w-full gap-4 px-4 py-4 text-red-500 transition"
                           >
                             <LogOut size={26} />
-                            <span className="font-medium text-[#0B0F1F] group-hover:text-white">
+                            <span className="font-medium text-foreground group-hover:text-white">
                               Keluar
                             </span>
                           </button>
@@ -469,7 +467,7 @@ function Navbar() {
       {!path.startsWith("/login") && !path.startsWith("/register") && (
         <>
           {path == "/" ||
-          disAllowedBreadcrumb.some((item) => path.includes(item)) ? (
+            disAllowedBreadcrumb.some((item) => path.includes(item)) ? (
             ""
           ) : (
             <Breadcrumb className="w-[80vw] mt-5 mb-9 col-span-2">
