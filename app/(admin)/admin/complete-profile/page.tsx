@@ -320,7 +320,7 @@ export default function CompleteProfilePage() {
         </div>
 
         {/* Stepper */}
-        <div className="flex items-center gap-5">
+        <div className="flex items-center justify-between w-full gap-3">
           {/* Step 1 */}
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#158A62]">
@@ -343,7 +343,7 @@ export default function CompleteProfilePage() {
           </div>
 
           {/* Line */}
-          <div className="h-[1.5px] w-20 bg-[#158A62]/40 dark:bg-[#158A62]/60" />
+          <div className="h-[1.5px] w-full flex-1 bg-[#158A62]/40 dark:bg-[#158A62]/60" />
 
           {/* Step 2 */}
           <div className="flex items-center gap-3">
@@ -670,12 +670,12 @@ export default function CompleteProfilePage() {
           </div>
 
           {/* Form Nav Actions Footer */}
-          <div className="flex justify-between items-center border-t border-border pt-8 mt-4">
+          <div className="flex justify-between items-center border-t border-border pt-8 mt-4 *:shrink-0 flex-wrap gap-4 *:flex-1">
             <button
               type="button"
               onClick={handleBack}
               disabled={loadingBack}
-              className="flex items-center gap-2 rounded-xl border border-slate-200 px-6 py-4 font-bold text-slate-700 transition-colors hover:bg-slate-50 disabled:pointer-events-none disabled:opacity-70 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+              className="flex items-center gap-2 rounded-xl border border-slate-200 px-6 py-4 font-bold text-slate-700 transition-colors hover:bg-slate-50 disabled:pointer-events-none disabled:opacity-70 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 max-w-fit"
             >
               {loadingBack ? (
                 <>
@@ -693,17 +693,17 @@ export default function CompleteProfilePage() {
               type="button"
               onClick={handleSubmit}
               disabled={loadingSave}
-              className="bg-[#15803d] text-white font-bold px-6 py-4 rounded-xl flex items-center gap-2 hover:bg-[#166534] transition-colors shadow-xs"
+              className="bg-[#15803d] text-white font-bold p-4 rounded-xl flex items-center gap-2 hover:bg-[#166534] transition-colors shadow-xs max-w-fit"
             >
               {loadingSave ? (
                 <>
-                  <LoaderCircle className="h-5 w-5 animate-spin" />
+                  <LoaderCircle size={20} className="animate-spin" />
                   <span>Menyimpan Profil...</span>
                 </>
               ) : (
                 <>
                   <span>Simpan & Masuk Dashboard</span>
-                  <LuArrowRight className="h-5 w-5" />
+                  <LuArrowRight className="shrink-0" size={20} />
                 </>
               )}
             </button>
@@ -787,7 +787,7 @@ export default function CompleteProfilePage() {
                 </div>
 
                 {/* Info */}
-                <div className="mt-5 grid grid-cols-2 gap-y-3 border-y border-[#EAECF0] py-4 text-[14px] text-[#667085] dark:border-slate-700 dark:text-slate-400">
+                <div className="mt-5 grid grid-cols-1 xl:grid-cols-2 gap-y-3 border-y border-[#EAECF0] py-4 text-[14px] text-[#667085] dark:border-slate-700 dark:text-slate-400">
                   <div className="flex items-center gap-2">
                     <LuMapPin className="text-[#158A62]" />
                     {formData.city || "Lowokwaru"}
