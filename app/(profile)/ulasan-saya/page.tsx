@@ -120,13 +120,12 @@ export default function MyReviewsPage() {
       </div>
 
       {/* Top Aggregation Row Blocks */}
-      <div className="md:grid-cols-2  lg:grid-cols-5 grid grid-cols-1 gap-4 mb-10">
+      <div className="flex flex-wrap gap-4 mb-10">
         {reviewStats.map((item) => (
           <div
             key={item.title}
             className="
-            last:col-span-2
-            lg:last:col-span-1
+            flex-1 shrink-0
               rounded-2xl
               border border-[#EAECF0]
               dark:border-slate-800
@@ -181,11 +180,10 @@ export default function MyReviewsPage() {
             <button
               key={filter}
               onClick={() => alert("Coming Soon 🚀")}
-              className={`flex h-10 items-center rounded-lg border px-5 text-[14px] font-semibold transition ${
-                index === 0
-                  ? "border-transparent bg-[#EAF7F1] text-[#158A62] dark:bg-emerald-900/30 dark:text-emerald-400"
-                  : "border-[#EAECF0] dark:border-slate-700 bg-white dark:bg-slate-900 text-[#344054] dark:text-slate-300 hover:bg-[#F9FAFB] dark:hover:bg-slate-800"
-              }`}
+              className={`flex h-10 items-center rounded-lg border px-5 text-[14px] font-semibold transition ${index === 0
+                ? "border-transparent bg-[#EAF7F1] text-[#158A62] dark:bg-emerald-900/30 dark:text-emerald-400"
+                : "border-[#EAECF0] dark:border-slate-700 bg-white dark:bg-slate-900 text-[#344054] dark:text-slate-300 hover:bg-[#F9FAFB] dark:hover:bg-slate-800"
+                }`}
             >
               {filter}
             </button>
@@ -283,7 +281,7 @@ export default function MyReviewsPage() {
                 </div>
 
                 {/* Action */}
-                <div className="flex flex-1 gap-3">
+                <div className="flex gap-3 self-end">
                   <button
                     onClick={() => alert("Coming Soon 🚀")}
                     className="flex h-8 items-center gap-1 rounded-lg border border-[#D0D5DD] dark:border-slate-700 bg-white dark:bg-slate-800 px-4 text-[12px] font-medium text-[#158A62] dark:text-emerald-400 transition hover:bg-[#F6FCF9] dark:hover:bg-slate-700"

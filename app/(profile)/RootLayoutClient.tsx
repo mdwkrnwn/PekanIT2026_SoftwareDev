@@ -27,7 +27,7 @@ function RootLayoutClient({ children }: { children: React.ReactNode }) {
         />
         <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
         <main className="min-h-0 overflow-y-auto">
-          <div className="lg:hidden border-slate-200 bg-background/90 backdrop-blur-sm sticky top-0 px-4 py-4 border-b">
+          <div className="lg:hidden border-slate-200 bg-background/90 backdrop-blur-sm sticky top-0 px-4 py-4 border-b z-999">
             <button
               type="button"
               onClick={() => setIsSidebarOpen(true)}
