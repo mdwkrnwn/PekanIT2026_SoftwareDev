@@ -202,7 +202,7 @@ export async function POST(req: Request) {
         ${activePromo?.title ?? "Tidak ada"}
         `;
 
-      const aiInsightContext = `
+    const aiInsightContext = `
       Produk paling banyak dilihat:
       ${mostViewed?.name ?? "-"}
 
@@ -228,7 +228,7 @@ export async function POST(req: Request) {
       ${gallery?.length ?? 0}
       `;
 
-      const businessSummary = `
+    const businessSummary = `
       Ringkasan Bisnis
 
       - Produk paling populer: ${mostViewed?.name ?? "-"}
@@ -372,10 +372,10 @@ export async function POST(req: Request) {
     // Generate AI
     // =============================
 
-    const result = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
-      contents: prompt,
-    });
+    const result = await generateWithRetry(prompt);
+    console.log("MESSAGE:", message);
+    console.log("PROMPT:");
+    console.log(prompt);
 
     return Response.json({
       reply: result.text,
@@ -392,5 +392,21 @@ export async function POST(req: Request) {
         status: 500,
       },
     );
+  }
+}
+
+async function generateWithRetry(prompt: string) {
+  try {
+    return await ai.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: prompt,
+    });
+  } catch (err) {
+    console.log("Retrying Gemini...");
+
+    return await ai.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: prompt,
+    });
   }
 }

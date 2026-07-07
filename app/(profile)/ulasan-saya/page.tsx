@@ -120,7 +120,7 @@ export default function MyReviewsPage() {
       </div>
 
       {/* Top Aggregation Row Blocks */}
-      <div className="md:grid-cols-2 lg:grid-cols-5 grid grid-cols-1 gap-4 mb-10">
+      <div className="md:grid-cols-2  lg:grid-cols-5 grid grid-cols-1 gap-4 mb-10">
         {reviewStats.map((item) => (
           <div
             key={item.title}
@@ -181,10 +181,11 @@ export default function MyReviewsPage() {
             <button
               key={filter}
               onClick={() => alert("Coming Soon 🚀")}
-              className={`flex h-10 items-center rounded-lg border px-5 text-[14px] font-semibold transition ${index === 0
-                ? "border-transparent bg-[#EAF7F1] text-[#158A62] dark:bg-emerald-900/30 dark:text-emerald-400"
-                : "border-[#EAECF0] dark:border-slate-700 bg-white dark:bg-slate-900 text-[#344054] dark:text-slate-300 hover:bg-[#F9FAFB] dark:hover:bg-slate-800"
-                }`}
+              className={`flex h-10 items-center rounded-lg border px-5 text-[14px] font-semibold transition ${
+                index === 0
+                  ? "border-transparent bg-[#EAF7F1] text-[#158A62] dark:bg-emerald-900/30 dark:text-emerald-400"
+                  : "border-[#EAECF0] dark:border-slate-700 bg-white dark:bg-slate-900 text-[#344054] dark:text-slate-300 hover:bg-[#F9FAFB] dark:hover:bg-slate-800"
+              }`}
             >
               {filter}
             </button>
@@ -229,7 +230,7 @@ export default function MyReviewsPage() {
             </button>
 
             {/* Image */}
-            <div className="relative h-25 w-32.5 shrink-0 overflow-hidden rounded-xl">
+            <div className="relative h-20 w-28 shrink-0 overflow-hidden rounded-xl md:h-25 md:w-32.5">
               <Image
                 src={item.image}
                 alt={item.target}
@@ -239,7 +240,7 @@ export default function MyReviewsPage() {
             </div>
 
             {/* Content */}
-            <div className="md:ml-6 md:mt-0 flex flex-col flex-1 mt-3">
+            <div className="md:ml-6 ml-4  md:mt-0 flex flex-col flex-1 mt-3">
               {/* Header */}
               <div className="flex items-center gap-3">
                 <h3 className="text-[18px] font-semibold text-[#101828] dark:text-white">
@@ -301,8 +302,6 @@ export default function MyReviewsPage() {
                 </div>
               </div>
             </div>
-
-
           </div>
         ))}
       </div>

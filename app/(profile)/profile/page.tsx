@@ -65,10 +65,10 @@ export default function ProfilePage() {
         {/* Top */}
         <div className="flex items-start justify-between">
           {/* Left */}
-          <div className="flex items-center gap-10">
+          <div className="flex flex-col items-center gap-8 lg:flex-row lg:items-center">
             {/* Avatar */}
             <div className="relative">
-              <div className="relative h-[170px] w-[170px] overflow-hidden rounded-full">
+              <div className="relative h-[130px] w-[130px] overflow-hidden rounded-full lg:h-[170px] lg:w-[170px]">
                 <Image
                   src={avatar}
                   fill
@@ -92,19 +92,19 @@ export default function ProfilePage() {
             </div>
 
             {/* Info */}
-            <div>
-              <div className="flex items-center gap-4">
-                <h2 className="text-[35px] font-bold leading-none text-[#0B0F1F] dark:text-white">
+            <div className="text-center lg:text-left">
+              <div className="flex flex-col items-center gap-3 lg:flex-row lg:items-center">
+                <h2 className="text-3xl lg:text-[35px] font-bold leading-none text-[#0B0F1F] dark:text-white">
                   {profile?.full_name}
                 </h2>
 
-                <span className="flex items-center gap-2 rounded-full bg-[#ECFDF3] dark:bg-emerald-900/30 px-4 py-2 text-[14px] font-semibold text-[#027A48] dark:text-emerald-400">
+                <span className="flex items-center -ml-18 lg:-ml-0 gap-2 rounded-full bg-[#ECFDF3] dark:bg-emerald-900/30 px-4 py-2 text-[14px] font-semibold text-[#027A48] dark:text-emerald-400">
                   <LuBadgeCheck size={15} />
                   Verified
                 </span>
               </div>
 
-              <div className="mt-7 flex flex-col gap-4">
+              <div className="mt-7 flex flex-col gap-4 items-center lg:items-start">
                 <p className="flex items-center gap-4 text-[16px] font-medium text-[#344054] dark:text-slate-300">
                   <LuMail
                     size={18}
@@ -113,7 +113,7 @@ export default function ProfilePage() {
                   {profile?.email}
                 </p>
 
-                <p className="flex items-center gap-4 text-[16px] font-medium text-[#344054] dark:text-slate-300">
+                <p className="flex items-center gap-4 -ml-35 lg:-ml-0  text-[16px] font-medium text-[#344054] dark:text-slate-300">
                   <LuPhone
                     size={18}
                     className="text-[#667085] dark:text-slate-500"
@@ -121,7 +121,7 @@ export default function ProfilePage() {
                   {profile?.phone ?? "-"}
                 </p>
 
-                <p className="flex items-center gap-4 text-[16px] font-medium text-[#344054] dark:text-slate-300">
+                <p className="flex items-center gap-4 -ml-35 lg:-ml-0 text-[16px] font-medium text-[#344054] dark:text-slate-300">
                   <LuMapPin
                     size={18}
                     className="text-[#667085] dark:text-slate-500"
@@ -149,7 +149,30 @@ export default function ProfilePage() {
           {/* Button */}
           <button
             onClick={() => alert("🚀 Fitur Edit Profil akan segera tersedia!")}
-            className="flex h-[54px] items-center gap-2 rounded-xl border border-[#158A62] dark:border-emerald-500 bg-white dark:bg-slate-800 px-6 font-semibold text-[#158A62] dark:text-emerald-400 transition hover:bg-[#F6FCF9] dark:hover:bg-slate-700"
+            className="
+            mt-8
+            w-full
+            justify-center
+            lg:mt-0
+            lg:w-auto
+            flex
+            h-[54px]
+            items-center
+            gap-2
+            rounded-xl
+            border
+            border-[#158A62]
+            dark:border-emerald-500
+            bg-white
+            dark:bg-slate-800
+            px-6
+            font-semibold
+            text-[#158A62]
+            dark:text-emerald-400
+            transition
+            hover:bg-[#F6FCF9]
+            dark:hover:bg-slate-700
+          "
           >
             <FaUserEdit size={17} />
             Edit Profil
@@ -158,7 +181,7 @@ export default function ProfilePage() {
 
         {/* Statistics */}
         <div className="mt-12 overflow-hidden rounded-2xl border border-[#EAECF0] dark:border-slate-800 bg-[#F9FAFB] dark:bg-slate-800">
-          <div className="grid grid-cols-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4">
             {[
               {
                 label: "UMKM Favorit",
@@ -183,18 +206,38 @@ export default function ProfilePage() {
             ].map((stat, i) => (
               <div
                 key={i}
-                className="flex items-center gap-5 border-r border-[#EAECF0] dark:border-slate-700 px-8 py-8 last:border-r-0"
+                className="
+          flex flex-col items-center text-center gap-4
+          px-5 py-6
+
+          border-r-0 border-b
+          border-[#EAECF0] dark:border-slate-700
+
+          last:border-b-0
+          lg:last:border-b-0
+
+          lg:flex-row
+          lg:items-center
+          lg:text-left
+          lg:gap-5
+          lg:px-8
+          lg:py-8
+
+          lg:border-b-0
+          lg:border-r
+          lg:last:border-r-0
+        "
               >
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#E8F7EF] dark:bg-emerald-900/30 text-[#158A62] dark:text-emerald-400">
-                  <stat.icon size={30} />
+                <div className="flex h-14 w-14 lg:h-16 lg:w-16 items-center justify-center rounded-full bg-[#E8F7EF] dark:bg-emerald-900/30 text-[#158A62] dark:text-emerald-400">
+                  <stat.icon size={28} />
                 </div>
 
                 <div>
-                  <h4 className="text-[25px] font-bold leading-none text-[#0B0F1F] dark:text-white">
+                  <h4 className="text-2xl lg:text-[25px] font-bold leading-none text-[#0B0F1F] dark:text-white">
                     {stat.value}
                   </h4>
 
-                  <p className="mt-2 text-[16px] font-medium text-[#344054] dark:text-slate-300">
+                  <p className="mt-2 text-sm lg:text-[16px] font-medium text-[#344054] dark:text-slate-300">
                     {stat.label}
                   </p>
                 </div>
@@ -401,7 +444,9 @@ export default function ProfilePage() {
                   {item.title}
                 </h4>
 
-                <p className="mt-2 text-[15px] text-[#344054] dark:text-slate-400">{item.time}</p>
+                <p className="mt-2 text-[15px] text-[#344054] dark:text-slate-400">
+                  {item.time}
+                </p>
               </div>
             </div>
           ))}

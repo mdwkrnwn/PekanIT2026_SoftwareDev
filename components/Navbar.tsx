@@ -61,7 +61,6 @@ function Navbar() {
   const [loadingMessage, setLoadingMessage] = useState("");
   const [search, setSearch] = useState("");
 
-
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -164,7 +163,7 @@ function Navbar() {
     setLoadingMessage(message);
     setLoadingPage(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 300));
+    await new Promise((resolve) => setTimeout(resolve, 200));
 
     router.push(path);
   };
@@ -176,34 +175,32 @@ function Navbar() {
     setSearch(value);
   }
 
-
   return (
     <>
       <header
         className={`z-999 sticky top-0 w-full mb-1 transition-transform col-span-2 ${isVisible ? header.header_show : header.header_hide}`}
       >
         <div className="sm:flex hidden bg-background justify-center shadow-[#A9A1A140] shadow-md">
-          <nav className="grid grid-cols-2 xl:grid-cols-3 grid-rows-2 xl:w-[80vw] w-[90vw] xl:grid-rows-1 py-6">
-            <section className="flex items-center">
+          <nav className="flex sticky items-center justify-between xl:w-[80vw] w-[90vw] py-6">
+            <div className="flex items-center gap-28">
+              {/* Logo */}
               <Link href="/" className="flex items-center">
                 <Image
                   src="/Bakul.png"
                   alt="Bakool"
                   width={100}
                   height={100}
-                  className={`h-auto w-25 `}
+                  className="w-25 -ml-5 h-auto"
                   priority
                 />
 
-                <h2 className="text-[25px] font-semibold text-[#0B0F1F] dark:text-white ">
+                <h2 className="text-[25px] font-semibold -ml-2 text-[#0B0F1F] dark:text-white">
                   Bakool
                 </h2>
               </Link>
-            </section>
-            <section className="lg:items-end place-self-end flex items-center">
-              <ul
-                className={`flex gap-6 text-lg font-medium`}
-              >
+
+              {/* Menu */}
+              <ul className="flex items-center gap-8 text-lg font-medium">
                 {navItems.map((item) => {
                   const isActive =
                     item.href === "/explore"
@@ -211,17 +208,19 @@ function Navbar() {
                       : item.href === "/article"
                         ? path.startsWith("/article")
                         : path === item.href;
+
                   return (
                     <li key={item.href}>
                       <Link
                         href={item.href}
                         className={`relative inline-block pb-3
-                      after:absolute after:bottom-0 after:left-0
-                      after:rounded-full after:w-full after:h-1 after:transition-all
-                      ${isActive
-                            ? "after:bg-primary text-primary-foreground"
-                            : "after:bg-transparent hover:text-primary-foreground/50"
-                          }`}
+                after:absolute after:bottom-0 after:left-0
+                after:h-1 after:w-full after:rounded-full after:transition-all
+                ${
+                  isActive
+                    ? "text-primary-foreground after:bg-primary"
+                    : "after:bg-transparent hover:text-primary-foreground/50"
+                }`}
                       >
                         {item.name}
                       </Link>
@@ -229,15 +228,19 @@ function Navbar() {
                   );
                 })}
               </ul>
-            </section>
+            </div>
+
             <section
-              className={`col-span-2 xl:col-span-1 xl:place-self-end justify-between flex items-center self-center gap-3`}
+              className={`col-span-2 xl:col-span-1  justify-between flex items-center  gap-10`}
             >
               <div className="flex items-center">
-                <form onSubmit={e => {
-                  e.preventDefault();
-                  router.push(`/explore?search=${search}`)
-                }} className="relative w-full">
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    router.push(`/explore?search=${search}`);
+                  }}
+                  className="relative w-full"
+                >
                   <FaSearch className="left-4 top-1/2 text-foreground/40 absolute -translate-y-1/2" />
                   <input
                     type="search"
@@ -250,7 +253,9 @@ function Navbar() {
                 </form>
               </div>
               <div className="flex items-center">
-                <ThemeSwitcher className={`${user ? "mr-2" : "mr-5"} w-fit h-fit`} />
+                <ThemeSwitcher
+                  className={`${user ? "mr-2" : "mr-8"} w-fit h-fit`}
+                />
                 {user ? (
                   <div className="flex items-center gap-4 mr-2">
                     {/* Favorite */}
@@ -288,8 +293,9 @@ function Navbar() {
                         </span>
 
                         <IoChevronDown
-                          className={`text-gray-500 transition-transform ${isProfileOpen ? "rotate-180" : ""
-                            }`}
+                          className={`text-gray-500 transition-transform ${
+                            isProfileOpen ? "rotate-180" : ""
+                          }`}
                         />
                       </button>
 
@@ -337,7 +343,10 @@ function Navbar() {
                           <hr className="my-2 border-0 border-t border-[#E8EAEE]" />
                           <button
                             onClick={() =>
-                              handleNavigate("/ulasan-saya", "Membuka ulasan...")
+                              handleNavigate(
+                                "/ulasan-saya",
+                                "Membuka ulasan...",
+                              )
                             }
                             className="group rounded-xl hover:bg-muted-foreground hover:text-background flex items-center w-full gap-4 px-4 py-4 text-left transition"
                           >
@@ -375,7 +384,6 @@ function Navbar() {
                   </button>
                 )}
               </div>
-
             </section>
           </nav>
           {/* Chat */}
@@ -386,7 +394,7 @@ function Navbar() {
               loading="eager"
               height={1000}
               width={1000}
-              className="max-w-24 max-h-24"
+              className="max-w-24  max-h-24"
               src="/Bakul.png"
               alt="logo"
               title="Bakool."
@@ -406,31 +414,48 @@ function Navbar() {
           )}
         >
           <section className={cn("z-50")}>
-            <ul className="flex flex-col gap-6 text-lg font-medium">
+            <ul className="flex flex-col gap-6  text-lg font-medium">
               <li>
                 <Link href="/">Beranda</Link>
               </li>
+
               <li>
                 <Link href="/explore">Explore</Link>
               </li>
+
               <li>
                 <Link href="/solusi">Solusi</Link>
               </li>
+
               <li>
                 <Link href="/article">Article</Link>
               </li>
-              <li>
-                <button
-                  onClick={() =>
-                    handleNavigate("/profile", "Membuka profil...")
-                  }
-                  className="group rounded-xl hover:bg-muted-foreground hover:text-background flex items-center w-full gap-4 text-left transition"
-                >
-                  <span className="font-medium text-[#0B0F1F] group-hover:text-white">
-                    Profil Saya
-                  </span>
-                </button>
-              </li>
+
+              {user ? (
+                <li>
+                  <button
+                    onClick={() =>
+                      handleNavigate("/profile", "Membuka profil...")
+                    }
+                    className="group flex w-full items-center gap-4 rounded-xl text-left transition hover:bg-muted-foreground hover:text-background"
+                  >
+                    <span className="font-medium text-[#0B0F1F] group-hover:text-white dark:text-white">
+                      Profil Saya
+                    </span>
+                  </button>
+                </li>
+              ) : (
+                <li>
+                  <button
+                    onClick={() =>
+                      handleNavigate("/login", "Membuka halaman login...")
+                    }
+                    className="w-full rounded-xl bg-primary px-4 py-3 font-semibold text-white transition hover:bg-primary/90"
+                  >
+                    Masuk / Daftar
+                  </button>
+                </li>
+              )}
             </ul>
           </section>
           <section className="flex flex-row items-center self-center justify-between w-full">
@@ -444,7 +469,7 @@ function Navbar() {
       {!path.startsWith("/login") && !path.startsWith("/register") && (
         <>
           {path == "/" ||
-            disAllowedBreadcrumb.some((item) => path.includes(item)) ? (
+          disAllowedBreadcrumb.some((item) => path.includes(item)) ? (
             ""
           ) : (
             <Breadcrumb className="w-[80vw] mt-5 mb-9 col-span-2">

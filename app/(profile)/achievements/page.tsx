@@ -170,7 +170,7 @@ export default function AchievementsPage() {
                 alt={badge.title}
                 width={1000}
                 height={1000}
-                className="object-contain"
+                className="mx-auto w-45 object-contain sm:w-28 md:w-32 lg:w-full"
               />
 
               <h4 className="mt-6 text-[18px] font-semibold leading-8 text-[#0B0F1F] dark:text-white">
@@ -209,12 +209,12 @@ export default function AchievementsPage() {
               key={badge.title}
               className="flex min-h-[310px] flex-col rounded-2xl border border-[#EAECF0] dark:border-slate-800 bg-[#F9FAFB] dark:bg-slate-900 px-6 py-8 text-center transition-all"
             >
-              <Image
+             <Image
                 src={badge.image}
                 alt={badge.title}
                 width={1000}
                 height={1000}
-                className="mx-auto object-contain"
+                className="mx-auto w-45 object-contain sm:w-28 md:w-32 lg:w-full"
               />
 
               <h4 className="mt-6 text-[18px] font-semibold text-[#0B0F1F] dark:text-white">

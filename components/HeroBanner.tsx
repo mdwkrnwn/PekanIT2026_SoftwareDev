@@ -32,7 +32,7 @@ export function HeroBanner() {
 
   return (
     <section className="relative w-[80vw] mt-8 lg:mt-15">
-      <div className="gap-14 lg:flex-row flex flex-col items-center justify-between w-full">
+      <div className="flex flex-col lg:flex-row items-center justify-between w-full gap-14">
         {/* LEFT */}
         <div className="z-10 flex-1">
           {/* Badge */}
@@ -44,6 +44,21 @@ export function HeroBanner() {
             <span className="text-primary-foreground md:text-base text-sm font-bold">
               Platform Digitalisasi UMKM Indonesia
             </span>
+          </div>
+
+          {/* Image Mobile */}
+          <div
+            data-aos="zoom-in"
+            data-aos-delay="250"
+            className="flex justify-center my-8 lg:hidden"
+          >
+            <Image
+              src="/home-remove.png"
+              width={1000}
+              height={1000}
+              alt="phone"
+              className="w-[450px] animate-float"
+            />
           </div>
 
           {/* Heading */}
@@ -74,7 +89,7 @@ export function HeroBanner() {
           >
             <Link
               href="/login"
-              className="flex flex-row items-center gap-3 rounded-lg border border-border px-6 py-3 text-white font-semibold transition-all bg-primary md:text-base hover:scale-105 hover:shadow-lg"
+              className="flex items-center gap-3 rounded-lg border border-border bg-primary px-6 py-3 font-semibold text-white transition-all hover:scale-105 hover:shadow-lg"
             >
               <span>Daftarkan UMKM Anda</span>
               <FaArrowRight />
@@ -82,7 +97,7 @@ export function HeroBanner() {
 
             <Link
               href="/explore"
-              className="flex flex-row items-center gap-3 rounded-lg border px-6 py-3 text-sm border-primary text-primary-foreground font-semibold transition-all md:text-base hover:scale-105 hover:bg-primary/5"
+              className="flex items-center gap-3 rounded-lg border border-primary px-6 py-3 text-primary-foreground font-semibold transition-all hover:scale-105 hover:bg-primary/5"
             >
               <span>Jelajahi UMKM</span>
               <SiGooglemaps />
@@ -93,35 +108,35 @@ export function HeroBanner() {
           <div
             data-aos="fade-up"
             data-aos-delay="500"
-            className="md:flex-row items-center flex flex-col gap-8 mt-12"
+            className="mt-12 flex flex-col items-start gap-8 md:flex-row md:items-center"
           >
             <Image
               src="/menungso.png"
               alt="menungso"
               width={100}
               height={100}
-              className="hover:scale-105 transition-transform duration-300"
+              className="transition-transform duration-300 hover:scale-105"
             />
 
-            <p className="text-foreground md:text-xl max-w-2xl text-lg leading-relaxed">
+            <p className="max-w-2xl text-lg leading-relaxed text-foreground md:text-xl">
               Bergabung bersama ribuan UMKM lainnya
             </p>
           </div>
         </div>
 
-        {/* RIGHT */}
+        {/* Image Desktop */}
         <div
           data-aos="zoom-in-left"
           data-aos-delay="300"
           data-aos-duration="1000"
-          className="relative xl:flex w-full flex-1 top-10 items-center justify-center scale-125 hidden"
+          className="relative hidden lg:flex flex-1 items-center justify-center top-10 scale-125"
         >
           <Image
             src="/home-remove.png"
             width={1000}
             height={1000}
-            className="animate-float"
             alt="phone"
+            className="w-full animate-float"
           />
         </div>
       </div>

@@ -85,6 +85,7 @@ export default function usePromo() {
   const categories = useMemo(
     () => [
       {
+      
         name: "Semua Promo",
         count: promos.length,
       },
