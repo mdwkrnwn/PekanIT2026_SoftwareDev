@@ -228,7 +228,7 @@ export default function MyReviewsPage() {
             </button>
 
             {/* Image */}
-            <div className="relative h-20 w-28 shrink-0 overflow-hidden rounded-xl md:h-25 md:w-32.5">
+            <div className="relative h-20 w-28 mt-4 md:mt-0 shrink-0 overflow-hidden rounded-xl md:h-25 md:w-32.5">
               <Image
                 src={item.image}
                 alt={item.target}
