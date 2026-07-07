@@ -229,6 +229,10 @@ AI membantu pemilik UMKM dengan memberikan rekomendasi bisnis seperti:
 
 # 🚀 Instalasi
 
+Bakool dapat dijalankan menggunakan **Repository GitHub** maupun **source code** yang disertakan pada berkas kompetisi.
+
+## Menggunakan Repository GitHub
+
 Clone repository
 
 ```bash
@@ -249,6 +253,21 @@ npm install
 
 ---
 
+## Menggunakan Source Code
+
+Ekstrak file source code yang telah diunduh, kemudian masuk ke folder project melalui Terminal atau Command Prompt.
+
+```bash
+cd PekanIT2026_SoftwareDev
+```
+
+Install dependency
+
+```bash
+npm install
+```
+
+---
 # ⚙️ Environment Variables
 
 Buat file
