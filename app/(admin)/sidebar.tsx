@@ -130,7 +130,7 @@ function Sidebar({ isOpen, onClose }: SidebarProps) {
               className="sm:w-24 w-20 h-auto"
             />
 
-            <div className="flex flex-col">
+            <div className="flex flex-col -ml-5  ">
               <h1 className="mt-1 text-[24px] font-bold leading-none text-[#06C179]">
                 Bakool
               </h1>

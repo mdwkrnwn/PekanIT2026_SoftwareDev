@@ -103,9 +103,9 @@ export function Header({ onMenuClick }: HeaderProps) {
       </header>
     );
   }
-
+  const firstName = profile?.full_name?.trim().split(" ")[0] || "Pengguna";
   const message = {
-    head: "Selamat pagi, Ryn",
+    head: `Selamat pagi, ${firstName}`,
     desc: "Kelola usahamu dan tingkatkan performa bisnismu hari ini.",
   };
   if (path.includes("/promo")) {
@@ -186,7 +186,9 @@ export function Header({ onMenuClick }: HeaderProps) {
                 {profile.full_name}
               </h3>
 
-              <p className="text-sm capitalize text-[#667085]">{profile.role}</p>
+              <p className="text-sm capitalize text-[#667085]">
+                {profile.role}
+              </p>
             </div>
 
             <IoChevronDown
